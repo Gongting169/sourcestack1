@@ -1,0 +1,8 @@
+﻿body {
+}
+nav > ul > li > a {
+    margin-right:10px;
+    color: black;
+    font-size: 12px;
+    text-decoration: none;
+}
