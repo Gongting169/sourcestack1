@@ -82,23 +82,33 @@
 
                 </div>
                 <div class="col-5">
-                    <form>
-                        <div class="form-group" style="margin-top:80px">
-                            <label for="exampleFormControlFile1">头像:(*仅限jpg/png/gif)</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1" placeholder="页面提交时上传文件">
+                    <div style=" margin-top:80px" class="">
+                        <label>头像:(*仅限jpg/png/gif）</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="页面提交时上传文件" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">预览</span>
+                            </div>
                         </div>
-                    </form>
-                </div>                
-        <div class="col-1">
+                    </div>
 
-        </div>
-        <div class="col-4">
+                    <label>性别：</label>
+                    <label><input type="radio" name="gender" value="male" disabled="disabled" checked /> 男</label>
+                    <input type="radio" name="gender" value="female" readonly />女 <br />
 
-        </div>
-        <div class="col-1">
 
-        </div>
-        </div>
+
+                </div>
+                <div class="col-1">
+
+                </div>
+                <div class="col-4">
+
+                </div>
+                <div class="col-1">
+
+                </div>
+            </div>
         </div>
     </main>
     <aside>
