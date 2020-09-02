@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/css/StyleSheet1.css" />
     <link rel="stylesheet" href="/css/font-awesome.css" />
+    <style>
+        .input-group-middle{
+            border-radius:0px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -78,11 +83,8 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-1">
-
-                </div>
-                <div class="col-5">
-                    <div style=" margin-top:80px" class="">
+                <div class="col-5 offset-1">
+                    <div style=" margin-top:80px" class="form-group">
                         <label>头像:(*仅限jpg/png/gif）</label>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="页面提交时上传文件" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -91,29 +93,120 @@
                             </div>
                         </div>
                     </div>
+                    <form class="form-group">
+                        <label>性别：</label>
+                        <label><input type="radio" name="gender" value="male" disabled="disabled" checked /> 男</label>
+                        <input type="radio" name="gender" value="female" readonly />女 <br />
+                    </form>
+                    <div class="input-group">
+                        <select class="form-control " name="Birthyear" id="Birthyear">
+                            <option value=" ">---</option>
+                            <option>2001</option>
+                            <option>2000</option>
+                            <option>1999</option>
+                            <option>1998</option>
+                            <option>1997</option>
+                            <option>1996</option>
+                            <option>1995</option>
+                        </select>
+                        <button type="button" class="input-group-append" style="border: 1px solid #ccc;">年</button>
+                        <select class="form-control " name="Birthmonth" id="Birthmonth">
+                            <option value="">----</option>
+                            <option>12</option>
+                            <option>11</option>
+                            <option>10</option>
+                            <option>9</option>
+                            <option>8</option>
+                            <option>7</option>
+                            <option>6</option>
+                        </select>
+                        <button type="button" class="input-group-append" style="border :1px solid #ccc;">月</button>
+                        <select class="form-control " name="Constellation" id="Constellation">
+                            <option value="">-----</option>
+                            <option>水瓶座</option>
+                            <option>金牛座</option>
+                            <option>双子座</option>
+                            <option>摩羯座</option>
+                            <option>白羊座</option>
+                            <option>蝎子座</option>
+                        </select>
+                        <button type="button" class="input-group-append" style="border:1px solid #ccc">星座</button>
+                    </div>
+                    <div class="form-group" style="margin-top :20px">
+                        <label>关键字:(*使用空格分隔）</label>
+                    </div>
+                    <span>
+                        <span style="background-color: #777;border-radius :5px;">JAVA</span>
+                        <span style="background-color:#777;border-radius :5px;">编程开发语言</span>
+                        <span style="background-color:#777;border-radius :5px;">流程</span>
+                        <span style="background-color:#777;border-radius :5px;">法院</span>
+                        <span style="background-color:#777;border-radius :5px;">法律</span>
+                        <span style="background-color:#777;border-radius :5px;">拖欠工资</span>
+                        <span style="background-color:#777;border-radius :5px;">ASP.NET</span>
+                    </span><br />
 
-                    <label>性别：</label>
-                    <label><input type="radio" name="gender" value="male" disabled="disabled" checked /> 男</label>
-                    <input type="radio" name="gender" value="female" readonly />女 <br />
-
-
-
+                    <div class="input-group">
+                        <button type="button" class=" btn btn-outline-secondary input-group-prepend">---1级---</button>
+                        <button type="button" class="btn btn-outline-secondary input-group-middle dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                        <button type="button" class="btn btn-outline-secondary input-group-middle">---2级---</button>
+                        <button type="button" class="btn btn-outline-secondary input-group-middle dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                        <input class="form-control input-group-append" placeholder="自定义关键字，适用空格分隔" />
+                    </div>
+                    <div class="form-group">
+                        <form>
+                            <label>自我介绍:</label><br />
+                            <textarea name="selfDescripttion" class="form-control" placeholder="简单的介绍一下自己吧，不要超过255个字" style=" width :300px;height :150px"></textarea>
+                        </form>
+                    </div>
                 </div>
-                <div class="col-1">
-
-                </div>
-                <div class="col-4">
-
-                </div>
-                <div class="col-1">
-
+                <div class="col-4 offset-1 ">
+                    <aside>
+                  
+                    <h3 class="text-info" style="margin-bottom :20px">
+                        <span class="fa fa-question-circle"></span>
+                        说明
+                    </h3>
+                    <ol>
+                        <li>头像仅接受jpg/png/gif格式，大小不超过256KB。</li>
+                        <li>头像图片的建议宽度为300像素左右，过宽或过窄都有可能失真。</li>
+                        <li>自我介绍的字数不要超过255字。</li>
+                    </ol>
+                    </aside>
                 </div>
             </div>
         </div>
     </main>
-    <aside>
-    </aside>
+  
     <footer>
+        <div class="text-info " style="margin-top : 50px">
+            <a href="/About/Us" target="_blank">关于我们</a>|
+            <a href="/FAQ" target="_blank">常见问题</a>|
+            <a href="/Suggest" target="_blank">意见建议</a>|
+            <a href="/Notice" target="_blank">历史通知</a>|
+            <a href="/Donate" target="_blank">友情捐赠</a>|
+            <a href="/About/Partner" target="_blank">诚邀合伙人</a>|
+            <div>友情链接:</div>
+            <p class="text-right ">
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">渝ICP备18007191号（备案）</a>
+                © 2020 - 首顾科技
+            </p>
+        </div>
     </footer>
 </body>
 </html>
