@@ -11,3 +11,13 @@
       RESTORE DATABASE [17bang] FROM DISK = 'C:\\17bang.bak'      确保指定文件路径有访问权限 
 
  2020年9月3号的面试题目：
+ 1、添加了表之后。我们是对表做了什么样的修改   对表结构的修改
+ 2、怎样去理解批处理？ 就是处理命令按一批来处理，有一定的先后顺序，这过程中会产生等待处理结果，也可以在第一局命令行之后加个GO，客户端会以go为分隔符，将命令分成若干批，分批处理。
+ 3、如何理解使用SQL时用go。
+ 4、数据库我们一般常用的有哪些类型： 文本数据库、数值、（整数、小数（decimal/numeric、float、real））、null值（空）、日期类型（date、time、datetime）、真假（1/0）
+ 5、nvarchar和varchar有什么区别？
+ 6、知识点复习：1、批处理：2，同义。   2、删除表：drop table+用户名  3、修改表结构：一定要先加 alter table+用户名  ADD Score DECIMAL(3,1);（增加列的意思） DROP COLUMN Score;（删除列的意思）
+ 7、ALTER COLUMN SCORE FLOAT NULL;（修改列的意思） 设置数据类型是为了：数据识别、预算、检验和高效存储的需要。 
+ 8、NVARCHAR 是使用Unicode编码的，使用时后面更一个（），里面的数值是数据的最长长度，不会补足。 Nchar是使用Unicode编码的，输入的数据长度是不变的，定长文本数据，始终为10，会补足，位数不够的以0来凑。
+ 9、VARchar和CHAR 都是使用非Unicode编码的，存储变长和定长的数据
+ 10、TEXT和NTEXT：不限长度的非UNICODE和unicode编码的文本数据。  凡是N开头的都是用unicode编码的，Unicode字符是一个字符占两个字节， 非unicode字符是一个字符占一个字节。
