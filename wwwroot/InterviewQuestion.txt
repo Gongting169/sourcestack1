@@ -11,13 +11,29 @@
       RESTORE DATABASE [17bang] FROM DISK = 'C:\\17bang.bak'      确保指定文件路径有访问权限 
 
  2020年9月3号的面试题目：
- 1、添加了表之后。我们是对表做了什么样的修改   对表结构的修改
- 2、怎样去理解批处理？ 就是处理命令按一批来处理，有一定的先后顺序，这过程中会产生等待处理结果，也可以在第一局命令行之后加个GO，客户端会以go为分隔符，将命令分成若干批，分批处理。
+
+ 2、怎样去理解批处理？ 若干条命令进行同时整批处理，有些可以进行一批处理，
  3、如何理解使用SQL时用go。
  4、数据库我们一般常用的有哪些类型： 文本数据库、数值、（整数、小数（decimal/numeric、float、real））、null值（空）、日期类型（date、time、datetime）、真假（1/0）
- 5、nvarchar和varchar有什么区别？
+ 5、nvarchar和varchar有什么区别？ 使用Unicode编码 非Unicode编码
  6、知识点复习：1、批处理：2，同义。   2、删除表：drop table+用户名  3、修改表结构：一定要先加 alter table+用户名  ADD Score DECIMAL(3,1);（增加列的意思） DROP COLUMN Score;（删除列的意思）
  7、ALTER COLUMN SCORE FLOAT NULL;（修改列的意思） 设置数据类型是为了：数据识别、预算、检验和高效存储的需要。 
  8、NVARCHAR 是使用Unicode编码的，使用时后面更一个（），里面的数值是数据的最长长度，不会补足。 Nchar是使用Unicode编码的，输入的数据长度是不变的，定长文本数据，始终为10，会补足，位数不够的以0来凑。
  9、VARchar和CHAR 都是使用非Unicode编码的，存储变长和定长的数据
  10、TEXT和NTEXT：不限长度的非UNICODE和unicode编码的文本数据。  凡是N开头的都是用unicode编码的，Unicode字符是一个字符占两个字节， 非unicode字符是一个字符占一个字节。
+
+ 2020年9月4号的面试题目：
+ 1、表内容中的增删查改中的增加的文本类数据如何避免一些错误？表名中列名与VALUE的值必须一一对应吗？ 文本数据是Unicode编码的：N'文本数据'  不一定 要看他的数据类型 顺序混乱可以，数据类型一一对应就可以了
+ 2、delete和truncate有什么区别？ 一个删除表里面的所有行，一个删除整个所有表包括表结构。
+ 3、在update的过程，有什么需要我们注意的？ 进行备份
+ 4、在SQL server中有哪些运算符？ 赋值运算、算术运算、文本运算、逻辑、比较运算、
+ 5、如何判断一个值是否为NULL值？
+6、知识点复习：行数据的增删改查，也就是表内容的修改，在UI界面操作可以用viewdata来操作，不能违反数据类型。 
+7、增：INSERT   insert student（[NAME], Age）VALUE(N'陈元'，23)；译：插入表student name和age两列，值为陈元和23 SQL表名，圆括号中包含列名，用逗号（, ）分隔，空格  文本类数据用(''),Unicode 编码的，前面要加一个N。
+8、查：select   SELECT * FROM STUDENT 从学生表中查找所有列  *代表所有列  SELECT [NAME]，[Age] FROM STUDENT 从学生列表中查找name和Age两个列。
+9、改：update   UPDATE STUDENT SET Age=18; 把学生表中所有Age改为18
+10、删：DELETE  DELETE STUDENT 删除学生表的所有行，后面可以加一些条件可以删除某一些特定的行  TRUNCATE  TRUNCATE  TABLE STUDENT 删除学生表  TRUNCATE只能删除整张表数据（包括表结构）
+11、运算符：opreater 赋值运算=：把等号=右边的值赋给左边的变量 9中UPDATE中运算的是赋值运算  +-*/：加减乘除  
+12、算术运算符：使用select/print 就可以直接运算结果，用（）来确定优先级，增加代码可读性
+13、文本运算符：
+14、比较运算符：在...之间（包含边界值）：BETWEEN...AND 不等于：<> 仅出现在SQL中，标准。
