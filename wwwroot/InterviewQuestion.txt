@@ -1,26 +1,14 @@
 ﻿9月1号准备的面试题目：
 1、SQL是什么？  结构化查询语言   与关系型数据库进行交流的语言。三大主流数据库有哪些？ mysql   orical   sql server 
 2、当用户进行访问数据库的时候，他们是怎么进行交互的？ 用SQL语句
-3、知识点：1、源代码不能当做数据 2、数据库需要安全和效率 3、SQL是structured (结构化) QUERY（查询） Language(语言)一种原因，是进行和数据库交流的工具
-三大关系型数据库：oracle:也称为：PL/SQL  语法丰富、功能强大 适用各大中小微型机    MYSQL：也称为mysql    SQLServer:也称为T/SQL 可视化操作界面强大
-当建立数据库的时候，会有mdf和mlf两个文件生成   mdf：存储用户录入数据库的数据   ldf:存储操作记录，也称为日志 可以利用ldf来进行备份 
--4-、SQL语句：SQL语句不区分大小写，自动忽略换行、注释：--两个短横线之后的内容都不会被执行。
--- 将数据库备份到C盘17bang.bak                               注意：不能在当前数据库上恢复当前数据库（需要切换数据库） 
-  BACKUP DATABASE [17bang] TO DISK = 'C:\\17bang.bak'             需要指定备份文件名，不能是文件夹 
-   -- 根据C盘17bang.bak恢复数据库                                  文件后缀名可以自由指定，.bak是约定俗成 
-      RESTORE DATABASE [17bang] FROM DISK = 'C:\\17bang.bak'      确保指定文件路径有访问权限 
 
  2020年9月3号的面试题目：
-
+ 1、能在两种不兼容的数据类型之间进行数据转换吗？ 举个例子？ 不能 986INT转换成BIGINT还是986， int转换成datetime还是986吗？ 
  2、怎样去理解批处理？ 若干条命令进行同时整批处理，有些可以进行一批处理，
  3、如何理解使用SQL时用go。
  4、数据库我们一般常用的有哪些类型： 文本数据库、数值、（整数、小数（decimal/numeric、float、real））、null值（空）、日期类型（date、time、datetime）、真假（1/0）
  5、nvarchar和varchar有什么区别？ 使用Unicode编码 非Unicode编码
- 6、知识点复习：1、批处理：2，同义。   2、删除表：drop table+用户名  3、修改表结构：一定要先加 alter table+用户名  ADD Score DECIMAL(3,1);（增加列的意思） DROP COLUMN Score;（删除列的意思）
- 7、ALTER COLUMN SCORE FLOAT NULL;（修改列的意思） 设置数据类型是为了：数据识别、预算、检验和高效存储的需要。 
- 8、NVARCHAR 是使用Unicode编码的，使用时后面更一个（），里面的数值是数据的最长长度，不会补足。 Nchar是使用Unicode编码的，输入的数据长度是不变的，定长文本数据，始终为10，会补足，位数不够的以0来凑。
- 9、VARchar和CHAR 都是使用非Unicode编码的，存储变长和定长的数据
- 10、TEXT和NTEXT：不限长度的非UNICODE和unicode编码的文本数据。  凡是N开头的都是用unicode编码的，Unicode字符是一个字符占两个字节， 非unicode字符是一个字符占一个字节。
+
 
  2020年9月4号的面试题目：
  1、表内容中的增删查改中的增加的文本类数据如何避免一些错误？表名中列名与VALUE的值必须一一对应吗？ 文本数据是Unicode编码的：N'文本数据'  不一定 要看他的数据类型 顺序混乱可以，数据类型一一对应就可以了
@@ -28,12 +16,17 @@
  3、在update的过程，有什么需要我们注意的？ 进行备份
  4、在SQL server中有哪些运算符？ 赋值运算、算术运算、文本运算、逻辑、比较运算、
  5、如何判断一个值是否为NULL值？
-6、知识点复习：行数据的增删改查，也就是表内容的修改，在UI界面操作可以用viewdata来操作，不能违反数据类型。 
-7、增：INSERT   insert student（[NAME], Age）VALUE(N'陈元'，23)；译：插入表student name和age两列，值为陈元和23 SQL表名，圆括号中包含列名，用逗号（, ）分隔，空格  文本类数据用(''),Unicode 编码的，前面要加一个N。
-8、查：select   SELECT * FROM STUDENT 从学生表中查找所有列  *代表所有列  SELECT [NAME]，[Age] FROM STUDENT 从学生列表中查找name和Age两个列。
-9、改：update   UPDATE STUDENT SET Age=18; 把学生表中所有Age改为18
-10、删：DELETE  DELETE STUDENT 删除学生表的所有行，后面可以加一些条件可以删除某一些特定的行  TRUNCATE  TRUNCATE  TABLE STUDENT 删除学生表  TRUNCATE只能删除整张表数据（包括表结构）
-11、运算符：opreater 赋值运算=：把等号=右边的值赋给左边的变量 9中UPDATE中运算的是赋值运算  +-*/：加减乘除  
-12、算术运算符：使用select/print 就可以直接运算结果，用（）来确定优先级，增加代码可读性
-13、文本运算符：
-14、比较运算符：在...之间（包含边界值）：BETWEEN...AND 不等于：<> 仅出现在SQL中，标准。
+
+ 2020年9月6号的面试题目：
+ 1、为什么需要约束？ 是为了数据的完整性，完整性：防止用户的出错 保证用户的输入符合我的输入数据类型  
+ 2、
+
+
+ 2020年9月7号的模拟面试题目：
+ 1、select一个别名,会更改数据本身吗？ 不会，知识相当于他的另外一个名字。
+ 2、是怎么理解orderby中出现两个不同的列的升序和降序问题的？ SELECT Id, Age, Score FROM Student ORDER BY Age ASC, Score DESC
+ 3、having和where的区别是什么?HAVING是在GROUP的结果中过滤，而WHERE是在GROUP之前就过滤
+ 4、select表复制复制那些属性? 属性类型、IDENTITY标记、NOT NULL约束等 但不能复制主外键关系
+ 5、哪些约束是可以暂时关闭约束检查？ check(自定义约束)和外键约束，关闭约束我们应该注意到什么？ 先关闭约束检查时，使用打开约束。
+
+ 
