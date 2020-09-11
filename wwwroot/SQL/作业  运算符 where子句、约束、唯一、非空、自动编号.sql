@@ -1,0 +1,285 @@
+﻿
+
+
+CREATE TABLE [dbo].[USER]
+(
+[Id] INT NOT NULL,
+[NAME] NVARCHAR(20) NOT NULL,
+[PASSWORD] VARCHAR(10) NOT NULL,
+);
+
+
+
+ALTER TABLE [USER]
+ALTER COLUMN InvitedBy NVARCHAR(10);
+
+ALTER TABLE [USER]
+DROP COLUMN InvitedBy;
+
+ADD InvitedBy INT;
+
+
+ CREATE TABLE [dbo].[PROBLEM]
+ (
+ [ID] INT NOT NULL,
+ [TITLE] NVARCHAR(500) NOT NULL,
+ [CONTENT] Ntext NULL,
+ [NeedRemoteHelp] BIT DEFAULT 1,
+ [Reward] INT NULL,
+ [PublishDateTime] Datetime NULL,
+ );
+
+
+ CREATE TABLE [dbo].[KEYWORDS]
+ (
+ [ID] INT IDENTITY(10,5) PRIMARY KEY,
+ [NAME] NVARCHAR(20) NOT NULL,
+ [ENROLL] DATETIME  NULL ,
+ [SCORE] DECIMAL(3,1),
+ [ISFEMALE] BIT DEFAULT 1,
+ );
+
+ SELECT * FROM [USER];
+
+ ALTER TABLE [USER]
+ ADD AGE INT NOT NULL;
+ ADD SCORE DECIMAL(3,1);
+ ADD ENROLL Datetime NULL;
+ ADD PASSWORD VARCHAR(50);
+ DROP COLUMN PASSWORD;
+
+
+
+ INSERT [USER]([Id] ,[USERNAME] ,[PASSWORD] ,[ENROLL] ,[SCORE] ,[AGE]) VALUES(1,N'小明',1234,2020/9/1,80,21); 
+
+ INSERT [USER]([Id] ,[USERNAME] ,[PASSWORD] ,[ENROLL] ,[SCORE] ,[AGE]) VALUES(2,N'小黄',2345,2020/9/3,90,23); 
+
+ INSERT [USER]([Id] ,[USERNAME] ,[PASSWORD] ,[ENROLL] ,[SCORE] ,[AGE]) VALUES(3,N'小李',3456,2020/9/5,88,25); 
+
+ INSERT [USER]([Id] ,[USERNAME] ,[ENROLL] ,[SCORE] ,[AGE]) VALUES(4,N'管理员','2020/9/5',98,24); 
+
+ INSERT [USER]([Id] ,[USERNAME] ,[ENROLL] ,[SCORE] ,[AGE]) VALUES(5,N'17bang','2020/9/7',76,28); 
+
+ INSERT [USER]([Id] ,[USERNAME] ,[PASSWORD] ,[ENROLL] ,[SCORE] ,[AGE]) VALUES(6,N'管理员2',5678,'2020/9/10',95,32); 
+
+ UPDATE [USER] SET [USERNAME]=N'17bang3' WHERE  ID=2;
+
+ UPDATE [USER] SET [PASSWORD] =NULL  WHERE  ID=2;
+
+
+ SELECT * FROM [USER];
+ USE [18BANG];
+
+
+ --查找没有录入密码的用户 
+SELECT [PASSWORD]  FROM [USER] WHERE [PASSWORD] IS NULL;
+
+SELECT [PASSWORD]  FROM [USER] WHERE [PASSWORD]='';
+
+--删除用户名（UserName）中包含“管理员”或者“17bang”字样的用户 
+BEGIN TRAN
+DELETE [USER] WHERE [USERNAME] LIKE N'%管理员%' OR [USERNAME] LIKE '%17bang%';
+
+ROLLBACK;
+
+ SELECT * FROM [PROBLEM];
+
+ INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(1,N'创建',N'需要熟悉很多的东西' ,15,'2018/9/7'); 
+
+ INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(2,N'修改',N'修改小细节' ,30,'2019/9/5'); 
+
+ INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(3,N'装饰',N'装修样式' ,8,'2020/4/7');
+ 
+ INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(4,N'后台',N'仓库' ,18,'2019/7/1'); 
+
+ INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(5,N'运输',N'汽车' ,22,'2018/8/7'); 
+
+ INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(6,N'管理',N'管理员' ,5,'2020/9/7'); 
+
+ INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(7,N'广告%',N'又必须多' ,40,'2020/9/3'); 
+
+ INSERT [PROBLEM] ([TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(N'数据库',N'必须多' ,25,'2018/9/7'); 
+
+ ALTER TABLE PROBLEM 
+
+ BEGIN TRAN
+ --DELETE PROBLEM WHERE ID =8;
+ UPDATE PROBLEM SET TITLE =TITLE + '%' WHERE  ID =6;
+
+ --给所有悬赏（Reward）大于10的求助标题加前缀：【推荐】
+ BEGIN TRAN
+ UPDATE [PROBLEM] SET TITLE = N'【推荐】'+TITLE   WHERE Reward >10;
+
+ ROLLBACK;
+
+ --给所有悬赏大于20且发布时间（Created）在2019年10月10日之后的求助标题加前缀：【加急】 
+BEGIN TRAN
+UPDATE [PROBLEM] SET TITLE =N'【加急】'+TITLE  WHERE Reward >20 AND PublishDateTime < '2019/10/10';
+
+ROLLBACK;
+
+--删除所有标题以中括号【】开头（无论其中有什么内容）的求助 
+BEGIN TRAN 
+DELETE PROBLEM WHERE TITLE LIKE N'【%】%';
+
+ROLLBACK;
+
+--查找Title中第5个起，字符不为“数据库”且包含了百分号（%）的求助 
+SELECT TITLE FROM PROBLEM  
+WHERE TITLE  NOT LIKE  N'_____数据库%'  
+AND  TITLE LIKE  N'%#%%'  ESCAPE '#' ;
+
+SELECT * FROM PROBLEM  WHERE TITLE  NOT LIKE  N'_____数据库%'  AND  TITLE LIKE  N'%#%%'  ESCAPE '#' ;
+
+--找出所有被使用次数（Used）大于10小于50的关键字名称（Name） 
+--如果被使用次数（Used）小于等于0，或者是NULL值，或者大于100的，将其更新为1 
+--删除所有使用次数为奇数的Keyword
+
+ SELECT * FROM [KEYWORDS];
+
+ ALTER TABLE [KEYWORDS]
+ADD USED INT;
+--DROP COLUMN ENROLL;
+
+
+ INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小明',1,25);
+
+ INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小黄',0,9);
+
+ INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小李',1,3);
+
+ INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小赵',0,NULL);
+
+ INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小田',1,17);
+
+ INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小周',0,45);
+
+ INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小刘',1,30);
+
+ INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小天',0,200);
+
+ INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小明',1,0);
+
+ --找出所有被使用次数（Used）大于10小于50的关键字名称（Name） 
+--如果被使用次数（Used）小于等于0，或者是NULL值，或者大于100的，将其更新为1 
+--删除所有使用次数为奇数的Keyword
+
+ --找出所有被使用次数（Used）大于10小于50的关键字名称（Name） 
+SELECT [NAME],USED FROM [KEYWORDS] WHERE USED BETWEEN 10 AND 50;
+
+--如果被使用次数（Used）小于等于0，或者是NULL值，或者大于100的，将其更新为1 
+BEGIN TRAN
+UPDATE [KEYWORDS] SET USED =1 WHERE USED <=0 OR USED IS NULL OR USED >100
+
+SELECT * FROM [KEYWORDS] ;
+
+ROLLBACK;
+
+--UPDATE [KEYWORDS] SET USED = NULL WHERE ID =20;
+
+--UPDATE [KEYWORDS] SET USED = 200  WHERE ID =40;
+--UPDATE [KEYWORDS] SET USED = 0  WHERE ID =45;
+
+--删除所有使用次数为奇数的Keyword
+BEGIN TRAN
+DELETE [KEYWORDS]  WHERE USED%2=1;
+
+ROLLBACK;
+
+--在User表上的基础上
+--添加Id列，让Id成为主键 
+--添加约束，让UserName不能重复 
+
+SELECT * FROM [USER]  ;
+
+--添加Id列，让Id成为主键 
+
+ALTER TABLE [USER]
+DROP COLUMN [ID];
+
+ALTER TABLE [USER]
+ADD  [ID] INT IDENTITY(1,5);
+
+--添加Id列，让Id成为主键 
+ALTER TABLE [USER]
+ADD CONSTRAINT PK_ID PRIMARY KEY(ID);
+
+
+
+--添加约束，让UserName不能重复 
+ALTER TABLE [USER]
+ADD CONSTRAINT UQ_USERNAME UNIQUE  ([USERNAME]);
+
+SELECT * FROM [PROBLEM] ;
+
+-- 为NeedRemoteHelp添加NOT NULL约束，再删除NeedRemoteHelp上NOT NULL的约束 
+--添加自定义约束，让Reward不能小于10
+
+ALTER TABLE PROBLEM
+ALTER COLUMN NeedRemoteHelp INT NOT NULL;
+
+ALTER TABLE PROBLEM 
+ALTER  COLUMN [NeedRemoteHelp] INT NULL;
+
+--添加自定义约束，让Reward不能小于10
+ALTER TABLE PROBLEM
+ADD CONSTRAINT Ck_Reward CHECK (Reward>10);
+
+UPDATE PROBLEM SET Reward =11 WHERE ID =3;
+
+UPDATE PROBLEM SET Reward =50 WHERE ID =6;
+
+
+SELECT * FROM [KEYWORDS];
+
+--给User表中添加一个GUID的Id列，并存入若干条数据 
+
+SELECT * FROM [USER] ;
+
+SELECT * FROM [GUIDUSER]  ;
+
+CREATE TABLE [GUIDUSER]
+(
+[Id] VARCHAR(50) ,
+[NAME] NVARCHAR(500),
+);
+
+INSERT GUIDUSER VALUES(NEWID(),N'小明');
+
+ALTER TABLE [USER]
+
+--DROP CONSTRAINT PK_ID;
+
+ALTER COLUMN [ID] VARCHAR (500);
+
+SET IDENTITY_INSERT [USER] ON;
+--给User表中添加一个GUID的Id列，并存入若干条数据 
+
+ALTER TABLE [USER]
+ADD [GUID] VARCHAR (500);
+
+SELECT * FROM [USER];
+
+SET IDENTITY_INSERT  [USER] ON ;
+
+BEGIN TRAN 
+UPDATE [USER] SET [ID]  = [GUID] ;
+
+
+
+--Problem表已有Id列，如何给该列加上IDENTITY属性？
+--先删除 再添加
+ALTER TABLE 
+--ADD [ID] INT IDENTITY (10,5);
+
+DROP COLUMN [ID];
+
+SELECT * FROM [PROBLEM];
+ SELECT * FROM [USER] ;
+
+ --在User表上的基础上
+--添加Id列，让Id成为主键 
+--添加约束，让UserName不能重复 
+---给User表中添加一个GUID的Id列，
+ALTER TABLE [USER]
+ADD [ID] VARCHAR(500) PRIMARY KEY ([ID]);
