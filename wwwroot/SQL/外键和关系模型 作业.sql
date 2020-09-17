@@ -66,7 +66,7 @@ CREATE TABLE [dbo].Credit
 [CommunityActivity] NVARCHAR(500),
 [Reward]  INT,
 [Remark]  NVARCHAR(800),
-);
+); 
 
 SELECT * FROM Credit ;
 
