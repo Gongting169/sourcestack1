@@ -1,6 +1,4 @@
-﻿
-
- CREATE TABLE [dbo].[PROBLEM]
+﻿CREATE TABLE [dbo].[PROBLEM]
  (
  [ID] INT ,
  [TITLE] NVARCHAR(500) ,
@@ -10,21 +8,21 @@
  [PublishDateTime] Datetime ,
  );
 
+ DROP TABLE PROBLEM ;
+
  SELECT * FROM PROBLEM 
 
-  INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(1,N'创建',N'需要熟悉很多的东西' ,15,'2018/9/7'); 
+  INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT],[NeedRemoteHelp],  [Reward] ,[PublishDateTime]) VALUES(1,N'广告生源的代购%',N'需要熟悉很多的东西',1 ,15,'2018/9/7'); 
 
- INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(2,N'修改一生健康%',N'修改小细节' ,30,'2019/9/5'); 
+ INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT] ,[NeedRemoteHelp] ,[Reward] ,[PublishDateTime]) VALUES(2,N'修改一生健康%',N'修改小细节',0 ,30,'2019/9/5'); 
 
- INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(3,N'装饰数据库',N'装修样式' ,8,'2020/4/7');
+ INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[NeedRemoteHelp],[Reward] ,[PublishDateTime]) VALUES(3,N'装饰数据库',N'装修样式',1 ,15,'2020/4/7');
  
- INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(4,N'后台今天升级上深%',N'仓库' ,18,'2019/7/1'); 
+ INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT] ,[NeedRemoteHelp] ,[Reward] ,[PublishDateTime]) VALUES(4,N'后台今天升级上深%',N'仓库',0 ,18,'2019/7/1'); 
 
- INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(5,N'运输不是一个好的工作敢为，并且数据库，还是%',N'汽车' ,22,'2018/8/7'); 
+ INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT] ,[NeedRemoteHelp] ,[Reward] ,[PublishDateTime]) VALUES(5,N'运输不是一个好的工作敢为，并且数据库，还是%',N'汽车' ,1,22,'2018/8/7'); 
 
- INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(6,N'管理是一个数据库，且其中%',N'管理员' ,5,'2020/9/7'); 
-
- INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT]  ,[Reward] ,[PublishDateTime]) VALUES(7,N'广告生源的代购%',N'又必须多' ,40,'2020/9/3'); 
+ INSERT [PROBLEM] ([Id] ,[TITLE] ,[CONTENT],[NeedRemoteHelp]  ,[Reward] ,[PublishDateTime]) VALUES(6,N'管理是一个数据库，且其中%',N'管理员' ,0,26,'2020/9/7'); 
 
 
 -- 给所有悬赏（Reward）大于10的求助标题加前缀：【推荐】 
@@ -70,18 +68,12 @@ ALTER  TABLE  PROBLEM
 
  SELECT * FROM PROBLEM 
 
- UPDATE PROBLEM SET Reward =20 WHERE ID =6;
-
-UPDATE PROBLEM  SET NeedRemoteHelp = Reward ;
-
-
-
 --找出所有被使用次数（Used）大于10小于50的关键字名称（Name） 
 --如果被使用次数（Used）小于等于0，或者是NULL值，或者大于100的，将其更新为1 
 --删除所有使用次数为奇数的Keyword
 
  
-  CREATE TABLE [dbo].[KEYWORDS]
+  CREATE TABLE [dbo].[KEYWORD]
  (
  [ID] INT IDENTITY(10,5) PRIMARY KEY,
  [NAME] NVARCHAR(20) NOT NULL,
@@ -89,35 +81,40 @@ UPDATE PROBLEM  SET NeedRemoteHelp = Reward ;
  [ISFEMALE] BIT ,
  );
 
- INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小明',1,25);
+ INSERT [KEYWORD] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小明',1,25);
 
- INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小黄',0,9);
+ INSERT [KEYWORD] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小黄',0,9);
 
- INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小李',1,3);
+ INSERT [KEYWORD] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小李',1,3);
 
- INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小赵',0,NULL);
+ INSERT [KEYWORD] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小赵',0,NULL);
 
- INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小田',1,17);
+ INSERT [KEYWORD] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小田',1,17);
 
- INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小周',0,45);
+ INSERT [KEYWORD] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小周',0,45);
 
- INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小刘',1,30);
+ INSERT [KEYWORD] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小刘',1,30);
 
- INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小天',0,200);
+ INSERT [KEYWORD] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小天',0,200);
 
- INSERT [KEYWORDS] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小明',1,0);
+ INSERT [KEYWORD] ([NAME],[ISFEMALE] ,[USED]) VALUEs(N'小明',1,0);
 
- SELECT * FROM [KEYWORDS] ;
+ SELECT * FROM [KEYWORD] ;
 
  --找出所有被使用次数（Used）大于10小于50的关键字名称（Name） 
-SELECT [NAME],USED FROM [KEYWORDS] WHERE USED > 10 AND USED < 50;
+SELECT [NAME],USED FROM [KEYWORD] WHERE USED > 10 AND USED < 50;
 
 --如果被使用次数（Used）小于等于0，或者是NULL值，或者大于100的，将其更新为1 
 BEGIN TRAN
-UPDATE [KEYWORDS] SET USED =1 WHERE USED <=0 OR USED IS NULL OR USED >100
+UPDATE [KEYWORD] SET USED =1 WHERE USED <=0 OR USED IS NULL OR USED >100
 
 ROLLBACK;
 
 --删除所有使用次数为奇数的Keyword
 BEGIN TRAN
-DELETE [KEYWORDS]  WHERE USED%2=1;
+DELETE [KEYWORD]  WHERE USED%2=1;
+
+
+
+
+
