@@ -54,15 +54,16 @@ INSERT Keyword2Problem  VALUES(3,1);
 
  ALTER TABLE Keyword2Problem ADD CONSTRAINT PK_Keyword2Problem_K2P PRIMARY KEY(KeywordSID,ProblemID);  
 
- SELECT * FROM KeywordS,PROBLEM,Keyword2Problem  where Keyword2Problem.KeywordSID = KeywordS.ID AND Keyword2Problem.ProblemID = Problem.ID;
-
 --求助列表：新建Keyword表，和Problem形成n:n关联（含约束）。用SQL语句演示：
 --查询获得：某求助使用了多少关键字，某关键字被多少求助使用
  SELECT * FROM KeywordS,PROBLEM,Keyword2Problem  where Keyword2Problem.KeywordSID = KeywordS.ID AND Keyword2Problem.ProblemID = Problem.ID;
 
+ SELECT ProblemID ,COUNT(ProblemID)  FROM  Keyword2Problem WHERE ProblemID=1 GROUP BY   ProblemID;
+ SELECT KeywordSID ,COUNT(KeywordSID)  FROM  Keyword2Problem WHERE KeywordSID=4 GROUP BY   KeywordSID;
+
 --发布了一个使用了若干个关键字的求助
-INSERT KeywordS VALUES(7,N'原理');
-INSERT KeywordS VALUES(8,N'加密');
+--INSERT KeywordS VALUES(7,N'原理');
+--INSERT KeywordS VALUES(8,N'加密'); 没有这两行就是相当于是没有用新的关键词，是表里面已经有的值
 
 INSERT PROBLEM VALUES(8,N'试试三等奖',N'弗吉凯柏',0,23,'2019/7/1',N'飞哥',1);
 
@@ -70,7 +71,10 @@ INSERT Keyword2Problem VALUES(7,8);
 INSERT Keyword2Problem VALUES(8,8);
 
 --该求助不再使用某个关键字
-  UPDATE KeywordS SET KeyWord = N'' WHERE ID = 8
+  --UPDATE KeywordS SET KeyWord = N'' WHERE ID = 8 (问题： 如果有3条求助都发布了这个关键字，只删除这条的关键字，像73这样的操作，就会把3条求助的关键字都给删除了，
+  --所以要删除只能删除关系表上的关联数据)
+
+  --DELETE Keyword2Problem WHERE KeywordSID=7 AND ProblemID=8; 正确的写法
 --删除该求助
 BEGIN TRAN 
 DELETE Keyword2Problem WHERE KeywordSID=7 AND ProblemID=8;
@@ -82,8 +86,11 @@ rollback;
 BEGIN TRAN
 
 DELETE  Keyword2Problem  WHERE  KeywordSID =4;
-DELETE KeywordS WHERE KeyWord = N'JAVA';
+DELETE KeywordS WHERE KeyWord = N'JAVA'; 
 
+或
+DELETE  Keyword2Problem  WHERE  KeywordSID =4;
+--DELETE KeywordS WHERE  id = 2 ;  比较正确
 --没有去执行
 rollback;
 
