@@ -1,5 +1,4 @@
 ﻿
-
 CREATE TABLE [dbo].Profile
 (
   [ID] INT  NOT NULL PRIMARY KEY ,
@@ -20,15 +19,6 @@ select * FROM  Profile;
  INSERT Profile  VALUES(2,'t01ca9443fb7c45ae95.jpg',1,'2020/6/5',N'拖欠工资',N'史蒂夫VN等你拿据欧。。。。',2);
  INSERT Profile  VALUES(3,'t01532249c0f4783edf.jpg',1,'2020/9/1',N'流程',N'那你可能需整理的深V看。。。。',3);
  INSERT Profile  VALUES(4,'t01532249c0f4783edf.jpg',0,'2020/8/7',N'ASP.NET',N'那你可能需整理的深V看。。。。',4);
-
- SELECT 
-    *
-FROM Profile P      
-JOIN [USER] U                   
-ON P.USERID = U.Id  
-
-SELECT * FROM [USER] ;
- DELETE [USER] WHERE ID = 3698;
 
 ---- 用户资料，新建用户资料（Profile）表，和User形成1:1关联（有无约束？）。用SQL语句演示：
 ----新建一个填写了用户资料的注册用户    增加：先是从表增加然后再是主表
@@ -79,5 +69,4 @@ CREATE TABLE [dbo].Credit
 --INSERT Credit([ID] ,[USERNAME],DATETIME,CommunityActivity ,Reward ,Remark  ) VALUES(3,N'李大哥','2017/12/12',N'文章评论被精选',10,N'由文章作者精选' );
 --INSERT Credit([ID] ,[USERNAME],DATETIME,CommunityActivity ,Reward ,Remark  ) VALUES(4,N'周大哥','2019/12/3',N'加入目标',5,N'只要加入，就可以获得' );
 --INSERT Credit([ID] ,[USERNAME],DATETIME,CommunityActivity ,Reward ,Remark  ) VALUES(5,N'田大哥','2020/8/7',N'意见建议','',N'别人使用了你的邀请码完成注册' );
-
 

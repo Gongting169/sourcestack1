@@ -1,5 +1,4 @@
 ﻿
-
 --求助列表：新建Keyword表，和Problem形成n:n关联（含约束）。用SQL语句演示：
 --查询获得：某求助使用了多少关键字，某关键字被多少求助使用
 --发布了一个使用了若干个关键字的求助
@@ -7,44 +6,40 @@
 --删除该求助
 --删除某关键字
 
-CREATE TABLE KeywordS
-(
-[ID] INT NOT NULL,
-[KeyWord] NVARCHAR(100),
-);
+SELECT * FROM KEYWORD ;
 
-INSERT KeywordS   VALUES(1,N'律师');
-INSERT KeywordS   VALUES(2,N'编程');
-INSERT KeywordS   VALUES(3,N'拖欠工资');
-INSERT KeywordS   VALUES(4,N'JAVA');
-INSERT KeywordS   VALUES(5,N'编程开发语言');
-INSERT KeywordS  VALUES(6,N'顾问咨询');
+UPDATE KEYWORD SET [NAME] =N'律师' WHERE ID = 10;
+UPDATE KEYWORD SET [NAME] =N'编程' WHERE ID = 15;
+UPDATE KEYWORD SET [NAME] =N'拖欠工资' WHERE ID = 20;
+UPDATE KEYWORD SET [NAME] =N'JAVA' WHERE ID = 25;
+UPDATE KEYWORD SET [NAME] =N'编程开发语言' WHERE ID = 30;
+UPDATE KEYWORD SET [NAME] =N'顾问咨询' WHERE ID = 35;
 
---ALTER  TABLE PROBLEM
-----ALTER COLUMN [ID] INT  NOT  NULL;
 
---ALTER  TABLE PROBLEM
+ALTER  TABLE PROBLEM
+ALTER COLUMN [ID] INT  NOT  NULL;
+
+--ALTER  TABLE KEYWORD
 --ADD  CONSTRAINT PK_PROBLEM_ID PRIMARY KEY ([ID]);
 
---ADD CONSTRAINT PK_KeywordS_ID  PRIMARY KEY ([ID]);
-
-CREATE TABLE [dbo].Keyword2Problem
+CREATE TABLE [dbo].KeywordProblem
 (
- [KeywordSID] INT CONSTRAINT FK_K2P_KeywordSID  FOREIGN KEY  REFERENCES KeywordS(ID),
+ [KeywordID] INT CONSTRAINT FK_K2P_KeywordID  FOREIGN KEY  REFERENCES Keyword(ID),
  [ProblemID] INT CONSTRAINT FK_K2P_ProblemID  FOREIGN KEY  REFERENCES Problem(ID)
 );
+SELECT * FROM KeywordProblem ;
 
-INSERT Keyword2Problem  VALUES(1,3);
-INSERT Keyword2Problem  VALUES(1,6);
-INSERT Keyword2Problem  VALUES(2,3);
-INSERT Keyword2Problem  VALUES(3,6);
-INSERT Keyword2Problem  VALUES(5,2);
-INSERT Keyword2Problem  VALUES(1,4);
-INSERT Keyword2Problem  VALUES(3,7);
-INSERT Keyword2Problem  VALUES(5,3);
-INSERT Keyword2Problem  VALUES(5,7);
-INSERT Keyword2Problem  VALUES(2,7);
-INSERT Keyword2Problem  VALUES(3,1);
+INSERT KeywordProblem  VALUES(1,3);
+INSERT KeywordProblem  VALUES(1,6);
+INSERT KeywordProblem  VALUES(2,3);
+INSERT KeywordProblem  VALUES(3,6);
+INSERT KeywordProblem  VALUES(5,2);
+INSERT KeywordProblem  VALUES(1,4);
+INSERT KeywordProblem  VALUES(3,7);
+INSERT KeywordProblem  VALUES(5,3);
+INSERT KeywordProblem  VALUES(5,7);
+INSERT KeywordProblem  VALUES(2,7);
+INSERT KeywordProblem  VALUES(3,1);
 
  ALTER TABLE Keyword2Problem
  ALTER  COLUMN ProblemID INT NOT  NULL;
@@ -97,5 +92,4 @@ rollback;
 SELECT * FROM KeywordS;
 SELECT * FROM Problem;
 SELECT * FROM Keyword2Problem;
-
 

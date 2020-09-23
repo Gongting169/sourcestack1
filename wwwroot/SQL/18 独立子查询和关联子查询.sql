@@ -23,7 +23,21 @@ AS GID ,
 FROM PROBLEM    
 
 --第二种：
-    SELECT DISTINCT AUTHOR ,[ID] ,PublishTime  FROM  PROBLEM ORDER BY PublishTime  ASC
+    SELECT [ID] ,PublishTime, AUTHOR  FROM  PROBLEM    ORDER BY PublishTime  DESC
+
+ --第三种:
+ --SELECT [ID],[AUTHOR],[PublishTime],
+ --CASE 
+ --WHEN 
+
+
+
+ SELECT 
+ MAX(PublishTime) OVER (PARTITION BY AUTHOR ) AS  BEST 
+  ,AUTHOR,PublishTime FROM PROBLEM  GROUP BY AUTHOR ,PublishTime; 
+
+
+
 
 SELECT * FROM PROBLEM;
 ALTER TABLE PROBLEM
@@ -41,3 +55,7 @@ UPDATE PROBLEM SET PublishTime = '2019/8/7' WHERE ID =8;
 --查出每个作者悬赏最多的3篇求助
 --删除悬赏相同的求助（只要相同的全部删除一个不留  
 --删除每个作者悬赏最低的求助
+
+
+DROP  DATABASE [17bang] ;
+

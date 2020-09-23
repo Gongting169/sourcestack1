@@ -1,6 +1,4 @@
-﻿  
-   SELECT * FROM [USER]  ;
-  SELECT *  FROM  PROBLEM ;
+﻿
 --联表查出求助的标题和作者用户名
 SELECT 
   P.[ID],
@@ -11,25 +9,45 @@ SELECT
   ON  P.ProbelmUserID  = U.ID;
 --查找并删除从未发布过求助的用户
 BEGIN TRAN 
-DELETE [user]  
---SELECT *
-FROM [USER], Problem  
---ON  P.ProbelmUserID = U.ID
-WHERE [USER].[ID]  NOT  IN  (SELECT ProbelmUserID FROM  PROBLEM ) ; 
+DELETE [user] 
+--SELECT *   不要
+--FROM [USER], Problem  不要
+--ON  P.ProbelmUserID = U.ID  不要  不符合本章的要求用join和union把他做出来   用了子查询把他给做了出来
+WHERE [USER].[ID]   NOT  IN  (SELECT ProbelmUserID FROM  PROBLEM ) ; 
 
 rollback;
+
+DELETE [USER]  FROM [USER] U LEFT JOIN PROBLEM P ON P.ProbelmUserID = U.ID WHERE P.TITLE IS NULL    --正确
 
 --用一句SELECT显示出用户和他的邀请人用户名
 SELECT [USERNAME],[INVITEDBY] FROM [USER] WHERE ID =2;
 
+SELECT * FROM [USER] U1 JOIN [USER] U2 ON U1.ID =U2.INVITEDBY ;  --正确
+
 ALTER TABLE [USER]
 ADD INVITEDBY INT  CONSTRAINT  FK_USER_INVITEDBY  FOREIGN KEY   REFERENCES [USER]([ID]);
 
+SELECT * FROM [USER] ;
 
 --17bang的关键字有“一级”“二级”和其他“普通（三）级”的区别：
 --请在表Keyword中添加一个字段，记录这种关系
-SELECT * FROM KEYWORD ;
+SELECT K3.[NAME] 关键字, k2.[NAME]上一级,K1.[NAME]再上一级 FROM KEYWORD 1
+RIGHT JOIN KEYWORD K2
+ON K1.ID = K2.RELATION
+RIGHT JOIN KEYWORD K3
+ON K2.ID = K3.RELATION
 
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM KEYWORD 
 ALTER TABLE KEYWORD
 ADD FIRST INT  CONSTRAINT  FK_KEYWORD_FIRST  FOREIGN KEY  REFERENCES KEYWORD([ID]);
 
@@ -52,12 +70,24 @@ UPDATE KEYWORD  SET Second  =35 WHERE ID = 25;
 --然后用一个SELECT语句查出所有普通关键字的上一级、以及上上一级的关键字名称，比如：
 SELECT [ID] ,[NAME] ,FIRST ,Second  FROM KEYWORD  WHERE KEYWORD.FIRST = KEYWORD.ID AND KEYWORD.Second = KEYWORD.ID;
 
---17bang中除了求助（Problem），还有意见建议（Suggest）和文章（Article），他们都包含Title、Content、PublishTime和Auhthor四个字段，但是：
+--17bang中除了求助（Problem），还有意见建议（Suggest）和文章（Suggest），他们都包含Title、Content、PublishTime和Auhthor四个字段，但是：
 --建议和文章没有悬赏（Reward）
 --建议多一个类型：Kind NVARCHAR(20)） 一篇文章可以有多个建议和求助 文章 父表  建议和求助 子表
 --文章多一个分类：Category INT）
 --请按上述描述建表。然后，用一个SQL语句显示某用户发表的求助、建议和文章的Title、Content，并按PublishTime降序排列
-SELECT Title ,Content FROM  PROBLEM ,Suggest ,Article  WHERE PROBLEM.ProArtID = Article.ID AND Suggest.SugArtId = Article.ID ORDER BY PublishTime DESC;
+SELECT U.[USERNAME], Title ,Content FROM PROBLEM P JOIN [USER] U ON  P.PROBLEMUSERId = U.ID
+UNION
+SELECT U.[USERNAME], Title ,Content FROM Suggest S JOIN [USER] U ON  P.PROBLEMUSERId = U.ID
+UNION
+SELECT U.[USERNAME], Title ,Content FROM Article A JOIN [USER] U ON  P.PROBLEMUSERId = U.ID
+ORDER BY PublishTime DESC;
+
+ALTER TABLE PROBLEM
+DROP COLUMN PROARTID;
+
+
+
+
 
 SELECT * FROM PROBLEM ;
 --SELECT * FROM Suggest  ;
@@ -71,8 +101,20 @@ UPDATE PROBLEM SET ProArtID =8 WHERE ID =7
 UPDATE PROBLEM SET ProArtID =8 WHERE ID =8
 
 
-ALTER TABLE PROBLEM 
-ADD [ProArtID] INT CONSTRAINT  FK_PROBLEM_ProArtID   FOREIGN KEY  REFERENCES Article(ID);
+ALTER TABLE [USER]
+ADD 
+
+ADD  SuggestID INT CONSTRAINT FK_USER_SuggestID  FOREIGN KEY   REFERENCES [USER](SuggestID);
+
+
+SELECT * FROM PROBLEM 
+SELECT * FROM Article
+SELECT * FROM Suggest
+SELECT * FROM [USER] 
+
+
+
+
 
 CREATE TABLE Suggest
 (
@@ -108,9 +150,4 @@ INSERT Article  VALUES(N'大女开',N'物流费可','2019/3/7',N'小黄',3)
 INSERT Article  VALUES(N'大健康',N'凯撒大第','2019/5/5',N'小黄',5)
 INSERT Article  VALUES(N'八点半',N'担负可的','2018/12/13',N'小黄',3)
 INSERT Article  VALUES(N'副科级',N'都是你看','2020/1/7',N'小黄',2)
-
-
-
-
-
 

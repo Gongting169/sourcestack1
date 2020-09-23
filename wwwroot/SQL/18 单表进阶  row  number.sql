@@ -1,9 +1,10 @@
 ﻿
 
+DROP TABLE PROBLEM1 
 --使用OVER，统计出求助里每个Author悬赏值的平均值、最大值和最小值，然后用新表ProblemStatus存放上述数据
 SELECT * FROM PROBLEM
 
-SELECT AUTHOR ,MAX(Reward)  AS MAX  ,MIN(Reward) AS MIN ,  AVG(Reward)  AS AVG  INTO PROBLEM1  FROM PROBLEM  GROUP BY AUTHOR ;
+SELECT AUTHOR ,MAX(Reward)  AS MAX  ,MIN(Reward) AS MIN ,  AVG(Reward)  AS AVG  INTO PROBLEMStatus  FROM PROBLEM  GROUP BY AUTHOR ;
 
 SELECT  DISTINCT AUTHOR,
 MAX(Reward) OVER(PARTITION BY AUTHOR ) AS MAX  ,
@@ -23,5 +24,6 @@ SELECT * FROM PROBLEM
 
  --[ID],[NeedRemoteHelp],AUTHOR ,
 --使用CASE...WHEN，用一条SQL语句，完成SQL入门-7：函数中第4题第3小题
+
 
 
