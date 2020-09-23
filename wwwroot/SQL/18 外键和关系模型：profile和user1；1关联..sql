@@ -70,3 +70,4 @@ CREATE TABLE [dbo].Credit
 --INSERT Credit([ID] ,[USERNAME],DATETIME,CommunityActivity ,Reward ,Remark  ) VALUES(4,N'周大哥','2019/12/3',N'加入目标',5,N'只要加入，就可以获得' );
 --INSERT Credit([ID] ,[USERNAME],DATETIME,CommunityActivity ,Reward ,Remark  ) VALUES(5,N'田大哥','2020/8/7',N'意见建议','',N'别人使用了你的邀请码完成注册' );
 
+DROP TABLE Credit ;
