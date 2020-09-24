@@ -41,14 +41,6 @@ ON K2.ID = K3.RELATION
 
 
 
-
-
-
-
-
-
-
-
 SELECT * FROM KEYWORD 
 ALTER TABLE KEYWORD
 ADD FIRST INT  CONSTRAINT  FK_KEYWORD_FIRST  FOREIGN KEY  REFERENCES KEYWORD([ID]);
@@ -77,56 +69,30 @@ SELECT [ID] ,[NAME] ,FIRST ,Second  FROM KEYWORD  WHERE KEYWORD.FIRST = KEYWORD.
 --建议多一个类型：Kind NVARCHAR(20)） 一篇文章可以有多个建议和求助 文章 父表  建议和求助 子表
 --文章多一个分类：Category INT）
 --请按上述描述建表。然后，用一个SQL语句显示某用户发表的求助、建议和文章的Title、Content，并按PublishTime降序排列
-SELECT U.[USERNAME], Title ,Content FROM PROBLEM P JOIN [USER] U ON  P.PROBLEMUSERId = U.ID
+SELECT Article.Title ,Article.Content,Article.PublishTime FROM  Article WHERE Article.ArtUSERId = 1
 UNION
-SELECT U.[USERNAME], Title ,Content FROM Suggest S JOIN [USER] U ON  P.PROBLEMUSERId = U.ID
+SELECT Suggest.Title ,Suggest.Content,Suggest.PublishTime FROM Suggest WHERE Suggest.SugUSERId = 1
 UNION
-SELECT U.[USERNAME], Title ,Content FROM Article A JOIN [USER] U ON  P.PROBLEMUSERId = U.ID
-ORDER BY PublishTime DESC;
+SELECT  PROBLEM.Title ,PROBLEM.Content,PROBLEM.PublishTime FROM PROBLEM WHERE PROBLEM. ProbelmUserID =1
+ORDER BY Article.PublishTime DESC;
+
+SELECT * FROM [USER] ;
+SELECT * FROM PROBLEM ;
+SELECT * FROM Suggest ;
+SELECT * FROM  Article ;
 
 ALTER TABLE PROBLEM
-DROP COLUMN PROARTID;
-
-
-
-
-
-SELECT * FROM PROBLEM ;
---SELECT * FROM Suggest  ;
-SELECT * FROM Article ;
-
-UPDATE PROBLEM SET ProArtID =1 WHERE ID =1
-UPDATE PROBLEM SET ProArtID =7 WHERE ID =3
-UPDATE PROBLEM SET ProArtID =1 WHERE ID =4
-UPDATE PROBLEM SET ProArtID =7 WHERE ID =6
-UPDATE PROBLEM SET ProArtID =8 WHERE ID =7
-UPDATE PROBLEM SET ProArtID =8 WHERE ID =8
-
-
-ALTER TABLE [USER]
-ADD 
-
-ADD  SuggestID INT CONSTRAINT FK_USER_SuggestID  FOREIGN KEY   REFERENCES [USER](SuggestID);
-
-
-SELECT * FROM PROBLEM 
-SELECT * FROM Article
-SELECT * FROM Suggest
-SELECT * FROM [USER] 
-
-
-
-
+ALTER COLUMN CONTENT NVARCHAR(500);
 
 CREATE TABLE Suggest
 (
  [ID] INT PRIMARY KEY IDENTITY(1,1),
  [Title] NVARCHAR(50),
- [Content] NTEXT,
+ [Content] NVARCHAR(500),
  [PublishTime] DATETIME,
  [AUTHOR] NVARCHAR(50),
  [Kind] NVARCHAR(20),
- [SugArtId] INT CONSTRAINT FK_Suggest_SugArtId  FOREIGN KEY  REFERENCES  Article(Id)
+ [SugUSERId] INT CONSTRAINT FK_Suggest_SugUSERId  FOREIGN KEY  REFERENCES  [USER](Id)
 );
 
 INSERT Suggest   VALUES(N'电话费',N'女数据库','2019/12/1',N'小天',N'语文',2)
@@ -136,20 +102,21 @@ INSERT Suggest  VALUES(N'大健康',N'凯撒大第','2020/7/7',N'小黄',N'化�
 INSERT Suggest  VALUES(N'八点半',N'担负可的','2018/11/10',N'小明',N'物理',4)
 INSERT Suggest VALUES(N'副科级',N'都是你看','2018/5/6',N'小黄',N'数学',4)
 
-CREATE TABLE Article
+CREATE TABLE  Article
 (
  [ID] INT PRIMARY KEY IDENTITY(1,1),
  [Title] NVARCHAR(50),
- [Content] NTEXT,
+ [Content] NVARCHAR(500),
  [PublishTime] DATETIME,
  [AUTHOR] NVARCHAR(50),
- [Category] INT
+ [Category] INT,
+ [ArtUSERId] INT CONSTRAINT FK_Article_ArtUSERId  FOREIGN KEY  REFERENCES [USER](Id)
 );
 
-INSERT Article  VALUES(N'电话费',N'女数据库','2020/8/7',N'小黄',3)
-INSERT Article  VALUES(N'都不会',N'女率地方','2018/10/7',N'小黄',4)
-INSERT Article  VALUES(N'大女开',N'物流费可','2019/3/7',N'小黄',3)
-INSERT Article  VALUES(N'大健康',N'凯撒大第','2019/5/5',N'小黄',5)
-INSERT Article  VALUES(N'八点半',N'担负可的','2018/12/13',N'小黄',3)
-INSERT Article  VALUES(N'副科级',N'都是你看','2020/1/7',N'小黄',2)
+INSERT Article  VALUES(N'电话费',N'女数据库','2020/8/7',N'小黄',3,1);
+INSERT Article  VALUES(N'都不会',N'女率地方','2018/10/7',N'小黄',4,1);
+INSERT Article  VALUES(N'大女开',N'物流费可','2019/3/7',N'小黄',3,5);
+INSERT Article  VALUES(N'大健康',N'凯撒大第','2019/5/5',N'小黄',5,3);
+INSERT Article  VALUES(N'八点半',N'担负可的','2018/12/13',N'小黄',3,3);
+INSERT Article  VALUES(N'副科级',N'都是你看','2020/1/7',N'小黄',2,4);
 
