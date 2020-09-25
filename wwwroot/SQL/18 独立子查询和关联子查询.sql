@@ -27,7 +27,7 @@ SELECT * FROM PROBLEM;
 
 --SELECT AUTHOR  ,COUNT ([ID]) AS COUNT  FROM Article  GROUP BY AUTHOR  -- 这是以artice建立的查询语句
 
---为求助添加一个发布时间（PublishTime），查找每个作者最近发布的一篇求助
+--为求助添加一个发布时间（PublishTime），查找每个作者最近发布的一篇求助   要用相关子查询来做
 SELECT  ROW_NUMBER()  
 OVER (PARTITION BY AUTHOR 
 ORDER BY PublishTime DESC ) 
@@ -47,8 +47,8 @@ FROM PROBLEM
  MAX(PublishTime) OVER (PARTITION BY AUTHOR ) AS  BEST 
   ,AUTHOR,PublishTime FROM PROBLEM  GROUP BY AUTHOR ,PublishTime; 
 
- --第四种:--为求助添加一个发布时间（PublishTime），查找每个作者最近发布的一篇求助
-  SELECT * FROM  PROBLEM 
+
+  SELECT * FROM  PROBLEM    
     WHERE PublishTime  IN
  (SELECT  MAX(PublishTime)  FROM  PROBLEM  
    GROUP BY AUTHOR   );   
@@ -91,8 +91,8 @@ GO
        ROLLBACK
      
         BEGIN TRAN 
-       DELETE PROBLEM  WHERE ID   IN 
-       (SELECT  REWARD FROM PROBLEM GROUP BY Reward  HAVING COUNT (Reward)>0   );
+       DELETE PROBLEM  WHERE ID   NOT IN 
+       (SELECT  MIN(ID) FROM PROBLEM GROUP BY Reward     );
 
         BEGIN TRAN 
        DELETE PROBLEM WHERE
@@ -102,11 +102,11 @@ GO
  
 --删除每个作者悬赏最低的求助     
       BEGIN TRAN
-      DELETE PROBLEM WHERE ID  IN ( 
-      SELECT ID FROM PROBLEM OP 
+      --DELETE PROBLEM WHERE ID  IN ( 
+     DELETE PROBLEM FROM PROBLEM OP 
       WHERE Reward =
       (SELECT MIN(Reward) FROM PROBLEM IP 
-      WHERE OP.AUTHOR = IP.AUTHOR   )
-);
-
+      WHERE OP.AUTHOR = IP.AUTHOR   );
+      
+     -- 这里是可以不用 -DELETE PROBLEM WHERE ID  IN ( 这句sql语句的， 以后删除的话，就直接在from前面改为delete 、update之类的语句，就是select* 直接就改为 delete+ 表名就可以了。
     ROLLBACK
