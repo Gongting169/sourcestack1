@@ -6,7 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CSHARP1\" />
+    <Compile Remove="CSHARP1\**" />
+    <EmbeddedResource Remove="CSHARP1\**" />
+    <None Remove="CSHARP1\**" />
   </ItemGroup>
 
 </Project>
