@@ -92,8 +92,9 @@ FETCH NEXT 3 ROWS ONLY
 
 
 最后的写法总结：
-1、GROUP BY 后面可以跟函数（MONTH(PublishTime)）,group by 后面的列要和select后面的列数量一一对应，然后在可以使用聚合函数称为一个新的列
-2、GID是在表的内部进行使用，再往外部使用之后，where子句不能用别名来作为引导的条件， 就是要在表内部使用的GID,才能在where句子后面做引导条件
+1、GROUP BY 后面可以跟函数（MONTH(PublishTime)）,group by 后面的列要和select后面的列数量一一对应，然后在可以使用聚合函数成为一个新的计算列
+2、GID是在表的内部进行使用，再往外部使用之后，where子句不能用别名来作为引导的条件， 就是要在表内部使用的GID,才能在where句子后面做引导条件，
+在外部就是相当于一个别名，在内部的话，就是一个计算列
 3、派生表的本质是有一个select查询语句可以当做另一个查询语句select的子表 派生表是有一个查询会生成一个查询结果，另一个查询会利用这个查询结果在进行一次查询 
 如： select YEAR ，MONTH，COUNT(Title) FROM
 ( SELECT MONTH(PublishTime) AS MONTH, YEAR(PublishTime)AS YEAR  FROM PROBLEM ) ymp  GROUP BY  ymp.YEAR, ymp.MONTH;
