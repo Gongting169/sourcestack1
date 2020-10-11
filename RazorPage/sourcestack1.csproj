@@ -5,8 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\SQL\**" />
+    <Content Remove="wwwroot\SQL\**" />
+    <EmbeddedResource Remove="wwwroot\SQL\**" />
+    <None Remove="wwwroot\SQL\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\images\" />
-    <Folder Include="wwwroot\SQL\" />
   </ItemGroup>
 
 </Project>
