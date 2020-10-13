@@ -54,7 +54,34 @@ namespace Csharp1
             //如果验证码输入错误，直接输出：“*验证码错误”； 
             //如果用户名不存在，直接输出：“*用户名不存在”； 
             //如果用户名或密码错误，输出：“*用户名或密码错误” 
-            //以上全部正确无误，输出：“恭喜！登录成功！”
+            //以上全部正确无误，输出：“恭喜！登录成功！”          
+            string  InvalideCode = "ut91", UserName = "yezi", password ="1234",output;
+            Console.WriteLine("请输入验证码(ut91) :");
+            if (InvalideCode == Console.ReadLine() )
+            {           
+                Console.WriteLine("请输入用户名(yezi):");
+                if (UserName == Console.ReadLine())
+                {            
+                    Console.WriteLine($"请输入用户名(yezi)和密码(1234):");
+                    if (UserName == Console.ReadLine()&& password == Console.ReadLine())
+                    {                      
+                        output = "  “恭喜！登录成功！”  ";
+                    }
+                    else
+                    {
+                        output = " “* 用户名或密码错误”   ";
+                    }
+                }
+                else
+                {
+                    output = " “*用户名不存在”  ";
+                }
+            }
+            else
+            {
+                output = " “* 验证码错误” ";
+            }
+            Console.WriteLine(output);
             //Console.WriteLine($"请输入验证码 (ut91) :");
             //string InvalideCode = Console.ReadLine();
             //if (InvalideCode =="ut91")
@@ -84,21 +111,20 @@ namespace Csharp1
             //{
             //    Console.WriteLine(" “恭喜！登录成功！” ");
             //}
-            Console.WriteLine($"请输入验证码 (ut91) :");
-            Console.WriteLine($"请输入用户名 (yezi):");
-            string  InvalideCode = Console.ReadLine(), UserName = Console.ReadLine(), password = Console.ReadLine();
-            if (InvalideCode == "ut91"|| UserName == "yezi" || password != Console.ReadLine() )
-            {
-                Console.WriteLine(Console.ReadLine());
-                Console.WriteLine(Console.ReadLine());
-            } else
-            {
-                Console.WriteLine($" “*验证码错误” ");
-                Console.WriteLine(" “*用户名不存在” ");
-                Console.WriteLine(" “* 用户名或密码错误”  ");
-                Console.WriteLine(" “恭喜！登录成功！” ");
 
-            }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             Console.ReadLine();
         }
