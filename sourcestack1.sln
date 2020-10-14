@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Csharp1", "Csharp1\Csharp1.csproj", "{5E0F6364-2578-411B-9915-948C0DC938B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharplearn", "Csharp1\CSharplearn.csproj", "{5E0F6364-2578-411B-9915-948C0DC938B6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sourcestack1", "RazorPage\sourcestack1.csproj", "{CA02435A-282D-4604-8D62-CBDB800FFD7C}"
 EndProject
