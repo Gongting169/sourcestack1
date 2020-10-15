@@ -4,6 +4,7 @@ namespace Csharp1
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             //http://17bang.ren/Article/292
@@ -106,7 +107,7 @@ namespace Csharp1
             //Console.WriteLine(seatname.Rank);
 
             //作业：C#面向过程：循环
-            //分别用for循环和while循环输出：1,2,3,4,5 和 1,3,5,7,9
+            //1、分别用for循环和while循环输出：1,2,3,4,5 和 1,3,5,7,9
             //for (int i = 1; i < 6; i++) ////for 循环输出1,2,3,4,5
             //{
             //    Console.WriteLine(i);
@@ -121,44 +122,65 @@ namespace Csharp1
             //    Console.WriteLine(2*j-1);
             //    j++;
             //}
-            //用for循环输出存储在一维 / 二维数组里的源栈所有同学姓名 / 昵称
+            //2、用for循环输出存储在一维 / 二维数组里的源栈所有同学姓名 / 昵称
             //string[] name = new string[] { "刘伟——小刘", "李智博——小李", "周丁浩——小周", "龚廷义——小龚", "廖光银——小廖", "邹丽——小邹" };
-            //string[,] seatname = new string[4, 3];
-            //int[,] seatnick;
-
+            string[,] seatname = new string[4, 3];
             //for (int i = 0; i < name.Length; i++)//一维数组里取值
             //{
             //    Console.WriteLine(name[i]);
             ////}
-            //for (int  i = 0; i < 4 ; i++)  //没有做出来，暂定
+            //for (int i = 0; i < 4; i++)
             //{
-            //    for (int j = 0; j < 3 ; j++)
+            //    for (int j = 0; j < 3; j++)
             //    {
-            //        string s = seatname[i ,j ];
-            //        Console.WriteLine(s );
-            //    }
-            //}
-            //让电脑计算并输出：99 + 97 + 95 + 93 + ...+1的值
-            int sum = 0;
-            for (int i = 1; i < 100; i+=2)
-            {
-                sum += i;
-            }
-            Console.WriteLine(sum );
-            //将源栈同学的成绩存入一个double数组中，用循环找到最高分和最低分
-            double[] score = { 96.52, 68.76, 79.6, 85.9, 65.8, 88.5 };
-            double max = score[0];
-            for (int i = 0; i < score.Length; i++)
-            {
-                if ( score[i] > max  )
-                {
-                    max = score[i];
+            //        string s = seatname[i, j];
+            //        Console.WriteLine(s);
                 }
             }
-            Console.WriteLine(max);
-            //找到100以内的所有质数（只能被1和它自己整除的数
-
-
+            //3、让电脑计算并输出：99 + 97 + 95 + 93 + ...+1的值
+            //int sum = 0;
+            //for (int i = 1; i < 100; i+=2)
+            //{
+            //    sum += i;
+            //}
+            //Console.WriteLine(sum );
+            //4、将源栈同学的成绩存入一个double数组中，用循环找到最高分和最低分
+            //double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5 };
+            //double max = score[0];
+            //for (int i = 0; i < score.Length; i++) // 用循环找最高分
+            //{
+            //    if (score[i] > max)
+            //    {
+            //        max = score[i];
+            //    }// else continue
+            //}
+            //Console.WriteLine(max);
+            //double min = score[0];
+            //for (int i = 1; i < score.Length; i++) // 循环找最低分
+            //{
+            //    if (score[i] < min)
+            //    {
+            //        min = score[i];
+            //    }// else continue
+            //}
+            //Console.WriteLine(min);
+            //5、找到100以内的所有质数（只能被1和它自己整除的数
+            //for (int i = 2; i <= 100; i++)
+            //{
+            //    for (int j = 2; j < i; j++)
+            //    {
+            //        if (i % j == 0 )
+            //        {
+            //            break;
+            //        }
+            //        else if ( i-1 == j)
+            //        {
+            //            Console.WriteLine(i);
+            //        }//else nothing
+            //    }
+            //}
+            //6、生成一个元素（值随机）从小到大排列的数组
+            int[] sort = { 32, 35, 26, 3, 18, 22, 16, 45, 53, 62, 7 };
 
 
 
