@@ -124,7 +124,7 @@ namespace Csharp1
             //}
             //2、用for循环输出存储在一维 / 二维数组里的源栈所有同学姓名 / 昵称
             //string[] name = new string[] { "刘伟——小刘", "李智博——小李", "周丁浩——小周", "龚廷义——小龚", "廖光银——小廖", "邹丽——小邹" };
-            string[,] seatname = new string[4, 3];
+            //string[,] seatname = new string[4, 3];
             //for (int i = 0; i < name.Length; i++)//一维数组里取值
             //{
             //    Console.WriteLine(name[i]);
@@ -135,52 +135,72 @@ namespace Csharp1
             //    {
             //        string s = seatname[i, j];
             //        Console.WriteLine(s);
+
+
+    //3、让电脑计算并输出：99 + 97 + 95 + 93 + ...+1的值
+    //int sum = 0;
+    //for (int i = 1; i < 100; i+=2)
+    //{
+    //    sum += i;
+    //}
+    //Console.WriteLine(sum );
+    //4、将源栈同学的成绩存入一个double数组中，用循环找到最高分和最低分
+    //double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5 };
+    //double max = score[0];
+    //for (int i = 0; i < score.Length; i++) // 用循环找最高分
+    //{
+    //    if (score[i] > max)
+    //    {
+    //        max = score[i];
+    //    }// else continue
+    //}
+    //Console.WriteLine(max);
+    //double min = score[0];
+    //for (int i = 1; i < score.Length; i++) // 循环找最低分
+    //{
+    //    if (score[i] < min)
+    //    {
+    //        min = score[i];
+    //    }// else continue
+    //}
+    //Console.WriteLine(min);
+    //5、找到100以内的所有质数（只能被1和它自己整除的数
+    //for (int i = 2; i <= 100; i++)
+    //{
+    //    for (int j = 2; j < i; j++)
+    //    {
+    //        if (i % j == 0 )
+    //        {
+    //            break;
+    //        }
+    //        else if ( i-1 == j)
+    //        {
+    //            Console.WriteLine(i);
+    //        }//else nothing
+    //    }
+    //}
+    //6、生成一个元素（值随机）从小到大排列的数组
+    int[] sort = { 132, 35, 26, 3, 18, 22, 16, 45, 53, 62, 7 };
+       int middle;
+            for (int i = 0; i < sort.Length -2; i++)  // 第二轮查找
+            {
+                for (int j = 0; j < sort.Length - 1; j++) // 第一轮查找
+                {
+                    if (sort[j] < sort[j + 1])
+                    {
+                        middle = sort[j + 1];
+                        continue;
+                    }
+                    else
+                    {
+                       int  temp = sort[j];
+                        sort[j] = sort[j + 1];
+                        sort[j + 1] = temp;
+                    }
                 }
             }
-            //3、让电脑计算并输出：99 + 97 + 95 + 93 + ...+1的值
-            //int sum = 0;
-            //for (int i = 1; i < 100; i+=2)
-            //{
-            //    sum += i;
-            //}
-            //Console.WriteLine(sum );
-            //4、将源栈同学的成绩存入一个double数组中，用循环找到最高分和最低分
-            //double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5 };
-            //double max = score[0];
-            //for (int i = 0; i < score.Length; i++) // 用循环找最高分
-            //{
-            //    if (score[i] > max)
-            //    {
-            //        max = score[i];
-            //    }// else continue
-            //}
-            //Console.WriteLine(max);
-            //double min = score[0];
-            //for (int i = 1; i < score.Length; i++) // 循环找最低分
-            //{
-            //    if (score[i] < min)
-            //    {
-            //        min = score[i];
-            //    }// else continue
-            //}
-            //Console.WriteLine(min);
-            //5、找到100以内的所有质数（只能被1和它自己整除的数
-            //for (int i = 2; i <= 100; i++)
-            //{
-            //    for (int j = 2; j < i; j++)
-            //    {
-            //        if (i % j == 0 )
-            //        {
-            //            break;
-            //        }
-            //        else if ( i-1 == j)
-            //        {
-            //            Console.WriteLine(i);
-            //        }//else nothing
-            //    }
-            //}
-            //6、生成一个元素（值随机）从小到大排列的数组
-            int[] sort = { 32, 35, 26, 3, 18, 22, 16, 45, 53, 62, 7 };
+            
+          
 
 
 
@@ -188,11 +208,9 @@ namespace Csharp1
 
 
 
-
-
-
-
+    
             Console.ReadLine();
         }
     }
 }
+
