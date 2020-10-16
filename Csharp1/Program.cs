@@ -4,9 +4,26 @@ namespace Csharp1
 {
     class Program
     {
+        //作业：方法基础、声明、调用、返回值
+        //1、将之前作业封装成方法（自行思考参数和返回值），并调用执行。且以后作业，如无特别声明，皆需使用方法封装。
+        //2、计算得到源栈同学的平均成绩（精确到两位小数），方法名GetAverage()
+        static  double GetAverage( double[]  score)
+        {
+
+        }
+        double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5 };
+
+        //3、完成“猜数字”游戏，方法名GuessMe()：
+        //随机生成一个大于0小于1000的整数
+        //用户输入一个猜测值，系统进行判断，告知用户猜测的数是“大了”，还是“小了” 
+        //没猜中可以继续猜，但最多不能超过10次
+        //如果5次之内猜中，输出：你真牛逼！ 
+        //如果8次之内猜中，输出：不错嘛！ 
+        //10次还没猜中，输出：(～￣(OO)￣)ブ
 
         static void Main(string[] args)
         {
+
             //http://17bang.ren/Article/292
             //作业：运算符和表达式
             //输出两个整数 / 小数的和 / 差 / 积 / 商
@@ -137,69 +154,81 @@ namespace Csharp1
             //        Console.WriteLine(s);
 
 
-    //3、让电脑计算并输出：99 + 97 + 95 + 93 + ...+1的值
-    //int sum = 0;
-    //for (int i = 1; i < 100; i+=2)
-    //{
-    //    sum += i;
-    //}
-    //Console.WriteLine(sum );
-    //4、将源栈同学的成绩存入一个double数组中，用循环找到最高分和最低分
-    //double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5 };
-    //double max = score[0];
-    //for (int i = 0; i < score.Length; i++) // 用循环找最高分
-    //{
-    //    if (score[i] > max)
-    //    {
-    //        max = score[i];
-    //    }// else continue
-    //}
-    //Console.WriteLine(max);
-    //double min = score[0];
-    //for (int i = 1; i < score.Length; i++) // 循环找最低分
-    //{
-    //    if (score[i] < min)
-    //    {
-    //        min = score[i];
-    //    }// else continue
-    //}
-    //Console.WriteLine(min);
-    //5、找到100以内的所有质数（只能被1和它自己整除的数
-    //for (int i = 2; i <= 100; i++)
-    //{
-    //    for (int j = 2; j < i; j++)
-    //    {
-    //        if (i % j == 0 )
-    //        {
-    //            break;
-    //        }
-    //        else if ( i-1 == j)
-    //        {
-    //            Console.WriteLine(i);
-    //        }//else nothing
-    //    }
-    //}
-    //6、生成一个元素（值随机）从小到大排列的数组
-    int[] sort = { 132, 35, 26, 3, 18, 22, 16, 45, 53, 62, 7 };
-       int middle;
-            for (int i = 0; i < sort.Length -2; i++)  // 第二轮查找
-            {
-                for (int j = 0; j < sort.Length - 1; j++) // 第一轮查找
-                {
-                    if (sort[j] < sort[j + 1])
-                    {
-                        middle = sort[j + 1];
-                        continue;
-                    }
-                    else
-                    {
-                       int  temp = sort[j];
-                        sort[j] = sort[j + 1];
-                        sort[j + 1] = temp;
-                    }
-                }
-            }
-            
+            //3、让电脑计算并输出：99 + 97 + 95 + 93 + ...+1的值
+            //int sum = 0;
+            //for (int i = 1; i < 100; i+=2)
+            //{
+            //    sum += i;
+            //}
+            //Console.WriteLine(sum );
+            //4、将源栈同学的成绩存入一个double数组中，用循环找到最高分和最低分
+            //double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5 };
+            //double max = score[0];
+            //for (int i = 0; i < score.Length; i++) // 用循环找最高分
+            //{
+            //    if (score[i] > max)
+            //    {
+            //        max = score[i];
+            //    }// else continue
+            //}
+            //Console.WriteLine(max);
+            //double min = score[0];
+            //for (int i = 1; i < score.Length; i++) // 循环找最低分
+            //{
+            //    if (score[i] < min)
+            //    {
+            //        min = score[i];
+            //    }// else continue
+            //}
+            //Console.WriteLine(min);
+            //5、找到100以内的所有质数（只能被1和它自己整除的数
+            //for (int i = 2; i <= 100; i++)
+            //{
+            //    for (int j = 2; j < i; j++)
+            //    {
+            //        if (i % j == 0 )
+            //        {
+            //            break;
+            //        }
+            //        else if ( i-1 == j)
+            //        {
+            //            Console.WriteLine(i);
+            //        }//else nothing
+            //    }
+            //}
+            //6、生成一个元素（值随机）从小到大排列的数组
+            //Random value = new Random();                 
+            //int temp;                               
+            //int[] a = new int[10];                 
+            //for (int i = 0; i < a.Length - 1; i++)
+            //{
+            //    for (int j = 0; j < a.Length - i - 1; j++)
+            //    {
+            //        if (a[j] < a[j + 1])
+            //        {
+            //           a[i]  = value.Next(30);               
+            //            Console.WriteLine(a[i]);
+            //        }
+            //        else
+            //        {
+            //            temp  = a[j];                    
+            //            a[j] = a[j + 1];             
+            //            a[j + 1] = temp;
+            //        }
+            //    }
+            //}
+            //7、设立并显示一个多维数组的值，元素值等于下标之和。Console.Write()// 定义一个多维数组， 用for循环把数组的下标值相加起来是元素值
+            //int[,] add = new int[3, 4];
+            //int sum;  //用sum来代表下标之和
+            //for (int i = 0; i < add.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < add.GetLength(1); j++)
+            //    {
+            //        //sum = add[i, j];
+            //        sum = i + j;
+            //        Console.WriteLine(sum);
+            //    }
+            //}
           
 
 
@@ -208,7 +237,8 @@ namespace Csharp1
 
 
 
-    
+
+
             Console.ReadLine();
         }
     }
