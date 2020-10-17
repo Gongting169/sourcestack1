@@ -1,26 +1,10 @@
 ﻿using System;
+using System.Security.Cryptography;
 
 namespace Csharp1
 {
     class Program
     {
-        //作业：方法基础、声明、调用、返回值
-        //1、将之前作业封装成方法（自行思考参数和返回值），并调用执行。且以后作业，如无特别声明，皆需使用方法封装。
-        //2、计算得到源栈同学的平均成绩（精确到两位小数），方法名GetAverage()
-        static  double GetAverage( double[]  score)
-        {
-
-        }
-        double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5 };
-
-        //3、完成“猜数字”游戏，方法名GuessMe()：
-        //随机生成一个大于0小于1000的整数
-        //用户输入一个猜测值，系统进行判断，告知用户猜测的数是“大了”，还是“小了” 
-        //没猜中可以继续猜，但最多不能超过10次
-        //如果5次之内猜中，输出：你真牛逼！ 
-        //如果8次之内猜中，输出：不错嘛！ 
-        //10次还没猜中，输出：(～￣(OO)￣)ブ
-
         static void Main(string[] args)
         {
 
@@ -197,23 +181,22 @@ namespace Csharp1
             //    }
             //}
             //6、生成一个元素（值随机）从小到大排列的数组
-            //Random value = new Random();                 
-            //int temp;                               
-            //int[] a = new int[10];                 
-            //for (int i = 0; i < a.Length - 1; i++)
+            //int[] nums = new int[10];
+            //Random random = new Random();
+            //for (int i = 0; i < 10; i++)
             //{
-            //    for (int j = 0; j < a.Length - i - 1; j++)
+            //    nums[i] = random.Next(0, 100);
+            //}
+
+            //for (int i = 0; i < 9; i++)
+            //{
+            //    for (int j = i + 1; j < 10; j++)
             //    {
-            //        if (a[j] < a[j + 1])
+            //        if (nums[j] < nums[i])
             //        {
-            //           a[i]  = value.Next(30);               
-            //            Console.WriteLine(a[i]);
-            //        }
-            //        else
-            //        {
-            //            temp  = a[j];                    
-            //            a[j] = a[j + 1];             
-            //            a[j + 1] = temp;
+            //            int temp = nums[i];
+            //            nums[i] = nums[j];
+            //            nums[j] = temp;
             //        }
             //    }
             //}
@@ -229,18 +212,149 @@ namespace Csharp1
             //        Console.WriteLine(sum);
             //    }
             //}
-          
+            //8、循环：布置的作业二分查找：
 
+            //http://17bang.ren/Article/299
+            //调用函数的作业：
+            //作业：方法基础： 声明/调用/返回值
+            //第2小题的调用：
+            double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5 };
+            Console.WriteLine(Math.Round(GetAverage(score), 2));
 
-
-
-
-
-
-
+            //http://17bang.ren/Article/303
+            //作业：C#面向过程：方法进阶：值/引用传递。
+            //第1小题的调用：
+            int bednumber1 = 202, bednumber2 = 203;
+            Swap(ref bednumber1, ref bednumber2);
+            //第2小题的调用：
+            LogOn(out string username, out string Password);
 
             Console.ReadLine();
         }
+        //http://17bang.ren/Article/299
+        //作业：方法基础、声明、调用、返回值
+        //1、将之前作业封装成方法（自行思考参数和返回值），并调用执行。且以后作业，如无特别声明，皆需使用方法封装。
+        //2、计算得到源栈同学的平均成绩（精确到两位小数），方法名GetAverage()
+        static double GetAverage(double[] score)
+        {
+            double sum = 0;
+            for (int i = 0; i < score.Length; i++)
+            {
+                sum = sum + score[i];
+            }
+            float average = Convert.ToSingle(sum / score.Length);
+            return average;
+        }
+        //3、完成“猜数字”游戏，方法名GuessMe()：
+        //随机生成一个大于0小于1000的整数
+        //用户输入一个猜测值，系统进行判断，告知用户猜测的数是“大了”，还是“小了” 
+        //没猜中可以继续猜，但最多不能超过10次
+        //如果5次之内猜中，输出：你真牛逼！ 
+        //如果8次之内猜中，输出：不错嘛！ 
+        //10次还没猜中，输出：(～￣(OO)￣)ブ
+        static void GuessMe()
+        {
+            Random value = new Random();
+            int result = value.Next(0, 1000);
+            Console.WriteLine("请输入一个不超过1000的自然数：");
+            int guessnumber = int.Parse(Console.ReadLine());
+            for (int i = 10; i < 10; i++)
+            {
+                if (guessnumber > result)
+                {
+                    Console.WriteLine($"太大了哟！ (还剩 {1}次)");
+                }
+                else
+                {
+                    Console.WriteLine("太小了哟！" + "还剩8次");
+                }
+                {
+
+                }
+            }
+        }
+        //http://17bang.ren/Article/303
+        //作业：C#面向过程：方法进阶：值/引用传递。
+        //作业题目：1、利用ref调用Swap()方法交换两个同学的床位号
+        static void Swap(ref int bednumber1, ref int bednumber2)
+        {
+            int temp = bednumber1;
+            bednumber1 = bednumber2;
+            bednumber2 = temp;
+        }
+        //2、将登陆的过程封装成一个方法LogOn()，调用之后能够获得：
+        //（1）、true/false，表示登陆是否成功
+        //（2）、string，表示登陆失败的原因
+        static void LogOn(out string username, out string password)
+        {
+            username = "源栈";
+            password = "yz2354";
+            Console.WriteLine("请输入用户名：");
+            if (username == Console.ReadLine())
+            {
+                Console.WriteLine("请输入密码：");
+                if (password == Console.ReadLine())
+                {
+                    Console.WriteLine("恭喜！登录成功 ");
+                }
+                else
+                {
+                    Console.WriteLine("*密码错误*");
+                }
+            }
+            else
+            {
+                Console.WriteLine("*用户名错误*");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
+
 }
 
