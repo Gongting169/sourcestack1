@@ -140,11 +140,11 @@ namespace Csharp1
 
             //3、让电脑计算并输出：99 + 97 + 95 + 93 + ...+1的值
             //int sum = 0;
-            //for (int i = 1; i < 100; i+=2)
+            //for (int i = 1; i < 100; i += 2)
             //{
             //    sum += i;
             //}
-            //Console.WriteLine(sum );
+            //Console.WriteLine(sum);
             //4、将源栈同学的成绩存入一个double数组中，用循环找到最高分和最低分
             //double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5 };
             //double max = score[0];
@@ -181,86 +181,116 @@ namespace Csharp1
             //    }
             //}
             //6、生成一个元素（值随机）从小到大排列的数组
-            //int[] ascend  = new int[10];
-            //Random value  = new Random();
-            //for (int i = 0; i < 10; i++)
+            //int[] ascendarray = new int[10];
+            //Random value = new Random();
+            //ascendarray[0] = value.Next(5);
+            //for (int i = 1; i < 10; i++)
             //{
-            //    ascend [i] = value.Next(0, 100);
+            //    ascendarray[i] =  value.Next(0,100) + ascendarray[i -1];
+            //    Console.WriteLine(ascendarray[i]);
             //}
-            //for (int i = 0; i < 9; i++)
-            //{
-            //    for (int j = i + 1; j < 10; j++)
-            //    {
-            //        if (ascend [j] < ascend [i])
-            //        {
-            //            int temp = ascend[i];
-            //           ascend[i] = ascend [j];
-            //            ascend [j] = temp;
-            //        }
-            //    }
-            //}
-            //for (int i = 0; i < ascend.Length ; i++)
-            //{
-            //    Console.WriteLine(ascend[i]);
-            //}
-            //7、设立并显示一个多维数组的值，元素值等于下标之和。Console.Write()// 定义一个多维数组， 用for循环把数组的下标值相加起来是元素值
+            ////7、设立并显示一个多维数组的值，元素值等于下标之和。Console.Write()// 定义一个多维数组， 用for循环把数组的下标值相加起来是元素值
             //int[,] add = new int[3, 4];
-            //int sum;  //用sum来代表下标之和
             //for (int i = 0; i < add.GetLength(0); i++)
             //{
             //    for (int j = 0; j < add.GetLength(1); j++)
             //    {
-            //        //sum = add[i, j];
-            //        sum = i + j;
-            //        Console.WriteLine(sum);
+            //        Console.Write(i + j ); 
             //    }
+            //    Console.WriteLine();
             //}
+
             //8、循环：布置的作业二分查找：
             //题目：如何在一个有序的数组中查找某个元素。
-            int[] seek = { 20, 25, 32, 46, 50, 62, 76, 81, 96, 99 };
-            int target = 20, middle;
-            int right = seek.Length; 
-            int left = 0;
-            while (left < right)
-            {
-                middle = (left + right) / 2;
-                if (target < seek[middle])
-                {
-                    right = middle; 
-                }
-                else if (target > seek[middle])
-                {
-                    left = middle;
-                }// else  nothing
-                if (target == seek[middle]) 
-                {
-                    Console.WriteLine(seek[middle]);
-                    break;
-                }// else nothing 
-            }
+            //int[] seek = { 20, 25, 32, 46, 50, 62, 76, 81, 96, 99 };
+            //int target = 25;
+            //int right = seek.Length - 1;
+            //int left = 0;
+            //int middle;
+            //    while (left <= right)
+            //    {
+            //        middle = (left + right) / 2;
+            //        if (seek[left] == target)
+            //        {
+            //            Console.WriteLine(left);
+            //            break;
+            //        }
+            //        else if (seek[right] == target)
+            //        {
+            //            Console.WriteLine(right);
+            //            break;
+            //        }
+            //        else if (target < seek[middle])
+            //        {
+            //            right = middle;
+            //        }
+            //        else if (target > seek[middle])
+            //        {
+            //            left = middle;
+            //        }
+            //        else // target == seek[middle]
+            //        {
+            //            Console.WriteLine(middle);
+            //            break;
+            //        }
+            //    }
             //9、布置的作业：快速排序。
             //作业题目：如何在一个无序的数组进行快速排序。
 
             //http://17bang.ren/Article/299
             //调用函数的作业：
             //作业：方法基础： 声明/调用/返回值
+            //第1小题的调用：
+            //Console.WriteLine(GetSum(1)); 
             //第2小题的调用：
             //double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5 };
-            //Console.WriteLine(Math.Round(GetAverage(score), 2));
-
+            ////Console.WriteLine(GetAverage(score));
             //http://17bang.ren/Article/303
             //作业：C#面向过程：方法进阶：值/引用传递。
             //第1小题的调用：
             //int bednumber1 = 202, bednumber2 = 203;
             //Swap(ref bednumber1, ref bednumber2);
             ////第2小题的调用：
-            //LogOn(out string username, out string Password);
 
             Console.ReadLine();
         }
+
+
+
         //http://17bang.ren/Article/299
         //作业：方法基础、声明、调用、返回值
         //1、将之前作业封装成方法（自行思考参数和返回值），并调用执行。且以后作业，如无特别声明，皆需使用方法封装。
+        ///// <summary>
+        ///// 1+3+7..+97+99进行求和
+        ///// </summary>
+        ///// <param int = i></param>
+        ///// <returns>返回求和的值</returns>
+        //static int GetSum(int i) 
+        //{
+        //    int sum = 0;
+        //    for ( i= 1; i < 100; i+=2)
+        //    {
+        //        sum = sum + i;
+        //    }
+        //    return sum ;
+        //}
+        /// <summary>
+        /// 找到最高分和最低分
+        /// </summary>
+        /// <param name="score">源栈同学的成绩</param>
+        /// <returns>返回最高分和最低分</returns>
+        //static double GetMax(double[] score)
+        //{
+        //    int max = score[0];
+        //    for (int i = score[0] ; i < score.Length -1; i++)
+        //    {
+        //        if ()
+        //        {
+
+        //        }
+        //    }
+        //    return 1;
+        //} 
 
         //2、计算得到源栈同学的平均成绩（精确到两位小数），方法名GetAverage()
         static double GetAverage(double[] score)
@@ -270,8 +300,8 @@ namespace Csharp1
             {
                 sum = sum + score[i];
             }
-            float average = Convert.ToSingle(sum / score.Length);
-            return average;
+            double average = sum / score.Length;
+            return Math.Round(average, 2);
         }
         //3、完成“猜数字”游戏，方法名GuessMe()：
         //随机生成一个大于0小于1000的整数
@@ -313,30 +343,16 @@ namespace Csharp1
         //2、将登陆的过程封装成一个方法LogOn()，调用之后能够获得：
         //（1）、true/false，表示登陆是否成功
         //（2）、string，表示登陆失败的原因
-        static void LogOn(out string username, out string password)
-        {
-            username = "源栈";
-            password = "yz2354";
-            Console.WriteLine("请输入用户名：");
-            if (username == Console.ReadLine())
-            {
-                Console.WriteLine("请输入密码：");
-                if (password == Console.ReadLine())
-                {
-                    Console.WriteLine("恭喜！登录成功 ");
-                }
-                else
-                {
-                    Console.WriteLine("*密码错误*");
-                }
-            }
-            else
-            {
-                Console.WriteLine("*用户名错误*");
-            }
-        }
 
-
+       //http://17bang.ren/Article/641
+        //作业：C#方法进阶：参数： 重载/可选/params
+        //作业题目:1、定义一个生成数组的方法：int[] GetArray()，其元素随机生成从小到大排列。利用可选参数控制： 
+        //           最小值min（默认为1） 
+        //           相邻两个元素之间的最大差值gap（默认为5）
+        //           元素个数length（默认为10个） 
+        //2、实现二分查找，方法名BinarySeek(int[] numbers, int target)： 
+        //传入一个有序（从大到小/从小到大）数组和数组中要查找的元素
+        //如果找到，返回该元素所在的下标；否则，返回-1 
 
 
 
