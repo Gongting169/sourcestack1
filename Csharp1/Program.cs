@@ -217,28 +217,29 @@ namespace Csharp1
             //}
             //8、循环：布置的作业二分查找：
             //题目：如何在一个有序的数组中查找某个元素。
-            int[] seek = { 20, 25, 32, 46, 50, 62, 76, 81, 96 };
-            int target = 81,middle;
-            int right = seek.Length - 1;
+            int[] seek = { 20, 25, 32, 46, 50, 62, 76, 81, 96, 99 };
+            int target = 20, middle;
+            int right = seek.Length; 
             int left = 0;
-            bool result = false;
-            while (left != right )
+            while (left < right)
             {
-                 middle = (left + right) / 2;
-                if (target > seek[middle])
+                middle = (left + right) / 2;
+                if (target < seek[middle])
                 {
-                    left = middle; //注意数组是从小到大排序还是从大到小排序，从小到大的话，先是左然后是右。
+                    right = middle; 
                 }
-                else if (target < seek[middle])
+                else if (target > seek[middle])
                 {
-                    right = middle;
-                } // else target == middle
+                    left = middle;
+                }// else  nothing
+                if (target == seek[middle]) 
                 {
-                    result = true;
+                    Console.WriteLine(seek[middle]);
                     break;
-                }
+                }// else nothing 
             }
-
+            //9、布置的作业：快速排序。
+            //作业题目：如何在一个无序的数组进行快速排序。
 
             //http://17bang.ren/Article/299
             //调用函数的作业：
@@ -260,6 +261,7 @@ namespace Csharp1
         //http://17bang.ren/Article/299
         //作业：方法基础、声明、调用、返回值
         //1、将之前作业封装成方法（自行思考参数和返回值），并调用执行。且以后作业，如无特别声明，皆需使用方法封装。
+
         //2、计算得到源栈同学的平均成绩（精确到两位小数），方法名GetAverage()
         static double GetAverage(double[] score)
         {
