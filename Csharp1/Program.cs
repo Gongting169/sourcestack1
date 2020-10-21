@@ -7,7 +7,6 @@ namespace Csharp1
     {
         static void Main(string[] args)
         {
-
             //http://17bang.ren/Article/292
             //作业：运算符和表达式
             //输出两个整数 / 小数的和 / 差 / 积 / 商
@@ -146,9 +145,9 @@ namespace Csharp1
             //}
             //Console.WriteLine(sum);
             //4、将源栈同学的成绩存入一个double数组中，用循环找到最高分和最低分
-            //double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5 };
+            //double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5, 100.52 };
             //double max = score[0];
-            //for (int i = 0; i < score.Length; i++) // 用循环找最高分
+            //for (int i = 1; i < score.Length; i++) // 用循环找最高分
             //{
             //    if (score[i] > max)
             //    {
@@ -242,6 +241,17 @@ namespace Csharp1
             //作业：方法基础： 声明/调用/返回值
             //第1小题的调用：
             //Console.WriteLine(GetSum(1)); 
+            //if (LogOnyqbang("ut91", "yezi", "1234", out string reason))
+            //{
+            //    Console.WriteLine(reason);
+            //}
+            //else
+            //{
+            //    Console.WriteLine(reason);
+            //}
+            //double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5, 100.3 };
+            //Console.WriteLine( GetMax(score));
+            //Console.WriteLine(GetMin(score ));
             //第2小题的调用：
             //double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5 };
             ////Console.WriteLine(GetAverage(score));
@@ -251,58 +261,101 @@ namespace Csharp1
             //int bednumber1 = 202, bednumber2 = 203;
             //Swap(ref bednumber1, ref bednumber2);
             ////第2小题的调用：
+            //if (LogOn("ut91","yezi","1234",out string reason))
+            //{
+            //    Console.WriteLine(reason);
+            //}
+            //else
+            //{
+            //    Console.WriteLine(reason);
+            //}
 
             Console.ReadLine();
         }
 
-
-
         //http://17bang.ren/Article/299
         //作业：方法基础、声明、调用、返回值
         //1、将之前作业封装成方法（自行思考参数和返回值），并调用执行。且以后作业，如无特别声明，皆需使用方法封装。
-        ///// <summary>
-        ///// 1+3+7..+97+99进行求和
-        ///// </summary>
-        ///// <param int = i></param>
-        ///// <returns>返回求和的值</returns>
-        //static int GetSum(int i) 
+        //http://17bang.ren/Article/263
+        //面向过程： if。。。else
+        //观察一起帮登录页面，用if...else...完成以下功能。 
+        //用户依次由控制台输入：验证码、用户名和密码： 
+        //如果验证码输入错误，直接输出：“* 验证码错误”； 
+        //如果用户名不存在，直接输出：“* 用户名不存在”； 
+        //如果用户名或密码错误，输出：“* 用户名或密码错误” 
+        //以上全部正确无误，输出：“恭喜！登录成功！”
+        //static bool LogOnyqbang(string Username, string Password, string ValidateCode, out string reason)
         //{
-        //    int sum = 0;
-        //    for ( i= 1; i < 100; i+=2)
+        //    string InvalideCode = "ut91";
+        //    string username = "yezi";
+        //    string password = "1234";
+        //    Console.WriteLine("请输入验证码:");
+        //    if (InvalideCode == Console.ReadLine () )
         //    {
-        //        sum = sum + i;
-        //    }
-        //    return sum ;
-        //}
-        /// <summary>
-        /// 找到最高分和最低分
-        /// </summary>
-        /// <param name="score">源栈同学的成绩</param>
-        /// <returns>返回最高分和最低分</returns>
-        //static double GetMax(double[] score)
-        //{
-        //    int max = score[0];
-        //    for (int i = score[0] ; i < score.Length -1; i++)
-        //    {
-        //        if ()
+        //        Console.WriteLine("请输入用户名:");
+        //        if (username  == Console.ReadLine ())
         //        {
-
+        //            Console.WriteLine($"请输入密码:");
+        //            if (password ==  Console.ReadLine ())
+        //            {
+        //                reason = " “恭喜！登录成功！” ";
+        //                return true;
+        //            }
+        //            else
+        //            {
+        //                reason = " “* 用户名或密码错误”   ";
+        //                return false;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            reason = " “*用户名不存在”  ";
+        //            return false;
         //        }
         //    }
-        //    return 1;
-        //} 
+        //    else
+        //    {
+        //        reason = " “* 验证码错误” ";
+        //        return false;
+        //    }
+        //}
+        //static double GetMax(double[] score)
+        //{
+        //    double max = score[0];
+        //    for (int i = 1; i < score.Length; i++)
+        //    {
+        //        if (score[i] > max)
+        //        {
+        //            max = score[i];
+        //        } // else continue ;
+        //    }
+        //    return max;
+        //}
 
+        //static double GetMin(double[] score)
+        //{
+        //    double min = score[0];
+        //    for (int i = 1; i < score.Length; i++)
+        //    {
+        //        if (score[i] < min)
+        //        {
+        //            min = score[i];
+        //        } // else continue;
+        //    }
+        //    return min;
+        //}
         //2、计算得到源栈同学的平均成绩（精确到两位小数），方法名GetAverage()
-        static double GetAverage(double[] score)
-        {
-            double sum = 0;
-            for (int i = 0; i < score.Length; i++)
-            {
-                sum = sum + score[i];
-            }
-            double average = sum / score.Length;
-            return Math.Round(average, 2);
-        }
+        ///
+        //static double GetAverage(double[] score)
+        //{
+        //    double sum = 0;
+        //    for (int i = 0; i < score.Length; i++)
+        //    {
+        //        sum = sum + score[i];
+        //    }
+        //    double average = sum / score.Length;
+        //    return Math.Round(average, 2);
+        //}
         //3、完成“猜数字”游戏，方法名GuessMe()：
         //随机生成一个大于0小于1000的整数
         //用户输入一个猜测值，系统进行判断，告知用户猜测的数是“大了”，还是“小了” 
@@ -310,41 +363,52 @@ namespace Csharp1
         //如果5次之内猜中，输出：你真牛逼！            
         //如果8次之内猜中，输出：不错嘛！ 
         //10次还没猜中，输出：(～￣(OO)￣)ブ 
-        //static void GuessMe()
-        //{
-        //    Random value = new Random();
-        //    int result = value.Next(0, 1000);
-        //    Console.WriteLine("请输入一个不超过1000的自然数：");
-        //     int guessnum = int.TryParse(Console.ReadLine()) ;
-        //    for (int i = 10; i < 10; i++)
-        //    {
-        //        if (guessnum > result)
-        //        {
-        //            Console.WriteLine($"太大了哟！ (还剩 {1}次)");
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("太小了哟！" + "还剩8次");
-        //        }
-        //        {
 
-        //        }
-        //    }
-        //}
         //http://17bang.ren/Article/303
         //作业：C#面向过程：方法进阶：值/引用传递。
         //作业题目：1、利用ref调用Swap()方法交换两个同学的床位号
-        static void Swap(ref int bednumber1, ref int bednumber2)
-        {
-            int temp = bednumber1;
-            bednumber1 = bednumber2;
-            bednumber2 = temp;
-        }
+        //static void Swap(ref int bednumber1, ref int bednumber2)
+        //{
+        //    int temp = bednumber1;
+        //    bednumber1 = bednumber2;
+        //    bednumber2 = temp;
+        //}
         //2、将登陆的过程封装成一个方法LogOn()，调用之后能够获得：
         //（1）、true/false，表示登陆是否成功
         //（2）、string，表示登陆失败的原因
-
-       //http://17bang.ren/Article/641
+        //static bool LogOn(string username, string password, string verificationcode, out string reason)
+        //{
+        //    verificationcode = "ut91";
+        //    username = "yezi";
+        //    password = "1234";
+        //    if (verificationcode == Console.ReadLine ())
+        //    {
+        //        if (username == Console.ReadLine ())
+        //        {
+        //            if (password == Console.ReadLine ())
+        //            {
+        //                reason = " 恭喜！登陆成功";
+        //                return true;
+        //            }
+        //            else
+        //            {
+        //                reason = " *密码错误* ";
+        //                return false;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            reason = " *用户名不存在* ";
+        //            return false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        reason = " *验证码错误* ";
+        //        return false;
+        //    } 
+        //}
+        //http://17bang.ren/Article/641
         //作业：C#方法进阶：参数： 重载/可选/params
         //作业题目:1、定义一个生成数组的方法：int[] GetArray()，其元素随机生成从小到大排列。利用可选参数控制： 
         //           最小值min（默认为1） 
@@ -353,10 +417,129 @@ namespace Csharp1
         //2、实现二分查找，方法名BinarySeek(int[] numbers, int target)： 
         //传入一个有序（从大到小/从小到大）数组和数组中要查找的元素
         //如果找到，返回该元素所在的下标；否则，返回-1 
+        
 
+        //http://17bang.ren/Article/305
+        //面向对象的作业:
+        //观察“一起帮”的: 
+        //1、注册/登录功能，定义一个User类，包含字段：Name（用户名）、Password（密码）和 邀请人（InvitedBy），和方法：Register()、Login()
+        static bool Register(string username, string password, string InvitedBy, string invitedcode, string verificationcode, out string reason)
+        {
+            if ( int.TryParse(invitedcode, out int result))
+            {
+                if (InvitedBy == InvitedBy)
+                {
+                    if (username == username)
+                    {
+                        if (password.Length > 4 && password.Length < 20)
+                        {
+                            if (verificationcode.Length == 4)
+                            {
+                                if (verificationcode != verificationcode)
+                                {
 
+                                }
+                                else
+                                {
+                                    reason = "验证码错误，请重新输入";
+                                }
+                            }
+                            else
+                            {
+                                reason = " 验证码的长度只能等于 4";
+                            }
+                        }
+                        else
+                        {
+                            reason = " 密码的长度不能小于4，大于20";
+                        }
+                    }
+                    else
+                    {
+                        reason = "用户名重复，请重新输入";
+                    }
+                }
+                else
+                {
+                    reason = "找不到以{InvitedBy}开头的用户";
+                }
+            }
+            else
+            {
+                reason = " 邀请码只能是4位数字 ";
+            }
+            reason = "";
+            return true;
+        }
+        static bool LogIn(string username, string password, string verificationcode, out string reason)
+        {
+            if (verificationcode.Length == 4)
+            {
+                if (verificationcode == verificationcode)
+                {
+                    if (username == username)
+                    {
+                        if (username != "")
+                        {
+                            if (password.Length < 4 )
+                            {
+                                if ( password.Length > 20)
+                                {
+                                    if (password != "" )
+                                    {
+                                        reason = "";
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        reason = " 密码不能为空 ";
+                                        return false;
+                                    }
+                                }
+                                else
+                                {
+                                    reason = " 密码的长度不能小于4，大于20 ";
+                                    return false;
+                                }
+                            }
+                            else
+                            {
+                                reason = "密码的长度不能小于4，大于20";
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            reason = " 用户名不能为空  ";
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        reason = " 用户名不存在 ";
+                        return false;
+                    }
+                }
+                else
+                {
+                    reason = " 验证码错误，请重新输入 ";
+                    return false;
+                }
+            }
+            else
+            {
+                reason = " 验证码的长度只能等于4 ";
+                return false;
+            }
+        }
 
+        //2、求助版块，定义一个类Problem，包含字段：标题（Title）、正文（Body）、悬赏（Reward）、发布时间（PublishDateTime）和作者（Author），和方法Publish()
+        static void Publish()
+        {
 
+        }
+        //3、帮帮币版块，定义一个类HelpMoney，包含你认为应该包含的字段和方法
+        //4、为这些类的字段和方法设置合适的访问修饰符。 
 
 
 
