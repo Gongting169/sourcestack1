@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Security.Cryptography;
 
 namespace Csharp1
 {
@@ -15,7 +14,6 @@ namespace Csharp1
             // Console.WriteLine(a - b);
             // Console.WriteLine(a * b);
             // Console.WriteLine(a / b);
-
 
             //double  n = 5.4, m = 3.6;
             // Console.WriteLine(n + m);
@@ -233,9 +231,19 @@ namespace Csharp1
             //            break;
             //        }
             //    }
-            //9、布置的作业：快速排序。
-            //作业题目：如何在一个无序的数组进行快速排序。
-            int[] src = { 3, 25, 6, 45, 26, 35, 27, 68, 98, 48, 26 };
+
+            //Program  wx = new Program ();
+            //wx.age = 18;
+            //Program clone = wx;
+            //clone.age = 20;
+            //Console.WriteLine(wx.age);
+
+
+            student  wx = new student();
+            wx.age = 18;
+            grow(ref wx);
+            Console.WriteLine(wx.age);
+           
             //http://17bang.ren/Article/299
             //调用函数的作业：
             //作业：方法基础： 声明/调用/返回值
@@ -252,6 +260,15 @@ namespace Csharp1
             //double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5, 100.3 };
             //Console.WriteLine( GetMax(score));
             //Console.WriteLine(GetMin(score ));
+            //快速排序的调用：
+            int[] src = { 35, 2, 16, 52, 36, 15, 3, 4, 37, 53, 49 };
+            quickSort(src, 0, 10);
+            //QuickSort(src, 0, src.Length - 1);
+            //for (int i = 0; i < src.Length; i++)
+            //{
+            //    Console.WriteLine(src[i]);
+            //}
+
             //第2小题的调用：
             //double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5 };
             ////Console.WriteLine(GetAverage(score));
@@ -269,86 +286,101 @@ namespace Csharp1
             //{
             //    Console.WriteLine(reason);
             //}
+            Console.WriteLine();
+        }
 
-            //http://17bang.ren/Article/299
-            //作业：方法基础、声明、调用、返回值
-            //1、将之前作业封装成方法（自行思考参数和返回值），并调用执行。且以后作业，如无特别声明，皆需使用方法封装。
-            //http://17bang.ren/Article/263
-            //面向过程： if。。。else
-            //观察一起帮登录页面，用if...else...完成以下功能。 
-            //用户依次由控制台输入：验证码、用户名和密码： 
-            //如果验证码输入错误，直接输出：“* 验证码错误”； 
-            //如果用户名不存在，直接输出：“* 用户名不存在”； 
-            //如果用户名或密码错误，输出：“* 用户名或密码错误” 
-            //以上全部正确无误，输出：“恭喜！登录成功！”
-            //static bool LogOnyqbang(string Username, string Password, string ValidateCode, out string reason)
-            //{
-            //    string InvalideCode = "ut91";
-            //    string username = "yezi";
-            //    string password = "1234";
-            //    Console.WriteLine("请输入验证码:");
-            //    if (InvalideCode == Console.ReadLine () )
-            //    {
-            //        Console.WriteLine("请输入用户名:");
-            //        if (username  == Console.ReadLine ())
-            //        {
-            //            Console.WriteLine($"请输入密码:");
-            //            if (password ==  Console.ReadLine ())
-            //            {
-            //                reason = " “恭喜！登录成功！” ";
-            //                return true;
-            //            }
-            //            else
-            //            {
-            //                reason = " “* 用户名或密码错误”   ";
-            //                return false;
-            //            }
-            //        }
-            //        else
-            //        {
-            //            reason = " “*用户名不存在”  ";
-            //            return false;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        reason = " “* 验证码错误” ";
-            //        return false;
-            //    }
-            //}
-            //static double GetMax(double[] score)
-            //{
-            //    double max = score[0];
-            //    for (int i = 1; i < score.Length; i++)
-            //    {
-            //        if (score[i] > max)
-            //        {
-            //            max = score[i];
-            //        } // else continue ;
-            //    }
-            //    return max;
-            //}
+        static void grow(ref student student)
+        {
+            student = new student();
+            student.age++;
+        }
+        class student 
+        {
+            public int age = 23;
+        }
 
-            //static double GetMin(double[] score)
-            //{
-            //    double min = score[0];
-            //    for (int i = 1; i < score.Length; i++)
-            //    {
-            //        if (score[i] < min)
-            //        {
-            //            min = score[i];
-            //        } // else continue;
-            //    }
-            //    return min;
-            //}
-            //10、布置的作业：快速排序
-            static void quickSort(int[] src, int left, int right)
+        //http://17bang.ren/Article/299
+        //作业：方法基础、声明、调用、返回值
+        //1、将之前作业封装成方法（自行思考参数和返回值），并调用执行。且以后作业，如无特别声明，皆需使用方法封装。
+        //http://17bang.ren/Article/263
+        //面向过程： if。。。else
+        //观察一起帮登录页面，用if...else...完成以下功能。 
+        //用户依次由控制台输入：验证码、用户名和密码： 
+        //如果验证码输入错误，直接输出：“* 验证码错误”； 
+        //如果用户名不存在，直接输出：“* 用户名不存在”； 
+        //如果用户名或密码错误，输出：“* 用户名或密码错误” 
+        //以上全部正确无误，输出：“恭喜！登录成功！”
+        //static bool LogOnyqbang(string Username, string Password, string ValidateCode, out string reason)
+        //{
+        //    string InvalideCode = "ut91";
+        //    string username = "yezi";
+        //    string password = "1234";
+        //    Console.WriteLine("请输入验证码:");
+        //    if (InvalideCode == Console.ReadLine () )
+        //    {
+        //        Console.WriteLine("请输入用户名:");
+        //        if (username  == Console.ReadLine ())
+        //        {
+        //            Console.WriteLine($"请输入密码:");
+        //            if (password ==  Console.ReadLine ())
+        //            {
+        //                reason = " “恭喜！登录成功！” ";
+        //                return true;
+        //            }
+        //            else
+        //            {
+        //                reason = " “* 用户名或密码错误”   ";
+        //                return false;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            reason = " “*用户名不存在”  ";
+        //            return false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        reason = " “* 验证码错误” ";
+        //        return false;
+        //    }
+        //}
+        //static double GetMax(double[] score)
+        //{
+        //    double max = score[0];
+        //    for (int i = 1; i < score.Length; i++)
+        //    {
+        //        if (score[i] > max)
+        //        {
+        //            max = score[i];
+        //        } // else continue ;
+        //    }
+        //    return max;
+        //}
+
+        //static double GetMin(double[] score)
+        //{
+        //    double min = score[0];
+        //    for (int i = 1; i < score.Length; i++)
+        //    {
+        //        if (score[i] < min)
+        //        {
+        //            min = score[i];
+        //        } // else continue;
+        //    }
+        //    return min;
+        //}
+        //10、布置的作业：快速排序
+        static void quickSort(int[] src, int left, int right)//有bug，当有相等值时，会报越界错误。
             {
                 int oldleft = left;
                 int oldright = right;
                 int middle = left;
                 int middlevalue = src[left];
-
+                if (left >= right)
+                {
+                    return;
+                }
                 while (left < right)
                 {    //从右往左
                     while (right > middle)
@@ -361,9 +393,8 @@ namespace Csharp1
                         }
                         right--;
                     }
-                    //从左往右
                     while (left < middle)
-                    {
+                    {   //从左往右
                         if (src[left] > middlevalue)
                         {
                             Swap(src, middle, left);
@@ -382,6 +413,49 @@ namespace Csharp1
                 src[middle] = src[right];
                 src[right] = temp;
             }
+
+            //static void QuickSort(int[] array, int left, int right)
+            //{
+            //    if (left >= right)
+            //    {
+            //        return;
+            //    }
+            //    int middle = array[left];
+            //    int l = left, r = right;
+
+            //    while (l < r)
+            //    {
+            //        while (l < r)
+            //        {
+            //            if (middle <= array[r])
+            //            {
+            //                r--;
+            //            }
+            //            if (middle > array[r])
+            //            {
+            //                Swap(array, l, r);
+            //                break;
+            //            }
+            //        }
+            //        while (l < r)
+            //        {
+            //            if (array[l] <= middle)
+            //            {
+            //                l++;
+            //            }
+            //            if (array[l] > middle)
+            //            {
+            //                Swap(array, l, r);
+            //                break;
+            //            }
+            //        }
+            //    }
+
+            //    QuickSort(array, left, r - 1);
+            //    QuickSort(array, l + 1, right);
+            ////}
+
+                
 
             //2、计算得到源栈同学的平均成绩（精确到两位小数），方法名GetAverage()
             ///
@@ -472,47 +546,6 @@ namespace Csharp1
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        }
     }
 }
 
