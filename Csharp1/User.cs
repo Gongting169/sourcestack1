@@ -11,80 +11,73 @@ namespace CSharplearn
     //3、帮帮币版块，定义一个类HelpMoney，表示一行帮帮币交易数据，包含你认为应该包含的字段和方法
     //4、为这些类的字段和方法设置合适的访问修饰符。
 
+    //1、将之前User/Problem/HelpMoney类的字段封装成属性，其中：
+    //user.Password在类的外部只能改不能读
+    //如果user.Name为“admin”，输入时修改为“系统管理员”
+    //problem.Reward不能为负数
     public class User
     {
         string name;
         string password;
-          User InvitedBy;
-        static  bool Register(User user, string InviteCode,string verrificationCode,string verifypassword,out string output)
+        User InvitedBy;
+        internal bool Register(User user, string InviteCode, string verrificationCode, string verifypassword, out string output)
         {
-           
+
             output = "";
             return true;
         }
-        static bool LogIn(string username, string password, string verificationcode, out string reason)
+        internal bool LogIn(User user, string verificationcode)
         {
-            if (verificationcode.Length == 4)
+            if (verificationcode.Length != 4)
             {
-                if (verificationcode == verificationcode)
-                {
-                    if (username == username)
-                    {
-                        if (username != "")
-                        {
-                            if (password.Length < 4)
-                            {
-                                if (password.Length > 20)
-                                {
-                                    if (password != "")
-                                    {
-                                        reason = "";
-                                        return true;
-                                    }
-                                    else
-                                    {
-                                        reason = " 密码不能为空 ";
-                                        return false;
-                                    }
-                                }
-                                else
-                                {
-                                    reason = " 密码的长度不能小于4，大于20 ";
-                                    return false;
-                                }
-                            }
-                            else
-                            {
-                                reason = "密码的长度不能小于4，大于20";
-                                return false;
-                            }
-                        }
-                        else
-                        {
-                            reason = " 用户名不能为空  ";
-                            return false;
-                        }
-                    }
-                    else
-                    {
-                        reason = " 用户名不存在 ";
-                        return false;
-                    }
-                }
-                else
-                {
-                    reason = " 验证码错误，请重新输入 ";
-                    return false;
-                }
+                Console.WriteLine(" 验证码的长度只能等于4 ");
+                return false;
+            }
+            if (verificationcode != "1235")
+            {
+                Console.WriteLine(" 验证码错误，请重新输入 ");
+                return false;
+            }
+            if (user.name != "gty")
+            {
+                Console.WriteLine(" 用户名不存在 ");
+                return false;
+            }
+            if (user.name.Length == 0)
+            {
+                Console.WriteLine(" 用户名不能为空  ");
+                return false;
+            }
+            if (password.Length < 4 || password.Length > 20)
+            {
+                Console.WriteLine("密码的长度不能小于4，大于20");
+                return false;
+            }
+            if (password.Length == 0)
+            {
+                Console.WriteLine(" 密码不能为空 ");
+                return false;
+            }
+            if (user.name == "gty" && user.password =="1234"&& verificationcode=="1235")
+            {
+                Console.WriteLine("恭喜！登录成功");
+                return true;
             }
             else
             {
-                reason = " 验证码的长度只能等于4 ";
+                Console.WriteLine();
                 return false;
             }
-        }
 
-     
+
+
+
+
+
+
+
+
+        }
     }
- 
+
 }
