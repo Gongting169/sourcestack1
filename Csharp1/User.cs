@@ -17,23 +17,24 @@ namespace CSharplearn
     //problem.Reward不能为负数
     public class User
     {
-        string name;
-        string password;
-        User InvitedBy;
-        internal bool Register(User user, string InviteCode, string verrificationCode, string verifypassword, out string output)
+        public string name;
+        public string password;
+        public User InvitedBy;
+        public string verificationcode;
+        public  bool Register(User user, string InviteCode, string verrificationCode, string verifypassword, out string output)
         {
 
             output = "";
             return true;
         }
-        internal bool LogIn(User user, string verificationcode)
+        public  bool LogIn(User user)
         {
-            if (verificationcode.Length != 4)
+            if (user.verificationcode.Length != 4)
             {
                 Console.WriteLine(" 验证码的长度只能等于4 ");
                 return false;
             }
-            if (verificationcode != "1235")
+            if (user.verificationcode  != "1235")
             {
                 Console.WriteLine(" 验证码错误，请重新输入 ");
                 return false;
@@ -48,17 +49,17 @@ namespace CSharplearn
                 Console.WriteLine(" 用户名不能为空  ");
                 return false;
             }
-            if (password.Length < 4 || password.Length > 20)
+            if (user.password.Length < 4 || user.password.Length > 20)
             {
                 Console.WriteLine("密码的长度不能小于4，大于20");
                 return false;
             }
-            if (password.Length == 0)
+            if (user.password.Length == 0)
             {
                 Console.WriteLine(" 密码不能为空 ");
                 return false;
             }
-            if (user.name == "gty" && user.password =="1234"&& verificationcode=="1235")
+            if (user.name == "gty" && user.password =="1234"&& user.verificationcode =="1235")
             {
                 Console.WriteLine("恭喜！登录成功");
                 return true;
@@ -68,14 +69,6 @@ namespace CSharplearn
                 Console.WriteLine();
                 return false;
             }
-
-
-
-
-
-
-
-
 
         }
     }
