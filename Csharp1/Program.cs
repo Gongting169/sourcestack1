@@ -7,7 +7,28 @@ namespace Csharp1
     {
         static void Main(string[] args)
         {
-           
+
+            User lzb = new User() ;
+            
+            lzb.Setpassword("1234");
+            Console.WriteLine(lzb.GetName());
+            //调用这些类的有参合无参构造函数：
+            User zdh = new User("lgy");
+            Problem lw = new Problem();
+            HelpMoney zl = new HelpMoney();
+            zdh.GetName();
+            zdh.Setpassword("2365");
+            zdh.LogIn(zdh);
+            zdh.Register(zdh);
+            lw.Publish();
+            zl.BangMoney();
+
+
+
+
+
+
+
 
 
 
@@ -238,17 +259,7 @@ namespace Csharp1
             //        }
             //    }
 
-            //Program  wx = new Program ();
-            //wx.age = 18;
-            //Program clone = wx;
-            //clone.age = 20;
-            //Console.WriteLine(wx.age);
-
-
-            student  wx = new student();
-            wx.age = 18;
-            grow(ref wx);
-            Console.WriteLine(wx.age);
+           
            
             //http://17bang.ren/Article/299
             //调用函数的作业：
