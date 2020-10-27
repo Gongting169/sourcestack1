@@ -7,21 +7,17 @@ namespace Csharp1
     {
         static void Main(string[] args)
         {
-
-            User lzb = new User() ;
-            
-            lzb.Setpassword("1234");
-            Console.WriteLine(lzb.GetName());
             //调用这些类的有参合无参构造函数：
-            User zdh = new User("lgy");
+            User zdh = new User();
             Problem lw = new Problem();
             HelpMoney zl = new HelpMoney();
-            zdh.GetName();
-            zdh.Setpassword("2365");
             zdh.LogIn(zdh);
             zdh.Register(zdh);
             lw.Publish();
             zl.BangMoney();
+            //调用索引器
+            Problem fg = new Problem();
+            Console.WriteLine(fg[1]); 
 
 
 

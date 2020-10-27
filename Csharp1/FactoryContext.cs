@@ -4,26 +4,23 @@ using System.Text;
 
 namespace CSharplearn
 {
-    class HelpMoney
+    class FactoryContext
     {
-        //https://zhuanlan.zhihu.com/p/92362781 面向对象：基础中的类和对象里面的作业：
-        //    观察“一起帮”的：
-        //3、帮帮币版块，定义一个类HelpMoney，表示一行帮帮币交易数据，包含你认为应该包含的字段和方法
-        //4、为这些类的字段和方法设置合适的访问修饰符
-        private DateTime Time { get; set; }
-        public void BangMoney()
-        {
-
-        }
-
-        // https://zhuanlan.zhihu.com/p/92470130 进一步封装里面的作业：
-        //2、调用这些类的有参/无参构造函数，生成这些类的对象，调用他们的方法
-        public HelpMoney()
-        {
-
-        }
-
         //https://zhuanlan.zhihu.com/p/95261748 静态还是实例里面的作业：
+        //3、设计一个类FactoryContext，保证整个程序运行过程中，无论如何，外部只能获得它的唯一的一个实例化对象。（提示：设计模式之单例）
+        private static FactoryContext instance = new FactoryContext(); //创建一个FactoryContext的对象
+        private  FactoryContext() //让构造函数为private，该类就不会被实例化
+        {
+
+        }
+        public static FactoryContext Getinstance() //获取唯一可用的对象
+        {
+            return instance;
+        }
+        public void show()
+        {
+            Console.WriteLine();//作用：可以输出内容
+        }
 
         //https://zhuanlan.zhihu.com/p/92535455 被多少人误解继承里面的作业：
         //让User类无法被继承
@@ -36,9 +33,6 @@ namespace CSharplearn
         //继承自父类的属性和方法
         //自己的属性和方法
         //再为之前所有类（含User、HelpMoney等）抽象一个基类：Entity，包含一个只读的Id属性。试一试，Suggest能有Id属性么？
-
-  
-
 
     }
 }
