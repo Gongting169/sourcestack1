@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-    sealed public class User
+     sealed  public class User
     {
         //https://zhuanlan.zhihu.com/p/92362781  基础中的类和对象里面的作业：
         //    观察“一起帮”的：
@@ -110,6 +110,7 @@ namespace CSharplearn
 
         //https://zhuanlan.zhihu.com/p/92535455 被多少人误解继承里面的作业：
         //1、让User类无法被继承
+         
         //2、观察一起帮的求助（Problem）、文章（Article）和意见建议（Suggest），根据他们的特点，抽象出一个父类：内容（Content）
         //Content中有一个字段：kind，记录内容的种类（problem/article/suggest等），只能被子类使用
         //确保每个Content对象都有kind的非空值
