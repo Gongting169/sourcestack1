@@ -12,7 +12,6 @@ namespace CSharplearn
         //2、求助版块，定义一个类Problem，包含字段：标题（Title）、正文（Body）、悬赏（Reward）、发布时间（PublishDateTime）和作者（Author），和方法Publish()
         //3、帮帮币版块，定义一个类HelpMoney，表示一行帮帮币交易数据，包含你认为应该包含的字段和方法
         //4、为这些类的字段和方法设置合适的访问修饰符。
-
         private User InvitedBy { get; set; }
         public string verificationcode { get; set; }
         public bool Register(User user)
@@ -92,11 +91,6 @@ namespace CSharplearn
 
             get { return _name; }
         }
-        //2、调用这些类的有参/无参构造函数，生成这些类的对象，调用他们的方法
-        public User()
-        {
-
-        }
         //4、设计一种方式，保证：
         //每一个User对象一定有Name和Password赋值 
         public User(string name ,string password) 
@@ -107,10 +101,8 @@ namespace CSharplearn
 
         //https://zhuanlan.zhihu.com/p/95261748 静态还是实例里面的作业：
         //4、想一想，为什么Publish()方法不是放置在User类中呢？用户（user）发布（Publish）一篇文章（article），不正好是user.Publish(article) 么？
-
         //https://zhuanlan.zhihu.com/p/92535455 被多少人误解继承里面的作业：
         //1、让User类无法被继承
-         
         //2、观察一起帮的求助（Problem）、文章（Article）和意见建议（Suggest），根据他们的特点，抽象出一个父类：内容（Content）
         //Content中有一个字段：kind，记录内容的种类（problem/article/suggest等），只能被子类使用
         //确保每个Content对象都有kind的非空值

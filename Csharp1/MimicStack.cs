@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-    class MimicStack 
+    class MimicStack
     {
         //https://zhuanlan.zhihu.com/p/95261748 静态还是实例里面的作业：
         //5、自己实现一个模拟栈（MimicStack）类，入栈出栈数据均为int类型，包含如下功能：
@@ -13,31 +13,42 @@ namespace CSharplearn
         //出/入栈检查，
         //如果压入的数据已超过栈的深度（最大容量），提示“栈溢出”
         //如果已弹出所有数据，提示“栈已空”
-        int[] stack ;
+        int[] Container;
         int top = 0;
-        int bottom = 0;
-        
-        public MimicStack( int length )
+        const int bottom = 0;
+        public MimicStack(int length)
         {
-            stack = new int[length];
+            Container = new int[length];
         }
-        public int push( params int[] element)
+        public void  push(params int[] element)
         {
-            if (top <= stack.Length -1)
+            for (int i = 0; i < element.Length-1; i++)
             {
-                
-                top++;
-                return top;
+                if (top <= Container.Length -1)
+                {
+                    Container[top] = element[i];
+                        top++;
+                }
+                else
+                {
+                    Console.WriteLine("栈溢出");
+                }
+            }
+        }
+
+        public int pop()
+        {
+            if (top != bottom)
+            {
+                top--;
+                return Container[top];
             }
             else
             {
-                Console.WriteLine("栈溢出");
+                Console.WriteLine("栈以空");
                 return -1;
             }
-
         }
-
-
 
 
 

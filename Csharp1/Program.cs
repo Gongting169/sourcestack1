@@ -7,26 +7,26 @@ namespace Csharp1
     {
         static void Main(string[] args)
         {
-            //调用这些类的有参合无参构造函数：
-            User zdh = new User();
-            //Problem lw = new Problem();
-            HelpMoney zl = new HelpMoney();
-            zdh.LogIn(zdh);
-            zdh.Register(zdh);
-            //lw.Publish();
-            zl.BangMoney();
-            //调用索引器
-            //Problem fg = new Problem();
-            //Console.WriteLine(fg[1]); 
+            ////调用这些类的有参合无参构造函数：
+            //User zdh = new User();
+            ////Problem lw = new Problem();
+            //HelpMoney zl = new HelpMoney();
+            //zdh.LogIn(zdh);
+            //zdh.Register(zdh);
+            ////lw.Publish();
+            //zl.BangMoney();
+            ////调用索引器
+            ////Problem fg = new Problem();
+            ////Console.WriteLine(fg[1]); 
 
-            // 被多少人误解继承里面的作业；调用
-            Article lzb = new Article();
+            //// 被多少人误解继承里面的作业；调用
+            //Article lzb = new Article();
 
                 MimicStack lw = new MimicStack(10);
-                lw.push(2,5,7,8);
+                lw.push(2);
 
 
-            mimicnow now = new mimicnow();
+
 
 
 
@@ -276,8 +276,8 @@ namespace Csharp1
             //Console.WriteLine( GetMax(score));
             //Console.WriteLine(GetMin(score ));
             //快速排序的调用：
-            int[] src = { 35, 2, 16, 52, 36, 15, 3, 4, 37, 53, 49 };
-            quickSort(src, 0, 10);
+            //int[] src = { 35, 2, 16, 52, 36, 15, 3, 4, 37, 53, 49 };
+            //quickSort(src, 0, 10);
             //QuickSort(src, 0, src.Length - 1);
             //for (int i = 0; i < src.Length; i++)
             //{
