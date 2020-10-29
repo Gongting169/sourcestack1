@@ -17,10 +17,6 @@ namespace CSharplearn
         {
             return instance;
         }
-        public void show()
-        {
-            Console.WriteLine();//作用：可以输出内容
-        }
 
         //https://zhuanlan.zhihu.com/p/92535455 被多少人误解继承里面的作业：
         //让User类无法被继承

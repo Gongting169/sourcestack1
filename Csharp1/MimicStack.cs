@@ -25,8 +25,9 @@ namespace CSharplearn
         {
             if (top <= stack.Length -1)
             {
+                
                 top++;
-                ;
+                return top;
             }
             else
             {
