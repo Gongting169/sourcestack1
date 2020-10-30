@@ -7,20 +7,17 @@ namespace CSharplearn
    public  class Suggest : Content
     {
         //https://zhuanlan.zhihu.com/p/92535455 被多少人误解继承里面的作业：
-        // 2、观察一起帮的求助（Problem）、文章（Article）和意见建议（Suggest），根据他们的特点，抽象出一个父类：内容（Content）
-        //Content中有一个字段：kind，记录内容的种类（problem/article/suggest等），只能被子类使用
-        //确保每个Content对象都有kind的非空值
-        //Content中的createTime，不能被子类使用，但只读属性PublishTime使用它为外部提供内容的发布时间
-        //其他方法和属性请自行考虑，尽量贴近一起帮的功能实现。
         //3、实例化文章和意见建议，调用他们：
         //继承自父类的属性和方法
         //自己的属性和方法
-        //4、再为之前所有类（含User、HelpMoney等）抽象一个基类：Entity，包含一个只读的Id属性。试一试，Suggest能有Id属性么？
 
         //https://zhuanlan.zhihu.com/p/93053223 你真的明白什么是多态吗?里面的作业：
      public  override  void Release()
         {
             Console.WriteLine("不需要帮帮币");
         }
+
+        //https://zhuanlan.zhihu.com/p/93224519 抽象类还是接口里面的作业：
+        //一起帮里的求助总结、文章和意见建议，以及他们的评论，都有一个点赞（Agree）/踩（Disagree）的功能，赞和踩都会增减作者及评价者的帮帮点。能不能对其进行抽象？如何实现？
     }
 }

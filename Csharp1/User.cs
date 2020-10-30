@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-     sealed  public class User
+     sealed  public class User:Entity 
     {
         //https://zhuanlan.zhihu.com/p/92362781  基础中的类和对象里面的作业：
         //    观察“一起帮”的：

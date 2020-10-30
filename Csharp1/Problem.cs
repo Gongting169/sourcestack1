@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-   public  class Problem : Content
+    public class Problem : Content
     {
         //https://zhuanlan.zhihu.com/p/92362781
         //    观察“一起帮”的：
@@ -12,16 +12,16 @@ namespace CSharplearn
         //2、求助版块，定义一个类Problem，包含字段：标题（Title）、正文（Body）、悬赏（Reward）、发布时间（PublishDateTime）和作者（Author），和方法Publish()
         //3、帮帮币版块，定义一个类HelpMoney，表示一行帮帮币交易数据，包含你认为应该包含的字段和方法
         //4、为这些类的字段和方法设置合适的访问修饰符。
-        private string _Title { get; set; }
-        private string _body { get; set; }
-        private DateTime _PublishDateTime { get; set; }
-        private User _Author { get; set; }
+        public string Title { get; set; }
+        public string _body { get; set; }
+        public DateTime PublishDateTime { get; set; }
+        public User Author { get; set; }
 
         // https://zhuanlan.zhihu.com/p/92470130 进一步封装里面的作业：
         //1、将之前User/Problem/HelpMoney类的字段封装成属性，其中：
         //problem.Reward不能为负数
-        private int _reward ;
-        public  int reward
+        public  int Reward { get; set; }
+        public int reward
         {
             set
             {
@@ -31,14 +31,14 @@ namespace CSharplearn
                     return;
                 }
             }
-            get { return _reward; }
+            get { return Reward; }
         }
         //3、一起帮的求助可以有多个（最多10个）关键字，请为其设置索引器，以便于我们通过其整数下标进行读写。
-        private string[] _KeyWord = new string[10];
+        private string[] KeyWord = new string[10];
         public string this[int index]
         {
-            get { return _KeyWord[index - 1]; }
-            set { _KeyWord[index - 1] = value; }
+            get { return KeyWord[index - 1]; }
+            set { KeyWord[index - 1] = value; }
         }
 
         //4、设计一种方式，保证：
@@ -53,38 +53,30 @@ namespace CSharplearn
         //Load(int Id)：根据Id从数据库获取一条求助  静态：
         //Delete(int Id)：根据Id删除某个求助       静态：
         //repoistory：可用于在底层实现上述方法和数据库的连接操作等
-        //public void Publish()
-        //{
-
-        //}
-        public static void Load( int id)//根据Id从数据库获取一条求助
+        public void Publish()
         {
 
         }
-        public static void Delete( int id )//根据Id删除某个求助 
+        public static void Load(int id)//根据Id从数据库获取一条求助
+        {
+
+        }
+        public static void Delete(int id)//根据Id删除某个求助 
         {
 
         }
 
         //https://zhuanlan.zhihu.com/p/92535455 被多少人误解继承里面的作业：
-        //2、观察一起帮的求助（Problem）、文章（Article）和意见建议（Suggest），根据他们的特点，抽象出一个父类：内容（Content）
-        //Content中有一个字段：kind，记录内容的种类（problem/article/suggest等），只能被子类使用
-        //确保每个Content对象都有kind的非空值
-        //Content中的createTime，不能被子类使用，但只读属性PublishTime使用它为外部提供内容的发布时间
-        //其他方法和属性请自行考虑，尽量贴近一起帮的功能实现。
-        //3、实例化文章和意见建议，调用他们：
-        //继承自父类的属性和方法
-        //自己的属性和方法
-        //4、再为之前所有类（含User、HelpMoney等）抽象一个基类：Entity，包含一个只读的Id属性。试一试，Suggest能有Id属性么？
 
         //https://zhuanlan.zhihu.com/p/93053223 你真的明白什么是多态吗?里面的作业：
 
-        public  override void Release()
+        public override void Release()
         {
             Console.WriteLine("需要消耗其设置悬赏数量的帮帮币");
-        } 
+        }
 
-
+        //https://zhuanlan.zhihu.com/p/93224519 抽象类还是接口里面的作业：
+        //一起帮里的求助总结、文章和意见建议，以及他们的评论，都有一个点赞（Agree）/踩（Disagree）的功能，赞和踩都会增减作者及评价者的帮帮点。能不能对其进行抽象？如何实现？
 
 
     }

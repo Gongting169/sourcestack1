@@ -3,10 +3,38 @@ using System;
 
 namespace Csharp1
 {
-    class Program
+    public class Program : Entity
     {
         static void Main(string[] args)
         {
+            //https://zhuanlan.zhihu.com/p/94590192
+            //面向对象：结构和日期里面的作业：
+            //1、用代码证明struct定义的类型是值类型
+            //源栈的学费是按周计费的，所以请实现这两个功能：
+            //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期
+            //给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
+
+
+
+
+
+
+
+            //进一步封装作业里面的调用：
+            Problem problem = new Problem("真好");
+            User user = new User("gty", "326");
+            //被多少人误解的继承作业里面的调用：
+            Article article = new Article();
+            Suggest suggest = new Suggest();
+            Console.WriteLine(article.Author);
+            Console.WriteLine(article.Comment);
+            Console.WriteLine(article.PublishTime);
+            Console.WriteLine(article.Reward);
+            Console.WriteLine(article.Title);
+            article.Release();
+            //suggest也是一样的调用;
+            suggest.Release();
+            article.Release();
 
             //http://17bang.ren/Article/292
             //作业：运算符和表达式
@@ -286,7 +314,7 @@ namespace Csharp1
             student = new student();
             student.age++;
         }
-        class student 
+        class student
         {
             public int age = 23;
         }
@@ -364,177 +392,177 @@ namespace Csharp1
         //}
         //10、布置的作业：快速排序
         static void quickSort(int[] src, int left, int right)//有bug，当有相等值时，会报越界错误。
+        {
+            int oldleft = left;
+            int oldright = right;
+            int middle = left;
+            int middlevalue = src[left];
+            if (left >= right)
             {
-                int oldleft = left;
-                int oldright = right;
-                int middle = left;
-                int middlevalue = src[left];
-                if (left >= right)
+                return;
+            }
+            while (left < right)
+            {    //从右往左
+                while (right > middle)
                 {
-                    return;
-                }
-                while (left < right)
-                {    //从右往左
-                    while (right > middle)
+                    if (src[right] < middlevalue)
                     {
-                        if (src[right] < middlevalue)
-                        {
-                            Swap(src, middle, right);
-                            middle = right;
-                            break;
-                        }
-                        right--;
+                        Swap(src, middle, right);
+                        middle = right;
+                        break;
                     }
-                    while (left < middle)
-                    {   //从左往右
-                        if (src[left] > middlevalue)
-                        {
-                            Swap(src, middle, left);
-                            middle = left;
-                            break;
-                        }
-                        left++;
-                    }
+                    right--;
                 }
-                quickSort(src, oldleft, middle - 1);
-                quickSort(src, middle + 1, oldright);
+                while (left < middle)
+                {   //从左往右
+                    if (src[left] > middlevalue)
+                    {
+                        Swap(src, middle, left);
+                        middle = left;
+                        break;
+                    }
+                    left++;
+                }
             }
-            static void Swap(int[] src, int middle, int right)
-            {
-                int temp = src[middle];
-                src[middle] = src[right];
-                src[right] = temp;
-            }
+            quickSort(src, oldleft, middle - 1);
+            quickSort(src, middle + 1, oldright);
+        }
+        static void Swap(int[] src, int middle, int right)
+        {
+            int temp = src[middle];
+            src[middle] = src[right];
+            src[right] = temp;
+        }
 
-            //static void QuickSort(int[] array, int left, int right)
-            //{
-            //    if (left >= right)
-            //    {
-            //        return;
-            //    }
-            //    int middle = array[left];
-            //    int l = left, r = right;
+        //static void QuickSort(int[] array, int left, int right)
+        //{
+        //    if (left >= right)
+        //    {
+        //        return;
+        //    }
+        //    int middle = array[left];
+        //    int l = left, r = right;
 
-            //    while (l < r)
-            //    {
-            //        while (l < r)
-            //        {
-            //            if (middle <= array[r])
-            //            {
-            //                r--;
-            //            }
-            //            if (middle > array[r])
-            //            {
-            //                Swap(array, l, r);
-            //                break;
-            //            }
-            //        }
-            //        while (l < r)
-            //        {
-            //            if (array[l] <= middle)
-            //            {
-            //                l++;
-            //            }
-            //            if (array[l] > middle)
-            //            {
-            //                Swap(array, l, r);
-            //                break;
-            //            }
-            //        }
-            //    }
+        //    while (l < r)
+        //    {
+        //        while (l < r)
+        //        {
+        //            if (middle <= array[r])
+        //            {
+        //                r--;
+        //            }
+        //            if (middle > array[r])
+        //            {
+        //                Swap(array, l, r);
+        //                break;
+        //            }
+        //        }
+        //        while (l < r)
+        //        {
+        //            if (array[l] <= middle)
+        //            {
+        //                l++;
+        //            }
+        //            if (array[l] > middle)
+        //            {
+        //                Swap(array, l, r);
+        //                break;
+        //            }
+        //        }
+        //    }
 
-            //    QuickSort(array, left, r - 1);
-            //    QuickSort(array, l + 1, right);
-            ////}
-
-                
-
-            //2、计算得到源栈同学的平均成绩（精确到两位小数），方法名GetAverage()
-            ///
-            //static double GetAverage(double[] score)
-            //{
-            //    double sum = 0;
-            //    for (int i = 0; i < score.Length; i++)
-            //    {
-            //        sum = sum + score[i];
-            //    }
-            //    double average = sum / score.Length;
-            //    return Math.Round(average, 2);
-            //}
-            //3、完成“猜数字”游戏，方法名GuessMe()：
-            //随机生成一个大于0小于1000的整数
-            //用户输入一个猜测值，系统进行判断，告知用户猜测的数是“大了”，还是“小了” 
-            //没猜中可以继续猜，但最多不能超过10次         //具体的思路：应该要把用户的输入值给考虑到位，如果出现不符合要求的输入值怎么办？
-            //如果5次之内猜中，输出：你真牛逼！            
-            //如果8次之内猜中，输出：不错嘛！ 
-            //10次还没猜中，输出：(～￣(OO)￣)ブ 
-
-            //http://17bang.ren/Article/303
-            //作业：C#面向过程：方法进阶：值/引用传递。
-            //作业题目：1、利用ref调用Swap()方法交换两个同学的床位号
-            //static void Swap(ref int bednumber1, ref int bednumber2)
-            //{
-            //    int temp = bednumber1;
-            //    bednumber1 = bednumber2;
-            //    bednumber2 = temp;
-            //}
-            //2、将登陆的过程封装成一个方法LogOn()，调用之后能够获得：
-            //（1）、true/false，表示登陆是否成功
-            //（2）、string，表示登陆失败的原因
-            //static bool LogOn(string username, string password, string verificationcode, out string reason)
-            //{
-            //    verificationcode = "ut91";
-            //    username = "yezi";
-            //    password = "1234";
-            //    if (verificationcode == Console.ReadLine ())
-            //    {
-            //        if (username == Console.ReadLine ())
-            //        {
-            //            if (password == Console.ReadLine ())
-            //            {
-            //                reason = " 恭喜！登陆成功";
-            //                return true;
-            //            }
-            //            else
-            //            {
-            //                reason = " *密码错误* ";
-            //                return false;
-            //            }
-            //        }
-            //        else
-            //        {
-            //            reason = " *用户名不存在* ";
-            //            return false;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        reason = " *验证码错误* ";
-            //        return false;
-            //    } 
-            //}
-            //http://17bang.ren/Article/641
-            //作业：C#方法进阶：参数： 重载/可选/params
-            //作业题目:1、定义一个生成数组的方法：int[] GetArray()，其元素随机生成从小到大排列。利用可选参数控制： 
-            //           最小值min（默认为1） 
-            //           相邻两个元素之间的最大差值gap（默认为5）
-            //           元素个数length（默认为10个） 
-            //2、实现二分查找，方法名BinarySeek(int[] numbers, int target)： 
-            //传入一个有序（从大到小/从小到大）数组和数组中要查找的元素
-            //如果找到，返回该元素所在的下标；否则，返回-1 
+        //    QuickSort(array, left, r - 1);
+        //    QuickSort(array, l + 1, right);
+        ////}
 
 
-            //http://17bang.ren/Article/305
-            //面向对象的作业:
-            //观察“一起帮”的: 
-            //1、注册/登录功能，定义一个User类，包含字段：Name（用户名）、Password（密码）和 邀请人（InvitedBy），和方法：Register()、Login() 
-            //2、求助版块，定义一个类Problem，包含字段：标题（Title）、正文（Body）、悬赏（Reward）、发布时间（PublishDateTime）和作者（Author），和方法Publish()
-            //static void Publish()
-            //{
 
-            //}
-            //3、帮帮币版块，定义一个类HelpMoney，包含你认为应该包含的字段和方法
-            //4、为这些类的字段和方法设置合适的访问修饰符。 
+        //2、计算得到源栈同学的平均成绩（精确到两位小数），方法名GetAverage()
+        ///
+        //static double GetAverage(double[] score)
+        //{
+        //    double sum = 0;
+        //    for (int i = 0; i < score.Length; i++)
+        //    {
+        //        sum = sum + score[i];
+        //    }
+        //    double average = sum / score.Length;
+        //    return Math.Round(average, 2);
+        //}
+        //3、完成“猜数字”游戏，方法名GuessMe()：
+        //随机生成一个大于0小于1000的整数
+        //用户输入一个猜测值，系统进行判断，告知用户猜测的数是“大了”，还是“小了” 
+        //没猜中可以继续猜，但最多不能超过10次         //具体的思路：应该要把用户的输入值给考虑到位，如果出现不符合要求的输入值怎么办？
+        //如果5次之内猜中，输出：你真牛逼！            
+        //如果8次之内猜中，输出：不错嘛！ 
+        //10次还没猜中，输出：(～￣(OO)￣)ブ 
+
+        //http://17bang.ren/Article/303
+        //作业：C#面向过程：方法进阶：值/引用传递。
+        //作业题目：1、利用ref调用Swap()方法交换两个同学的床位号
+        //static void Swap(ref int bednumber1, ref int bednumber2)
+        //{
+        //    int temp = bednumber1;
+        //    bednumber1 = bednumber2;
+        //    bednumber2 = temp;
+        //}
+        //2、将登陆的过程封装成一个方法LogOn()，调用之后能够获得：
+        //（1）、true/false，表示登陆是否成功
+        //（2）、string，表示登陆失败的原因
+        //static bool LogOn(string username, string password, string verificationcode, out string reason)
+        //{
+        //    verificationcode = "ut91";
+        //    username = "yezi";
+        //    password = "1234";
+        //    if (verificationcode == Console.ReadLine ())
+        //    {
+        //        if (username == Console.ReadLine ())
+        //        {
+        //            if (password == Console.ReadLine ())
+        //            {
+        //                reason = " 恭喜！登陆成功";
+        //                return true;
+        //            }
+        //            else
+        //            {
+        //                reason = " *密码错误* ";
+        //                return false;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            reason = " *用户名不存在* ";
+        //            return false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        reason = " *验证码错误* ";
+        //        return false;
+        //    } 
+        //}
+        //http://17bang.ren/Article/641
+        //作业：C#方法进阶：参数： 重载/可选/params
+        //作业题目:1、定义一个生成数组的方法：int[] GetArray()，其元素随机生成从小到大排列。利用可选参数控制： 
+        //           最小值min（默认为1） 
+        //           相邻两个元素之间的最大差值gap（默认为5）
+        //           元素个数length（默认为10个） 
+        //2、实现二分查找，方法名BinarySeek(int[] numbers, int target)： 
+        //传入一个有序（从大到小/从小到大）数组和数组中要查找的元素
+        //如果找到，返回该元素所在的下标；否则，返回-1 
+
+
+        //http://17bang.ren/Article/305
+        //面向对象的作业:
+        //观察“一起帮”的: 
+        //1、注册/登录功能，定义一个User类，包含字段：Name（用户名）、Password（密码）和 邀请人（InvitedBy），和方法：Register()、Login() 
+        //2、求助版块，定义一个类Problem，包含字段：标题（Title）、正文（Body）、悬赏（Reward）、发布时间（PublishDateTime）和作者（Author），和方法Publish()
+        //static void Publish()
+        //{
+
+        //}
+        //3、帮帮币版块，定义一个类HelpMoney，包含你认为应该包含的字段和方法
+        //4、为这些类的字段和方法设置合适的访问修饰符。 
 
 
 
