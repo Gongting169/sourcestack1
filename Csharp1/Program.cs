@@ -7,29 +7,6 @@ namespace Csharp1
     {
         static void Main(string[] args)
         {
-            ////调用这些类的有参合无参构造函数：
-            //User zdh = new User();
-            ////Problem lw = new Problem();
-            //HelpMoney zl = new HelpMoney();
-            //zdh.LogIn(zdh);
-            //zdh.Register(zdh);
-            ////lw.Publish();
-            //zl.BangMoney();
-            ////调用索引器
-            ////Problem fg = new Problem();
-            ////Console.WriteLine(fg[1]); 
-
-            //// 被多少人误解继承里面的作业；调用
-            //Article lzb = new Article();
-
-                MimicStack lw = new MimicStack(10);
-                lw.push(2);
-
-
-
-
-
-
 
             //http://17bang.ren/Article/292
             //作业：运算符和表达式

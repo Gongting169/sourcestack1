@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-    class Suggest : Content
+   public  class Suggest : Content
     {
         //https://zhuanlan.zhihu.com/p/92535455 被多少人误解继承里面的作业：
         // 2、观察一起帮的求助（Problem）、文章（Article）和意见建议（Suggest），根据他们的特点，抽象出一个父类：内容（Content）
@@ -16,5 +16,11 @@ namespace CSharplearn
         //继承自父类的属性和方法
         //自己的属性和方法
         //4、再为之前所有类（含User、HelpMoney等）抽象一个基类：Entity，包含一个只读的Id属性。试一试，Suggest能有Id属性么？
+
+        //https://zhuanlan.zhihu.com/p/93053223 你真的明白什么是多态吗?里面的作业：
+     public  override  void Release()
+        {
+            Console.WriteLine("不需要帮帮币");
+        }
     }
 }

@@ -17,8 +17,5 @@ namespace CSharplearn
         {
             return instance;
         }
-
-        
-
     }
 }
