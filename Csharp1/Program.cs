@@ -5,14 +5,35 @@ namespace Csharp1
 {
     public class Program : Entity
     {
+        //https://zhuanlan.zhihu.com/p/94590192
+        //面向对象：结构和日期里面的作业：
+        //源栈的学费是按周计费的，所以请实现这两个功能：
+        //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期  //datetime是当前时间，万一是具体的某个时间呢？
+        static DateTime GetDate()
+        {
+            return DateTime.Now.AddDays(5);
+        }
+        static DateTime GetDate(DateTime  month )
+        {
+            return DateTime.Now.AddMonths(3);
+        }
+        static DateTime GetDate(DateTime date ,DateTime time  )
+        {
+            return DateTime.Now.AddYears(2);
+        }
+      
+        
+
+        //给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
         static void Main(string[] args)
         {
             //https://zhuanlan.zhihu.com/p/94590192
             //面向对象：结构和日期里面的作业：
             //1、用代码证明struct定义的类型是值类型
-            //源栈的学费是按周计费的，所以请实现这两个功能：
-            //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期
-            //给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
+            Console.WriteLine(Prove.j);
+
+          
+            DateTime.
 
 
 

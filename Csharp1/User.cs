@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-     sealed  public class User:Entity 
+     sealed  public class User:Entity,ISendMessage,IChat 
     {
         //https://zhuanlan.zhihu.com/p/92362781  基础中的类和对象里面的作业：
         //    观察“一起帮”的：
@@ -64,7 +64,6 @@ namespace CSharplearn
             }
 
         }
-
         // https://zhuanlan.zhihu.com/p/92470130 进一步封装里面的作业：
         //1、将之前User/Problem/HelpMoney类的字段封装成属性，其中：
         //user.Password在类的外部只能改不能读
@@ -112,6 +111,13 @@ namespace CSharplearn
         //继承自父类的属性和方法
         //自己的属性和方法
         //4、再为之前所有类（含User、HelpMoney等）抽象一个基类：Entity，包含一个只读的Id属性。试一试，Suggest能有Id属性么？
+
+        //https://zhuanlan.zhihu.com/p/93224519
+        //一起帮还可以在好友间发私信，所有又有了IChat接口，其中也有一个Send()方法声明。假设User类同时继承了ISendMessage和IChat，如何处理？
+        public void Send()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
