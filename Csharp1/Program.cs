@@ -8,34 +8,32 @@ namespace Csharp1
         //https://zhuanlan.zhihu.com/p/94590192
         //面向对象：结构和日期里面的作业：
         //源栈的学费是按周计费的，所以请实现这两个功能：
-        //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期  //datetime是当前时间，万一是具体的某个时间呢？
-        static DateTime GetDate()
+        //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期  //还有很多问题没有实现，比如用户输错，故意的，不符合要求的，用if else和tryparse判断
+        public static void GetDate(int day, int month,int weeks)
         {
-            return DateTime.Now.AddDays(5);
-        }
-        static DateTime GetDate(DateTime  month )
-        {
-            return DateTime.Now.AddMonths(3);
-        }
-        static DateTime GetDate(DateTime date ,DateTime time  )
-        {
-            return DateTime.Now.AddYears(2);
-        }
-      
-        
-
+            Console.WriteLine(DateTime.Now.AddDays(day));
+            Console.WriteLine(DateTime.Now.AddMonths(month));
+            Console.WriteLine(DateTime.Now.AddDays( weeks * 7));
+        } 
         //给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
+        public static  void GetWeek()
+        {
+            for (int i = 1; i <DateTime.Now.AddYears(-1).Day ; i++)
+            {
+                    Console.WriteLine($"第{i}周：{DateTime.Now.AddYears(-1)}年{DateTime.Now.Month}月{DateTime.Now.Day}日————" +
+                        $"{DateTime.Now.AddYears(-1)}年{DateTime.Now.Month}月{DateTime.Now.AddDays(+6)}日");
+            }
+        }
         static void Main(string[] args)
         {
             //https://zhuanlan.zhihu.com/p/94590192
             //面向对象：结构和日期里面的作业：
             //1、用代码证明struct定义的类型是值类型
-            Console.WriteLine(Prove.j);
+            //Console.WriteLine(Prove.j);
 
-          
-            DateTime.
+            GetDate(3, 2, 5);
 
-
+            Console.WriteLine(DateTime.Now.AddYears(-1).DayOfYear);
 
 
 
