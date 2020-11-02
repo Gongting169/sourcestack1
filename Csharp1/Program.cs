@@ -33,10 +33,10 @@ namespace Csharp1
 
             GetDate(3, 2, 5);
 
-            Console.WriteLine(DateTime.Now.AddYears(-1).DayOfYear);
+            
 
 
-
+            
 
 
             //进一步封装作业里面的调用：
