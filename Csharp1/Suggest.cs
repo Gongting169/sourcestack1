@@ -6,13 +6,12 @@ namespace CSharplearn
 {
     public class Suggest : Content
     {
-        //https://zhuanlan.zhihu.com/p/92535455 被多少人误解继承里面的作业：
-        //3、实例化文章和意见建议，调用他们：
-        //继承自父类的属性和方法
-        //自己的属性和方法
+        public Suggest(string kind) : base("fg")
+        {
+        }
 
         //https://zhuanlan.zhihu.com/p/93053223 你真的明白什么是多态吗?里面的作业：
-        public  override  void Release()
+        public override void Release()
         {
             Console.WriteLine("不需要帮帮币");
         }

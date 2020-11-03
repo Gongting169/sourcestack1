@@ -5,16 +5,6 @@ namespace Csharp1
 {
     public class Program : Entity
     {
-        //https://zhuanlan.zhihu.com/p/94590192
-        //面向对象：结构和日期里面的作业：
-        //源栈的学费是按周计费的，所以请实现这两个功能：
-        //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期  //还有很多问题没有实现，比如用户输错，故意的，不符合要求的，用if else和tryparse判断
-        public static void GetDate(int day, int month, int weeks)
-        {
-            Console.WriteLine(DateTime.Now.AddDays(day));
-            Console.WriteLine(DateTime.Now.AddMonths(month));
-            Console.WriteLine(DateTime.Now.AddDays(weeks * 7));
-        }
         //给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
         public static bool GetWeek(int year, int index, out DateTime first, out DateTime last)
         {
@@ -59,34 +49,32 @@ namespace Csharp1
             }//else nothing
             return true;
         }
-
         static void Main(string[] args)
         {
             //https://zhuanlan.zhihu.com/p/94590192
             //面向对象：结构和日期里面的作业：
             //1、用代码证明struct定义的类型是值类型
             //Console.WriteLine(Prove.j);
+            //2、Getdate()的调用：
+            DateTime date = new DateTime(2019, 1, 8);
 
-            GetDate(3, 2, 5);
+
             //https://zhuanlan.zhihu.com/p/94590467 不一样的权限管理：枚举和位运算的作业：
             //2、声明一个令牌管理（TokenManager）类：
             //使用私有的Token枚举_tokens存储所具有的权限
-            TokenManager gty = new TokenManager();
-            //gty.tokens =  (Token)gty.tokens | Token.Admin;
-            //gty.tokens[0] = Token.SuperAdmin;
-            //gty.tokens[1] = Token.Admin;
-            //gty.tokens[2] = Token.Blogger;
-            //gty.tokens[3] = Token.Newbie;
-            //gty.tokens[4] = Token.Registered;
-            //Console.WriteLine(gty.tokens);
+            TokenManager tokenManager = new TokenManager();
+            //Token tokens = Token.Admin |Token.Blogger |Token.Newbie |Token.Registered |Token.SuperAdmin ;
+            //Console.WriteLine(tokens);
+            Console.WriteLine(tokenManager.Add(Token.Newbie));
+
 
 
             //进一步封装作业里面的调用：
             Problem problem = new Problem("真好");
             User user = new User("gty", "326");
             //被多少人误解的继承作业里面的调用：
-            Article article = new Article();
-            Suggest suggest = new Suggest();
+            Article article = new Article("fg");
+            Suggest suggest = new Suggest("fg");
             Console.WriteLine(article.Author);
             Console.WriteLine(article.Comment);
             Console.WriteLine(article.PublishTime);

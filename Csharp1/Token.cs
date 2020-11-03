@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-     enum Token 
+    public enum Token
     {
         //https://zhuanlan.zhihu.com/p/94590467 不一样的权限管理：枚举和位运算的作业：
         //1、声明一个令牌（Token）枚举，包含值：SuperAdmin、Admin、Blogger、Newbie、Registered。
