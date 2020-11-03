@@ -9,21 +9,57 @@ namespace Csharp1
         //面向对象：结构和日期里面的作业：
         //源栈的学费是按周计费的，所以请实现这两个功能：
         //函数GetDate()，能计算一个日期若干（日 / 周 / 月）后的日期  //还有很多问题没有实现，比如用户输错，故意的，不符合要求的，用if else和tryparse判断
-        public static void GetDate(int day, int month,int weeks)
+        public static void GetDate(int day, int month, int weeks)
         {
             Console.WriteLine(DateTime.Now.AddDays(day));
             Console.WriteLine(DateTime.Now.AddMonths(month));
-            Console.WriteLine(DateTime.Now.AddDays( weeks * 7));
-        } 
-        //给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
-        public static  void GetWeek()
-        {
-            for (int i = 1; i <DateTime.Now.AddYears(-1).Day ; i++)
-            {
-                    Console.WriteLine($"第{i}周：{DateTime.Now.AddYears(-1)}年{DateTime.Now.Month}月{DateTime.Now.Day}日————" +
-                        $"{DateTime.Now.AddYears(-1)}年{DateTime.Now.Month}月{DateTime.Now.AddDays(+6)}日");
-            }
+            Console.WriteLine(DateTime.Now.AddDays(weeks * 7));
         }
+        //给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
+        public static bool GetWeek(int year, int index, out DateTime first, out DateTime last)
+        {
+            first = DateTime.MinValue;
+            last = DateTime.MinValue;
+            if (year < 1700 || year > 9999)
+            {
+                return false;//"年份超限"
+            }
+            if (index < 1 || index > 53)
+            {
+                return false; //"周数错误"
+            }
+            DateTime startDay = new DateTime(year, 1, 1);  //该年第一天
+            DateTime endDay = new DateTime(year + 1, 1, 1).AddMilliseconds(-1);
+            int dayOfWeek = Convert.ToInt32(startDay.DayOfWeek);  //该年第一天为星期几
+            if (index == 1)
+            {
+                first = startDay;
+                if (dayOfWeek == 6)
+                {
+                    last = first;
+                }
+                else
+                {
+                    last = startDay.AddDays((6 - dayOfWeek));
+                }
+            }
+            else
+            {
+                first = startDay.AddDays((7 - dayOfWeek) + (index - 2) * 7); //index周的起始日期
+                last = first.AddDays(6);
+                if (last > endDay)
+                {
+                    last = endDay;
+                }//else nothing
+            }
+            if (first > endDay)  //startDayOfWeeks不在该年范围内
+            {
+                //"输入周数大于本年最大周数";
+                return false;
+            }//else nothing
+            return true;
+        }
+
         static void Main(string[] args)
         {
             //https://zhuanlan.zhihu.com/p/94590192
@@ -32,11 +68,17 @@ namespace Csharp1
             //Console.WriteLine(Prove.j);
 
             GetDate(3, 2, 5);
-
-            
-
-
-            
+            //https://zhuanlan.zhihu.com/p/94590467 不一样的权限管理：枚举和位运算的作业：
+            //2、声明一个令牌管理（TokenManager）类：
+            //使用私有的Token枚举_tokens存储所具有的权限
+            TokenManager gty = new TokenManager();
+            //gty.tokens =  (Token)gty.tokens | Token.Admin;
+            //gty.tokens[0] = Token.SuperAdmin;
+            //gty.tokens[1] = Token.Admin;
+            //gty.tokens[2] = Token.Blogger;
+            //gty.tokens[3] = Token.Newbie;
+            //gty.tokens[4] = Token.Registered;
+            //Console.WriteLine(gty.tokens);
 
 
             //进一步封装作业里面的调用：
