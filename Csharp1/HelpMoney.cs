@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-    public  class HelpMoney:Entity 
+    public class HelpMoney : Entity
     {
         //https://zhuanlan.zhihu.com/p/92362781 面向对象：基础中的类和对象里面的作业：
         //    观察“一起帮”的：
@@ -15,6 +15,6 @@ namespace CSharplearn
         {
 
         }
-
+      
     }
 }

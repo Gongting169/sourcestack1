@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sourcestack1", "RazorPage\s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharplearn", "Csharp1\CSharplearn.csproj", "{9DAB9575-D105-4880-895B-65CCA05C8E2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfStudy", "SelfStudy\SelfStudy.csproj", "{8B26504E-A57A-4BE5-9D47-F711D123CF59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelfStudy", "SelfStudy\SelfStudy.csproj", "{8B26504E-A57A-4BE5-9D47-F711D123CF59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestProject1", "NUnitTestProject1\NUnitTestProject1.csproj", "{52F5174D-26B6-48AA-A56A-6D3CEB04F20C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{8B26504E-A57A-4BE5-9D47-F711D123CF59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B26504E-A57A-4BE5-9D47-F711D123CF59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B26504E-A57A-4BE5-9D47-F711D123CF59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52F5174D-26B6-48AA-A56A-6D3CEB04F20C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52F5174D-26B6-48AA-A56A-6D3CEB04F20C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52F5174D-26B6-48AA-A56A-6D3CEB04F20C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52F5174D-26B6-48AA-A56A-6D3CEB04F20C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

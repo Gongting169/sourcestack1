@@ -1,71 +1,44 @@
 ﻿using CSharplearn;
 using System;
+using System.Reflection;
 
 namespace Csharp1
 {
     public class Program : Entity
     {
-        //给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
-        public static bool GetWeek(int year, int index, out DateTime first, out DateTime last)
-        {
-            first = DateTime.MinValue;
-            last = DateTime.MinValue;
-            if (year < 1700 || year > 9999)
-            {
-                return false;//"年份超限"
-            }
-            if (index < 1 || index > 53)
-            {
-                return false; //"周数错误"
-            }
-            DateTime startDay = new DateTime(year, 1, 1);  //该年第一天
-            DateTime endDay = new DateTime(year + 1, 1, 1).AddMilliseconds(-1);
-            int dayOfWeek = Convert.ToInt32(startDay.DayOfWeek);  //该年第一天为星期几
-            if (index == 1)
-            {
-                first = startDay;
-                if (dayOfWeek == 6)
-                {
-                    last = first;
-                }
-                else
-                {
-                    last = startDay.AddDays((6 - dayOfWeek));
-                }
-            }
-            else
-            {
-                first = startDay.AddDays((7 - dayOfWeek) + (index - 2) * 7); //index周的起始日期
-                last = first.AddDays(6);
-                if (last > endDay)
-                {
-                    last = endDay;
-                }//else nothing
-            }
-            if (first > endDay)  //startDayOfWeeks不在该年范围内
-            {
-                //"输入周数大于本年最大周数";
-                return false;
-            }//else nothing
-            return true;
-        }
         static void Main(string[] args)
         {
+            //https://zhuanlan.zhihu.com/p/93440022 面向对象：反射和特性里面的作业
+            //4、用反射获取Publish()上的特性实例，输出其中包含的信息
+            // Attribute attribute1 = HelpMoneyChangedAttribute.GetCustomAttribute
+            //    (typeof(ContentService ),typeof (HelpMoneyChangedAttribute));
+            //Attribute attribute2 = HelpMoneyChangedAttribute.GetCustomAttribute
+            //    (typeof(Problem), typeof(HelpMoneyChangedAttribute));
+            //Console.WriteLine(((HelpMoneyChangedAttribute)attribute1).Amount);
+            //Console.WriteLine(((HelpMoneyChangedAttribute)attribute2).Amount);
+
+            //https://zhuanlan.zhihu.com/p/93440022 面向对象：反射和特性里面的作业
+            //面向对象：反射和特性里面作业的调用：
+            //Suggest gty = new Suggest("fg");
+            //Console.WriteLine(gty.ChangeTime(2020/9/1, 2019/2/3));
+            //DateTime lw = new DateTime(2020/9/1,2019/6/5);
+
             //https://zhuanlan.zhihu.com/p/94590192
             //面向对象：结构和日期里面的作业：
             //1、用代码证明struct定义的类型是值类型
             //Console.WriteLine(Prove.j);
             //2、Getdate()的调用：
             DateTime date = new DateTime(2019, 1, 8);
-
-
+            Prove prove = new Prove();
+            prove.GetDate(date, 8, Unit.day);
             //https://zhuanlan.zhihu.com/p/94590467 不一样的权限管理：枚举和位运算的作业：
             //2、声明一个令牌管理（TokenManager）类：
             //使用私有的Token枚举_tokens存储所具有的权限
             TokenManager tokenManager = new TokenManager();
             //Token tokens = Token.Admin |Token.Blogger |Token.Newbie |Token.Registered |Token.SuperAdmin ;
             //Console.WriteLine(tokens);
-            Console.WriteLine(tokenManager.Add(Token.Newbie));
+            Token token = new Token();
+            Console.WriteLine(tokenManager.Add(token));
 
 
 
@@ -77,7 +50,7 @@ namespace Csharp1
             Suggest suggest = new Suggest("fg");
             Console.WriteLine(article.Author);
             Console.WriteLine(article.Comment);
-            Console.WriteLine(article.PublishTime);
+            //Console.WriteLine(article.PublishTime);
             Console.WriteLine(article.Reward);
             Console.WriteLine(article.Title);
             article.Release();

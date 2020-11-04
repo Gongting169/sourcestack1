@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace CSharplearn
@@ -25,6 +26,26 @@ namespace CSharplearn
         public override void Disagree()
         {
             Bangpoint--;
+        }
+
+        //https://zhuanlan.zhihu.com/p/93440022 面向对象：反射和特性里面的作业
+        //2、在Content之外封装一个方法，可以修改Content的CreateTime和PublishTime
+
+        public bool ChangeTime(DateTime dateTime, DateTime time)
+        {
+            Suggest gty = new Suggest("fg");
+            if (true)//不知道该做什么条件判断
+            {
+                gty.GetType().GetProperty("createTime", BindingFlags.NonPublic | BindingFlags.Instance)
+                                 .SetValue(gty, dateTime);
+                gty.GetType().GetProperty("PublishTime", BindingFlags.Public | BindingFlags.Instance)
+                                .SetValue(gty.PublishTime, time);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

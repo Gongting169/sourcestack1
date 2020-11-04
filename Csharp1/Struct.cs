@@ -39,7 +39,50 @@ namespace CSharplearn
             }
             return day;
         }
-
+        //给定任意一个年份，就能按周排列显示每周的起始日期，如下图所示：
+        public static bool GetWeek(int year, int index, out DateTime first, out DateTime last)
+        {
+            first = DateTime.MinValue;
+            last = DateTime.MinValue;
+            if (year < 1700 || year > 9999)
+            {
+                return false;//"年份超限"
+            }
+            if (index < 1 || index > 53)
+            {
+                return false; //"周数错误"
+            }
+            DateTime startDay = new DateTime(year, 1, 1);  //该年第一天
+            DateTime endDay = new DateTime(year + 1, 1, 1).AddMilliseconds(-1);
+            int dayOfWeek = Convert.ToInt32(startDay.DayOfWeek);  //该年第一天为星期几
+            if (index == 1)
+            {
+                first = startDay;
+                if (dayOfWeek == 6)
+                {
+                    last = first;
+                }
+                else
+                {
+                    last = startDay.AddDays((6 - dayOfWeek));
+                }
+            }
+            else
+            {
+                first = startDay.AddDays((7 - dayOfWeek) + (index - 2) * 7); //index周的起始日期
+                last = first.AddDays(6);
+                if (last > endDay)
+                {
+                    last = endDay;
+                }//else nothing
+            }
+            if (first > endDay)  //startDayOfWeeks不在该年范围内
+            {
+                //"输入周数大于本年最大周数";
+                return false;
+            }//else nothing
+            return true;
+        }
 
 
     }

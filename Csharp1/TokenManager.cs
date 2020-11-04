@@ -25,22 +25,29 @@ namespace CSharplearn
                 return false;
             }
         }
-        public void Remove(TokenManager tokenManager)
+        public bool  Remove(Token tokens)
         {
             if (((Token)tokens & Token.Registered) == Token.Registered)
             {
-                tokenManager.tokens = tokenManager.tokens ^ Token.Registered;
+                tokens = tokens ^ Token.Registered;
+                return true;
             }
             else
             {
                 Console.WriteLine("错误信息：没有该权限");
+                return false;
             }
         }
-        public void Has(TokenManager tokenManager)
+        public Token  Has(Token tokens)
         {
             if (((Token)tokens & Token.Registered) == Token.Registered)
             {
-                Console.WriteLine(Token.Registered);
+               return  Token.Registered;
+            }
+            else
+            {
+                Console.WriteLine("错误信息：没有该权限");
+                return tokens ;
             }
         }
         //3、User类中添加一个Tokens属性，类型为TokenManager
