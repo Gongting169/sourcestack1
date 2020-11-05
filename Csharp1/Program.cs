@@ -1,8 +1,9 @@
-﻿using CSharplearn;
+﻿using Csharp1;
+using CSharplearn;
 using System;
 using System.Reflection;
 
-namespace Csharp1
+namespace CSharplearn
 {
     public class Program : Entity
     {

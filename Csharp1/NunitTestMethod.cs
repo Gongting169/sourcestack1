@@ -13,7 +13,7 @@ namespace CSharplearn
         {
             int max = Array[0];
             int i = 1;
-            while (i < Array.Length)
+            while (i < Array.Length-1)
             {
                 if (Array[i] > max)
                 {
@@ -23,28 +23,29 @@ namespace CSharplearn
             }
             return max;
         }
+
         //3、找到100以内的所有质数
-        public static int GetPrime(int start, int end)
-        {
-            for (int i = 2; i < start; i++)
-            {
-                for (int j = 2; j < end; j++)
-                {
-                    if (i % j == 0 && i != j)
-                    {
-                        return -1;
-                    }
-                    else if (i % j == 0 && i == j)
-                    {
-                        return i;
-                    }
-                    else
-                    {
-                        return -1;
-                    }
-                }
-            }
-        }
+        //public static int GetPrime(int start, int end)
+        //{
+        //    for (int i = 2; i < start; i++)
+        //    {
+        //        for (int j = 2; j < end; j++)
+        //        {
+        //            if (i % j == 0 && i != j)
+        //            {
+        //                return -1;
+        //            }
+        //            else if (i % j == 0 && i == j)
+        //            {
+        //                return i;
+        //            }
+        //            else
+        //            {
+        //                return -1;
+        //            }
+        //        }
+        //    }
+        //}
         //4、猜数字游戏
         //5、二分查找
         //6、栈的压入弹出
