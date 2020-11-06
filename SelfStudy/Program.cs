@@ -49,9 +49,57 @@ namespace SelfStudy
             //}
             //Console.Read();
 
+            //TokenManager tokenManager = new TokenManager();
+            //Token token = new Token();
+            //Console.WriteLine(tokenManager.T.Add(Token.Admin));
+            //Article lw = new Article();
+            //lw.AgreeBy(new User("ss", "ss"));
 
+            ////User lw = new User("1230", "ss");
+            ////lw.Tokens = new TokenManager();
+            ////lw.Tokens.Add(Token.Admin);
+            ////lw.Tokens.Add(Token.Blogger);
+            ////lw.Tokens.Remove(Token.Admin);
+            ////lw.Tokens.Remove(Token.Registered);
 
+            ////Console.WriteLine(lw.Tokens.Tokens);
 
+            ////MimicStack lw = new MimicStack(20);
+            ////User abc = new User("jkl", "sss");
+            ////lw.Push(abc);
+            ////User u = (User)lw.Pop();
+            ////Console.WriteLine(u.Name);
+            //DateTimeManager tm = new DateTimeManager();
+
+            //tm.WeekOfYear(2020);
+
+            //DateTime dt = new DateTime(2020, 2, 1);
+
+            //Console.WriteLine(tm.GetDate(dt, 29, Time.Day));
+
+            //Console.WriteLine(DateTime.Now.DayOfWeek);
+            //Console.WriteLine(new DateTime(2020 / 10 / 29).DayOfWeek);
+
+            //4、将源栈同学的成绩存入一个double数组中，用循环找到最高分和最低分
+            //double[] score = { 76.52, 68.76, 99.6, 85.9, 65.8, 48.5, 100.52 };
+            //double max = score[0];
+            //for (int i = 1; i < score.Length; i++) // 用循环找最高分
+            //{
+            //    if (score[i] > max)
+            //    {
+            //        max = score[i];
+            //    }// else continue
+            //}
+            //Console.WriteLine(max);
+            //double min = score[0];
+            //for (int i = 1; i < score.Length; i++) // 循环找最低分
+            //{
+            //    if (score[i] < min)
+            //    {
+            //        min = score[i];
+            //    }// else continue
+            //}
+            //Console.WriteLine(min);
 
 
 

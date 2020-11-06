@@ -11,4 +11,8 @@
     <None Remove="CSHARP1\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ProcedureObject\" />
+  </ItemGroup>
+
 </Project>

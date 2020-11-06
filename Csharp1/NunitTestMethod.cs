@@ -13,7 +13,7 @@ namespace CSharplearn
         {
             int max = Array[0];
             int i = 1;
-            while (i < Array.Length-1)
+            while (i < Array.Length - 1)
             {
                 if (Array[i] > max)
                 {
@@ -25,7 +25,7 @@ namespace CSharplearn
         }
 
         //3、找到100以内的所有质数
-        //public static int GetPrime(int start, int end)
+        //public static int GetPrime(int start, int end, int[] )
         //{
         //    for (int i = 2; i < start; i++)
         //    {
@@ -33,7 +33,7 @@ namespace CSharplearn
         //        {
         //            if (i % j == 0 && i != j)
         //            {
-        //                return -1;
+        //                break;
         //            }
         //            else if (i % j == 0 && i == j)
         //            {
@@ -54,5 +54,5 @@ namespace CSharplearn
 
 
     }
-    
+
 }

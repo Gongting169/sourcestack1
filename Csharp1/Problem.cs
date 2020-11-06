@@ -18,8 +18,7 @@ namespace CSharplearn
         // https://zhuanlan.zhihu.com/p/92470130 进一步封装里面的作业：
         //1、将之前User/Problem/HelpMoney类的字段封装成属性，其中：
         //problem.Reward不能为负数
-        public  int Reward { get; set; }
-        public int reward
+        public int Reward
         {
             set
             {
@@ -40,7 +39,7 @@ namespace CSharplearn
         }
         //4、设计一种方式，保证：
         //每一个Problem对象一定有Body赋值
-        public Problem(string body):base("fg")
+        public Problem(string body) : base("fg")
         {
             _body = body;
         }

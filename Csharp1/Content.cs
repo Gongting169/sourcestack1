@@ -38,10 +38,8 @@ namespace CSharplearn
         public User Observer { get; set; }
         public int Bangpoint { get; set; }
 
-
         //https://zhuanlan.zhihu.com/p/93440022 面向对象：反射和特性里面的作业
         //1、之前的Content类，其中的CreateTime（创建时间）和PublishTime（发布时间）都是只读的属性，想一想他们应该在哪里赋值比较好，并完成相应代码
-        //2、在Content之外封装一个方法，可以修改Content的CreateTime和PublishTime
         private DateTime createTime { get; }
         public DateTime PublishTime { get; }
         public Content(DateTime createTime, DateTime  PublishTime)
