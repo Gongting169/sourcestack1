@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CSharplearn
@@ -114,6 +115,63 @@ namespace CSharplearn
         //https://zhuanlan.zhihu.com/p/94590467 不一样的权限管理：枚举和位运算的作业：
         //3、User类中添加一个Tokens属性，类型为TokenManager
         public TokenManager Tokens { get; set; }
+
+        //https://zhuanlan.zhihu.com/p/93747718 string还是stringBuilder里面的作业：
+        //设计一个适用的机制，能确保用户（User）的昵称（Name）不能含有admin、17bang、管理员等敏感词。
+        public string Name1
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                if (value == "17bang" || value == "admin" || value == "管理员")
+                {
+                    Console.WriteLine("输入信息错误，请重新输入");
+                    return;
+                }
+                else
+                {
+                    _name = value;
+                }
+            }
+        }
+
+        //1、确保用户（User）的密码（Password）：
+        //长度不低于6
+        //必须由大小写英语字母、数字和特殊符号（~!@#$%^&*()_+）组成
+        //private string Password
+        //{
+        //    get
+        //    {
+        //        return _password;
+        //    }
+        //    set
+        //    {
+        //        if (value.Length <6)
+        //        {
+        //            Console.WriteLine("输入的长度不能小于6");
+        //            return;
+        //        }
+        //        else if (value.Concat(value.ToUpper(),value.ToLower()))
+        //        {
+        //        }
+        //        {
+        //            _password = 
+        //        }
+        //    }
+        //}
+
+        // public void GetPassword()
+        //{
+        //    int a;
+        //    char b;
+        //    if ()
+        //    {
+
+        //    }
+        //}
     }
 
 }

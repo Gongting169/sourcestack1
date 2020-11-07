@@ -17,7 +17,6 @@ namespace CSharplearn
         }
         //Content中的createTime，不能被子类使用，但只读属性PublishTime使用它为外部提供内容的发布时间
         //其他方法和属性请自行考虑，尽量贴近一起帮的功能实现。
-        public string Title { get; set; }
         public User Author { get; set; }
         public int Reward { get; set; }
         public string Comment { get; set; }
@@ -40,9 +39,9 @@ namespace CSharplearn
 
         //https://zhuanlan.zhihu.com/p/93440022 面向对象：反射和特性里面的作业
         //1、之前的Content类，其中的CreateTime（创建时间）和PublishTime（发布时间）都是只读的属性，想一想他们应该在哪里赋值比较好，并完成相应代码
-        private DateTime createTime { get; }
-        public DateTime PublishTime { get; }
-        public Content(DateTime createTime, DateTime  PublishTime)
+        public  DateTime createTime { get; private set; }
+        public DateTime PublishTime { get; set; }
+        public Content(DateTime createTime, DateTime PublishTime)
         {
             this.PublishTime = PublishTime;
             this.createTime = createTime;

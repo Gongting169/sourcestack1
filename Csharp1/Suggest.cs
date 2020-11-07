@@ -29,14 +29,12 @@ namespace CSharplearn
         }
 
         //7、在Content之外封装一个方法，可以修改Content的CreateTime和PublishTime
-        public bool ChangeTime(DateTime dateTime, DateTime time)
+        public void ChangeTime(Content content, DateTime dateTime/*, DateTime time*/)
         {
-            Suggest gty = new Suggest("fg");
-            gty.GetType().GetProperty("createTime", BindingFlags.NonPublic | BindingFlags.Instance)
-                             .SetValue(gty,dateTime);
-            gty.GetType().GetProperty("PublishTime", BindingFlags.Public | BindingFlags.Instance)
-                            .SetValue(gty.PublishTime, time);
-            return true;
+            typeof(Content).GetProperty("createTime", BindingFlags.Public | BindingFlags.Instance)
+                                .SetValue(content, dateTime);
+            //typeof(Content).GetProperty("PublishTime", BindingFlags.Public | BindingFlags.Instance)
+            //                .SetValue(content, time);
         }
     }
 }

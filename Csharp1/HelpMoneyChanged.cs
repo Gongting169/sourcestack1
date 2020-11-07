@@ -24,7 +24,7 @@ namespace CSharplearn
         {
 
         }
-        //7、在Content之外封装一个方法，可以修改Content的CreateTime和PublishTime
+
     }
 
 }

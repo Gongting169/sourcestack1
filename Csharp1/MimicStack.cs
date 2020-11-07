@@ -13,20 +13,20 @@ namespace CSharplearn
         //出/入栈检查，
         //如果压入的数据已超过栈的深度（最大容量），提示“栈溢出”
         //如果已弹出所有数据，提示“栈已空”
-        int[] Container;
+        Object[] Container;
         int top = 0;
         const int bottom = 0;
         public MimicStack(int length)
         {
-            Container = new int[length];
+            Container = new object[length];
         }
-        public void  push(params int[] element)
+        public void  push(params Object[] element)
         {
             for (int i = 0; i < element.Length-1; i++)
             {
-                if (top <= Container.Length -1)
+                if (top <= this.Container.Length -1 )
                 {
-                    Container[top] = element[i];
+                    this.Container[top]  = element[i];
                         top++;
                 }
                 else
@@ -35,7 +35,7 @@ namespace CSharplearn
                 }
             }
         }
-        public int pop()
+        public object pop()
         {
             if (top != bottom)
             {
@@ -48,5 +48,9 @@ namespace CSharplearn
                 return -1;
             }
         }
-    }
+
+        //https://zhuanlan.zhihu.com/p/93458057 万物皆对象：Object拆箱和装箱里面的作业：
+        //在https://source.dot.net/中查看源代码，了解为什么 Console.WriteLine(new Student()); 会输出Student类名
+    //使用object改造数据结构栈（MimicStack），并在出栈时获得出栈元素
+}
 }

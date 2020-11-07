@@ -10,11 +10,28 @@ namespace CSharplearn
     {
         static void Main(string[] args)
         {
+            //https://zhuanlan.zhihu.com/p/93747718 string还是stringBuilder里面的作业：调用
+
+
+
+
             //https://zhuanlan.zhihu.com/p/93458057 万物皆对象：Object拆箱和装箱里面的作业：
             //在https://source.dot.net/中查看源代码，了解为什么 Console.WriteLine(new Student()); 会输出Student类名
             //思考dynamic和var的区别，并用代码予以演示
+            //int a = 18;
+            //string b = "fg";
+            //var c = a;
+            //var d = b;
+            ////Console.WriteLine(c -d );
+            //dynamic gty = "yz";
+            //Console.WriteLine(gty -23);//dynamic会避开编译时的检查，但运行时会报错。var不行
             //构造一个能装任何数据的数组，并完成数据的读写
-            //使用object改造数据结构栈（MimicStack），并在出栈时获得出栈元素
+            dynamic[] dfg = new dynamic[] { 23, "fg", true, false, 85.96 };
+            for (int i = 0; i < dfg.Length; i++)
+            {
+                Console.WriteLine(dfg[i]);
+            }
+
 
 
             //https://zhuanlan.zhihu.com/p/93440022 面向对象：反射和特性里面的作业
@@ -31,19 +48,19 @@ namespace CSharplearn
             Console.WriteLine(((HelpMoneyChangedAttribute)attribute2).Amount);
             //https://zhuanlan.zhihu.com/p/93440022 面向对象：反射和特性里面的作业
             //面向对象：反射和特性里面作业的调用：
-            Suggest gty = new Suggest("fg");
-            DateTime lw = new DateTime(2020/9/1);
-            DateTime zl = new DateTime(2019/8/7);
-            Console.WriteLine(gty.ChangeTime(zl ,lw ));
+  
+            Content content = new Article();
+            Suggest lw = new Suggest("ss");
+            lw.ChangeTime(content  , new DateTime(2020,9,1));
+            Console.WriteLine(content.createTime); 
 
- 
             //https://zhuanlan.zhihu.com/p/94590192
             //面向对象：结构和日期里面的作业：
             //1、用代码证明struct定义的类型是值类型
             Console.WriteLine(Prove.j);
             //2、Getdate()的调用：
             DateTime date = new DateTime(2019, 1, 8);
-            Prove prove = new Prove();           
+            Prove prove = new Prove();
             Console.WriteLine(prove.GetDate(date, 8, Unit.week));
             //https://zhuanlan.zhihu.com/p/94590467 不一样的权限管理：枚举和位运算的作业：
             //2、声明一个令牌管理（TokenManager）类：
