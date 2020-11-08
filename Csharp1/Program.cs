@@ -32,8 +32,6 @@ namespace CSharplearn
                 Console.WriteLine(dfg[i]);
             }
 
-
-
             //https://zhuanlan.zhihu.com/p/93440022 面向对象：反射和特性里面的作业
             //4、用反射获取Publish()上的特性实例，输出其中包含的信息
             Attribute attribute1 = HelpMoneyChangedAttribute.GetCustomAttribute
@@ -51,9 +49,9 @@ namespace CSharplearn
   
             Content content = new Article();
             Suggest lw = new Suggest("ss");
-            lw.ChangeTime(content  , new DateTime(2020,9,1));
-            Console.WriteLine(content.createTime); 
-
+            lw.ChangeTime(content, new DateTime(2020,9,1),new DateTime(2019,8,27));
+            Console.WriteLine(content.createTime);
+            Console.WriteLine(content.PublishTime);
             //https://zhuanlan.zhihu.com/p/94590192
             //面向对象：结构和日期里面的作业：
             //1、用代码证明struct定义的类型是值类型
@@ -116,6 +114,7 @@ namespace CSharplearn
             //    Console.WriteLine(reason);
             //}
             Console.WriteLine();
+           
         }
     }
 }
