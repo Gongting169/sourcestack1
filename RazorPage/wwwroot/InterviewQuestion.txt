@@ -312,7 +312,10 @@ tdd其全称是Test-Driven Development（测试驱动开发），其核心是：
 2020年11月8日的面试题目：
 1、for循环和foreach循环有什么区别？ for循环可以用于数组和list集合，foreach循环可以用于集合,for循环的迭代基础是记数器和依靠下标（i++）在集合里还是通过下标来拿里面的元素
 ,foreach循环的基础是迭代器MoveNext(),foreach里面的item不能被赋值。直接就拿到了集合里面的元素。如果是键值对的形式，可以用foreach循环来拿值。只有集合才能foreach
-2、迭代器模式
+2、Git背后的原理是什么？
+3、如果提交冲突了，想要保留两个提交记录，怎么办？
+4、怎么避免提交冲突?
+5、GitHub的fork有什么用? 和collaborators又是怎么一回事？
 
 
 
