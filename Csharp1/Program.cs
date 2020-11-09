@@ -3,20 +3,23 @@ using CSharplearn;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CSharplearn
 {
     public class Program : Entity
     {
-        static void Main(string[] args)
+      static  void Main(string[] args)
         {
+
+
+
             //https://zhuanlan.zhihu.com/p/93747718 string还是stringBuilder里面的作业：调用
 
 
-
-
             //https://zhuanlan.zhihu.com/p/93458057 万物皆对象：Object拆箱和装箱里面的作业：
-            //在https://source.dot.net/中查看源代码，了解为什么 Console.WriteLine(new Student()); 会输出Student类名
+            //在https://source.dot.net/中查看源代码，了解为什么 Console.WriteLine(new Student()); 会输出Student类名//static Equal () 方法 判断两个对象相不相等
+
             //思考dynamic和var的区别，并用代码予以演示
             //int a = 18;
             //string b = "fg";
@@ -46,10 +49,10 @@ namespace CSharplearn
             Console.WriteLine(((HelpMoneyChangedAttribute)attribute2).Amount);
             //https://zhuanlan.zhihu.com/p/93440022 面向对象：反射和特性里面的作业
             //面向对象：反射和特性里面作业的调用：
-  
-            Content content = new Article();
-            Suggest lw = new Suggest("ss");
-            lw.ChangeTime(content, new DateTime(2020,9,1),new DateTime(2019,8,27));
+            Content content = new Suggest("zl");//仅是为了调用content变量中的createtime和publishtime
+
+           ContentCreateTime contentCreateTime = new ContentCreateTime ();
+            contentCreateTime.ChangeTime(content, new DateTime(2020, 9, 1), new DateTime(2019, 8, 27));
             Console.WriteLine(content.createTime);
             Console.WriteLine(content.PublishTime);
             //https://zhuanlan.zhihu.com/p/94590192
@@ -69,7 +72,6 @@ namespace CSharplearn
             //gty.Tokens.Add(Token.Blogger);
             //gty.Tokens.Remove(Token.Admin);
             //Console.WriteLine(gty.Tokens._tokens);
-
 
             //http://17bang.ren/Article/299
             //调用函数的作业：
@@ -114,7 +116,7 @@ namespace CSharplearn
             //    Console.WriteLine(reason);
             //}
             Console.WriteLine();
-           
+
         }
     }
 }

@@ -312,10 +312,26 @@ tdd其全称是Test-Driven Development（测试驱动开发），其核心是：
 2020年11月8日的面试题目：
 1、for循环和foreach循环有什么区别？ for循环可以用于数组和list集合，foreach循环可以用于集合,for循环的迭代基础是记数器和依靠下标（i++）在集合里还是通过下标来拿里面的元素
 ,foreach循环的基础是迭代器MoveNext(),foreach里面的item不能被赋值。直接就拿到了集合里面的元素。如果是键值对的形式，可以用foreach循环来拿值。只有集合才能foreach
-2、Git背后的原理是什么？
+2、Git背后的原理是什么？head指针来指向分支，checkout来更新工作区的记录，把分支上所提交的内容复制到主分支上，这叫merge，是单向的
+不是同步的,release到master,只会将release上新提交的内容复制到master上,不会将master的内容复制到release。分支已经被merge之后 ,才会显示出来。显示的是合并之后提交的信息，不是没有合并
+之前的信息，要在提交的分支上去找，当两个分支相同的位置都出现了不同的更改，git就无法自动merge，会报出conflict，要求我们resolve
+和其他版本控制工具不同，无论是再仓库还是工作区，git都没有真正的为每个分支创建“副本”，git使用HEAD来确定当前活跃（正在被使用）的分支 
+工作区总是“对标/比较/一致”HEAD指向的提交 ，实际上是创建一个新的“指针”，指针指向（当前分支中的）最后一次提交 ，不会让HEAD改变指向，改变HEAD的指向需要checkout。
+每一次，实际上就是 ？checkout实际上是将HEAD指向新的分支 checkout会更新工作区文件,一次提交,本质上是一条内容更改的记录，但该条记录同时记录着它的上一次。让当前分支指向此次（最近的）提交 
+远程分支存储在本地 ，除非fetch，本地保存的远程分支不会改变 ，以前的远程操作使用的是默认的远程分支 ，git push时可以指定远程的分支： ，如果不指定，默认同本地分支名 
+如果远程上没有这个分支，自动创建一个 ，push到远程仓库的分支不能正在被checkout ，如果 git fetch 不指定分支，将获取所有分支信息/数据 ，git merge可以将远程分支合并到本地分支（不需要同名）
+服务器上只有一个公用repository，向所有developer开放读/写权限 ，所有developers都向自己本地repository commit， 然后直接往公用repository上push ，这里要注意：先pull再pus
+服务器上有一个权威（官方）repository，repository向所有人开放读权限，禁止写权限 ，所有developer在服务器上有自己的fork（如果得到认可，fork其实也可以成为权威……） 
+可以向自己的fork push,但无法向权威repository 直接push,向别人的repository/fork提交内容,只能发出一股pull request,请求他人pull,然后由他人push,collaborators：方便。但是不便于代码质量控制
 3、如果提交冲突了，想要保留两个提交记录，怎么办？
 4、怎么避免提交冲突?
 5、GitHub的fork有什么用? 和collaborators又是怎么一回事？
+
+2020年11月9日的面试题目：
+1、什么是委托？ 具体有什么作用？
+2、什么是扩展方法，有什么作用？
+3、集合的继承结构是怎么样的？
+4、action 和func两个委托有什么区别？
 
 
 

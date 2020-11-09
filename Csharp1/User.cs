@@ -100,7 +100,6 @@ namespace CSharplearn
         //https://zhuanlan.zhihu.com/p/95261748 静态还是实例里面的作业：
         //4、想一想，为什么Publish()方法不是放置在User类中呢？用户（user）发布（Publish）一篇文章（article），不正好是user.Publish(article) 么？
 
-
         //https://zhuanlan.zhihu.com/p/93224519
         //一起帮还可以在好友间发私信，所有又有了IChat接口，其中也有一个Send()方法声明。假设User类同时继承了ISendMessage和IChat，如何处理？
         void ISendMessage.Send()
@@ -163,15 +162,7 @@ namespace CSharplearn
         //    }
         //}
 
-        // public void GetPassword()
-        //{
-        //    int a;
-        //    char b;
-        //    if ()
-        //    {
-
-        //    }
-        //}
+    
     }
 
 }
