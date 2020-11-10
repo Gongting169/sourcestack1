@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace CSharplearn
@@ -48,10 +49,82 @@ namespace CSharplearn
         //}
         //4、猜数字游戏
         //5、二分查找
+        public static int BinarySeek()
+        {
+            int[] seek = { 20, 25, 32, 46, 50, 62, 76, 81, 96, 99 };
+            int target = 25;
+            int right = seek.Length - 1;
+            int left = 0;
+            int middle;
+            while (left <= right)
+            {
+                middle = (left + right) / 2;
+                if (seek[left] == target)
+                {
+                    Console.WriteLine(left);
+                    break;
+                }
+                else if (seek[right] == target)
+                {
+                    Console.WriteLine(right);
+                    break;
+                }
+                else if (target < seek[middle])
+                {
+                    right = middle;
+                }
+                else if (target > seek[middle])
+                {
+                    left = middle;
+                }
+                else // target == seek[middle]
+                {
+                    Console.WriteLine(middle);
+                    break;
+                }
+            }
+            return 1;
+        }
         //6、栈的压入弹出
 
+        public static int push(int element, int Length)
+        {
+            int[] Container = new int[Length];
+            int top = 0;
+            for (int i = 0; i < Container.Length - 1; i++)
+            {
+                if (top <= Container.Length)
+                {
+                    Container[top] = element;
+                    top++;
+                }
+                else
+                {
+                    Console.WriteLine("栈以溢出");
+                }
+            }
+            return 1;
+        }
 
 
+        public static int pop()
+        {
+            push(25, 20);
+            int top = 0;
+            int bottom = 0;
+            if (top != bottom)
+            {
+                top--;
+                return top;
+            }
+            else
+            {
+                Console.WriteLine("栈以空");
+                return -1;
+
+            }
+
+        }
 
     }
 

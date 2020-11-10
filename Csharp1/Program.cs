@@ -12,7 +12,7 @@ namespace CSharplearn
       static  void Main(string[] args)
         {
 
-
+            NunitTestMethod.BinarySeek();
 
             //https://zhuanlan.zhihu.com/p/93747718 string还是stringBuilder里面的作业：调用
 
