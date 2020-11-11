@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-    sealed public class User : Entity, ISendMessage, IChat
+    sealed public class User : Entity<int>, ISendMessage, IChat
     {
         //https://zhuanlan.zhihu.com/p/92362781  基础中的类和对象里面的作业：
         //    观察“一起帮”的：
@@ -140,29 +140,31 @@ namespace CSharplearn
         //1、确保用户（User）的密码（Password）：
         //长度不低于6
         //必须由大小写英语字母、数字和特殊符号（~!@#$%^&*()_+）组成
-        //private string Password
+        //private string Password( string password)
         //{
-        //    get
-        //    {
-        //        return _password;
-        //    }
-        //    set
-        //    {
-        //        if (value.Length <6)
-        //        {
-        //            Console.WriteLine("输入的长度不能小于6");
-        //            return;
-        //        }
-        //        else if (value.Concat(value.ToUpper(),value.ToLower()))
-        //        {
-        //        }
-        //        {
-        //            _password = 
-        //        }
-        //    }
-        //}
 
-    
+        //}
+        public string GetUpper( string password)
+        {
+
+            return "QWERTYUIOPASDFGHJKLZXCVBNM  ";
+        }
+        public string GetNumber()
+        {
+            return "1234567890";
+        }
+        public string GetLower()
+        {
+            return "qwertyuiopasdfghjklzxcvbnm";
+        }
+        public string GetSpecial()
+        {
+            return "（~!@#$%^&*()_+）";
+        }
+
+
+
+
     }
 
 }

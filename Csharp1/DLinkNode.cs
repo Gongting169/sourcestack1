@@ -13,15 +13,15 @@ namespace CSharplearn
         {
 
         }
-        public void InsertAfter()
+        public void InsertAfter(DLinkNode node1)
         {
 
         }
-        public void InsertBefore()
+        public void InsertBefore(DLinkNode  node2)
         {
 
         }
-        public void Delete()
+        public void Delete(DLinkNode node3)
         {
 
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-    class MimicStack : Entity
+    class MimicStack : Entity<int>
     {
         //https://zhuanlan.zhihu.com/p/95261748 静态还是实例里面的作业：
         //5、自己实现一个模拟栈（MimicStack）类，入栈出栈数据均为int类型，包含如下功能：
@@ -51,5 +51,9 @@ namespace CSharplearn
 
         //https://zhuanlan.zhihu.com/p/93458057 万物皆对象：Object拆箱和装箱里面的作业：
         //使用object改造数据结构栈（MimicStack），并在出栈时获得出栈元素
+
+
+
+
     }
 }

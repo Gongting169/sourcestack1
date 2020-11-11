@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-    public abstract class Content : Entity
+    public abstract class Content : Entity<int>
     {
         //https://zhuanlan.zhihu.com/p/92535455 被多少人误解继承里面的作业：
         //2、观察一起帮的求助（Problem）、文章（Article）和意见建议（Suggest），根据他们的特点，抽象出一个父类：内容（Content）

@@ -7,16 +7,13 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace CSharplearn
 {
-    public class Program : Entity
+    public class Program : Entity<int>
     {
-      static  void Main(string[] args)
-        {
-
-            NunitTestMethod.BinarySeek();
-
+        static void Main(string[] args)
+        {             
             //https://zhuanlan.zhihu.com/p/93747718 string还是stringBuilder里面的作业：调用
-
-
+            Console.WriteLine(Stringbuilder.GetCount("ashjbvjbkvhaihiwqifbkafkvjzbha", "a"));
+            //Console.WriteLine(Stringbuilder.MimicJoin("-", "a", "b", "c", "d")); 
             //https://zhuanlan.zhihu.com/p/93458057 万物皆对象：Object拆箱和装箱里面的作业：
             //在https://source.dot.net/中查看源代码，了解为什么 Console.WriteLine(new Student()); 会输出Student类名//static Equal () 方法 判断两个对象相不相等
 
@@ -51,7 +48,7 @@ namespace CSharplearn
             //面向对象：反射和特性里面作业的调用：
             Content content = new Suggest("zl");//仅是为了调用content变量中的createtime和publishtime
 
-           ContentCreateTime contentCreateTime = new ContentCreateTime ();
+            ContentCreateTime contentCreateTime = new ContentCreateTime();
             contentCreateTime.ChangeTime(content, new DateTime(2020, 9, 1), new DateTime(2019, 8, 27));
             Console.WriteLine(content.createTime);
             Console.WriteLine(content.PublishTime);

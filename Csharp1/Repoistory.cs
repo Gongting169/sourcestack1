@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-    class Repoistory : Entity
+    class Repoistory : Entity<int>
     {
         //https://zhuanlan.zhihu.com/p/95261748 静态还是实例里面的作业：
         //1、定义一个仓库（Repoistory）类，用于存取对象，其中包含：

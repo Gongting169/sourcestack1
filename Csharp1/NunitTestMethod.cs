@@ -109,7 +109,6 @@ namespace CSharplearn
 
         public static int pop()
         {
-            push(25, 20);
             int top = 0;
             int bottom = 0;
             if (top != bottom)
