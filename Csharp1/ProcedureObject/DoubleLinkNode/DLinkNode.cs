@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CSharplearn
+namespace CSharplearn.ProcedureObject.DoubleLinkNode
 {
    public  class DLinkNode
     {
         public DLinkNode Previous { get; set; }
         public DLinkNode Next { get; set; }
-         
+
         public void AddBefore(DLinkNode node)
         {
 
@@ -17,7 +17,7 @@ namespace CSharplearn
         {
 
         }
-        public void InsertBefore(DLinkNode  node2)
+        public void InsertBefore(DLinkNode node2)
         {
 
         }
@@ -29,6 +29,5 @@ namespace CSharplearn
         {
 
         }
-
     }
 }

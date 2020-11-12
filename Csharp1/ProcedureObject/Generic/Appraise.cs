@@ -2,13 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CSharplearn
+namespace CSharplearn.ProcedureObject.Generic
 {
-    class Appraise
+    public  class Appraise
     {
-
-
-
-
     }
 }

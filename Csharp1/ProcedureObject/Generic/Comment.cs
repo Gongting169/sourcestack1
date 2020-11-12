@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CSharplearn
+namespace CSharplearn.ProcedureObject.Generic
 {
-    class KeyWord
+   public  class Comment
     {
-
-
-
     }
 }

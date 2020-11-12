@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
 using System.Text;
 
-namespace CSharplearn
+namespace CSharplearn.ProcedureObject.Generic
 {
-    public class Generic<T>
+   public  class Generic
     {
+
         //用泛型改造二分查找、堆栈和双向链表
         public void Getnumber()
         {
@@ -68,6 +67,5 @@ namespace CSharplearn
                 Console.WriteLine("栈以空");
             }
         }
-
     }
 }
