@@ -25,13 +25,10 @@ namespace CSharplearn
         {
 
         }
-        public void Swap()
+        public void Swap(DLinkNode node4)
         {
 
         }
-        public void FindBy()
-        {
 
-        }
     }
 }

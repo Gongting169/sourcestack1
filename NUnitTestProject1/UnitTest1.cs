@@ -14,8 +14,7 @@ namespace NUnitTestProject1
         [Test]
         public void GetMax()
         {
-            int max = NunitTestMethod.GetMax(new int[] { 2, 32, -1, 5, 96, 8, 65, 101 });
-            Assert.AreEqual(101, max);
+            Assert.AreEqual(101, NunitTestMethod.GetMax(new int[] { 2, 32, -1, 5, 96, 8, 65, 101 }));
         }
 
       

@@ -98,25 +98,96 @@ namespace NUnitTestProject1
             //1 [3]  2
             node2.InsertBefore(node3);
             Assert.IsNull(node1.Previous);
-            Assert.AreEqual(node3 ,node1.Next);
-            Assert.AreEqual(node1 ,node3.Previous);
-            Assert.AreEqual(node2 ,node3.Next);
-            Assert.AreEqual(node3 ,node2.Previous);
+            Assert.AreEqual(node3, node1.Next);
+            Assert.AreEqual(node1, node3.Previous);
+            Assert.AreEqual(node2, node3.Next);
+            Assert.AreEqual(node3, node2.Previous);
 
             // 2 [1]  3
             node3.InsertBefore(node1);
             Assert.IsNull(node2.Previous);
-            Assert.AreEqual(node1 ,node2.Next);
-            Assert.AreEqual(node2 ,node1.Previous);
-            Assert.AreEqual(node3 ,node1.Next);
-            Assert.AreEqual(node1 ,node3.Previous);
+            Assert.AreEqual(node1, node2.Next);
+            Assert.AreEqual(node2, node1.Previous);
+            Assert.AreEqual(node3, node1.Next);
+            Assert.AreEqual(node1, node3.Previous);
         }
         public void Delete()
         {
+            // 1 2 3  原来的顺序
+            //[1] 2 3 
+            node1.Delete(node1);
+            Assert.IsNull(node2.Previous);
+            Assert.AreEqual(node3, node2.Next);
+            Assert.AreEqual(node2, node3.Previous);
+
+            // 1  [2] 3 
+            node2.Delete(node2);
+            Assert.IsNull(node1.Previous);
+            Assert.AreEqual(node3, node1.Next);
+            Assert.AreEqual(node1, node3.Previous);
+
+            // 1  2 [3]
+            node3.Delete(node3);
+            Assert.IsNull(node1.Previous);
+            Assert.AreEqual(node2, node1.Next);
+            Assert.AreEqual(node1, node2.Previous);
+
+            // 只有一个
+            node2.Delete(node2);
+            node3.Delete(node3);
+            Assert.IsNull(node1.Previous);
+            Assert.IsNull(node1.Next);
+        }
+        public void Swap()
+        {
+            // 1 2 3 4 5 
+            // [1] 2 3 4 [5]  1和5交换
+            node5.Swap(node1);
+            Assert.IsNull(node5.Previous);
+            Assert.AreEqual(node2, node5.Next);
+            Assert.AreEqual(node5, node2.Previous);
+            Assert.AreEqual(node3, node2.Next);
+            Assert.AreEqual(node2, node3.Previous);
+            Assert.AreEqual(node4, node3.Next);
+            Assert.AreEqual(node3, node4.Previous);
+            Assert.AreEqual(node1, node4.Next);
+            Assert.AreEqual(node4, node1.Previous);
+            Assert.IsNull(node1.Next);
+
+            // [2] [1] 3 4 5   1和2交换
+            node2.Swap(node1);
+            Assert.IsNull(node2.Previous);
+            Assert.AreEqual(node1, node2.Next);
+            Assert.AreEqual(node2, node1.Previous);
+            Assert.AreEqual(node3, node1.Next);
+            Assert.AreEqual(node1, node3.Previous);
+            Assert.AreEqual(node4, node3.Next);
+            Assert.AreEqual(node3, node4.Previous);
+            Assert.AreEqual(node5, node4.Next);
+            Assert.AreEqual(node4, node5.Previous);
+            Assert.IsNull(node5.Next);
+
+            // [3] 2 [1] 4 5   1和3交换
+            node3.Swap(node1);
+            Assert.IsNull(node3.Previous);
+            Assert.AreEqual(node2, node3.Next);
+            Assert.AreEqual(node3, node2.Previous);
+            Assert.AreEqual(node1, node2.Next);
+            Assert.AreEqual(node2, node1.Previous);
+            Assert.AreEqual(node4, node1.Next);
+            Assert.AreEqual(node1, node4.Previous);
+            Assert.AreEqual(node5, node4.Next);
+            Assert.AreEqual(node4, node5.Previous);
+            Assert.IsNull(node5.Next);
+
+            // 1 [4] 3 [2] 5   2和4交换
+
+
+
+
 
 
         }
-
 
     }
 }

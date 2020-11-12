@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CSharplearn
+namespace CSharplearn.ProcedureObject.Enum
 {
     public enum Token
     {
@@ -13,6 +13,5 @@ namespace CSharplearn
         Blogger = 4,
         Newbie = 8,
         Registered = 16,
-
     }
 }

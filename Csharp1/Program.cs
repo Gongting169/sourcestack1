@@ -1,5 +1,6 @@
-﻿using Csharp1;
+﻿
 using CSharplearn;
+using CSharplearn.ProcedureObject.Enum;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -13,10 +14,8 @@ namespace CSharplearn
         {             
             //https://zhuanlan.zhihu.com/p/93747718 string还是stringBuilder里面的作业：调用
             Console.WriteLine(Stringbuilder.GetCount("ashjbvjbkvhaihiwqifbkafkvjzbha", "a"));
-            //Console.WriteLine(Stringbuilder.MimicJoin("-", "a", "b", "c", "d")); 
             //https://zhuanlan.zhihu.com/p/93458057 万物皆对象：Object拆箱和装箱里面的作业：
             //在https://source.dot.net/中查看源代码，了解为什么 Console.WriteLine(new Student()); 会输出Student类名//static Equal () 方法 判断两个对象相不相等
-
             //思考dynamic和var的区别，并用代码予以演示
             //int a = 18;
             //string b = "fg";
