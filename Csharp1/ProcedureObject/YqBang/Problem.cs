@@ -11,14 +11,14 @@ namespace CSharplearn
         //    观察“一起帮”的：
         //2、求助版块，定义一个类Problem，包含字段：标题（Title）、正文（Body）、悬赏（Reward）、发布时间（PublishDateTime）和作者（Author），和方法Publish()
         //4、为这些类的字段和方法设置合适的访问修饰符。
-        public  new string  Title { get; set; }
+        public   string  Title { get; set; }
         public string _body { get; set; }
         public DateTime PublishDateTime { get; set; }
         public new  User Author { get; set; }
         // https://zhuanlan.zhihu.com/p/92470130 进一步封装里面的作业：
         //1、将之前User/Problem/HelpMoney类的字段封装成属性，其中：
         //problem.Reward不能为负数
-        public int Reward
+        public new int Reward
         {
             set
             {

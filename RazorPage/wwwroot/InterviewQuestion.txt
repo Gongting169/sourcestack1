@@ -351,7 +351,7 @@ tdd其全称是Test-Driven Development（测试驱动开发），其核心是：
 2、什么是linq，有什么特点？有什么作用？ 在集合的增删改查中，最多的是查，以前我们只有用for和foreach来遍历查找，linq并非只针对集合 linq to Object，还可以linkq to db 
 、linq to xml文件、linq to webservice / linq针对于集合的操作都属于 linq to object ,以from 开头  有var ，以select结尾 、 还有where、，只要实现了Ienumarable的子类都可以进行集合的查找
 返回的结果类型为：Ienumerable类型，其中泛型还可以嵌套，比如：linq用了分组之后，它返回类型是Ienumerable<Igrouping<T,T>>,分组是还可以有其他方法，cout average 接口不能实例化，所以这些都是
-它的扩展方法，
+它的扩展方法。
 
 
 
