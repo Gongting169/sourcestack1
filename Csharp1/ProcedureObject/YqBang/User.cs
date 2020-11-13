@@ -140,31 +140,35 @@ namespace CSharplearn
         //1、确保用户（User）的密码（Password）：
         //长度不低于6
         //必须由大小写英语字母、数字和特殊符号（~!@#$%^&*()_+）组成
-        //private string Password( string password)
+        //public bool Password(string password)
         //{
-
+        //    if (password.Length < 6)
+        //    {
+        //        Console.WriteLine("密码的长度必须大于6");
+        //        return false;
+        //    }
+        //   if (password.Contains(GetUpper && GetNumber && GetLower && GetSpecial))
+        //    {
+        //        return true;
+        //    }
+        //    return true;
         //}
-        public string GetUpper( string password)
-        {
-
-            return "QWERTYUIOPASDFGHJKLZXCVBNM  ";
-        }
-        public string GetNumber()
-        {
-            return "1234567890";
-        }
-        public string GetLower()
-        {
-            return "qwertyuiopasdfghjklzxcvbnm";
-        }
-        public string GetSpecial()
-        {
-            return "（~!@#$%^&*()_+）";
-        }
-
-
-
-
+        //public string GetUpper()
+        //{
+        //    return "QWERTYUIOPASDFGHJKLZXCVBNM";
+        //}
+        //public string GetNumber()
+        //{
+        //    return "1234567890";
+        //}
+        //public string GetLower()
+        //{
+        //    return "qwertyuiopasdfghjklzxcvbnm";
+        //}
+        //public string GetSpecial()
+        //{
+        //    return "（~!@#$%^&*()_+）";
+        //}
     }
 
 }

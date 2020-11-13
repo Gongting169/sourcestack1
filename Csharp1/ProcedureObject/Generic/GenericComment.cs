@@ -4,7 +4,9 @@ using System.Text;
 
 namespace CSharplearn.ProcedureObject.Generic
 {
-   public  class Comment
+   public  class GenericComment
     {
+
+        
     }
 }

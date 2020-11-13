@@ -6,7 +6,6 @@ namespace CSharplearn.ProcedureObject.DoubleLinkNode
 {
    public  class NunitTestMethod
     {
-
         //https://zhuanlan.zhihu.com/p/94854332 争议TDD（测试驱动开发）
         //为之前作业添加单元测试，包括但不限于：
         //2、数组中找到最大值

@@ -20,11 +20,5 @@ namespace CSharplearn
                 return -1;
             } 
         }
-
-        //public static string  MimicJoin( params String[] value)
-        //{          
-     
-        //}
-
     }
 }
