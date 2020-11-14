@@ -6,5 +6,6 @@ namespace SelfStudy
 {
     class Person
     {
+        public  object name;
     }
 }

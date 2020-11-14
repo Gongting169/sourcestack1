@@ -45,6 +45,13 @@ namespace CSharplearn
             disagree.GenericComments = new List<GenericComment> { fg };
 
 
+            //调用泛型改造的二分查找，最大值，栈
+
+            Generic generic = new Generic();
+            Console.WriteLine(generic.GetMax<int>(new int[] { 15, 23, 39, 65, 78, 2, 36, 7 }, 0));
+            Console.WriteLine(generic.GetMax<string>(new string[] { "李四往", "23", "39", "65", "78", "2", "36", "张三李四" }, "张三"));
+            Console.WriteLine(Generic.Getnumber<int>(new int[] {2,17,26,35,48,59,61,96 }, 96));
+
 
             //https://zhuanlan.zhihu.com/p/93747718 string还是stringBuilder里面的作业：调用
             Console.WriteLine(Stringbuilder.GetCount("ashjbvjbkvhaihiwqifbkafkvjzbha", "a"));

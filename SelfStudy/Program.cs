@@ -102,7 +102,10 @@ namespace SelfStudy
             //Console.WriteLine(min);
 
 
-
+            foreach (Student item in new Student())
+            {
+                Console.WriteLine(item.name);
+            }
 
 
 
