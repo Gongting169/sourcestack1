@@ -140,35 +140,43 @@ namespace CSharplearn
         //1、确保用户（User）的密码（Password）：
         //长度不低于6
         //必须由大小写英语字母、数字和特殊符号（~!@#$%^&*()_+）组成
-        //public bool Password(string password)
-        //{
-        //    if (password.Length < 6)
-        //    {
-        //        Console.WriteLine("密码的长度必须大于6");
-        //        return false;
-        //    }
-        //   if (password.Contains(GetUpper && GetNumber && GetLower && GetSpecial))
-        //    {
-        //        return true;
-        //    }
-        //    return true;
-        //}
-        //public string GetUpper()
-        //{
-        //    return "QWERTYUIOPASDFGHJKLZXCVBNM";
-        //}
-        //public string GetNumber()
-        //{
-        //    return "1234567890";
-        //}
-        //public string GetLower()
-        //{
-        //    return "qwertyuiopasdfghjklzxcvbnm";
-        //}
-        //public string GetSpecial()
-        //{
-        //    return "（~!@#$%^&*()_+）";
-        //}
+        public string Password
+        {
+            set
+            {
+                if (value.Length < 6)
+                {
+                    Console.WriteLine("密码长度必须大于6");
+                }
+                else if (GetUpper(value, "abcdefghijklmnopqrstuvwxyz", "0123456789", "（~!@#$%^&*()_+）", "ABCDEFGHIJKLMNOPQRSTUVWXYZ") == true)
+                {
+                    Console.WriteLine("输入的密码正确：");
+                }
+                else
+                {
+                    Console.WriteLine("请重新输入密码：");
+                }
+            }
+            get { return _password; }
+        }
+
+        public bool GetUpper(string password, string lower, string number, string special, string upper)
+        {
+            char[] ofa = password.ToCharArray();
+            for (int i = 0; i < ofa.Length; i++)
+            {
+                if (lower.Contains(ofa[i]) && upper.Contains(ofa[i]) && special.Contains(ofa[i]) && number.Contains(ofa[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+
+
+
     }
 
 }

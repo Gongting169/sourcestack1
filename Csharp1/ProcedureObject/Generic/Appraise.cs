@@ -6,7 +6,7 @@ namespace CSharplearn.ProcedureObject.Generic
 {
     public class Appraise
     {
-
+        public string  name { get; set; }
         public int Agree { get; set; }
         public int Disagree { get; set; }
 

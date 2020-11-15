@@ -7,6 +7,7 @@ namespace CSharplearn
 {
     public class Article : Content
     {
+
         public Article() : base("fg")
         {
         }
@@ -56,6 +57,8 @@ namespace CSharplearn
         public IList<KeyWord> KeyWords { get; set; }
 
         public IList<Appraise> Appraises { get; set; }
+        public string name { get; set; }
+
     }
 
 

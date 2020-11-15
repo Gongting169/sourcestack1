@@ -9,37 +9,42 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace CSharplearn
 {
-    public class Program 
+    public class Program
     {
         static void Main(string[] args)
         {
+            KeyWord Csharp = new KeyWord() { name = "Csharp" };
+            KeyWord Java = new KeyWord() { name = "Java" };
+            KeyWord js = new KeyWord() { name = "js" };
+
+            Article yqbang = new Article() { name = "yqbang" };
+            Article yz = new Article() { name = "yz" };
+            Article gty = new Article() { name = "源栈培训" };
+
+            GenericComment fg = new GenericComment() { name = "很好" };
+
+            Appraise agree = new Appraise() { name = "点赞" };
+            Appraise disagree = new Appraise() { name = "点踩" };
             //一篇文章可以有多个关键字，一个关键字可以对应多篇文章
-            KeyWord Csharp = new KeyWord();
-            KeyWord Java = new KeyWord();
-            KeyWord js = new KeyWord();
-            Article yqbang = new Article();
-            Article yz = new Article();
             yqbang.KeyWords = new List<KeyWord> { Csharp, Java, js };
             yz.KeyWords = new List<KeyWord> { js, Java };
 
-            Csharp.Articles = new List<Article> { yz, yqbang };
-            Java.Articles = new List<Article> { yz };
+            Csharp.Articles = new List<Article> {  yqbang };
+            Java.Articles = new List<Article> { yqbang, yz };
             js.Articles = new List<Article> { yqbang, yz };
             //一个评论必须有一个它所评论的文章 
             //一篇文章可以有多个评论
-            Article gty = new Article();
-            GenericComment fg = new GenericComment();
             gty.GenericComments = new List<GenericComment>();
             gty.GenericComments.Add(fg);
             fg.Article = gty;
 
             //每个文章和评论都有一个评价
-            Appraise agree = new Appraise();
-            Appraise disagree = new Appraise();
             agree.Articles = new List<Article> { yqbang, yz };
             disagree.Articles = new List<Article> { yz };
+
             yqbang.Appraises = new List<Appraise> { agree };
-            yz.Appraises = new List<Appraise> { disagree };
+            yz.Appraises = new List<Appraise> { disagree,agree };
+
             fg.Appraises = new List<Appraise> { agree, disagree };
             agree.GenericComments = new List<GenericComment> { fg };
             disagree.GenericComments = new List<GenericComment> { fg };
@@ -50,11 +55,11 @@ namespace CSharplearn
             Generic generic = new Generic();
             Console.WriteLine(generic.GetMax<int>(new int[] { 15, 23, 39, 65, 78, 2, 36, 7 }, 0));
             Console.WriteLine(generic.GetMax<string>(new string[] { "李四往", "23", "39", "65", "78", "2", "36", "张三李四" }, "张三"));
-            Console.WriteLine(Generic.Getnumber<int>(new int[] {2,17,26,35,48,59,61,96 }, 96));
-
+            Console.WriteLine(Generic.Getnumber<int>(new int[] { 2, 17, 26, 35, 48, 59, 61, 96 }, 96));
 
             //https://zhuanlan.zhihu.com/p/93747718 string还是stringBuilder里面的作业：调用
             Console.WriteLine(Stringbuilder.GetCount("ashjbvjbkvhaihiwqifbkafkvjzbha", "a"));
+            Console.WriteLine(Stringbuilder.mimicJoin("-", new string[] { "a","b","c","d"}));
             //https://zhuanlan.zhihu.com/p/93458057 万物皆对象：Object拆箱和装箱里面的作业：
             //在https://source.dot.net/中查看源代码，了解为什么 Console.WriteLine(new Student()); 会输出Student类名//static Equal () 方法 判断两个对象相不相等
             //思考dynamic和var的区别，并用代码予以演示
