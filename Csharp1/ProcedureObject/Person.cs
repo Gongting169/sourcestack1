@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CSharplearn.ProcedureObject.Generic
+namespace CSharplearn.ProcedureObject
 {
-    public class KeyWord
+   public class Person
     {
         public string name { get; set; }
-        public IList<Article> Articles { get; set; }
-
+        public int count { get; set; }
     }
 }

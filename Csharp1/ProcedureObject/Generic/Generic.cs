@@ -6,6 +6,28 @@ namespace CSharplearn.ProcedureObject.Generic
 {
     public class Generic
     {
+        //http://17bang.ren/Article/534 Lambda/匿名方法/闭包
+        //1、声明一个委托：打水（ProvideWater），可以接受一个Person类的参数，返回值为int类型
+        //使用：  //方法 //匿名方法 //lambda表达式 //给上述委托赋值，并运行该委托
+        public delegate int ProvideWater(Person person) ;
+        /// <summary>
+        /// 用方法给委托变量赋值
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns>返回的是int类型的值</returns>
+        public static int Add(Person person)
+        {
+            person.count = 18;
+            return person.count;
+        }
+        //声明一个方法GetWater()，该方法接受ProvideWater作为参数，并能将ProvideWater的返回值输出
+        public static void   GetWater(ProvideWater)
+        {
+            
+        }
+
+
+        //http://17bang.ren/Article/321  泛型的声明、约束、使用
         //用泛型改造二分查找、堆栈和双向链表
         public static int Getnumber<T>(T[] binaryseek, T target) where T : IComparable
         {
@@ -19,7 +41,7 @@ namespace CSharplearn.ProcedureObject.Generic
                 {
                     left = middle + 1;
                 }
-                else if (target.CompareTo(binaryseek[middle])< 0)
+                else if (target.CompareTo(binaryseek[middle]) < 0)
                 {
                     right = middle - 1;
                 }// target = middle
@@ -75,7 +97,53 @@ namespace CSharplearn.ProcedureObject.Generic
             return max;
         }
 
+        //使用泛型改造双向链表
+
+        //http://17bang.ren/Article/645 集合：foreach的背后
+        //让之前的双向链表，能够：被foreach迭代
+
+
+
+        //http://17bang.ren/Article/646   扩展方法：
+        //调用扩展方法Max()：能够返回之前双向链表中存贮着最大值的节点
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
+
+
 }

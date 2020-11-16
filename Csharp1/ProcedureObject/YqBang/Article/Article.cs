@@ -7,7 +7,6 @@ namespace CSharplearn
 {
     public class Article : Content
     {
-
         public Article() : base("fg")
         {
         }

@@ -1,11 +1,13 @@
 ﻿
 using CSharplearn;
+using CSharplearn.ProcedureObject;
 using CSharplearn.ProcedureObject.Enum;
 using CSharplearn.ProcedureObject.Generic;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
+using static CSharplearn.ProcedureObject.Generic.Generic;
 
 namespace CSharplearn
 {
@@ -13,6 +15,27 @@ namespace CSharplearn
     {
         static void Main(string[] args)
         {
+            ProvideWater provideWater = Add  ;
+            
+            ProvideWater provideWater2  = delegate (Person person)
+            {
+                return person.count++;
+            };
+
+            ProvideWater provideWater1 = person => { return person.count++; };
+
+            //Console.WriteLine(Generic.GetWater(provideWater));  
+
+
+
+
+
+            
+
+
+
+
+
             KeyWord Csharp = new KeyWord() { name = "Csharp" };
             KeyWord Java = new KeyWord() { name = "Java" };
             KeyWord js = new KeyWord() { name = "js" };
@@ -29,7 +52,7 @@ namespace CSharplearn
             yqbang.KeyWords = new List<KeyWord> { Csharp, Java, js };
             yz.KeyWords = new List<KeyWord> { js, Java };
 
-            Csharp.Articles = new List<Article> {  yqbang };
+            Csharp.Articles = new List<Article> { yqbang };
             Java.Articles = new List<Article> { yqbang, yz };
             js.Articles = new List<Article> { yqbang, yz };
             //一个评论必须有一个它所评论的文章 
@@ -43,7 +66,7 @@ namespace CSharplearn
             disagree.Articles = new List<Article> { yz };
 
             yqbang.Appraises = new List<Appraise> { agree };
-            yz.Appraises = new List<Appraise> { disagree,agree };
+            yz.Appraises = new List<Appraise> { disagree, agree };
 
             fg.Appraises = new List<Appraise> { agree, disagree };
             agree.GenericComments = new List<GenericComment> { fg };
@@ -59,7 +82,7 @@ namespace CSharplearn
 
             //https://zhuanlan.zhihu.com/p/93747718 string还是stringBuilder里面的作业：调用
             Console.WriteLine(Stringbuilder.GetCount("ashjbvjbkvhaihiwqifbkafkvjzbha", "a"));
-            Console.WriteLine(Stringbuilder.mimicJoin("-", new string[] { "a","b","c","d"}));
+            Console.WriteLine(Stringbuilder.mimicJoin("-", new string[] { "a", "b", "c", "d" }));
             //https://zhuanlan.zhihu.com/p/93458057 万物皆对象：Object拆箱和装箱里面的作业：
             //在https://source.dot.net/中查看源代码，了解为什么 Console.WriteLine(new Student()); 会输出Student类名//static Equal () 方法 判断两个对象相不相等
             //思考dynamic和var的区别，并用代码予以演示
