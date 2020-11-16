@@ -11,6 +11,6 @@ namespace CSharplearn.ProcedureObject.Generic
         public int Disagree { get; set; }
 
         public IList<Article> Articles { get; set; }
-        public IList<GenericComment>  GenericComments { get; set; }
+        public IList<Comment>  GenericComments { get; set; }
     }
 }

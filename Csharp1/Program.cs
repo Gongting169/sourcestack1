@@ -41,7 +41,7 @@ namespace CSharplearn
             Article yz = new Article() { name = "yz" };
             Article gty = new Article() { name = "源栈培训" };
 
-            GenericComment fg = new GenericComment() { name = "很好" };
+            Comment fg = new Comment() { name = "很好" };
 
             Appraise agree = new Appraise() { name = "点赞" };
             Appraise disagree = new Appraise() { name = "点踩" };
@@ -54,7 +54,7 @@ namespace CSharplearn
             js.Articles = new List<Article> { yqbang, yz };
             //一个评论必须有一个它所评论的文章 
             //一篇文章可以有多个评论
-            gty.GenericComments = new List<GenericComment>();
+            gty.GenericComments = new List<Comment>();
             gty.GenericComments.Add(fg);
             fg.Article = gty;
 
@@ -66,8 +66,8 @@ namespace CSharplearn
             yz.Appraises = new List<Appraise> { disagree, agree };
 
             fg.Appraises = new List<Appraise> { agree, disagree };
-            agree.GenericComments = new List<GenericComment> { fg };
-            disagree.GenericComments = new List<GenericComment> { fg };
+            agree.GenericComments = new List<Comment> { fg };
+            disagree.GenericComments = new List<Comment> { fg };
 
 
             //调用泛型改造的二分查找，最大值，栈

@@ -50,8 +50,8 @@ namespace CSharplearn
                 }
             }
         }
-        public GenericComment genericComment { get; set; }
-        public IList<GenericComment> GenericComments { get; set; }
+        public Comment genericComment { get; set; }
+        public IList<Comment> GenericComments { get; set; }
 
         public IList<KeyWord> KeyWords { get; set; }
 
