@@ -4,12 +4,10 @@ using System.Text;
 
 namespace CSharplearn.ProcedureObject.Generic
 {
-    public class Comment
+    public class Comment<T> where T: Content
     {
-        public string name { get; set; }
-
-        public Article Article { get; set; }
-
-        public IList<Appraise> Appraises { get; set; }
+        public string Content{ get; set; }
+        public T Article { get; set; }
+        public IList<Appraise<T>> Appraises { get; set; }
     }
 }

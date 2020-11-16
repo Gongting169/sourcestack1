@@ -1,16 +1,17 @@
-﻿using System;
+﻿using CSharplearn.OO.Enum;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CSharplearn.ProcedureObject.Generic
 {
-    public class Appraise
+    public class Appraise<T> where T : Content  
     {
-        public string  name { get; set; }
-        public int Agree { get; set; }
-        public int Disagree { get; set; }
+        public AppraiseDirection Direction { get; set; }
+        public User DoneBy { get; set; }
+        public T Article { get; set; }
+        public Comment<T>  GenericComment { get; set; }
 
-        public IList<Article> Articles { get; set; }
-        public IList<Comment>  GenericComments { get; set; }
+
     }
 }

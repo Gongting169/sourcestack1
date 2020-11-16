@@ -34,8 +34,6 @@ namespace CSharplearn
         //一起帮里的求助总结、文章和意见建议，以及他们的评论，都有一个点赞（Agree）/踩（Disagree）的功能，赞和踩都会增减作者及评价者的帮帮点。能不能对其进行抽象？如何实现？
         public abstract void Agree();
         public abstract void Disagree();
-        public User Observer { get; set; }
-        public int Bangpoint { get; set; }
 
         //https://zhuanlan.zhihu.com/p/93440022 面向对象：反射和特性里面的作业
         //1、之前的Content类，其中的CreateTime（创建时间）和PublishTime（发布时间）都是只读的属性，想一想他们应该在哪里赋值比较好，并完成相应代码
