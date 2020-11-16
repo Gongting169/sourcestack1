@@ -15,25 +15,22 @@ namespace CSharplearn
     {
         static void Main(string[] args)
         {
-            ProvideWater provideWater = Add  ;
-            
-            ProvideWater provideWater2  = delegate (Person person)
+            //方法 //给上述委托赋值，并运行该委托
+            Person person = new Person() { Age = 18,name = "龚廷义"};
+            ProvideWater provideWater = Add ;
+            Console.WriteLine(provideWater(person));
+            //匿名方法 //给上述委托赋值 并运行该委托
+            ProvideWater provideWater1 = delegate (Person person)
             {
-                return person.count++;
+                return person.Age++;
             };
+            Console.WriteLine(provideWater1(person));
+            //lambda表达式  //给上述委托赋值  并运行该委托
+            ProvideWater provideWater2 = p => person.Age++;
+            Console.WriteLine(provideWater2(person));
 
-            ProvideWater provideWater1 = person => { return person.count++; };
-
-            //Console.WriteLine(Generic.GetWater(provideWater));  
-
-
-
-
-
-            
-
-
-
+            ProvideWater provideWater3 = p => person.Age++;
+            Console.WriteLine(Generic.GetWater(provideWater3));
 
 
             KeyWord Csharp = new KeyWord() { name = "Csharp" };

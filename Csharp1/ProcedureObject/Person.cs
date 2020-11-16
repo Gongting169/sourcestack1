@@ -7,6 +7,6 @@ namespace CSharplearn.ProcedureObject
    public class Person
     {
         public string name { get; set; }
-        public int count { get; set; }
+        public int Age { get; set; }
     }
 }
