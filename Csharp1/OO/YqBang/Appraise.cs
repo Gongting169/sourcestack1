@@ -10,7 +10,7 @@ namespace CSharplearn.ProcedureObject.Generic
         public AppraiseDirection Direction { get; set; }
         public User DoneBy { get; set; }
         public T Article { get; set; }
-        public Comment<T>  GenericComment { get; set; }
+        public Comment<T>  Comment { get; set; }
 
 
     }

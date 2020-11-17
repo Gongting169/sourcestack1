@@ -7,6 +7,10 @@ namespace CSharplearn
 {
     sealed public class User : Entity<int>, ISendMessage, IChat
     {
+
+
+        public IList<Article> Articles { get; set; }
+
         //https://zhuanlan.zhihu.com/p/92362781  基础中的类和对象里面的作业：
         //    观察“一起帮”的：
         //1、注册/登录功能，定义一个User类，包含字段：Name（用户名）、Password（密码）和 邀请人（InvitedBy），和方法：Register()、Login()
@@ -15,8 +19,6 @@ namespace CSharplearn
         public string verificationcode { get; set; }
         public bool Register(User user)
         {
-
-
             return true;
         }
         public bool LogIn(User user)
@@ -136,7 +138,6 @@ namespace CSharplearn
                 }
             }
         }
-
         //1、确保用户（User）的密码（Password）：
         //长度不低于6
         //必须由大小写英语字母、数字和特殊符号（~!@#$%^&*()_+）组成
@@ -159,7 +160,6 @@ namespace CSharplearn
             }
             get { return _password; }
         }
-
         public bool GetUpper(string password, string lower, string number, string special, string upper)
         {
             char[] ofa = password.ToCharArray();
@@ -172,11 +172,5 @@ namespace CSharplearn
             }
             return false;
         }
-
-
-
-
-
     }
-
 }

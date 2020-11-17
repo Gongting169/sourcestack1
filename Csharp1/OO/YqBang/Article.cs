@@ -55,6 +55,7 @@ namespace CSharplearn
         public IList<Appraise<Article>> Appraises { get; set; }
         public int Agreed { get; set; }
         public int Disagreed { get; set; }
+        public User User { get; set; }
 
     }
 
