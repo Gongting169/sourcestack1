@@ -354,7 +354,7 @@ tdd其全称是Test-Driven Development（测试驱动开发），其核心是：
 2020年11月16日的面试题目：
 1、异常与错误有什么区别？异常不是自动生成的,是被抛出来的,异常是运行时生成的,错误可以分为三种：编译时错误、运行时错误、逻辑错误。
 2、linq方法的本质是什么？ C#编译器会将所有的linq表达式编译成一个方法,然后执行。linq to object的本质还是foreach,foreach的核心也是依靠movenext（）方法。
-
+change on master - 1
 
 
 
