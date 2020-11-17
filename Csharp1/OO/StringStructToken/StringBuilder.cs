@@ -21,7 +21,6 @@ namespace CSharplearn
             } 
         }
 
-
         public static  string mimicJoin(string separator ,string[] value)
         {
             StringBuilder sb = new StringBuilder();
@@ -36,5 +35,16 @@ namespace CSharplearn
             }
             return sb.ToString();
         }
+
+
+
+
+
+
+
+
+
+
+
     }
 }

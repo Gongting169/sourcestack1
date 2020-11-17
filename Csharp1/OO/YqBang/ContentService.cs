@@ -15,7 +15,7 @@ namespace CSharplearn
         [HelpMoneyChanged(Amount = 1)]
         public void  Publish(Content content)
         {
-            content.Release();
+            //content.Release();
             Console.WriteLine("保存到数据库");
             
         }

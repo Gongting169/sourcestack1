@@ -15,11 +15,6 @@ namespace CSharplearn
     {
         static void Main(string[] args)
         {
-            int change;
-            
-
-
-
 
             KeyWord Csharp = new KeyWord() { name = "Csharp" };
             KeyWord Java = new KeyWord() { name = "Java" };
