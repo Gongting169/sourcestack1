@@ -6,7 +6,8 @@ namespace CSharplearn.OO.Interface
 {
     public interface IAppraise
     {
-
+        void Agree(User Voter);
+        void Disagree(User Voter);
 
     }
 }

@@ -6,9 +6,13 @@ namespace CSharplearn
 {
     public abstract class Content : Entity<int>
     {
-      
-        public  DateTime createTime { get; private set; }
+        public string Body { get; set; }
+        public User Author { get; set; }
+        public DateTime createTime { get; private set; }
         public DateTime PublishTime { get; set; }
-  
+        public void publish()
+        {
+
+        }
     }
 }

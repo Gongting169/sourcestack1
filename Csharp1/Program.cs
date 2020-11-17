@@ -24,14 +24,13 @@ namespace CSharplearn
             Article yz = new Article();
             Article web = new Article();
 
-            User fg = new User("","") { Name = "飞哥" ,Articles = (IList<Article>)yqbang, Articles = (IList<Article>)yz };
-            User fg = new User("", "") { Name = "飞哥", Articles = (IList<Article>)yz, };
-            User xy = new User("", "") { Name = "小鱼", Articles = (IList<Article>)web, };
-
-
+            User fg = new User() { Name = "飞哥" ,Articles = (IList<Article>)yqbang };
+            User dfg = new User() { Name = "飞哥", Articles = (IList<Article>)yz };
+            User xy = new User() { Name = "小鱼", Articles = (IList<Article>)web};
 
             yqbang.User = fg;
             fg.Articles.Add(yqbang);
+
             //在之前“文章 / 评价 / 评论 / 用户 / 关键字”对象模型的基础上，添加相应的数据，然后完成以下操作： 
             //找出“飞哥”发布的文章
             //找出2019年1月1日以后“小鱼”发布的文章

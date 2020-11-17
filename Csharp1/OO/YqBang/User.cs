@@ -9,7 +9,7 @@ namespace CSharplearn
     {
 
         public IList<Article> Articles { get; set; }
-
+        public string Name { get; set; }
         void ISendMessage.Send()
         {
             throw new NotImplementedException();
