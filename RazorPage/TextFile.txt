@@ -4,3 +4,6 @@ change on hotfix -1
 change on hotfix -2
 
 change on faq -5
+
+change on faq -6
+change on faq -7
