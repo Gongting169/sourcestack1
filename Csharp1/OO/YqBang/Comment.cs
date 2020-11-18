@@ -4,10 +4,17 @@ using System.Text;
 
 namespace CSharplearn.ProcedureObject.Generic
 {
-    public class Comment<T> where T: Content
+    public class Comment : Content
     {
         public string Content{ get; set; }
-        public T Article { get; set; }
-        public IList<Appraise<T>> Appraises { get; set; }
+
+        //一篇文章可以有多个评论
+        public Article Article { get; set; }
+        //每个文章和评论都有一个评价
+        public IList<Appraise> Appraises { get; set; }
+        public override void Publish()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

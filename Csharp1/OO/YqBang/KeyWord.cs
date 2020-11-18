@@ -6,7 +6,7 @@ namespace CSharplearn.ProcedureObject.Generic
 {
     public class KeyWord
     {
-        public string name { get; set; }
+        public string Name { get; set; }
         public IList<Article> Articles { get; set; }
 
     }

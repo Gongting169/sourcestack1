@@ -5,6 +5,7 @@ using CSharplearn.ProcedureObject.Enum;
 using CSharplearn.ProcedureObject.Generic;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using static CSharplearn.ProcedureObject.Generic.Generic;
@@ -15,27 +16,76 @@ namespace CSharplearn
     {
         static void Main(string[] args)
         {
+            User fg = new User() { Name = "飞哥" };
+            User dfg = new User() { Name = "大飞哥" };
+            User xy = new User() { Name = "小鱼" };
+            IEnumerable<User> users = new List<User> { fg, dfg, xy };
 
-            KeyWord Csharp = new KeyWord() { name = "Csharp" };
-            KeyWord Java = new KeyWord() { name = "Java" };
-            KeyWord js = new KeyWord() { name = "js" };
+            KeyWord csharp = new KeyWord() { Name = "Csharp" };
+            KeyWord java = new KeyWord() { Name = "Java" };
+            KeyWord js = new KeyWord() { Name = "js" };
+            KeyWord keyWord = new KeyWord() { Name = "C#" };
+            KeyWord keyWord1 = new KeyWord() { Name = ".Net" };
+            IEnumerable<KeyWord> keyWords = new List<KeyWord> { keyWord, keyWord1, csharp, java, js };
 
-            Article yqbang = new Article();
-            Article yz = new Article();
-            Article web = new Article();
+            Article lgyarticle = new Article()
+            { Title = "yqbang", Author = fg,PublishTime = new DateTime(2019, 1, 5) , KeyWords = new List<KeyWord> { keyWord, csharp, js }, CommentCount = 10,};
 
-            User fg = new User() { Name = "飞哥" ,Articles = (IList<Article>)yqbang };
-            User dfg = new User() { Name = "飞哥", Articles = (IList<Article>)yz };
-            User xy = new User() { Name = "小鱼", Articles = (IList<Article>)web};
+            Article gtyarticle = new Article()
+            {Title = "yz",Author = xy,PublishTime = new DateTime(2019, 6, 5),KeyWords = new List<KeyWord> { keyWord, keyWord1, java }, CommentCount = 30};
 
-            yqbang.User = fg;
-            fg.Articles.Add(yqbang);
+            Article lwarticle = new Article()
+            {Title = "web", Author = xy,PublishTime = new DateTime(2020, 5, 8),KeyWords = new List<KeyWord> { java, js, keyWord1 },CommentCount = 50};
+
+            Article zdharticle = new Article()
+            {Title = "article",Author = dfg,PublishTime = new DateTime(2019, 3, 26),KeyWords = new List<KeyWord> { java, js, keyWord1 },CommentCount = 20};
+
+            Article lzbarticle = new Article()
+            {Title = "article1",Author = xy,PublishTime = new DateTime(2020, 1, 1),KeyWords = new List<KeyWord> { java, js, keyWord1 },CommentCount = 35};
+
+            IEnumerable<Article> articles = new List<Article>
+            {
+       lgyarticle.,gtyarticle,lwarticle,zdharticle,lzbarticle
+            };
 
             //在之前“文章 / 评价 / 评论 / 用户 / 关键字”对象模型的基础上，添加相应的数据，然后完成以下操作： 
             //找出“飞哥”发布的文章
+            var result = from a in articles
+                         where a.Author.Name == "飞哥"
+                         select a;
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.Author);
+            }
             //找出2019年1月1日以后“小鱼”发布的文章
+            var result1 = from a in articles
+                          where a.Author.Name == "小鱼"
+                          where a.PublishTime > new DateTime(2019, 1, 1)
+                          select a;
+            foreach (var item in articles)
+            {
+                Console.WriteLine(item);
+            }
+
             //按发布时间升序 / 降序排列显示文章
+            var result2 = from a in articles
+                          orderby a.PublishTime descending
+                          select a;
+            var result3 = from a in articles
+                          orderby a.PublishTime
+                          select a;
+            foreach (var item in articles)
+            {
+                Console.WriteLine(item);
+            }
+            foreach (var item in articles)
+            {
+                Console.WriteLine(item);
+            }
             //统计每个用户各发布了多少篇文章
+            var result4 = from a in articles
+                          group a by a.User;
+
             //找出包含关键字“C#”或“.NET”的文章 
             //找出评论数量最多的文章
             //找出每个作者评论数最多的文章
@@ -188,7 +238,7 @@ namespace CSharplearn
             //    Console.WriteLine(reason);
             //}
 
-            Console.ReadLine();
+
         }
     }
 }
