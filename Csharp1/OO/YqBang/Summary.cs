@@ -4,8 +4,11 @@ using System.Text;
 
 namespace CSharplearn
 {
-    public class Summary :Content
+    public class Summary : Content
     {
-
+        public override void Publish()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

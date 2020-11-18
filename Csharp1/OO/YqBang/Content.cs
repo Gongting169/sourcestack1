@@ -10,9 +10,8 @@ namespace CSharplearn
         public User Author { get; set; }
         public DateTime createTime { get; private set; }
         public DateTime PublishTime { get; set; }
-        public void publish()
-        {
+        public abstract void Publish(); 
 
-        }
+
     }
 }

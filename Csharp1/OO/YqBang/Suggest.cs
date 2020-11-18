@@ -7,7 +7,9 @@ namespace CSharplearn
 {
     public class Suggest : Content
     {
-  
-
+        public override void Publish()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

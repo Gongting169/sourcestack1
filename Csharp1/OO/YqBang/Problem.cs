@@ -7,7 +7,10 @@ namespace CSharplearn
 {
     public class Problem : Content
     {
-
+        public override void Publish()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
