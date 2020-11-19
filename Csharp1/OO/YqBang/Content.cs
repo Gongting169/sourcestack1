@@ -10,7 +10,17 @@ namespace CSharplearn
         public User Author { get; set; }
         public DateTime createTime { get; private set; }
         public DateTime PublishTime { get; set; }
-        public abstract void Publish(); 
+        public void Publish(User Author) 
+        {
+            if (Author == null)
+            {
+                throw new ArgumentNullException("参数为空");
+            }
+            else
+            {
+                Console.WriteLine();//不为空
+            }
+        } 
 
 
     }

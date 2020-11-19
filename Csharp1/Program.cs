@@ -16,17 +16,29 @@ namespace CSharplearn
     {
         static void Main(string[] args)
         {
+
+         
+            try
+            {
+                ContentService contentService = new ContentService();
+                contentService.Release(contentService);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString()+ DateTime.Now.ToString("yyyy年MM月dd日 hh点mm分ss秒"));
+            }
+            //DateTime.Now.ToString("yyyy年MM月dd日 hh点mm分ss秒")
             User fg = new User() { Name = "飞哥", Reward = 20 };
             User dfg = new User() { Name = "大飞哥", Reward = 30 };
             User xy = new User() { Name = "小鱼", Reward = 40 };
-            IEnumerable<User> users = new List<User> { fg, dfg, xy };
+            //IEnumerable<User> users = new List<User> { fg, dfg, xy };
 
             KeyWord csharp = new KeyWord() { Name = "Csharp" };
             KeyWord java = new KeyWord() { Name = "Java" };
             KeyWord js = new KeyWord() { Name = "js" };
             KeyWord keyWord = new KeyWord() { Name = "C#" };
             KeyWord keyWord1 = new KeyWord() { Name = ".Net" };
-            IEnumerable<KeyWord> keyWords = new List<KeyWord> { keyWord, keyWord1, csharp, java, js };
+            //IEnumerable<KeyWord> keyWords = new List<KeyWord> { keyWord, keyWord1, csharp, java, js };
 
             Article lgyarticle = new Article()
             { Title = "yqbang", Author = fg, PublishTime = new DateTime(2019, 1, 5), KeyWords = new List<KeyWord> { keyWord, csharp, js }, CommentCount = 10, };

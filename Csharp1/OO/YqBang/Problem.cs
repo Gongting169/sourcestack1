@@ -8,7 +8,22 @@ namespace CSharplearn
 {
     public class Problem : Content, IAppraise
     {
-
+        private int reward;
+        public int Reward
+        {
+            get { return reward; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new IndexOutOfRangeException("输入的参数超出范围了");
+                }
+                else
+                {
+                    reward = value;
+                }
+            }
+        }
 
 
 
@@ -18,7 +33,7 @@ namespace CSharplearn
 
         public void Agree(User Voter)
         {
-            
+
         }
 
         public void Disagree(User Voter)
