@@ -16,9 +16,9 @@ namespace CSharplearn
     {
         static void Main(string[] args)
         {
-            User fg = new User() { Name = "飞哥" };
-            User dfg = new User() { Name = "大飞哥" };
-            User xy = new User() { Name = "小鱼" };
+            User fg = new User() { Name = "飞哥", Reward = 20 };
+            User dfg = new User() { Name = "大飞哥", Reward = 30 };
+            User xy = new User() { Name = "小鱼", Reward = 40 };
             IEnumerable<User> users = new List<User> { fg, dfg, xy };
 
             KeyWord csharp = new KeyWord() { Name = "Csharp" };
@@ -29,24 +29,23 @@ namespace CSharplearn
             IEnumerable<KeyWord> keyWords = new List<KeyWord> { keyWord, keyWord1, csharp, java, js };
 
             Article lgyarticle = new Article()
-            { Title = "yqbang", Author = fg,PublishTime = new DateTime(2019, 1, 5) , KeyWords = new List<KeyWord> { keyWord, csharp, js }, CommentCount = 10,};
+            { Title = "yqbang", Author = fg, PublishTime = new DateTime(2019, 1, 5), KeyWords = new List<KeyWord> { keyWord, csharp, js }, CommentCount = 10, };
 
             Article gtyarticle = new Article()
-            {Title = "yz",Author = xy,PublishTime = new DateTime(2019, 6, 5),KeyWords = new List<KeyWord> { keyWord, keyWord1, java }, CommentCount = 30};
+            { Title = "yz", Author = xy, PublishTime = new DateTime(2019, 6, 5), KeyWords = new List<KeyWord> { keyWord, keyWord1, java }, CommentCount = 30 };
 
             Article lwarticle = new Article()
-            {Title = "web", Author = xy,PublishTime = new DateTime(2020, 5, 8),KeyWords = new List<KeyWord> { java, js, keyWord1 },CommentCount = 50};
+            { Title = "web", Author = xy, PublishTime = new DateTime(2020, 5, 8), KeyWords = new List<KeyWord> { java, js, keyWord1 }, CommentCount = 50 };
 
             Article zdharticle = new Article()
-            {Title = "article",Author = dfg,PublishTime = new DateTime(2019, 3, 26),KeyWords = new List<KeyWord> { java, js, keyWord1 },CommentCount = 20};
+            { Title = "C#", Author = dfg, PublishTime = new DateTime(2019, 3, 26), KeyWords = new List<KeyWord> { java, js, keyWord1 }, CommentCount = 20 };
 
             Article lzbarticle = new Article()
-            {Title = "article1",Author = xy,PublishTime = new DateTime(2020, 1, 1),KeyWords = new List<KeyWord> { java, js, keyWord1 },CommentCount = 35};
+            { Title = ".Net", Author = xy, PublishTime = new DateTime(2020, 1, 1), KeyWords = new List<KeyWord> { java, js, keyWord1 }, CommentCount = 35 };
 
-            IEnumerable<Article> articles = new List<Article>
-            {
-       lgyarticle.,gtyarticle,lwarticle,zdharticle,lzbarticle
-            };
+            IEnumerable<Article> articles = new List<Article> { lgyarticle, gtyarticle, lwarticle, zdharticle, lzbarticle };
+
+
 
             //在之前“文章 / 评价 / 评论 / 用户 / 关键字”对象模型的基础上，添加相应的数据，然后完成以下操作： 
             //找出“飞哥”发布的文章
