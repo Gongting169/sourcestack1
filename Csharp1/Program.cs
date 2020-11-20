@@ -16,8 +16,6 @@ namespace CSharplearn
     {
         static void Main(string[] args)
         {
-
-         
             try
             {
                 ContentService contentService = new ContentService();
@@ -27,21 +25,18 @@ namespace CSharplearn
             {
                 Console.WriteLine(e.ToString()+ DateTime.Now.ToString("yyyy年MM月dd日 hh点mm分ss秒"));
             }
-            //DateTime.Now.ToString("yyyy年MM月dd日 hh点mm分ss秒")
+
             User fg = new User() { Name = "飞哥", Reward = 20 };
-            User dfg = new User() { Name = "大飞哥", Reward = 30 };
             User xy = new User() { Name = "小鱼", Reward = 40 };
-            //IEnumerable<User> users = new List<User> { fg, dfg, xy };
+            IEnumerable<User> users = new List<User> { fg, xy };
 
             KeyWord csharp = new KeyWord() { Name = "Csharp" };
             KeyWord java = new KeyWord() { Name = "Java" };
             KeyWord js = new KeyWord() { Name = "js" };
             KeyWord keyWord = new KeyWord() { Name = "C#" };
             KeyWord keyWord1 = new KeyWord() { Name = ".Net" };
-            //IEnumerable<KeyWord> keyWords = new List<KeyWord> { keyWord, keyWord1, csharp, java, js };
+            IEnumerable<KeyWord> keyWords = new List<KeyWord> { keyWord, keyWord1, csharp, java, js };
 
-            Article lgyarticle = new Article()
-            { Title = "yqbang", Author = fg, PublishTime = new DateTime(2019, 1, 5), KeyWords = new List<KeyWord> { keyWord, csharp, js }, CommentCount = 10, };
 
             Article gtyarticle = new Article()
             { Title = "yz", Author = xy, PublishTime = new DateTime(2019, 6, 5), KeyWords = new List<KeyWord> { keyWord, keyWord1, java }, CommentCount = 30 };
@@ -50,13 +45,16 @@ namespace CSharplearn
             { Title = "web", Author = xy, PublishTime = new DateTime(2020, 5, 8), KeyWords = new List<KeyWord> { java, js, keyWord1 }, CommentCount = 50 };
 
             Article zdharticle = new Article()
-            { Title = "C#", Author = dfg, PublishTime = new DateTime(2019, 3, 26), KeyWords = new List<KeyWord> { java, js, keyWord1 }, CommentCount = 20 };
+            { Title = "C#", Author = fg, PublishTime = new DateTime(2019, 3, 26), KeyWords = new List<KeyWord> { java, js, keyWord1 }, CommentCount = 20 };
 
             Article lzbarticle = new Article()
             { Title = ".Net", Author = xy, PublishTime = new DateTime(2020, 1, 1), KeyWords = new List<KeyWord> { java, js, keyWord1 }, CommentCount = 35 };
-
-            IEnumerable<Article> articles = new List<Article> { lgyarticle, gtyarticle, lwarticle, zdharticle, lzbarticle };
-
+            IEnumerable<Article> articles = new List<Article> {  gtyarticle, lwarticle, zdharticle, lzbarticle };
+            //fg.Articles = new List<Article>() { lwarticle,lzbarticle};
+            //xy.Articles = new List<Article>() { zdharticle, lzbarticle, lwarticle ,gtyarticle};
+            //gtyarticle.User = xy;
+            //lzbarticle.User = fg;
+            //lzbarticle.User = xy;
 
 
             //在之前“文章 / 评价 / 评论 / 用户 / 关键字”对象模型的基础上，添加相应的数据，然后完成以下操作： 
@@ -98,6 +96,9 @@ namespace CSharplearn
                           group a by a.User;
 
             //找出包含关键字“C#”或“.NET”的文章 
+            //var result5 = from a in articles
+            //              where a.KeyWords.Contains(keyWord = C# || K)
+
             //找出评论数量最多的文章
             //找出每个作者评论数最多的文章
 

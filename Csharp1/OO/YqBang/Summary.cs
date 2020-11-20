@@ -23,7 +23,7 @@ namespace CSharplearn
             throw new NotImplementedException();
         }
 
-        public override void Publish()
+        public  void Publish()
         {
             throw new NotImplementedException();
         }
