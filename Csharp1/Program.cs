@@ -21,67 +21,7 @@ namespace CSharplearn
             string path = @"D:\YUANZHAN作业\Text";
             StreamWriter stream = File.CreateText(path);
             //stream = File.OpenText(path);
-            //stream.Write()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            //stream.Write()+
 
 
 

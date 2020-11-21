@@ -16,7 +16,6 @@ namespace CSharplearn
         public IList<Comment> Comments { get; set; }
         public IList<KeyWord> KeyWords { get; set; }
         public IList<Appraise> Appraises { get; set; }
-        public int CommentCount { get; set; }
 
         public void Agree(User Voter)
         {

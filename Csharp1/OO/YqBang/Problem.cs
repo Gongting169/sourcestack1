@@ -25,12 +25,6 @@ namespace CSharplearn
             }
         }
 
-
-
-
-
-
-
         public void Agree(User Voter)
         {
 
