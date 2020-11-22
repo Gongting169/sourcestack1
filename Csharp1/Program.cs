@@ -24,11 +24,6 @@ namespace CSharplearn
             //stream.Write()+
 
 
-
-
-
-
-
             try
             {
                 ContentService contentService = new ContentService();
