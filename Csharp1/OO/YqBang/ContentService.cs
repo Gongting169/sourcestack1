@@ -46,12 +46,8 @@ namespace CSharplearn
             }
             catch (ArgumentNullException )
             {
-                Console.WriteLine($"内容的作者不能为空{ DateTime.Now.ToString("yyyy年MM月dd日 hh点mm分ss秒")} 请求发布内容(Id= xxx)");
-            }
-            catch (FormatException )
-            {
                 Console.WriteLine($"{ DateTime.Now.ToString("yyyy年MM月dd日 hh点mm分ss秒")} 请求发布内容(Id= xxx)");
-                throw;
+                throw new Exception("内容的作者不能为空");
             }
             catch (IndexOutOfRangeException )
             {
