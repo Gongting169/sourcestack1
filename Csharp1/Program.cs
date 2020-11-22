@@ -26,165 +26,168 @@ namespace CSharplearn
 
             try
             {
+                User gty = new User();
                 ContentService contentService = new ContentService();
-                contentService.Release(contentService);
+                Problem problem5 = new Problem();
+                problem5.Author = gty;
+                contentService.Publish(problem5);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString() + DateTime.Now.ToString("yyyy年MM月dd日 hh点mm分ss秒"));
             }
 
-            User fg = new User() { Name = "飞哥" };
-            User xy = new User() { Name = "小鱼" };
-            IEnumerable<User> users = new List<User> { fg, xy };
+            //User fg = new User() { Name = "飞哥" };
+            //User xy = new User() { Name = "小鱼" };
+            //IEnumerable<User> users = new List<User> { fg, xy };
 
-            KeyWord csharp = new KeyWord() { Name = "Csharp" };
-            KeyWord java = new KeyWord() { Name = "Java" };
-            KeyWord keyWord = new KeyWord() { Name = "C#" };
-            KeyWord keyWord1 = new KeyWord() { Name = ".Net" };
-            IEnumerable<KeyWord> keyWords = new List<KeyWord> { keyWord1, keyWord, csharp, java };
+            //KeyWord csharp = new KeyWord() { Name = "Csharp" };
+            //KeyWord java = new KeyWord() { Name = "Java" };
+            //KeyWord keyWord = new KeyWord() { Name = "C#" };
+            //KeyWord keyWord1 = new KeyWord() { Name = ".Net" };
+            //IEnumerable<KeyWord> keyWords = new List<KeyWord> { keyWord1, keyWord, csharp, java };
 
-            Article gtyarticle = new Article()
-            { Title = "yz", Author = xy, PublishTime = new DateTime(2019, 6, 5), KeyWords = new List<KeyWord> { keyWord, keyWord1, java } };
+            //Article gtyarticle = new Article()
+            //{ Title = "yz", Author = xy, PublishTime = new DateTime(2019, 6, 5), KeyWords = new List<KeyWord> { keyWord, keyWord1, java } };
 
-            Article lwarticle = new Article()
-            { Title = "web", Author = xy, PublishTime = new DateTime(2020, 5, 8), KeyWords = new List<KeyWord> { keyWord, csharp, keyWord1 } };
+            //Article lwarticle = new Article()
+            //{ Title = "web", Author = xy, PublishTime = new DateTime(2020, 5, 8), KeyWords = new List<KeyWord> { keyWord, csharp, keyWord1 } };
 
-            Article zdharticle = new Article()
-            { Title = "C#", Author = fg, PublishTime = new DateTime(2019, 3, 26), KeyWords = new List<KeyWord> { java, keyWord, keyWord1 } };
+            //Article zdharticle = new Article()
+            //{ Title = "C#", Author = fg, PublishTime = new DateTime(2019, 3, 26), KeyWords = new List<KeyWord> { java, keyWord, keyWord1 } };
 
-            Article lzbarticle = new Article()
-            { Title = ".Net", Author = xy, PublishTime = new DateTime(2020, 1, 1), KeyWords = new List<KeyWord> { csharp, keyWord1 } };
-            IEnumerable<Article> articles = new List<Article> { gtyarticle, lwarticle, zdharticle, lzbarticle };
+            //Article lzbarticle = new Article()
+            //{ Title = ".Net", Author = xy, PublishTime = new DateTime(2020, 1, 1), KeyWords = new List<KeyWord> { csharp, keyWord1 } };
+            //IEnumerable<Article> articles = new List<Article> { gtyarticle, lwarticle, zdharticle, lzbarticle };
 
-            Comment comment1 = new Comment { Article = lwarticle };
-            Comment comment2 = new Comment { Article = gtyarticle };
-            Comment comment3 = new Comment { Article = zdharticle };
-            Comment comment4 = new Comment { Article = lzbarticle };
-            Comment comment5 = new Comment { Article = lwarticle };
-            IEnumerable<Comment> comments = new List<Comment> { comment1, comment2, comment3, comment4, comment5 };
+            //Comment comment1 = new Comment { Article = lwarticle };
+            //Comment comment2 = new Comment { Article = gtyarticle };
+            //Comment comment3 = new Comment { Article = zdharticle };
+            //Comment comment4 = new Comment { Article = lzbarticle };
+            //Comment comment5 = new Comment { Article = lwarticle };
+            //IEnumerable<Comment> comments = new List<Comment> { comment1, comment2, comment3, comment4, comment5 };
 
-            Problem problem = new Problem { Reward = 10, Author = fg, Body = "大飞哥" };
-            Problem problem1 = new Problem { Reward = 20, Author = xy, Body = "大飞哥教得好" };
-            Problem problem2 = new Problem { Reward = 30, Author = fg, Body = "飞哥" };
-            Problem problem3 = new Problem { Reward = 4, Author = xy, Body = "源栈大飞哥" };
-            Problem problem4 = new Problem { Reward = 3, Author = fg, Body = "一起帮大飞哥" };
-            IEnumerable<Problem> problems = new List<Problem> { problem1, problem2, problem3, problem4 };
+            //Problem problem = new Problem { Reward = 10, Author = fg, Body = "大飞哥" };
+            //Problem problem1 = new Problem { Reward = 20, Author = xy, Body = "大飞哥教得好" };
+            //Problem problem2 = new Problem { Reward = 30, Author = fg, Body = "飞哥" };
+            //Problem problem3 = new Problem { Reward = 4, Author = xy, Body = "源栈大飞哥" };
+            //Problem problem4 = new Problem { Reward = 3, Author = fg, Body = "一起帮大飞哥" };
+            //IEnumerable<Problem> problems = new List<Problem> { problem1, problem2, problem3, problem4 };
 
-            //在之前“文章 / 评价 / 评论 / 用户 / 关键字”对象模型的基础上，添加相应的数据，然后完成以下操作： 
-            //找出“飞哥”发布的文章
-            var result = from a in articles
-                         where a.Author.Name == "飞哥"
-                         select a;
-            //linq方法
-            var methodresult = articles.Where(a => a.Author.Name == "飞哥");
+            ////在之前“文章 / 评价 / 评论 / 用户 / 关键字”对象模型的基础上，添加相应的数据，然后完成以下操作： 
+            ////找出“飞哥”发布的文章
+            //var result = from a in articles
+            //             where a.Author.Name == "飞哥"
+            //             select a;
+            ////linq方法
+            //var methodresult = articles.Where(a => a.Author.Name == "飞哥");
 
-            foreach (var item in result)
-            {
-                Console.WriteLine(item.Author.Name);
-            }
-            //找出2019年1月1日以后“小鱼”发布的文章
-            var result1 = from a in articles
-                          where a.Author.Name == "小鱼"
-                          where a.PublishTime > new DateTime(2019, 1, 1)
-                          select a;
-            //linq方法
-            var methodresult1 = articles.Where(a => a.Author.Name == "小鱼" && a.PublishTime > new DateTime(2019, 1, 1));
-            foreach (var item in result1)
-            {
-                Console.WriteLine(item.PublishTime);
-            }
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine(item.Author.Name);
+            //}
+            ////找出2019年1月1日以后“小鱼”发布的文章
+            //var result1 = from a in articles
+            //              where a.Author.Name == "小鱼"
+            //              where a.PublishTime > new DateTime(2019, 1, 1)
+            //              select a;
+            ////linq方法
+            //var methodresult1 = articles.Where(a => a.Author.Name == "小鱼" && a.PublishTime > new DateTime(2019, 1, 1));
+            //foreach (var item in result1)
+            //{
+            //    Console.WriteLine(item.PublishTime);
+            //}
 
-            //按发布时间升序 / 降序排列显示文章
-            var result2 = from a in articles
-                          orderby a.PublishTime descending
-                          select a;
-            //linq方法
-            var methodresult2 = articles.OrderByDescending(a => a.PublishTime);
+            ////按发布时间升序 / 降序排列显示文章
+            //var result2 = from a in articles
+            //              orderby a.PublishTime descending
+            //              select a;
+            ////linq方法
+            //var methodresult2 = articles.OrderByDescending(a => a.PublishTime);
 
-            var result3 = from a in articles
-                          orderby a.PublishTime
-                          select a;
-            //linq 方法
-            var methodresult3 = articles.OrderBy(a => a.PublishTime);
+            //var result3 = from a in articles
+            //              orderby a.PublishTime
+            //              select a;
+            ////linq 方法
+            //var methodresult3 = articles.OrderBy(a => a.PublishTime);
 
-            foreach (var item in result2)
-            {
-                Console.WriteLine(item.PublishTime);
-            }
-            foreach (var item in result3)
-            {
-                Console.WriteLine(item.PublishTime);
-            }
-            //统计每个用户各发布了多少篇文章
-            var result4 = from a in articles
-                          group a by a.Author
-                          into ga
-                          select new
-                          {
-                              AuthorName = ga.Key.Name,
-                              Number = ga.Count()
-                          };
-            //linq 方法
-            var methodresult5 = articles.GroupBy(a => a.Author).Select(
-                ga => new
-                {
-                    AuthorName = ga.Key.Name,
-                    Number = ga.Count()
-                });
-            foreach (var item in result4)
-            {
-                Console.WriteLine($"{item.AuthorName}{item.Number}");
-            }
+            //foreach (var item in result2)
+            //{
+            //    Console.WriteLine(item.PublishTime);
+            //}
+            //foreach (var item in result3)
+            //{
+            //    Console.WriteLine(item.PublishTime);
+            //}
+            ////统计每个用户各发布了多少篇文章
+            //var result4 = from a in articles
+            //              group a by a.Author
+            //              into ga
+            //              select new
+            //              {
+            //                  AuthorName = ga.Key.Name,
+            //                  Number = ga.Count()
+            //              };
+            ////linq 方法
+            //var methodresult5 = articles.GroupBy(a => a.Author).Select(
+            //    ga => new
+            //    {
+            //        AuthorName = ga.Key.Name,
+            //        Number = ga.Count()
+            //    });
+            //foreach (var item in result4)
+            //{
+            //    Console.WriteLine($"{item.AuthorName}{item.Number}");
+            //}
 
-            //找出包含关键字“C#”或“.NET”的文章 
-            var result5 = from a in articles
-                          where a.KeyWords.Any(K => K.Name == "C#") || a.KeyWords.Any(K => K.Name == ".Net")
-                          select a;
-            //linq方法
-            var methodresult6 = articles.Where(a => a.KeyWords.Any(K => K.Name == "C#") || a.KeyWords.Any(K => K.Name == ".Net"));
-            foreach (var item in result5)
-            {
-                Console.WriteLine(item.Author);
-            }
+            ////找出包含关键字“C#”或“.NET”的文章 
+            //var result5 = from a in articles
+            //              where a.KeyWords.Any(K => K.Name == "C#") || a.KeyWords.Any(K => K.Name == ".Net")
+            //              select a;
+            ////linq方法
+            //var methodresult6 = articles.Where(a => a.KeyWords.Any(K => K.Name == "C#") || a.KeyWords.Any(K => K.Name == ".Net"));
+            //foreach (var item in result5)
+            //{
+            //    Console.WriteLine(item.Author);
+            //}
 
-            //找出评论数量最多的文章
-            var result6 = from c in comments
-                          group c by c.Author into gc
-                          select new
-                          {
-                              AuthorName = gc.Key.Name,
-                              Number = gc.Count()
-                          };
-            //linq方法
-            var methodresult7 = comments.GroupBy(c => c.Author).Select(
-                ga => new
-                {
-                    AuthorName = ga.Key.Name,
-                    Number = ga.Count()
-                });
-            foreach (var item in result6)
-            {
-                Console.WriteLine($"{item.AuthorName}{item.Number}");
-            }
-            //找出每个作者评论数最多的文章
-            var result7 = from a in articles
-                          group a by a.Author into ga
-                          select ga.OrderByDescending(ga => ga.Comments.Count()).FirstOrDefault();
-            //linq方法
-            var methodresult8 = articles.GroupBy(a => a.Author).Select(ga => ga.OrderByDescending(ga => ga.Comments.Count()).FirstOrDefault());
-            foreach (var item in result7)
-            {
-                Console.WriteLine(item.Author);
-            }
-            //找出每个作者最近发布的一篇文章
-            var methodresult9 = articles.GroupBy(a => a.Author).Select(ga => ga.OrderByDescending(ga => ga.PublishTime).FirstOrDefault());
-            //为求助（Problem）添加悬赏（Reward）属性，并找出每一篇求助的悬赏都大于5个帮帮币的求助作者
-            var methodresult10 = problems.GroupBy(p => p.Author).Select(gp => new { AuthorReward = gp.Key.Reward > 5 });
-            foreach (var item in methodresult10)
-            {
-                Console.WriteLine(item.AuthorReward);
-            }
+            ////找出评论数量最多的文章
+            //var result6 = from c in comments
+            //              group c by c.Author into gc
+            //              select new
+            //              {
+            //                  AuthorName = gc.Key.Name,
+            //                  Number = gc.Count()
+            //              };
+            ////linq方法
+            //var methodresult7 = comments.GroupBy(c => c.Author).Select(
+            //    ga => new
+            //    {
+            //        AuthorName = ga.Key.Name,
+            //        Number = ga.Count()
+            //    });
+            //foreach (var item in result6)
+            //{
+            //    Console.WriteLine($"{item.AuthorName}{item.Number}");
+            //}
+            ////找出每个作者评论数最多的文章
+            //var result7 = from a in articles
+            //              group a by a.Author into ga
+            //              select ga.OrderByDescending(ga => ga.Comments.Count()).FirstOrDefault();
+            ////linq方法
+            //var methodresult8 = articles.GroupBy(a => a.Author).Select(ga => ga.OrderByDescending(ga => ga.Comments.Count()).FirstOrDefault());
+            //foreach (var item in result7)
+            //{
+            //    Console.WriteLine(item.Author);
+            //}
+            ////找出每个作者最近发布的一篇文章
+            //var methodresult9 = articles.GroupBy(a => a.Author).Select(ga => ga.OrderByDescending(ga => ga.PublishTime).FirstOrDefault());
+            ////为求助（Problem）添加悬赏（Reward）属性，并找出每一篇求助的悬赏都大于5个帮帮币的求助作者
+            //var methodresult10 = problems.GroupBy(p => p.Author).Select(gp => new { AuthorReward = gp.Key.Reward > 5 });
+            //foreach (var item in methodresult10)
+            //{
+            //    Console.WriteLine(item.AuthorReward);
+            //}
                 
             //方法 //给上述委托赋值，并运行该委托
             //Person person = new Person() { Age = 18, name = "龚廷义" };

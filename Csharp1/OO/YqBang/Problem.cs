@@ -16,7 +16,7 @@ namespace CSharplearn
             {
                 if (value < 0)
                 {
-                    throw new IndexOutOfRangeException("输入的参数超出范围了");
+                    throw new ArgumentOutOfRangeException("Id为{Id}的用户设置的文章的标题为{Title}输入的Reward{value}超出了范围");
                 }
                 else
                 {

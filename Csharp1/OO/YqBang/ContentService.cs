@@ -15,7 +15,22 @@ namespace CSharplearn
         [HelpMoneyChanged(Amount = 1)]
         public void Publish(Content content)
         {
-            //content.Release();
+            try
+            {
+                content.Publish();
+            }
+            catch (ArgumentNullException e)
+            {
+                throw new Exception("Id为{Id}的用户发布的文章的标题为{Title}内容的作者为空",e);
+            }
+            catch (ArgumentOutOfRangeException )
+            {
+                Console.WriteLine("Id为{Id}的用户发布的文章的标题为{Title}求助的Reward为负数");
+            }
+            finally
+            {
+                Console.WriteLine($"{ DateTime.Now.ToString("yyyy年MM月dd日 hh点mm分ss秒")} 请求发布内容(Id= xxx)");
+            }
             Console.WriteLine("保存到数据库");
         }
         // 修改之前的属性验证：problem.Reward为负数时直接抛出“参数越界”异常
@@ -27,32 +42,6 @@ namespace CSharplearn
         //在Main()函数调用ContentService时，捕获一切异常，并记录异常的消息和堆栈信息
         public User Author { get; set; }
         public string Content { get; set; }
-        public void LookUp(ContentService contentService)
-        {
-            if (contentService.Author == null)
-            {
-                Console.WriteLine("内容的作者不能为空");
-            }
-            else
-            {
-                Console.WriteLine();
-            }
-        }
-        public void Release(ContentService contentService )
-        {
-            try
-            {
-                contentService.LookUp(contentService);
-            }
-            catch (ArgumentNullException )
-            {
-                Console.WriteLine($"{ DateTime.Now.ToString("yyyy年MM月dd日 hh点mm分ss秒")} 请求发布内容(Id= xxx)");
-                throw new Exception("内容的作者不能为空");
-            }
-            catch (IndexOutOfRangeException )
-            {
-                Console.WriteLine($"内容的作者不能为空{ DateTime.Now.ToString("yyyy年MM月dd日 hh点mm分ss秒")} 请求发布内容(Id= xxx)");
-            }
-        }
+
     }
 }

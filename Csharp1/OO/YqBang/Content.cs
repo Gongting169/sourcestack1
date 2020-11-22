@@ -10,11 +10,11 @@ namespace CSharplearn
         public User Author { get; set; }
         public DateTime createTime { get; private set; }
         public DateTime PublishTime { get; set; }
-        public void Publish(User Author) 
+        public void Publish() 
         {
             if (Author == null)
             {
-                throw new ArgumentNullException("参数为空");
+                throw new ArgumentNullException("Id为{ Id }的用户发布的文章的标题为{ Title}的作者为空");
             }
             else
             {
