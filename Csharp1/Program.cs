@@ -17,7 +17,6 @@ namespace CSharplearn
     {
         static void Main(string[] args)
         {
-
             //现有一个txt文件，里面存放了若干email地址，使用分号（;）或者换行进行了分隔。请删除其中重复的email地址，并按每30个email一行（行内用; 分隔）重新组织
             //string path = @"D:\YUANZHAN作业\Text";
             //StreamWriter stream = File.CreateText(path);
@@ -189,7 +188,7 @@ namespace CSharplearn
             //{
             //    Console.WriteLine(item.AuthorReward);
             //}
-                
+
             //方法 //给上述委托赋值，并运行该委托
             //Person person = new Person() { Age = 18, name = "龚廷义" };
             //ProvideWater provideWater = Add;
