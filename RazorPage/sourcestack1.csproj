@@ -12,8 +12,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\NewFolder\" />
+    <Folder Include="Pages\Article\" />
+    <Folder Include="Pages\LogOn\" />
+    <Folder Include="Pages\Problem\" />
+    <Folder Include="Pages\Profile\" />
+    <Folder Include="Pages\Register\" />
     <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Article.html" />
+    <None Include="wwwroot\LogOn.html" />
+    <None Include="wwwroot\PersonalInformation.html" />
+    <None Include="wwwroot\Register.html" />
   </ItemGroup>
 
 </Project>
