@@ -17,25 +17,26 @@ namespace CSharplearn
     {
         static void Main(string[] args)
         {
+
             //现有一个txt文件，里面存放了若干email地址，使用分号（;）或者换行进行了分隔。请删除其中重复的email地址，并按每30个email一行（行内用; 分隔）重新组织
-            string path = @"D:\YUANZHAN作业\Text";
-            StreamWriter stream = File.CreateText(path);
+            //string path = @"D:\YUANZHAN作业\Text";
+            //StreamWriter stream = File.CreateText(path);
             //stream = File.OpenText(path);
             //stream.Write()+
 
 
-            try
-            {
-                User gty = new User();
-                ContentService contentService = new ContentService();
-                Problem problem5 = new Problem();
-                problem5.Author = gty;
-                contentService.Publish(problem5);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString() + DateTime.Now.ToString("yyyy年MM月dd日 hh点mm分ss秒"));
-            }
+            //try
+            //{
+            //    User gty = new User();
+            //    ContentService contentService = new ContentService();
+            //    Problem problem5 = new Problem();
+            //    problem5.Author = gty;
+            //    contentService.Publish(problem5);
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.ToString() + DateTime.Now.ToString("yyyy年MM月dd日 hh点mm分ss秒"));
+            //}
 
             //User fg = new User() { Name = "飞哥" };
             //User xy = new User() { Name = "小鱼" };
