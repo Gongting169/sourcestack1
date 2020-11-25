@@ -12,11 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Article\" />
-    <Folder Include="Pages\LogOn\" />
-    <Folder Include="Pages\Problem\" />
-    <Folder Include="Pages\Profile\" />
-    <Folder Include="Pages\Register\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
