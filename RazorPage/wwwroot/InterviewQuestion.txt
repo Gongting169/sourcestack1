@@ -430,6 +430,25 @@ CPU相关的线程，会利用TaskSchedular从线程池获取
 2、section也有什么作用？除了renderbody以外的部分，进行重用页面片段。
 3、layout的自定义和嵌套是怎么回事？
 
+2020年11月26日的面试题目：
+1、handler method 你知道吗？pagemodle可以自定义的处理多个http请求，如果razor页面没有model声明，ASP.NET按默认设置直接输出.cshtml文件编译后的HTML内容；否则，会进入Handler Mthods 
+PageModel根据 HTTP请求的方式（request methods）来确定调用方法：On+RequestMethod()，所以除了OnGet()方法，还有OnPost()方法等  PageModel可以：按Http请求的Method不同，分别处理。 
+在razor页面被添加的时候，其PageModel中就自动包含了一个OnGet()方法，这被称之为handler methods。用于处理HTTP GET请求。 
+因为在运行时，ASP.NET会在PageModel中选择调用OnGet()/OnPost()方法，所以一个PageModel中： 可以同时有OnGet()和OnPost()方法，但不可以有多个OnGet()方法（或者多个OnPost()方法等),用参数重载区分也不行（会运行时错误）
+OnGet()和OnPost()不用带参数 在OnGet()方法中，因为继承了PageModel，所以可以调用PageModel的一些常用属性(request和response)Request：Http请求相关信息，常用的有：Header/Body
+Response：返回客户端的相应信息  ViewData：存储页面（View）所需要的数据（Data） HttpContext：当前请求的上下文信息，作为数据容器：在Page和PageModel之间传递数据 
+2、get和post有什么区别？form表单本身并不传递数据，是浏览器将form表单中的数据进行“翻译”，然后再传递给服务器！ 如果form中method属性设置为get，浏览器使用GET方式，将form表单中的数据转换成URL参数，传递给服务器
+参数以?标记开头；每个参数等号左边是name，右边是value；多个参数间用&分隔。如果参数值不是英文和字母，会被浏览器自动编码，如果form中method属性设置为post，浏览器使用POST方式，将form表单中的数据转换成Form Data，传递给服务器。（按HTTP协议，GET请求没有Form Data项） 
+GET是请求得到（读）；POST是传递给服务器（写） 
+3、向razor页面传递数据，你是怎么选择强类型和弱类型的？ 如果输入到数据库，就使用强类型,就是通过在Razor页面调用@Model，可以得到PageModel中的公共类成员（通常是属性） 
+，不输入到数据库，就可以使用弱类型，另外一种方法是使用ViewData[]： ViewData[]的优势是方便，但它是Object类型
+4、解释一下传递背后的原理？所有的页面数据存储在ViewData中，其中又分为两种形式： 索引器：在PageModel和.cshtml中都可以读/写，Model属性：如果说.cshtml文件标明了@page且指定了@model，
+ViewData.Model就会（通过泛型）被设定为@model指定的实例对象；否则，ViewData.Model就会被编译成dynamic类型变量（布局页）或页面类型（奇怪？）
+在_Layout中使用内容页的数据，可以通过三种方式实现： ViewData["Title"]：内容页赋值，_Layout直接使用 PageModel继承 为添加_Layout.cshtml添加一个_LayoutModel类，并在_Layout.cshtml页面引入  
+让内容页的Model继承自_LayoutModel，并在其中为Title赋值 
+@Model.Title：Title是PageModel属性
+5、
+
 
 
 
