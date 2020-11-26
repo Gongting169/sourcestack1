@@ -1,8 +1,23 @@
 ﻿@page
 @model IndexModel
-
-
-
+<div style="text-align:center">
+    @for (int i = 0; i < 5; i++) //控制输出的行数
+    {
+        for (int j = 0; j < (2 * i + 1); j++)  //控制输出里面的个数
+        {
+            if (i % 2 == 0)
+            {
+                <span style="color:red"> i </span>
+            }
+            else
+            {
+                <span style="color:blue"> i </span>
+            }
+      
+        }
+        <br />
+    }
+</div>
 
 
 

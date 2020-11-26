@@ -444,10 +444,18 @@ GET是请求得到（读）；POST是传递给服务器（写）
 ，不输入到数据库，就可以使用弱类型，另外一种方法是使用ViewData[]： ViewData[]的优势是方便，但它是Object类型
 4、解释一下传递背后的原理？所有的页面数据存储在ViewData中，其中又分为两种形式： 索引器：在PageModel和.cshtml中都可以读/写，Model属性：如果说.cshtml文件标明了@page且指定了@model，
 ViewData.Model就会（通过泛型）被设定为@model指定的实例对象；否则，ViewData.Model就会被编译成dynamic类型变量（布局页）或页面类型（奇怪？）
-在_Layout中使用内容页的数据，可以通过三种方式实现： ViewData["Title"]：内容页赋值，_Layout直接使用 PageModel继承 为添加_Layout.cshtml添加一个_LayoutModel类，并在_Layout.cshtml页面引入  
+5、在_Layout中使用内容页的数据，可以通过三种方式实现： ViewData["Title"]：内容页赋值，_Layout直接使用 为添加_Layout.cshtml添加一个_LayoutModel类，并在_Layout.cshtml页面引入  
 让内容页的Model继承自_LayoutModel，并在其中为Title赋值 
-@Model.Title：Title是PageModel属性
-5、
+
+
+2020年11月26日的面试题目：
+1、一个路径转到路径.cshtml文件下,有什么方法？ 有两种：一种是页面指定：即在.cshtml中@page之后添加一个该page可以相匹配的路径，
+比如，在/Log/On.cshtml的@page后添加：@page "/LogOn" 添加的是当前要转的页面，是要转到的那个指定页面@page后面添加  第二种：
+2、路由的优先级你最常用的有哪几种？ 默认的是最优先的，然后是更具体的
+3、RouteData是什么？
+4、tag helper 是什么？ 有什么作用？
+5、在实际开发中，你是怎么使用route的？
+
 
 
 
