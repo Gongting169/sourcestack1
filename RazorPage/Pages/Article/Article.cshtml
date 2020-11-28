@@ -1,6 +1,7 @@
 ﻿@page
 @model sourcestack1.Pages.Article.ArticleModel
 @{
+    Layout = "Layout/_Dual";
 }
 <!DOCTYPE html>
 <html>
@@ -8,7 +9,10 @@
     <meta charset="utf-8" />
     <meta name="description" content="菜鸟编程开发必看" />
     <title>首页.一起帮</title>
-    <link rel="shortcut icon" type="image/ico" href="/js/logo.ico" media="screen" />
+    <link rel="shortcut icon" type="image/ico" href="/images/logo.ico" media="screen" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/StyleSheet1.css" />
+    <link rel="stylesheet" href="css/font-awesome.css" />
 </head>
 <body>
     <main>
@@ -29,16 +33,10 @@
         <a href=" #" style="text-align :right ">作者:叶飞</a>
         <br />
         <a href="/Article/320" target="_blank">Bootstrap：全局样式和组件</a>
-
-
     </main>
 
     <aside>
     </aside>
 
-    <footer>
-
-        <a>关于我们</a>     <a>意见建议</a>    <a>历史通知</a>
-    </footer>
 </body>
 </html>

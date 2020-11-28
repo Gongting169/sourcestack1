@@ -4,8 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - sourcestack1</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="shortcut icon" type="image/ico" href="/images/logo.ico" media="screen" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/StyleSheet1.css" />
+    <link rel="stylesheet" href="css/font-awesome.css" />
 </head>
 <body>
     <header>
@@ -84,33 +86,36 @@
             </div>
         </nav>
     </header>
-
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+            @RenderSection("Widgets")
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="text-info " style="margin-top : 50px">
-            <a href="/About/Us" target="_blank">关于我们</a>|
-            <a href="/FAQ" target="_blank">常见问题</a>|
-            <a href="/Suggest" target="_blank">意见建议</a>|
-            <a href="/Notice" target="_blank">历史通知</a>|
-            <a href="/Donate" target="_blank">友情捐赠</a>|
-            <a href="/About/Partner" target="_blank">诚邀合伙人</a>|
-            <div>友情链接:</div>
-            <p class="text-right ">
-                <a href="http://www.miitbeian.gov.cn/" target="_blank">渝ICP备18007191号（备案）</a>
-                © 2020 - 首顾科技
-            </p>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-5 ">
+                    <div class="text-info ">
+                        <a href="/About/Us" target="_blank">关于我们</a>|
+                        <a href="/FAQ" target="_blank">常见问题</a>|
+                        <a href="/Suggest" target="_blank">意见建议</a>|
+                        <a href="/Notice" target="_blank">历史通知</a>|
+                        <a href="/Donate" target="_blank">友情捐赠</a>|
+                        <a href="/About/Partner" target="_blank">诚邀合伙人</a>|
+                        <div>友情链接:</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 offset-6 ">
+                    <p class="text-right " style="margin-top : 50px">
+                        <a href="http://www.miitbeian.gov.cn/" target="_blank">渝ICP备18007191号（备案）</a>
+                        © 2020 - 首顾科技
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
-    @RenderSection("Scripts", required: false)
 </body>
 </html>

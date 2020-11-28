@@ -1,6 +1,7 @@
 ﻿@page
 @model sourcestack1.Pages.Profile.ProfileModel
 @{
+    Layout = "Layout/_Dual";
 }
 <!DOCTYPE html>
 <html>
@@ -12,17 +13,12 @@
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/css/StyleSheet1.css" />
     <link rel="stylesheet" href="/css/font-awesome.css" />
-    <style>
-        .input-group-middle {
-            border-radius: 0px;
-        }
-    </style>
 </head>
 <body>
     <main>
         <div class="container">
             <div class="row">
-                <div class="col-5 offset-1">
+                <div class="col-5 ">
                     <div style=" margin-top:80px" class="form-group">
                         <label>头像:(*仅限jpg/png/gif）</label>
                         <div class="input-group mb-3">
@@ -114,7 +110,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-4 offset-1 ">
+                <div class="col-6 offset-1 ">
                     <aside>
 
                         <h3 class="text-info" style="margin-bottom :120px">

@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace sourcestack1.Pages.LogOn
+namespace sourcestack1.Pages.Shared._Layout
 {
-    public class LogOnModel : PageModel
+    public class _DualModel : PageModel
     {
         public void OnGet()
         {
