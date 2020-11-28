@@ -450,12 +450,18 @@ ViewData.Model就会（通过泛型）被设定为@model指定的实例对象；
 
 2020年11月26日的面试题目：
 1、一个路径转到路径.cshtml文件下,有什么方法？ 有两种：一种是页面指定：即在.cshtml中@page之后添加一个该page可以相匹配的路径，
-比如，在/Log/On.cshtml的@page后添加：@page "/LogOn" 添加的是当前要转的页面，是要转到的那个指定页面@page后面添加  第二种：
+比如，在/Log/On.cshtml的@page后添加：@page "/LogOn" 添加的是当前要转的页面，是要转到的那个指定页面@page后面添加  第二种：是在startup中修改addpageroute
+通过两个参数来体现，第一个参数时是：pagename 代表使用默认route规则匹配该URL能获得的Page，表示的是要转到的那个页面，第二个参数是：route：代表该自定义route规则适用的URL Path 
+有了上述方法，当遇到“/Log/On”请求时，ASP.NET会在Route的时候，可以将其分配给“按默认route规则/LogOn指向的” \Page\LogOn.cshtml处理 
 2、路由的优先级你最常用的有哪几种？ 默认的是最优先的，然后是更具体的
-3、RouteData是什么？
+3、RouteData是什么？这里用{id}表示我们上面所说的“变量”，这样的变量被称之为“RouteData”（route所携带的数据），以键值对的形式存储。 只需要在/Article/Single.cshtml页面修改@page： @page "/Article/{id}"
+利用AddPageRoute() option.Conventions.AddPageRoute("/Article/Single", "/Article/{id}");在一个segment中混合字母和route data，就被称之为复杂路由。复杂路由route data可以使用约束不能同时使用 
 4、tag helper 是什么？ 有什么作用？
-5、在实际开发中，你是怎么使用route的？
+5、在实际开发中，你是怎么使用route的？在一个项目中，只使用一种自定义route方式，而且最好是通过AddPageRoute()设置，以提高可维护性。
 
+2020年11月28日的面试题目：
+1、如何自定一个taghelper,如何转换为a标签。
+2、
 
 
 
