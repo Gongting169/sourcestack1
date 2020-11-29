@@ -461,7 +461,13 @@ ViewData.Model就会（通过泛型）被设定为@model指定的实例对象；
 
 2020年11月28日的面试题目：
 1、如何自定一个taghelper,如何转换为a标签。
-2、
+2、为什么需要TagHelper类标签？
+3、TagHelper的运行机制是什么样的？
+4、taghelper是什么，有什么作用？
+
+2020年11月29日的面试题目：
+1、什么是model绑定？有什么作用？背后的原理是什么？ model绑定是通过属性来进行绑定的，主要是使用了特性，在通过反射来拿取值，根据key给对应的属性自动的赋值
+绑定本质上是ASP.NET将前台（客户端/浏览器，不是RazorPage）传回的值赋值给PageModel中标记了[BindProperty]属性，还有bindingproerties 在get方式中也能进行绑定，可以指定具体的name
 
 
 
