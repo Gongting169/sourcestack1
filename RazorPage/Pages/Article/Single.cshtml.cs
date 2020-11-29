@@ -23,7 +23,7 @@ namespace CSharplearn
         }
         public void OnGet()
         {
-            Article = new ArticleRepository();
+            //Article = new ArticleRepository();
         }
     }
 
