@@ -6,8 +6,8 @@
     <title>@ViewData["Title"] - sourcestack1</title>
     <link rel="shortcut icon" type="image/ico" href="/images/logo.ico" media="screen" />
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="/css/StyleSheet1.css"/>
-    <link rel="stylesheet" href="/css/font-awesome.css"/>
+    <link rel="stylesheet" href="/css/StyleSheet1.css" />
+    <link rel="stylesheet" href="/css/font-awesome.css" />
 </head>
 <body>
     <header>
@@ -32,19 +32,59 @@
                                 <span class=" fa fa-question-circle"></span> 求助
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item dropdown-header" href="#">督导班</a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa-fa-eye fa-fw"></span>
+                                    督导班
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa-fa-list fa-fw"></span>
+                                    列表
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa-fa-edit fa-fw"></span>
+                                    疑问发布
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa-fa-list fa-fw"></span>
+                                    疑问列表
+                                </a>
+                                <hr />
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa-fa-list fa-fw"></span>
+                                    列表
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa-fa-edit fa-fw"></span>
+                                    发布
+                                </a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class=" fa fa-eye"></span>  督促
+                                <span class="fa-fa-eye"></span>  督促
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa-fa-edit fa-fw"></span>
+                                    求督促
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa-fa-gavel fa-fw"></span>
+                                    督促别人
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa-fa-list fa-fw"></span>
+                                    我的目标
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa-fa-list fa-fw"></span>
+                                    我的督促
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="iconfont icon-money-bag"></span>
+                                    未交作业
+                                </a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -52,9 +92,14 @@
                                 <i class="fa fa-book" aria-hidden="true"></i>  文章
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa-fa-list fa-fw"></span>
+                                    列表
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa fa-folder-open fa-fw"></span>
+                                    开通
+                                </a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -62,9 +107,50 @@
                                 <i class="fa fa-user-circle-o" aria-hidden="true"></i> DK
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa-fa-list fa-fw"></span>
+                                    新手任务
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa fa-home fa-fw"></span>
+                                    我的主页
+                                </a>
+                                <hr />
+                                <a class="dropdown-item" href="/">
+                                    <span class="bean"><strong class="iconfont icon-beans"></strong> 帮帮豆</span>
+                                    <span zyf-nav-current-ballots="">13</span>
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="water"><span class="iconfont icon-drips"></span> 帮帮点</span>
+                                    ：<span zyf-nav-current-credit="">182</span> 点 ②
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="credit"><span class="iconfont icon-money"></span> 帮帮币</span>
+                                    ：<span zyf-nav-current-money="">0</span> 枚
+                                </a>
+                                <hr>
+                                <span class="dropdown-header">
+                                    <span class="fa fa-pencil-square-o fa-fw"></span>
+                                    修改
+                                </span>
+
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa fa-lock fa-fw"></span>
+                                    我的密码
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa fa-envelope fa-fw"></span>
+                                    联系方式
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa fa-camera fa-fw"></span>
+                                    个人资料
+                                </a>
+                                <hr />
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa fa-sign-out"></span>
+                                    退出登录
+                                </a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -72,13 +158,49 @@
                                 <i class="fa fa-tachometer" aria-hidden="true"></i> 后台
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa fa-user-plus fa-fw"></span>
+                                    邀请注册
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa fa-bell fa-fw"></span>
+                                    我的消息
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa fa-file-o fa-fw"></span>
+                                    我的草稿
+                                </a>
+                                <hr />
+                                <span class="dropdown-header">广告推广</span>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa fa-link"></span>
+                                    联系方式
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa fa-link"></span>
+                                    侧边栏
+                                </a>
+                                <hr />
+                                <span class="dropdown-header">帮帮币</span>
+                                <a class="dropdown-item" href="#">
+                                    <b class="iconfont icon-shopping-cart-buy"></b>
+                                    购买
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <b class="iconfont icon-shopping-cart-sell"></b>
+                                    出售
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa fa-list"></span>
+                                    已购买
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <span class="fa fa-list"></span>
+                                    已出售
+                                </a>
                             </div>
-                        </li>
-                    </ul>
                 </div>
+                </ul>
             </div>
         </nav>
     </header>
