@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\Article.html" />
     <None Include="wwwroot\LogOn.html" />
     <None Include="wwwroot\PersonalInformation.html" />
