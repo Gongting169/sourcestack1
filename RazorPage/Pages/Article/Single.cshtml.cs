@@ -2,29 +2,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CSharplearn;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
+using E = sourcestack1.Entity;
+using sourcestack1.Repository;
 namespace sourcestack1.Pages.Article
 {
     public class SingleModel : PageModel
     {
         public SingleModel()
         {
-            artcleRepository = new ArtcleRepository();
+            articleRepository = new ArticleRepository();
         }
-        public  Article Article { get; set; }
+        public E.Article Article { get; set; }
 
-        private ArtcleRepository artcleRepository;
-     
+        private ArticleRepository articleRepository;
+
         public void OnGet()
         {
-            //Article = new ArticleRepository();
+            //int id = Convert.ToInt32(Request.Query["id"]);
+            //Article = articleRepository.Find(8);
         }
     }
 
-    internal class ArtcleRepository
-    {
-    }
 }

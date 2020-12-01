@@ -18,8 +18,4 @@
     <None Include="wwwroot\Register.html" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Csharp1\CSharplearn.csproj" />
-  </ItemGroup>
-
 </Project>

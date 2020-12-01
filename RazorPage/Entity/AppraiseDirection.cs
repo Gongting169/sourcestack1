@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace sourcestack1.Entity
 {
-    public class Keyword:Entity
+    public  enum AppraiseDirection
     {
-        public string Name { get; set; }
-        public IList<Article> Articles { get; set; }
+        Down,
+        Up
     }
 }

@@ -14,5 +14,13 @@ namespace sourcestack1.Entity
         public string InvitedCode { get; set; }
         public int BCredit { get; set; }
         public int Reward { get; set; }
+        public void Register()
+        {
+            InvitedBy.InvitedCode += 10;
+        }
+
+
+
+
     }
 }

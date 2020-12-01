@@ -4,55 +4,58 @@
     Layout = "_Layout";
 }
 
-@foreach (var item in collection)
+@foreach (var item in Model.Articles)
 {
-    <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
-        <div>
-            <small class="text-muted">
-                <span class="fa fa-calculator"></span>
-                <span>2020年8月20日21点02分</span>
-            </small>
-            <small class="pull-right">
-                <span>作者：</span>
-                <a href="#">叶飞</a>
-            </small>
+    <main class="container" style="margin-top:130px">
+        <div class="row">
+            <article class="col-md-8">
+                <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px">
+                    <div>
+                        <small class="text-muted">
+                            <span class="fa fa-calculator"></span>
+                            <span>@item.PublishTime</span>
+                        </small>
+                        <small class="pull-right">
+                            <span>作者：</span>
+                            <a href="#">@item.Author.Name</a>
+                        </small>
+                    </div>
+                    <h5>
+                        <a href="/Article/Single?id= @item.Id ">@item.Title</a>
+                    </h5>
+                    <p style="word-break: break-all; clear: both; margin-top: 8px;">
+                        @item.Body
+                        <a href="#" title="全文">……</a>
+                    </p>
+                    <div>
+                        <label>
+                            <span class="fa fa-tags"></span>
+                            关键字：
+                        </label>
+                        @for (int i = 0; i < item.Keywords.Count(); i++)
+                        {
+                            <span class="badge badge-pill badge-dark">@item.Keywords[i].Name</span>
+                        }
+                    </div>
+                    <div class="pull-right" style="margin-bottom:10px">
+                        <a href="#" style="margin-left:14px;color:#31708f">
+                            <span class="fa fa-comments-o"></span>
+                            <span>评论：</span>@item.Comments.Count
+                        </a>
+                        <a href="#" style="margin-left:14px;color:#31708f">
+                            <span class="fa fa-thumbs-o-up"></span>
+                            <span>赞：</span>@item.Appraises.Where(a => a.Direction == AppraiseDirection.Up).Count()
+                        </a>
+                        <a href="#" style="margin-left:14px;color:#31708f">
+                            <span class="fa fa-thumbs-o-down"></span>
+                            <span>踩：</span>@item.Appraises.Where(a => a.Direction == AppraiseDirection.Down).Count()
+                        </a>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </article>
         </div>
-        <h5>
-            <a href="https://localhost:44397/Article/Single">VS中的第一个页面</a>
-        </h5>
-        <p style="word-break: break-all; clear: both; margin-top: 8px;">
-            学习HTML，其实就是学习一系列的标记（markup），而标记的核心就是元素（element）HTML标记语言的核心就是元素。
-            元素由标签、属性和文本内容组成，比如：&lt;h1 style="color:red"	&gt;一起帮·源栈欢迎您！&lt;/h1&gt;其中：元素（element）
-            ：整个这一行就是一个标签（tag）：h1，又分为开始标签（&lt;h1&gt;）和结束 （&lt;/h1&gt;）标签文本（text）：一起帮·源栈欢迎您！
-            ，放置在开始标签和结束标签之间 属性（attribute）：st
-            <a href="#" title="全文">……</a>
-        </p>
-        <div>
-            <label>
-                <span class="fa fa-tags"></span>
-                关键字：
-            </label>
-            <span class="badge badge-pill badge-dark">VS</span>
-            <span class="badge badge-pill badge-dark">html</span>
-            <span class="badge badge-pill badge-dark">入门</span>
-        </div>
-        <div class="pull-right" style="margin-bottom:10px">
-            <a href="#" style="margin-left:14px;color:#31708f">
-                <span class="fa fa-comments-o"></span>
-                <span>评论：</span>0
-            </a>
-            <a href="#" style="margin-left:14px;color:#31708f">
-                <span class="fa fa-thumbs-o-up"></span>
-                <span>赞：</span>18
-            </a>
-            <a href="#" style="margin-left:14px;color:#31708f">
-                <span class="fa fa-thumbs-o-down"></span>
-                <span>踩：</span>0
-            </a>
-        </div>
-        <div style="clear:both"></div>
-    </div>
-
+    </main>
 }
 
 
