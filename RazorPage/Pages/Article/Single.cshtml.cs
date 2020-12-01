@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using CSharplearn;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using CSharplearn = sourcestack1.Pages.Article;
-namespace CSharplearn
+
+namespace sourcestack1.Pages.Article
 {
     public class SingleModel : PageModel
     {
@@ -14,7 +14,7 @@ namespace CSharplearn
         {
             artcleRepository = new ArtcleRepository();
         }
-        public Article Article { get; set; }
+        public  Article Article { get; set; }
 
         private ArtcleRepository artcleRepository;
      
