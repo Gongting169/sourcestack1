@@ -7,10 +7,10 @@ namespace sourcestack1.Repository
 {
     public class ArticleRepository
     {
-        public static IList<Article> articles;
+        public static IList<Article> Articles;
         static ArticleRepository()
         {
-            articles = new List<Article>
+            Articles = new List<Article>
             {
                 new Article
                 {
@@ -136,12 +136,12 @@ namespace sourcestack1.Repository
         }
         public Article Find(int id)
         {
-            return articles.Where(a => a.Id == id).SingleOrDefault();
+            return Articles.Where(a => a.Id == id).SingleOrDefault();
 
         }
-        internal IList<Article> Get()
+        internal IList<Article> Get(int PageIndex,int PageSize)
         {
-            return articles;
+            return Articles.Skip((PageIndex-1)*PageSize).Take(PageSize).ToList();
         }
         public void Delete()
         {
@@ -149,7 +149,7 @@ namespace sourcestack1.Repository
         }
         public void Save(Article article)
         {
-            articles.Add(article);
+            Articles.Add(article);
         }
 
     }

@@ -14,7 +14,6 @@ namespace sourcestack1.Entity
         public IList<Keyword> Keywords { get; set; }
         public IList< Comment> Comments { get; set; }
         public IList<Appraise> Appraises { get; set; }
-        public AppraiseDirection Direction { get; set; }
 
     }
 }
