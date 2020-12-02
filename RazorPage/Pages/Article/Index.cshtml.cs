@@ -11,17 +11,23 @@ namespace sourcestack1.Pages.Article
     public class ArticleModel : PageModel
     {
         private ArticleRepository articleRepository;
+        public int ArticleTotalPages { get; set; }
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
         public ArticleModel()
         {
             articleRepository = new ArticleRepository();
         }
-        public IList<E.Article> Articles { get; set; }
+        public IList<E.Article> articles { get; set; }
         public void OnGet()
         {
-            PageIndex = Convert.ToInt32(Request.Query["PageIndex"][PageSize]);
-            Articles = articleRepository.Get(PageIndex, 5);
+            PageIndex = 1;
+            if (Request.Query.ContainsKey("pageIndex"))
+            {
+                PageIndex = Convert.ToInt32(Request.Query["pageIndex"][0]);
+            }
+            articles = new ArticleRepository().Get(PageIndex, PageSize);
+            ArticleTotalPages = articleRepository.ArticlesCount;
         }
 
 
