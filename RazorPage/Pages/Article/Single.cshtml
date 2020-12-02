@@ -1,7 +1,7 @@
 ﻿@page
 @model sourcestack1.Pages.Article.SingleModel
 @{
-    Layout = "_Layout";
+    Layout = "Layout/_Dual";
 }
 <!DOCTYPE html>
 <html>
@@ -10,22 +10,6 @@
     <meta name="description" content=" 快来一起登陆吧" />
 </head>
 <body>
-    <div class="container visible-md visible-lg top-user-message" zyf-user-message="">
-        <a class="pull-right" href="/Message/Index"><span class="fa fa-hand-o-right"></span> 全部消息</a>
-        <div>
-            <span title="" class="fa fa-calendar" data-original-title="2020年11月22日 13点34分" data-toggle="tooltip" data-placement="bottom"></span>
-            <span class="fa fa-thumbs-o-up text-success "></span> 欢迎
-
-            <span title="" data-original-title="" data-toggle="tooltip">
-                <a href="/User/4515" zyf-show-contact="4515">
-                    witbunny
-                </a>
-            </span>
-            <a title="" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-original-title="初级学徒" data-toggle="tooltip">
-                <span>①</span>
-            </a>加入“一起帮”！记得完成“新手任务”获得 <b class="iconfont icon-drips water"></b><a class="text-info" href="http://17bang.ren/FAQ/Credit">帮帮点</a>  奖励哟。<span class="text-success">O(∩_∩)O~</span>
-        </div>
-    </div>
     <div class="container body-content">
         <div class="row" style="margin-top:55px">
             <div class="col-md-8">
@@ -556,7 +540,7 @@
                         <span class="lead" style="margin-right:20px">
                             <span class="fa fa-comments-o"></span>
                             <span class="visible-sm-inline visible-md-inline visible-lg-inline">评论</span><small>
-                                 <span title="" data-original-title="精选评论" data-toggle="tooltip" zyf-comment-of-article-count="">0</span> / <span title="" data-original-title="全部评论" data-toggle="tooltip">0</span> 
+                                <span title="" data-original-title="精选评论" data-toggle="tooltip" zyf-comment-of-article-count="">0</span> / <span title="" data-original-title="全部评论" data-toggle="tooltip">0</span>
                             </small>
                         </span>
                     </div>
@@ -957,25 +941,23 @@
                         </a>
                     </nav>
                 </div>
-  
-            <style type="text/css">
-                h2 {
-                    position: relative;
-                }
 
-                    h2 > small {
-                        position: absolute;
-                        right: 0px;
-                        bottom: 10px;
+                <style type="text/css">
+                    h2 {
+                        position: relative;
                     }
 
-                li {
-                    margin-top: 5px;
-                }
-            </style>
+                        h2 > small {
+                            position: absolute;
+                            right: 0px;
+                            bottom: 10px;
+                        }
 
-
-            @*<link href="/Scripts/kindeditor-v4.1/plugins/prettifier/prettify.css" rel="stylesheet  />*@
+                    li {
+                        margin-top: 5px;
+                    }
+                </style>
+            </div>
         </div>
     </div>
 </body>

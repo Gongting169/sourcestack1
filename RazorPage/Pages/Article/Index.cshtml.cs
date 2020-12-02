@@ -26,7 +26,7 @@ namespace sourcestack1.Pages.Article
             {
                 PageIndex = Convert.ToInt32(Request.Query["pageIndex"][0]);
             }
-            articles = new ArticleRepository().Get(PageIndex, PageSize);
+            articles = new ArticleRepository().Get(PageIndex, 5);
             ArticleTotalPages = articleRepository.ArticlesCount;
         }
 
