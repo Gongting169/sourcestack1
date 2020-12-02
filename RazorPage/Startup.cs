@@ -21,9 +21,24 @@ namespace sourcestack1
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        //文章单页：/Article/Single? id = 1 => /Article/1
+        //文章修改：/Article/Edit? id = 7 => /Article/Edit/7
+        //所有文章列表：/Article/Index? pageIndex = 3 => /Article/Page-3
+        //文章分类列表：/Article/IndexOfCategory? pageIndex = 3 & category = 1 => /Article/Category-1/Page-3
+        //博主文章列表：/Article/IndexOfAuthor? author = 5 & pageIndex = 2 => /Article/User-5/Page-2
+        //任务历史月记录：/Task/HistoryOfMonth? year = 2019 & month = 8 & id = 5 => /Task/History/5/2019/8
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddRazorPages()
+                .AddRazorPagesOptions(opt =>
+                {
+                    opt.Conventions.AddPageRoute("/Article/Single? id = 1", "/Article/1");
+                //opt.Conventions.AddPageRoute("/Article/Edit? id = 7", "/Article/Edit/7");
+                //opt.Conventions.AddPageRoute("/Article/Index? pageIndex = 3", "/Article/Page-3");
+                //opt.Conventions.AddPageRoute("/Article/IndexOfCategory? pageIndex = 3 & category = 1 ", "/Article/Category-1/Page-3");
+                //opt.Conventions.AddPageRoute("/Article/IndexOfAuthor? author = 5 & pageIndex = 2", "/Article/User-5/Page-2");
+                //opt.Conventions.AddPageRoute("/Task/HistoryOfMonth? year = 2019 & month = 8 & id = 5", "/Task/History/5/2019/8");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
