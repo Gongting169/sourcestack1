@@ -128,6 +128,20 @@ namespace sourcestack1.Repository
                  Keywords = new List<Keyword>(){new Keyword(){Name="飞哥"},new Keyword(){Name="999天"},new Keyword(){Name="晚7点"} },
                  Comments = new List<Comment>(){ new Comment (){Content ="马保国"}},
                  Appraises = new List<Appraise>(){new Appraise (){Direction = AppraiseDirection.Up},new Appraise() { Direction =AppraiseDirection.Down} }
+                },
+                new Article
+                {
+                Id= 9,
+                Title=@"NoSql：Memcached：get/set/delete……",
+                Body=@" 关系型（SQL）数据库的特点特点实现适用于不适用于表结构建表时确定列规范格式数据（如：报表）异性（非规范结构）数据，扩展性不够，
+                比如：爱好数据完整性范式、约束、事务……高标准要求正确性无需严格检查数据正确性高可查询性索引、丰富的SQL语句读大于写写大于读典型场景：
+                汽车监控系统NoSQL运动大致经历一下三个阶段：关系型数据库一统江湖：关系型数据库=数据库No Sql：不再需要SQL 。背景：互联网尤其是Web2.0兴起，海量（低价值）数据生成，
+                数据完整性要求降低，及时性要求增加。Not Only Sql：不",
+                 Author = new User{Id =20,Name="大飞哥"},
+                 PublishTime = new DateTime(2019,11,11,10,56,42),
+                 Keywords = new List<Keyword>(){new Keyword(){Name="NoSql"},new Keyword(){Name="Memcache"},new Keyword(){Name=""} },
+                 Comments = new List<Comment>(){ new Comment (){Content ="过年好"}},
+                 Appraises = new List<Appraise>(){new Appraise (){Direction = AppraiseDirection.Up},new Appraise() { Direction =AppraiseDirection.Down} }
                 }
             };
         }
