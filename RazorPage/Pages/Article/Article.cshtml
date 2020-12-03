@@ -55,20 +55,26 @@
         @if (Model.PageIndex != 1)
         {
             <li class="page-item">
-                <a class="page-link" href="/Article?PageIndex=@(Model.PageIndex==1)">&lt&lt; </a> 
+                <a class="page-link" href="@Model.Path=@(Model.PageIndex==1)">上一页</a>  @*有问题*@
             </li>
         }
-        @for (int i = 0; i <= Model.ArticleTotalPages /2; i++)
+        @for (int i = 0; i <= Model.ArticleTotalPages / 2; i++)
         {
-            <li class="page-item">
-                <a class="page-link" href="/Article?PageIndex=@(i+1)">@(i+1)</a>
+            string active = Model.PageIndex == (i + 1) ? "active" : "null";
+            <li class="page-item @active">
+                <a class="page-link" href="@Model.Path=@(i+1)">@(i+1)</a>
             </li>
-
         }
-        @if (Model.PageIndex <= Model.ArticleTotalPages/2)
+        @if (Model.PageIndex < Model.ArticleTotalPages / 2)
         {
             <li class="page-item">
-                <a class="page-link" href="/Article?PageIndex=@(Model.PageIndex +1)">>></a>
+                <a class="page-link" href="@Model.Path=@(Model.PageIndex)">下一页</a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Model.Path=@(Model.PageIndex)"></a>
             </li>
         }
     </ul>
