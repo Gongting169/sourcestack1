@@ -471,11 +471,19 @@ ViewData.Model就会（通过泛型）被设定为@model指定的实例对象；
 
 2020年12月2日的面试题目；
 1、什么是正则表达式，有什么作用？自定义的一种规则用于对目标字符串的查找，可以用来判断密码、地址是否正确？提供了更多的方便。
-2、什么是cookie？有什么作用？存储在浏览器中的一小块数据，在浏览器和服务器之间传输
+2、什么是cookie？有什么作用？存储在浏览器中的一小块数据，随着http请求，自动的在浏览器和服务器之间传输 提高性能，减轻了服务器的压力，http是无状态，不会记住上一次的记录
+登录的实质就是：生成一个能够证明用户身份的cookie，比如：用户名或用户Id
 3、贪婪模式和非贪婪模式有什么区别？你自定义的规则对目标字符串查找，会全部查找完，想要以什么条件结束，不会结束，会被当做条件继续查找，非贪婪模式：找到第一个符合条件就结束
-4、如何实现一个自定义的model验证？首先声明一个自定义的类，让他继承自Attribute,然后在这个类的属性上加特姓名（也就是自定义的类名）,然后在pagemodel中进行验证，然后在razorpage页面添加
-asp validation for：
-5、
+4、如何实现一个自定义的model验证？首先声明一个自定义的类，让他继承自Attribute,然后在这个类的属性上加特姓名（也就是自定义的类名）
+,然后在pagemodel中进行验证，添加的错误信息可以用：errorfomartmessage,还可以在属性上添加display可以组合，然后在razorpage页面添加 asp validation for：
+5、生成的cookie用字符串格式的键值对形式存储，由Response引导，表明这个cookie是存放在Response中的 该cookie的名称（name/key）是UserId，值（value）是986 
+因为cookie是存放在浏览器中的，所以cookie不能“跨浏览器” 我们还可以自行指定cookie的 域名：默认为当前域名。比如“.17bang.ren”，注意最前面的点（.），这样就表示这个cookie在17bang.ren及其子域名
+（比如：sample.17bang.ren）中都可以使用  路径：默认为根路径。比如“/Log”，这样就表示这个cookie在/Log路径下有效 cookie的默认有效期是session，即：cookie在整个会话期间（浏览器未关闭期间）
+都有效；一旦关闭浏览器，cookie就没了。  ASP.NET core默认不能直接使用cookie。 要使用cookie，我们可以：在startup.cs的Configure()方法中进行全局设置（影响整个项目）： 重载UseCookiePolicy
+ CheckConsentNeeded = x => false //指示：使用cookie不需要客户同意 //指明该cookie是Essential的，不受CookiePolicy约束 options不同的cookie不会被认为是相同的cookie，不会覆盖 
+退出登录  本质就是删除包含用户登录信息的cookie。 看起来像是在服务器端删除了一个cookie，但其实不是的！牢记：服务器端无法删除cookie。其实质是： 将该cookie的过期时间设置为当前时间以前（ASP.NET将其设置为1970年）。查看方法：调试中Watch -> Response.Header -> Results View
+然后再将cookie发送到客户端浏览器。查看方法：F12 -> Network -> Response.Header
+6、服务器发送一个Response到客服端，其中包含了重定向的指示 ，客户端根据重定向指示，再自动向重定向页面发送一个GET请求 ，服务器响应新的GET请求，再发送一个reponse给客户端 
 
 
 
