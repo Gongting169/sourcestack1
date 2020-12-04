@@ -10,18 +10,13 @@ namespace sourcestack1.Pages.Article
 {
     public class SingleModel : PageModel
     {
+        private ArticleRepository articleRepository;
         public SingleModel()
         {
             articleRepository = new ArticleRepository();
         }
-        public E.Article Article { get; set; }
-
-        private ArticleRepository articleRepository;
-
         public void OnGet()
         {
-            //int id = Convert.ToInt32(Request.Query["id"]);
-            //Article = articleRepository.Find(8);
         }
     }
 

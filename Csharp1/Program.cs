@@ -22,8 +22,10 @@ namespace CSharplearn
             //StreamWriter stream = File.CreateText(path);
             //stream = File.OpenText(path);
             //stream.Write()+
-
-
+            double c = double.MaxValue;
+            Console.WriteLine(c);
+            int a = int.MaxValue;
+            Console.WriteLine(a);
             //try
             //{
             //    User gty = new User();
