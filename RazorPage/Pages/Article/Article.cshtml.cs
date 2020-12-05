@@ -12,11 +12,10 @@ namespace sourcestack1.Pages.Article
     public class ArticleModel : PageModel
     {
         private ArticleRepository articleRepository;
-        public double ArticlelPageCounts { get; set; }
-        public int PageIndex { get; set; } = 1;
-        public int PageSize { get; set; } = 10;
+        public int  ArticlelPageCounts { get; set; }
+        public int PageIndex { get; set; } 
+        public int PageSize { get; set; } = 2;
         public string Path { get; set; } = "/Article/Article?PageIndex";
-        public int CurrentPageIndex { get; set; }
         public IList<E.Article> articles { get; set; }
         public ArticleModel()
         {
@@ -27,10 +26,12 @@ namespace sourcestack1.Pages.Article
             if (Request.Query.ContainsKey("PageIndex"))
             {
                 PageIndex = Convert.ToInt32(Request.Query["PageIndex"][0]);
-                CurrentPageIndex = Convert.ToInt32(Request.Query["PageIndex"][0]);
             }
-            articles = new ArticleRepository().Get(PageIndex, PageSize);
-            ArticlelPageCounts = Math.Ceiling(((double)articleRepository.ArticlesCount) / PageSize);
+            articles = new ArticleRepository().Get(PageIndex, PageSize);    
+
+            ArticlelPageCounts = articleRepository.ArticlesCount % PageSize != 0 ? 
+            ArticlelPageCounts = articleRepository.ArticlesCount / PageSize + 1 : ArticlelPageCounts = articleRepository.ArticlesCount / PageSize;
+            ArticlelPageCounts = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(articleRepository.ArticlesCount) / Convert.ToDouble(PageSize)));
         }
     }
 }

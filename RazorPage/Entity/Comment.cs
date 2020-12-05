@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace sourcestack1.Entity
 {
-    public class Comment
+    public class Comment :Content
     {
-        public string Content { get; set; }
+
 
         //一篇文章可以有多个评论
         public Article Article { get; set; }

@@ -14,6 +14,7 @@ namespace sourcestack1.Repository
             UserRepository userRepository = new UserRepository();
             KeywordRepository keywordRepository = new KeywordRepository();
             CommentRepository commentRepository = new CommentRepository();
+            AppraiseRepository appraiseRepository = new AppraiseRepository();
             articles = new List<Article>
             {
                 new Article
@@ -21,14 +22,14 @@ namespace sourcestack1.Repository
                 Id= 1,
                 Title=@"VS中的第一个页面",
                 Body=@" 学习HTML，其实就是学习一系列的标记（markup），而标记的核心就是元素（element）HTML标记语言的核心就是元素。
-            元素由标签、属性和文本内容组成，比如：&lt;h1 style=""color:red""	&gt;一起帮·源栈欢迎您！&lt;/h1&gt;其中：元素（element）
-            ：整个这一行就是一个标签（tag）：h1，又分为开始标签（&lt; h1 & gt;）和结束 （&lt;/ h1 & gt;）标签文本（text）：一起帮·源栈欢迎您！
-            ，放置在开始标签和结束标签之间 属性（attribute）：st",
+                元素由标签、属性和文本内容组成，比如：&lt;h1 style=""color:red""	&gt;一起帮·源栈欢迎您！&lt;/h1&gt;其中：元素（element）
+                ：整个这一行就是一个标签（tag）：h1，又分为开始标签（&lt; h1 & gt;）和结束 （&lt;/ h1 & gt;）标签文本（text）：一起帮·源栈欢迎您！
+                ，放置在开始标签和结束标签之间 属性（attribute）：st",
                  Author = userRepository.Find(1),
                  PublishTime = new DateTime(2020,3,27,6,25,18),
-                 //Keywords = keywordRepository.Find(1),
-                 Comments = new List<Comment>(){ new Comment (){Content ="马保国"}},
-                 Appraises = new List<Appraise>(){new Appraise (){Direction = AppraiseDirection.Down},new Appraise(){ Direction =AppraiseDirection.Up} }
+                 Keywords = new List<Keyword>(){ keywordRepository.Find(1),keywordRepository.Find(3),keywordRepository.Find(5)},
+                 Comments = new List<Comment>(){commentRepository.Find(2),commentRepository.Find(10) },
+                 Appraises = new List<Appraise>(){appraiseRepository.Find(1),appraiseRepository.Find(2)}
                 },
                 new Article
                 {
@@ -40,9 +41,9 @@ namespace sourcestack1.Repository
                （演示：并在控制台看一下result的值）如果我们想要保持loadSucces ……",
                  Author =  userRepository.Find(2),
                  PublishTime = new DateTime(2020,5,3,14,58,32),
-                 Keywords = new List<Keyword>(){new Keyword(){Name="ES6"},new Keyword(){Name="promise"},new Keyword(){Name="回调地狱"} },
-                 Comments = new List<Comment>(){ new Comment (){Content ="真不错"}},
-                 Appraises = new List<Appraise>(){new Appraise (){Direction = AppraiseDirection.Up},new Appraise(){ Direction =AppraiseDirection.Down} }
+                 Keywords = new List<Keyword>(){keywordRepository.Find(5),keywordRepository.Find(7), keywordRepository.Find(6)},
+                 Comments = new List<Comment>(){ commentRepository.Find(2)},
+                 Appraises = new List<Appraise>(){appraiseRepository.Find(1),appraiseRepository.Find(2) }
                 },
                 new Article
                 {
@@ -53,9 +54,9 @@ namespace sourcestack1.Repository
                  滑动：slide 自定义动画：animiate 其他方法 静态：$.trim()/$.isNumeric()/…….data(name)：取属性中data-name的值noConflic ……",
                  Author = userRepository.Find(4) ,
                  PublishTime = new DateTime(2020,6,7,9,25,8),
-                 Keywords = new List<Keyword>(){new Keyword(){Name="JQuery"},new Keyword(){Name="AJax"},new Keyword(){Name="表单"} },
-                 Comments = new List<Comment>(){ new Comment (){Content ="年轻人"}},
-                 Appraises = new List<Appraise>(){new Appraise (){Direction = AppraiseDirection.Up},new Appraise() { Direction =AppraiseDirection.Down} }
+                 Keywords = new List<Keyword>(){keywordRepository.Find(8), keywordRepository.Find(9),keywordRepository.Find(10)},
+                 Comments = new List<Comment>(){commentRepository.Find(7)},
+                 Appraises = new List<Appraise>(){ appraiseRepository.Find(1),appraiseRepository.Find(2)}
                 },
                 new Article
                 {
@@ -67,9 +68,9 @@ namespace sourcestack1.Repository
                  JsonSerializerOptions最新的ASP.NET core版本默认（仅测试也仅能）使用System.Tex ……",
                  Author =   userRepository.Find(3),
                  PublishTime = new DateTime(2019,8,5,6,1,35),
-                 Keywords = new List<Keyword>(){new Keyword(){Name="Ajax"},new Keyword(){Name="Jison"},new Keyword(){Name="后台"} },
-                 Comments = new List<Comment>(){ new Comment (){Content ="我草"}},
-                 Appraises = new List<Appraise>(){new Appraise (){Direction = AppraiseDirection.Up},new Appraise() { Direction =AppraiseDirection.Down} }
+                 Keywords = new List<Keyword>(){keywordRepository.Find(9),keywordRepository.Find(11),keywordRepository.Find(1)},
+                 Comments = new List<Comment>(){commentRepository.Find(10)},
+                 Appraises = new List<Appraise>(){appraiseRepository.Find(1),appraiseRepository.Find(2)}
                 },
                 new Article
                 {
@@ -79,9 +80,9 @@ namespace sourcestack1.Repository
                 （其他演示，略） dropdown和select的区别 ……",
                  Author = userRepository.Find(2),
                  PublishTime = new DateTime(2018,5,5,7,30,59),
-                 Keywords = new List<Keyword>(){new Keyword(){Name="bootstrap.js"},new Keyword(){Name="插件"},new Keyword(){Name="入门"} },
-                 Comments = new List<Comment>(){ new Comment (){Content ="你真香"}},
-                 Appraises = new List<Appraise>(){new Appraise (){Direction = AppraiseDirection.Up},new Appraise() { Direction =AppraiseDirection.Down} }
+                 Keywords = new List<Keyword>(){keywordRepository.Find(12),keywordRepository.Find(4),keywordRepository.Find(1)},
+                 Comments = new List<Comment>(){commentRepository.Find(5)},
+                 Appraises = new List<Appraise>(){ appraiseRepository.Find(1),appraiseRepository.Find(2)}
                 },
                 new Article
                 {
@@ -92,9 +93,9 @@ namespace sourcestack1.Repository
                  numbers.name = 'Hello'; //数组仍然是一个对象，对 ",
                  Author = userRepository.Find(1),
                  PublishTime = new DateTime(2018,7,7,5,31,18),
-                 Keywords = new List<Keyword>(){new Keyword(){Name="ES6"},new Keyword(){Name="集合"},new Keyword(){Name=""} },
-                 Comments = new List<Comment>(){ new Comment (){Content ="闪电五连鞭"}},
-                 Appraises = new List<Appraise>(){new Appraise (){Direction = AppraiseDirection.Up},new Appraise() { Direction =AppraiseDirection.Down} }
+                 Keywords = new List<Keyword>(){keywordRepository.Find(5),keywordRepository.Find(13)},
+                 Comments = new List<Comment>(){commentRepository.Find(3)},
+                 Appraises = new List<Appraise>(){  appraiseRepository.Find(1),appraiseRepository.Find(2)}
                 },
                 new Article
                 {
@@ -105,9 +106,9 @@ namespace sourcestack1.Repository
                 又名ECMAScript：ECMA（European Computer Manufacturers Association）组织定制了JavaScript语言的标准。ES6已经在2015年6月正式发布，但浏览器 ……",
                  Author = userRepository.Find(1),
                  PublishTime = new DateTime(2020,6,1,7,21,30),
-                 Keywords = new List<Keyword>(){new Keyword(){Name="JavaScript"},new Keyword(){Name="介绍"},new Keyword(){Name="历史"} },
-                 Comments = new List<Comment>(){ new Comment (){Content ="马保国"}},
-                 Appraises = new List<Appraise>(){new Appraise (){Direction = AppraiseDirection.Up},new Appraise() { Direction =AppraiseDirection.Down} }
+                 Keywords = new List<Keyword>(){keywordRepository.Find(14),keywordRepository.Find(15),keywordRepository.Find(16)},
+                 Comments = new List<Comment>(){commentRepository.Find(1)},
+                 Appraises = new List<Appraise>(){appraiseRepository.Find(1),appraiseRepository.Find(2)}
                 },
                 new Article
                 {
@@ -117,9 +118,9 @@ namespace sourcestack1.Repository
                 </p></div>为了便于演示，加上一点CSS效果：<style>#propagate {padding: 30px;border: 1px solid;}#propagate > p {background-color: blue;border: 1px dashed;}& ……",
                  Author = userRepository.Find(2),
                  PublishTime = new DateTime(2018,7,17,5,45,18),
-                 Keywords = new List<Keyword>(){new Keyword(){Name="JavaScript"},new Keyword(){Name="事件"},new Keyword(){Name="冒泡"} },
-                 Comments = new List<Comment>(){ new Comment (){Content ="马保国"}},
-                 Appraises = new List<Appraise>(){new Appraise (){Direction = AppraiseDirection.Up},new Appraise() { Direction =AppraiseDirection.Down} }
+                 Keywords = new List<Keyword>(){  keywordRepository.Find(16),keywordRepository.Find(17),keywordRepository.Find(18)},
+                 Comments = new List<Comment>(){ commentRepository.Find(1) },
+                 Appraises = new List<Appraise>(){appraiseRepository.Find(1),appraiseRepository.Find(2)}
                 },
                 new Article
                 {
@@ -128,9 +129,9 @@ namespace sourcestack1.Repository
                 Body=@" 哪怕是行为艺术，我也要坚持999天！ 每天晚7点，欢迎围观。 ……",
                  Author = new User{Id =20,Name="大飞哥"},
                  PublishTime = new DateTime(2019,12,1,14,5,38),
-                 Keywords = new List<Keyword>(){new Keyword(){Name="飞哥"},new Keyword(){Name="999天"},new Keyword(){Name="晚7点"} },
-                 Comments = new List<Comment>(){ new Comment (){Content ="马保国"}},
-                 Appraises = new List<Appraise>(){new Appraise (){Direction = AppraiseDirection.Up},new Appraise() { Direction =AppraiseDirection.Down} }
+                 Keywords = new List<Keyword>(){keywordRepository.Find(20),keywordRepository.Find(1),keywordRepository.Find(19)},
+                 Comments = new List<Comment>(){commentRepository.Find(8)},
+                 Appraises = new List<Appraise>(){appraiseRepository.Find(1),appraiseRepository.Find(2)}
                 },
                 new Article
                 {
@@ -142,9 +143,9 @@ namespace sourcestack1.Repository
                 数据完整性要求降低，及时性要求增加。Not Only Sql：不",
                  Author = new User{Id =20,Name="大飞哥"},
                  PublishTime = new DateTime(2019,11,11,10,56,42),
-                 Keywords = new List<Keyword>(){new Keyword(){Name="NoSql"},new Keyword(){Name="Memcache"},new Keyword(){Name=""} },
-                 Comments = new List<Comment>(){ new Comment (){Content ="过年好"}},
-                 Appraises = new List<Appraise>(){new Appraise (){Direction = AppraiseDirection.Up},new Appraise() { Direction =AppraiseDirection.Down} }
+                 Keywords = new List<Keyword>(){keywordRepository.Find(21),keywordRepository.Find(8),keywordRepository.Find(9)},
+                 Comments = new List<Comment>(){commentRepository.Find(7)},
+                 Appraises = new List<Appraise>(){appraiseRepository.Find(1),appraiseRepository.Find(2)}
                 }
             };
         }
@@ -153,7 +154,7 @@ namespace sourcestack1.Repository
             return articles.Where(a => a.Id == id).SingleOrDefault();
 
         }
-        internal IList<Article> Get(int PageIndex, int PageSize)
+        public IList<Article> Get(int PageIndex, int PageSize)
         {
             return articles.Skip((PageIndex - 1) * PageSize).Take(PageSize).ToList();
         }
