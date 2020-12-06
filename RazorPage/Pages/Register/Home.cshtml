@@ -3,9 +3,6 @@
 @{
     Layout = "_Layout";
 }
-<!DOCTYPE html>
-<html>
-<body>
     <div class="container">
         <h1 class="text-info " style="margin-top:80px;margin-bottom :10px;">
             <span class="fa fa-registered" aria-hidden="true"></span>
@@ -16,8 +13,8 @@
     <div class="container">
         <div class="row">
             <div class="col-5 ">
-                <form>
-                    <div class="form-group mt-4" style="border:1px dashed ;border-radius :10px; background-color :#ffffe0 ;padding :0 10px 0 10px;">
+                <form method="post" >
+                    <div class="form-group mt-4" style="border:1px dashed ;border-radius :5px; background-color :#ffffe0 ;padding :0 10px 0 10px;">
                         <div class="text-right" style="padding-top :10px">
                             <a href="/FAQ/Account#invite" target="blank ">
                                 <span class="fa fa-question-circle" aria-hidden="true"></span>
@@ -26,25 +23,30 @@
                         </div>
                         <div class="form-group">
                             <label for="inputinviter">邀请人:(*必填）</label>
-                            <a href="/User/Inviters" title="点击由系统推荐">没有邀请人</a>
+                             <a href="/User/Inviters" title="点击由系统推荐">没有邀请人</a>
                             <input type="text" class="form-control" id="inputinviter" placeholder="他的用户名，模糊查询只能从头开始">
+                            <span  asp-for="NewUser.InvitedBy.Name" ></span>
                         </div>
                         <div style="margin-top :30px;" class="form-group ">
-                            <label for="inputcaptcha">验证码:(*必填）</label>
+                            <label for="inputcaptcha">邀请码:(*必填）</label>
                             <input type="text" class="form-control" id="inputcaptcha" placeholder="4位数字">
+                            <span  asp-for="NewUser.InvitedBy.InvitedCode"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputusername">用户名:(*必填）</label>
-                        <input type="text" class="form-control" id="inputusername" placeholder="登录用户名，可修改，不能重复">
+                        <input type="text" class="form-control" id="inputusername" placeholder="登录用户名，可修改，不能重复" >
+                        <span  asp-for="NewUser.Name"></span>
                     </div>
                     <div class="form-group">
                         <label for="inputpassword">密码:(*必填）</label>
                         <input type="text" class="form-control" id="inputpassword" placeholder="不少于4个字符">
+                        <span  asp-for="NewUser.Password"></span>
                     </div>
                     <div class="form-group ">
                         <label for="inputpassword">验证密码:(*必填）</label>
                         <input type="text" class="form-control" id="inputpassword" placeholder="和密码相同">
+                        <span  asp-for="@Model.ConfirmPassword"></span>
                     </div>
                     <div class="form-group ">
                         <label>验证码:(*必填）</label>
@@ -54,14 +56,13 @@
                         </div>
                     </div>
                     <input type="submit" class="btn btn-primary" value="提交">
-                    <input type="reset" class="btn btn-outline-info" value="重置">
+                    <input type="reset" class="btn btn-light" value="重置">
                     <a href="/Log/On?prepage=%2fRegister%2f" class="btn float-right">
                         <i class="fa fa-sign-in" aria-hidden="true"></i>
                         登录
                     </a>
                 </form>
             </div>
-            @*@section WidgetsHome{*@
                 <div class="col-6 offset-1">
                     <aside>
                         <h5 class="text-info">
@@ -78,12 +79,10 @@
                         </ol>
                     </aside>
                 </div>
-            @*}*@
         </div>
         <hr />
     </div>
-</body>
-</html>
+
 
 
 
