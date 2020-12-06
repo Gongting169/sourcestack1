@@ -3,6 +3,23 @@
 @{
     Layout = "_Layout";
 }
+<style >
+    .field-validation-error
+    {
+        color :red;
+        font-size:10px;          
+    }
+    .field-validation-error {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+    }
+        .field-validation-error::before {
+            content: "\f056";
+        }
+</style>
     <div class="container">
         <h1 class="text-info " style="margin-top:80px;margin-bottom :10px;">
             <span class="fa fa-registered" aria-hidden="true"></span>
@@ -22,41 +39,43 @@
                             </a>
                         </div>
                         <div class="form-group">
-                            <label for="inputinviter">邀请人:(*必填）</label>
+                            <label >邀请人:(*必填）</label>
                              <a href="/User/Inviters" title="点击由系统推荐">没有邀请人</a>
-                            <input type="text" class="form-control" id="inputinviter" placeholder="他的用户名，模糊查询只能从头开始">
-                            <span  asp-for="NewUser.InvitedBy.Name" ></span>
+                            <input type="text" class="form-control"  placeholder="他的用户名，模糊查询只能从头开始" asp-for="NewUser.InvitedBy.Name">
+                            <span asp-validation-for="NewUser.InvitedBy.Name"></span>
                         </div>
                         <div style="margin-top :30px;" class="form-group ">
-                            <label for="inputcaptcha">邀请码:(*必填）</label>
-                            <input type="text" class="form-control" id="inputcaptcha" placeholder="4位数字">
-                            <span  asp-for="NewUser.InvitedBy.InvitedCode"></span>
+                            <label >邀请码:(*必填）</label>
+                            <input type="text" class="form-control"  placeholder="4位数字" asp-for="NewUser.InvitedBy.InvitedCode">
+                            <span asp-validation-for="NewUser.InvitedBy.InvitedCode"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputusername">用户名:(*必填）</label>
-                        <input type="text" class="form-control" id="inputusername" placeholder="登录用户名，可修改，不能重复" >
-                        <span  asp-for="NewUser.Name"></span>
+                        <label>用户名:(*必填）</label>
+                        <input type="text" class="form-control" placeholder="登录用户名，可修改，不能重复" asp-for="NewUser.Name">
+                        <span asp-validation-for="NewUser.Name"></span>
                     </div>
                     <div class="form-group">
-                        <label for="inputpassword">密码:(*必填）</label>
-                        <input type="text" class="form-control" id="inputpassword" placeholder="不少于4个字符">
-                        <span  asp-for="NewUser.Password"></span>
+                        <label>密码:(*必填）</label>
+                        <input type="password" class="form-control"  placeholder="不少于4个字符" asp-for="NewUser.Password">
+                        <span asp-validation-for="NewUser.Password"></span>
                     </div>
                     <div class="form-group ">
-                        <label for="inputpassword">验证密码:(*必填）</label>
-                        <input type="text" class="form-control" id="inputpassword" placeholder="和密码相同">
-                        <span  asp-for="@Model.ConfirmPassword"></span>
+                        <label >验证密码:(*必填）</label>
+                        <input type="password" class="form-control" id="inputpassword" placeholder="和密码相同"asp-for="ConfirmPassword">
+                        <span asp-validation-for=" ConfirmPassword" ></span>
                     </div>
                     <div class="form-group ">
                         <label>验证码:(*必填）</label>
                         <div>
-                            <input type="text" id="inputcaptcha" style="width :100px" size="4" class="form-control d-inline">
+                            <input type="text" id="inputcaptcha" style="width :100px" size="4" class="form-control d-inline" asp-for="NewUser.Captcha">
                             <span class="ml-3">点击输入框显示</span>
+                            <br/>
+                            <span asp-validation-for="NewUser.Captcha"></span>
                         </div>
                     </div>
-                    <input type="submit" class="btn btn-primary" value="提交">
-                    <input type="reset" class="btn btn-light" value="重置">
+                    <input type="submit" class="btn btn-primary" value="提交"/>
+                    <input type="reset" class="btn btn-light" value="重置"/>
                     <a href="/Log/On?prepage=%2fRegister%2f" class="btn float-right">
                         <i class="fa fa-sign-in" aria-hidden="true"></i>
                         登录

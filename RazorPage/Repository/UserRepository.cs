@@ -22,7 +22,7 @@ namespace sourcestack1.Repository
 
         public User Find(int id )
         {
-            return users.Where(u => u.Id == id).FirstOrDefault();
+            return users.Where(u => u.Id == id).SingleOrDefault();
         }
          public void Save( User user)
         {
@@ -35,6 +35,11 @@ namespace sourcestack1.Repository
         public void Delete()
         {
 
+        }
+
+        public User GetByName(string name )
+        {
+            return users.Where(u => u.Name == name).SingleOrDefault();
         }
     }
 }

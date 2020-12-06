@@ -38,7 +38,7 @@ namespace sourcestack1.Repository
         }
         public Keyword Find(int id)
         {
-            return Keywords.Where(k => k.Id == id).FirstOrDefault();
+            return Keywords.Where(k => k.Id == id).SingleOrDefault();
         }
     }
 }

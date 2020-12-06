@@ -19,7 +19,7 @@ namespace sourcestack1.Repository
         }
         public Appraise Find(int id)
         {
-            return appraises.Where(a => a.Id == id).FirstOrDefault();
+            return appraises.Where(a => a.Id == id).SingleOrDefault();
         }
     }
 }

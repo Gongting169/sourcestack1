@@ -26,7 +26,7 @@ namespace sourcestack1.Repository
         }
         public Comment Find(int id)
         {
-            return comments.Where(c => c.Id == id).FirstOrDefault();
+            return comments.Where(c => c.Id == id).SingleOrDefault();
         }
     }
 }
