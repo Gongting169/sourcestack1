@@ -484,6 +484,15 @@ ViewData.Model就会（通过泛型）被设定为@model指定的实例对象；
 退出登录  本质就是删除包含用户登录信息的cookie。 看起来像是在服务器端删除了一个cookie，但其实不是的！牢记：服务器端无法删除cookie。其实质是： 将该cookie的过期时间设置为当前时间以前（ASP.NET将其设置为1970年）。查看方法：调试中Watch -> Response.Header -> Results View
 然后再将cookie发送到客户端浏览器。查看方法：F12 -> Network -> Response.Header
 6、服务器发送一个Response到客服端，其中包含了重定向的指示 ，客户端根据重定向指示，再自动向重定向页面发送一个GET请求 ，服务器响应新的GET请求，再发送一个reponse给客户端 
+7、什么是filter？过滤机制，比如：未登录的用户访问不能访问的页面，也就是需要登录之后才能访问的页面，重新定向到登录页面
+8、有哪几种方式实现filter 一种是在pagemodel上，另外一种是自己声明一个类，继承自Attribute，然后按照方法的先后执行顺序来确定在哪一个方法中添加，还有一种是在startup里面添加，就可以作用域任何其他的页面
+9、什么是prg模式？ 都按照Post-Redirect-Get进行处理的模式被称之为PRG，目前被广泛使用，还可以解决：避开ModelState的干扰，解决浏览器重复Post的问题。很多浏览器，刷新Post之后返回的页面，会自动（或提示你）
+再次提交（Post）而不是我们期待的Get，减少重复代码 OnPost()中的ModelState信息传递给OnGet()？用PageModel的变量 当Model验证失败时，重定向会丢失ModelState的Error信息，导致验证错误信息无法显示。
+使用一个“数据容器”把ModelState装起来 
+在Redirect的同时传递给OnGet()方法 
+在OnGet()中取出传递过来的ModelState，和当前ModelState进行融合（Merge）
+10、Request是如何度过它一生的？
+
 
 
 
