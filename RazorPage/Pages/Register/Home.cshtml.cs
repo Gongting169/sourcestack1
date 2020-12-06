@@ -12,7 +12,7 @@ namespace sourcestack1.Pages.Register
     [BindProperties]
     public class RegisterModel : PageModel
     {
-        private static UserRepository userRepository;
+        private  UserRepository userRepository;
         public RegisterModel()
         {
             userRepository = new UserRepository();
@@ -29,6 +29,7 @@ namespace sourcestack1.Pages.Register
             {
                 return;
             }
+            userRepository.Save(NewUser);
         }
     }
 }

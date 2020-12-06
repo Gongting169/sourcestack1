@@ -8,10 +8,10 @@ namespace sourcestack1.Repository
 {
     public class UserRepository
     {
-        private static IList<User> user;
+        private static IList<User> users;
         static UserRepository()
         {
-            user = new List<User>()
+            users = new List<User>()
             {
                 new User() { Id = 1, Name = "大飞哥",Password ="1234"} ,
                 new User() { Id = 2, Name = "马保国",Password ="2356"},
@@ -22,8 +22,19 @@ namespace sourcestack1.Repository
 
         public User Find(int id )
         {
-            return user.Where(u => u.Id == id).FirstOrDefault();
+            return users.Where(u => u.Id == id).FirstOrDefault();
         }
+         public void Save( User user)
+        {
+            users.Add(user);
+        }
+        public IList<User> Get(int pageindex,int pagesize)
+        {
+            return users.Skip((pageindex-1)*pagesize).Take(pagesize).ToList();
+        }
+        public void Delete()
+        {
 
+        }
     }
 }
