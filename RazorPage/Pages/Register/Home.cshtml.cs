@@ -17,8 +17,7 @@ namespace sourcestack1.Pages.Register
         {
             userRepository = new UserRepository();
         }
-        public User NewUser { get; set; }
-        
+        public User NewUser { get; set; }        
         public string ConfirmPassword { get; set; }
         public void OnGet()
         {

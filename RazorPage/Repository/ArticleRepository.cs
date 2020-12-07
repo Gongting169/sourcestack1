@@ -135,7 +135,7 @@ namespace sourcestack1.Repository
                 },
                 new Article
                 {
-                Id= 9,
+                Id= 10,
                 Title=@"NoSql：Memcached：get/set/delete……",
                 Body=@" 关系型（SQL）数据库的特点特点实现适用于不适用于表结构建表时确定列规范格式数据（如：报表）异性（非规范结构）数据，扩展性不够，
                 比如：爱好数据完整性范式、约束、事务……高标准要求正确性无需严格检查数据正确性高可查询性索引、丰富的SQL语句读大于写写大于读典型场景：
@@ -152,7 +152,6 @@ namespace sourcestack1.Repository
         public Article Find(int id)
         {
             return articles.Where(a => a.Id == id).SingleOrDefault();
-
         }
         public IList<Article> Get(int PageIndex, int PageSize)
         {

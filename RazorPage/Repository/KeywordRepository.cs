@@ -8,10 +8,10 @@ namespace sourcestack1.Repository
 {
     public class KeywordRepository
     {
-        private static IList<Keyword> Keywords;
+        private static IList<Keyword> keywords;
         static KeywordRepository()
         {
-            Keywords = new List<Keyword>
+            keywords = new List<Keyword>
             {
                 new Keyword(){ Id = 1,Name="C#"},
                 new Keyword(){Id=2,Name ="vs"},
@@ -38,7 +38,7 @@ namespace sourcestack1.Repository
         }
         public Keyword Find(int id)
         {
-            return Keywords.Where(k => k.Id == id).SingleOrDefault();
+            return keywords.Where(k => k.Id == id).SingleOrDefault();
         }
     }
 }

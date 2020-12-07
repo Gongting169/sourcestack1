@@ -16,7 +16,7 @@ namespace sourcestack1.Pages.Article
         public int PageIndex { get; set; } 
         public int PageSize { get; set; } = 2;
         public string Path { get; set; } = "/Article/Article?PageIndex";
-        public IList<E.Article> articles { get; set; }
+        public IList<E.Article> Articles { get; set; }
         public ArticleModel()
         {
             articleRepository = new ArticleRepository();
@@ -27,8 +27,7 @@ namespace sourcestack1.Pages.Article
             {
                 PageIndex = Convert.ToInt32(Request.Query["PageIndex"][0]);
             }
-            articles = new ArticleRepository().Get(PageIndex, PageSize);    
-
+            Articles = new ArticleRepository().Get(PageIndex, PageSize);    
             ArticlelPageCounts = articleRepository.ArticlesCount % PageSize != 0 ? 
             ArticlelPageCounts = articleRepository.ArticlesCount / PageSize + 1 : ArticlelPageCounts = articleRepository.ArticlesCount / PageSize;
             ArticlelPageCounts = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(articleRepository.ArticlesCount) / Convert.ToDouble(PageSize)));
