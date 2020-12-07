@@ -493,6 +493,15 @@ ViewData.Model就会（通过泛型）被设定为@model指定的实例对象；
 在OnGet()中取出传递过来的ModelState，和当前ModelState进行融合（Merge）
 10、Request是如何度过它一生的？
 
+2020年12月7日的面试题目：
+1、什么是partialview，有什么好处？重组页面的一个组件，基于layout使用的局限性，不能把一些小块进行重用，比如关键字等所以可以使用partialview，
+调用partialview的页面被称之为父页面，partialview的数据来源是通过父页面的model传值进来的，for和model的作用都是一样的，都是向父页面传递一个model数据，for后面的值也可以是new出来的
+2、什么是viewcomponent，有什么作用？partialview的数据来源是基于父页面的model数据，而viewcomponent的数据是自己直接获取，有后台，可以直接获取数据 ，也是三部曲：先继承自viewcomponent
+里面有个invoke方法，返回类型只能是IViewComponentResult ，然后在对应的页面文件下添加一个default。cshtml文件，是用于呈现的，然后在页面上调用taghelper，PartialView需要的Model在Invoke()方法中产生
+3、什么是session，有什么作用？可以为每个用户提供独立的数据存储空间，cookie的局限：不能存放大量的数据，不宜存放敏感数据，session吧主要数据存放在服务器端，只把SessionID存放在cookie中来回传递 ，
+服务器通过SessionId定位session中存放的数据。 有时候session也会被用做缓存，减少数据库的请求，优点：防止数据泄漏，可以携带大量的数据，缺点：会大量的占用内存，需要额外的运算，数据可能会丢失
+作用时间为开始使用时到下一次结束的时间，session是默认的存放在IIS的内存当中，也可以自定义配置，一般存放的位置有：IIS进程中内存，一个独立的Windows服务，数据库
+
 
 
 
