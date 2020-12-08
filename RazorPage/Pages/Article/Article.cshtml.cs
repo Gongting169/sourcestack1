@@ -27,7 +27,8 @@ namespace sourcestack1.Pages.Article
             {
                 PageIndex = Convert.ToInt32(Request.Query["PageIndex"][0]);
             }
-            Articles = new ArticleRepository().Get(PageIndex, PageSize);    
+            //Request.RouteValues.TryGetValue("PageIndex", out object PageIndex?) ? PageIndex = Convert.ToInt32(Request.Query["PageIndex"][0]) : PageIndex = 1;
+            Articles = new ArticleRepository().Get((int)PageIndex, PageSize);    
             ArticlelPageCounts = articleRepository.ArticlesCount % PageSize != 0 ? 
             ArticlelPageCounts = articleRepository.ArticlesCount / PageSize + 1 : ArticlelPageCounts = articleRepository.ArticlesCount / PageSize;
             ArticlelPageCounts = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(articleRepository.ArticlesCount) / Convert.ToDouble(PageSize)));

@@ -338,7 +338,79 @@ namespace SelfStudy
         //    }
         //}
 
-
+        //分页自己写的模样：
+        //        <nav aria-label="Page navigation example" style="margin-top:40px;margin-bottom:40px">
+        //    <ul class="pagination">
+        //        @if(Model.PageIndex != 1)
+        //        {
+        //            < li class="page-item">
+        //                <a class="page-link" href="@Model.Path=@(Model.PageIndex-1)" aria-label="Next">
+        //                    <span aria-hidden="true">&laquo;</span>
+        //                </a>
+        //            </li>
+        //        }
+        //    @if(string.IsNullOrWhiteSpace(Request.Query["PageIndex"]))
+        //    {
+        //            < li class="page-item ">
+        //                <a href = "@Model.Path=1" ></ a >
+        //            </ li >
+        //        }
+        //@if(Model.PageIndex <= 0)
+        //        {
+        //            < li class= "page-item " >
+        //                 < a href = "@Model.Path=1" ></ a >
+        //              </ li >
+        //        }
+        //        else
+        //{
+        //            < li class= "page-item " >
+        //                 < a href = "@Model.Path=@(Model.PageIndex)" ></ a >
+        //              </ li >
+        //        }
+        //        @if(Model.PageIndex > 1)
+        //        {
+        //            < li class= "page-item" >
+        //                 < a class= "page-link" href = "@Model.Path=@(Model.PageIndex-1)" aria - label = "Previous" >
+        //                         < span aria - hidden = "true" > &laquo;</ span >
+        //                            </ a >
+        //                        </ li >
+        //        }
+        //        else
+        //{
+        //            < li class= "page-item" >
+        //                 < a href = "@Model.Path=1" ></ a >
+        //              </ li >
+        //        }
+        //        @for(int i = 0; i < Model.ArticlelPageCounts; i++)
+        //        {
+        //    string active = Model.PageIndex == (i + 1) ? "active" : "null";
+        //            < li class= "page-item @active" >
+        //                 < a class= "page-link" href = "@Model.Path=@(i+1)" >@(i + 1) </ a >
+        //                  </ li >
+        //        }
+        //        @if(Model.PageIndex < Model.ArticlelPageCounts)
+        //        {
+        //            < li class= "page-item" >
+        //                 < a class= "page-link" href = "@Model.Path=@(Model.PageIndex+1)" aria - label = "Next" >
+        //                         < span aria - hidden = "true" > &raquo;</ span >
+        //                            </ a >
+        //                        </ li >
+        //        }
+        //        else
+        //{
+        //            < li class= "page-item" >
+        //                 < a href = "@Model.Path=@(Model.ArticlelPageCounts)" ></ a >
+        //              </ li >
+        //        }
+        //        @if(Model.PageIndex != Model.ArticlelPageCounts - 1)
+        //        {
+        //            < li class= "page-item" >
+       //                 < a href = "@Model.Path=@(Model.PageIndex+1)" aria - label = "Next" >
+        //                    </ a >
+        //                </ li >
+        //        }
+        //    </ ul >
+        //</ nav >
 
 
 
