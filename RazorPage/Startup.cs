@@ -33,6 +33,7 @@ namespace sourcestack1
                 .AddRazorPagesOptions(opt =>
                 {
                     opt.Conventions.AddPageRoute("/Article/Single? id = 1", "/Article/1");
+                    opt.Conventions.AddPageRoute("/Article/Article?PageIndex={id}","/Article/{id}");
                 //opt.Conventions.AddPageRoute("/Article/Edit? id = 7", "/Article/Edit/7");
                 //opt.Conventions.AddPageRoute("/Article/Index? pageIndex = 3", "/Article/Page-3");
                 //opt.Conventions.AddPageRoute("/Article/IndexOfCategory? pageIndex = 3 & category = 1 ", "/Article/Category-1/Page-3");

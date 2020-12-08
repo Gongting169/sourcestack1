@@ -50,11 +50,9 @@ namespace sourcestack1.Pages.Register
             //NewUser.InvitedBy = invitedby;
             //if (invitedby == null)
             //{
-
             //}
             //if (NewUser.InvitedBy.InvitedCode !=invitedby.InvitedCode)
             //{
-
             //}
         }
     }
