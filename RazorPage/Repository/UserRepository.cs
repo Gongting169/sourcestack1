@@ -26,22 +26,24 @@ namespace sourcestack1.Repository
         {
             return users.Where(u => u.Id == id).SingleOrDefault();
         }
+        //将之前ASP.NET项目中以下Repository方法用ADO.NET实现： 
+        //注册 / 登录
+        //内容：
+        //发布 / 修改
+        //单页呈现
+        //列表页呈现（包括：过滤 / 分页） 
+        //批量标记Message为已读
         public void Save(User user)
         {
-            //将之前ASP.NET项目中以下Repository方法用ADO.NET实现： 
-            //注册 / 登录
-            //内容：
-            //发布 / 修改
-            //单页呈现
-            //列表页呈现（包括：过滤 / 分页） 
-            //批量标记Message为已读
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=18BANG;Integrated Security=True;";
             using (IDbConnection connection1 = new SqlConnection(connectionString))
             {
                 connection1.Open();
                 IDbCommand command = new SqlCommand();
                 command.Connection = connection1;
-                command.CommandText = " SELECT ID from [USER] WHERE PASSWORD ='2568' AND USERNAME =N'王五'";
+                command.CommandText = " SELECT ID from [USER] WHERE PASSWORD =@Password AND USERNAME =@Name";
+                IDataParameter pPassword = new SqlParameter("@password",user.Password);
+                IDataParameter pName = new SqlParameter("@Name",user.Name);
                 IDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
@@ -49,7 +51,7 @@ namespace sourcestack1.Repository
                 }
                 else
                 {
-                    command.CommandText = "  INSERT [USER] VALUES(N'王五','2568',7,2)  ";
+                    command.CommandText = $"  INSERT [USER] VALUES({user.Name},{user.Password},{user.Id}{user.InvitedBy.Id})  ";
                     command.ExecuteNonQuery();
                 }
             }
@@ -79,7 +81,8 @@ namespace sourcestack1.Repository
                 connection.Open();
                 IDbCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = $"Select PASSWORD from [USER] Where [USERNAME] = {user.Name};";
+                command.CommandText = $"Select PASSWORD from [USER] Where [USERNAME] = @Name;";
+                IDataParameter pName = new SqlParameter("@Name",user.Name);
                 string dbPassWord = command.ExecuteScalar().ToString();
                 if (dbPassWord == null)
                 {
