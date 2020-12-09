@@ -34,9 +34,5 @@ namespace sourcestack1.Entity
         {
             InvitedBy.InvitedCode += 10;
         }
-
-
-
-
     }
 }

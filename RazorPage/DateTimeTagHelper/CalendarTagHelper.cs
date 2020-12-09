@@ -13,11 +13,11 @@ namespace sourcestack1.DateTimeTagHelper
         {
             output.TagName = "small";
 
-            if (Convert.ToBoolean( context.AllAttributes["asp-showicon"].Value))
+            if (Convert.ToBoolean( context.AllAttributes["asp-showicon"].Value.ToString()))
             {
                 output.PreContent.AppendHtml(" <span class=\" fa fa - calendar\"></span>");
             }
-            if (Convert.ToBoolean(context.AllAttributes["asp-only"].Value))
+            if (Convert.ToBoolean(context.AllAttributes["asp-only"].Value.ToString()))
             {
                 output.Content.AppendHtml(Convert.ToDateTime(output.GetChildContentAsync().Result.GetContent()).ToString("yyyy年MM月dd日"));
             }

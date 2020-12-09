@@ -21,14 +21,38 @@ namespace CSharplearn
         static void Main(string[] args)
         {
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;
-            Initial Catalog=17bang;Integrated Security=True;";
+            Initial Catalog=18bang;Integrated Security=True;";
 
-            using (IDbConnection connection = new SqlConnection(connectionString))
+            //using (IDbConnection connection = new SqlConnection(connectionString))
+            //{
+            //    connection.Open();
+            //    IDbCommand command = new SqlCommand();
+            //    command.Connection = connection;
+            //    command.CommandText = "";
+            //}
+            IDbConnection connection = new SqlConnection(connectionString);
+            try
             {
+
                 connection.Open();
                 IDbCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText = "";
+                command.CommandText = "Select * From [USER]Where ID >2;";
+                object count = command.ExecuteScalar();
+                Console.WriteLine((string)count);
+                IDataReader reader = command.ExecuteReader();
+               
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                connection.Close();
+                connection.Dispose();
+                connection = null;
             }
         }
     }
