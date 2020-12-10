@@ -33,5 +33,9 @@ namespace sourcestack1.Pages.Article
             ArticlelPageCounts = articleRepository.ArticlesCount / PageSize + 1 : ArticlelPageCounts = articleRepository.ArticlesCount / PageSize;
             ArticlelPageCounts = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(articleRepository.ArticlesCount) / Convert.ToDouble(PageSize)));
         }
+        public void Post()
+        {
+
+        }
     }
 }
