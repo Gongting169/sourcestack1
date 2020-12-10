@@ -13,9 +13,8 @@ namespace sourcestack1.Pages.Article
     {
         private ArticleRepository articleRepository;
         public int  ArticlelPageCounts { get; set; }
-        public int PageIndex { get; set; } 
+        public int PageIndex { get; set; }
         public int PageSize { get; set; } = 2;
-        public string Path { get; set; } = "/Article/Article?PageIndex";
         public IList<E.Article> Articles { get; set; }
         public ArticleModel()
         {
