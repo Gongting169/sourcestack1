@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -34,7 +36,18 @@ namespace sourcestack1.Pages.Article
         }
         public void Post()
         {
+            DbHelper helper = new DbHelper();
+            string connectionString = @"
+        Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=18BANG;Integrated Security=True;";
+            using (IDbConnection  connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                IDbCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = "";
 
-        }
+            }
+
+    }
     }
 }

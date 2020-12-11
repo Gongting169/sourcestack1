@@ -11,7 +11,6 @@ namespace sourcestack1.Entity
     {
         private const string connectionString = @"
         Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=18BANG;Integrated Security=True;";
-
         public IDbConnection Connection
         {
             get
@@ -19,69 +18,87 @@ namespace sourcestack1.Entity
                 return new SqlConnection(connectionString);
             }
         }
-        // public IDbConnection GetNewConnection()
-        //{
-        //    return new SqlConnection(connectionString);
-        //}
-        private  int ExecuteNonQuery(string cmdText, params IDataParameter[] parameters)
+        private int ExecuteNonQuery(string cmdText, params IDataParameter[] parameters)
         {
-            using (IDbConnection connection1 = Connection)
+            IDbCommand command = new SqlCommand();
+            command.CommandText = cmdText;
+            for (int i = 0; i < parameters.Length; i++)
+            {
+                command.Parameters.Add(parameters[i]);
+            }
+            return executeNonQuery(command);
+        }
+        public int executeNonQuery(IDbCommand command)
+        {
+            using (IDbConnection connection = Connection)
             {
                 try
                 {
-                    connection1.Open();
-                    IDbCommand command = new SqlCommand();
-                    command.Connection = connection1;
-                    command.CommandText = cmdText;
-                    for (int i = 0; i < parameters.Length; i++)
-                    {
-                        command.Parameters.Add(parameters[i]);
-                    }
+                    connection.Open();
+                    command.Connection = connection;
                     return command.ExecuteNonQuery();
                 }
                 catch (Exception)
                 {
-
                     throw;
                 }
             }
         }
-
-        public Object  ExecuteScalar(string cmdText,params IDataParameter[] parameters)
+        public object ExecuteScalar(string cmdText, params IDataParameter[] parameters)
+        {
+            IDbCommand command = new SqlCommand();
+            command.CommandText = cmdText;
+            for (int i = 0; i < parameters.Length; i++)
+            {
+                command.Parameters.Add(parameters[i]);
+            }
+            return executeScalar(command);
+        }
+        public object executeScalar(IDbCommand command)
         {
             using (IDbConnection connection = Connection)
             {
-                connection.Open();
-                IDbCommand command = new SqlCommand();
-                command.Connection = connection;
-                command.CommandText = cmdText;
-                for (int i = 0; i < parameters.Length; i++)
+                try
                 {
-                    command.Parameters.Add(parameters[i]);
+                    connection.Open();
+                    command.Connection = connection;
+                    return command.ExecuteScalar();
                 }
-                return command.ExecuteScalar();
+                catch (Exception)
+                {
+                    throw;
+                }
             }
         }
-
-        public IDataReader ExecuteReader(string cmdText,params IDataParameter[] parameters)
+        public IDataReader ExecuteReader(string cmdText, params IDataParameter[] parameters)
+        {
+            IDbCommand command = new SqlCommand();
+            command.CommandText = cmdText;
+            for (int i = 0; i < parameters.Length; i++)
+            {
+                command.Parameters.Add(parameters[i]);
+            }
+            return executeReader(command);
+        }
+        public IDataReader executeReader(IDbCommand command)
         {
             using (IDbConnection connection = Connection)
             {
-                connection.Open();
-                IDbCommand command = new SqlCommand();
-                command.Connection = connection;
-                command.CommandText = cmdText;
-                for (int i = 0; i < parameters.Length; i++)
+                try
                 {
-                    command.Parameters.Add(parameters[i]);
+                    connection.Open();
+                    command.Connection = connection;
+                    return command.ExecuteReader();
                 }
-                return command.ExecuteReader();
+                catch (Exception)
+                {
+                    throw;
+                }
             }
         }
-
-        public  int Insert(string cmdText, params IDataParameter[] parameters)
+        public int Insert(string cmdText, params IDataParameter[] parameters)
         {
-            return ExecuteNonQuery(cmdText,parameters);
+            return ExecuteNonQuery(cmdText, parameters);
         }
         public int Delete(string cmdText, params IDataParameter[] parameters)
         {
@@ -91,20 +108,5 @@ namespace sourcestack1.Entity
         {
             return ExecuteNonQuery(cmdText, parameters);
         }
-        //public IDbCommand GetDbCommand(string cmdText, params IDataParameter[] parameters)
-        //{
-        //    IDbCommand command = new SqlCommand();
-        //    //command.Connection = connection1;
-        //    command.CommandText = cmdText;
-        //    for (int i = 0; i < parameters.Length; i++)
-        //    {
-        //        command.Parameters.Add(parameters[i]);
-        //    }
-        //}
-
-
-
-
-
     }
 }
