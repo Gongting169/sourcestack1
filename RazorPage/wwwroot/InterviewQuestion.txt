@@ -513,6 +513,15 @@ connection==null：指变量指向的对象为null，所以会被垃圾回收 �
 4、什么是SQl注入：在我们输入到command对象，进行查询的sql语句中，可以通过sql语句连接导致恶意用户会对进行更改，无法达到想要的结果，解决的办法是：查询参数，也就是声明变量放到语句当做条件
 5、transaction和transactionscope有什么区别没有？第一个是作用于的单个事务,可以使用using来释放资源和关闭数据库连接，第二个是：分布式事务：作用于不止一个事务，他会自动释放资源和关闭数据库
 
+2020年12月11日的面试题目：
+1、datareader和dataset比较有什么优缺点？因为datareader一次只能读一行数据，所以就引入了dataset，对应着数据库，在浏览器和服务器之间作为一个形式上的缓存使用，
+然后可以将datatable 填充到dataset里面去 dataset是 强类型 datareader是弱类型
+2、dataset里面的Adapter有什么特点？自动处理connection的开关 DataSet的“非连接式（disconnected）”查询 构造函数参数queryString构建了SelectCommand，其他几个XCommand提供给
+3、dataset的适用 和局限有哪些？ASP.NET（B/S架构）：DataSet仍然存放在服务器  HTTP无状态，导致每一次请求 只有当C/S架构，客户电脑上跑着.NET时：
+4、transaction和transactionscope有什么区别没有？第一个是作用于的单个事务,可以使用using来释放资源和关闭数据库连接，第二个是：分布式事务：作用于不止一个事务，他会自动释放资源和关闭数据库
+
+
+
 
 
 
