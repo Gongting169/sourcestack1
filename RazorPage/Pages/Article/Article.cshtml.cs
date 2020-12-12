@@ -28,25 +28,25 @@ namespace sourcestack1.Pages.Article
             {
                 PageIndex = Convert.ToInt32(Request.Query["PageIndex"][0]);
             }//else nothing
-            //Request.RouteValues.TryGetValue("PageIndex", out object PageIndex?) ? PageIndex = Convert.ToInt32(Request.Query["PageIndex"][0]) : PageIndex = 1;
-            Articles = new ArticleRepository().Get((int)PageIndex, PageSize);    
+
+             //if (Request.RouteValues.TryGetValue("PageIndex", out object PageIndex))
+             //{
+             //    PageIndex = Convert.ToInt32(Request.Query["PageIndex"][0]);
+             //}
+             //else
+             //{
+             //    PageIndex = 1;
+             //}
+
+            Articles = articleRepository.Get(PageIndex, PageSize);    
+
             ArticlelPageCounts = articleRepository.ArticlesCount % PageSize != 0 ? 
             ArticlelPageCounts = articleRepository.ArticlesCount / PageSize + 1 : ArticlelPageCounts = articleRepository.ArticlesCount / PageSize;
             ArticlelPageCounts = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(articleRepository.ArticlesCount) / Convert.ToDouble(PageSize)));
         }
         public void Post()
         {
-            DbHelper helper = new DbHelper();
-            string connectionString = @"
-        Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=18BANG;Integrated Security=True;";
-            using (IDbConnection  connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                IDbCommand command = new SqlCommand();
-                command.Connection = connection;
-                command.CommandText = "";
-
-            }
+       
 
         }
     }

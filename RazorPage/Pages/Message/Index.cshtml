@@ -1,0 +1,18 @@
+﻿@page
+@model sourcestack1.Pages.Message.IndexModel
+@{
+}
+<form method="post" action="/">
+    @for (int i = 0; i < Model.Messages.Count; i++)
+    {
+        <input asp-for="@Model.Messages[i].Selected" />
+        <input @Model.Messages[i].CreateTime />
+
+        <input @Model.Messages[i].Content />
+
+        <input type="hidden" asp-for="@Model.Messages[i].Id" />
+
+        <hr />
+    }
+    <button type="submit">提交</button>
+</form>
