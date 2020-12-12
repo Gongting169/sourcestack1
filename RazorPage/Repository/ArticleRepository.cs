@@ -41,27 +41,27 @@ namespace sourcestack1.Repository
             }
             return null;
         }
-        public Article Find(int id)
-        {
-            articles = new List<Article>();
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                IDbCommand command = new SqlCommand();
-                command.Connection = connection;
-                command.CommandText = $"SELECT {Id} FROM ArticleKeword  AK  JOIN Article  ON Article.ID = AK.ArticleID" + $"JOIN KEYWORD ON KEYWORD.ID = AK.KeywordID;";
-                IDataReader reader = command.ExecuteReader();
-                if (reader.Read())
-                {
-                    //while ()
-                    //{
+        //public Article Find(int id)
+        //{
+        //    articles = new List<Article>();
+        //    using (IDbConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        connection.Open();
+        //        IDbCommand command = new SqlCommand();
+        //        command.Connection = connection;
+        //        command.CommandText = $"SELECT {Id} FROM ArticleKeword  AK  JOIN Article  ON Article.ID = AK.ArticleID" + $"JOIN KEYWORD ON KEYWORD.ID = AK.KeywordID;";
+        //        IDataReader reader = command.ExecuteReader();
+        //        if (reader.Read())
+        //        {
+        //            //while ()
+        //            //{
 
-                    //}
-                }
-            }
+        //            //}
+        //        }
+        //    }
 
 
-        }
+        //}
         public IList<Article> Get(int PageIndex, int PageSize)
         {
             return articles.Skip((PageIndex - 1) * PageSize).Take(PageSize).ToList();
@@ -74,32 +74,32 @@ namespace sourcestack1.Repository
         {
             articles.Add(article);
         }
-        public IDataReader GetDbArticle()
-        {
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-                    IDbCommand command = new SqlCommand();
-                    IDataParameter parameter = new SqlParameter();
-                    command.Parameters.Add(parameter);
-                    command.Connection = connection;
-                    command.CommandText = $"select COUNT(Article.ID) from ArticleKeword AK JOIN " +
-                        $"Article ON Article.ID = AK.ArticleID " +
-                        $"JOIN KEYWORD ON KEYWORD.ID = AK.KeywordID";
-                    object length = command.ExecuteScalar();
-                    command.CommandText = $"SELECT {Id},{Title},{publishTime},{Content}," +
-                        $"{Author} FROM ArticleKeword  AK  JOIN Article  ON Article.ID = AK.ArticleID" +
-                        $"JOIN KEYWORD ON KEYWORD.ID = AK.KeywordID";
-                    command.ExecuteReader();
-                    IDataReader reader = command.ExecuteReader();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-            }
-        }
+        //public IDataReader GetDbArticle()
+        //{
+        //    using (IDbConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        try
+        //        {
+        //            connection.Open();
+        //            IDbCommand command = new SqlCommand();
+        //            IDataParameter parameter = new SqlParameter();
+        //            command.Parameters.Add(parameter);
+        //            command.Connection = connection;
+        //            command.CommandText = $"select COUNT(Article.ID) from ArticleKeword AK JOIN " +
+        //                $"Article ON Article.ID = AK.ArticleID " +
+        //                $"JOIN KEYWORD ON KEYWORD.ID = AK.KeywordID";
+        //            object length = command.ExecuteScalar();
+        //            command.CommandText = $"SELECT {Id},{Title},{publishTime},{Content}," +
+        //                $"{Author} FROM ArticleKeword  AK  JOIN Article  ON Article.ID = AK.ArticleID" +
+        //                $"JOIN KEYWORD ON KEYWORD.ID = AK.KeywordID";
+        //            command.ExecuteReader();
+        //            IDataReader reader = command.ExecuteReader();
+        //        }
+        //        catch (Exception)
+        //        {
+        //            throw;
+        //        }
+        //    }
+        //}
     }
 }

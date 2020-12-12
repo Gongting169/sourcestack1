@@ -24,8 +24,8 @@ namespace sourcestack1
         {
             services.AddRazorPages().AddRazorPagesOptions(
                 opt =>{
-                    opt.Conventions.AddPageRoute("/Article/Article", "/Article/Page-{id:int}");
-                    opt.Conventions.AddPageRoute("/Article/Single","/Article/{id :int }");
+                    opt.Conventions.AddPageRoute("/Article/Article", "/Article/Page-{id}");
+                    opt.Conventions.AddPageRoute("/Article/Single","/Article/{id}");
                 });
         }
 

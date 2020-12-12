@@ -9,11 +9,6 @@ namespace sourcestack1.Repository
     public class MessageRepository
     {
         private static IList<Message> messages { get; set; }
-        public IList<Message> GetMine()
-        {
-            return messages;
-        }
-        private static MessageRepository messageRepository;
         static MessageRepository()
         {
             messages = new List<Message>
@@ -32,7 +27,10 @@ namespace sourcestack1.Repository
                  },
             };
         }
-
+        public IList<Message> GetMine()
+        {
+            return messages;
+        }
         public Message Find(int id)
         {
             return messages.Where(m => m.Id == id).SingleOrDefault();

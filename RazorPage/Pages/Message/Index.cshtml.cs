@@ -31,7 +31,6 @@ namespace sourcestack1.Pages.Message
                     messageRepository.Find(item.Id).Read();
                 }
             }
-
         }
     }
 }
