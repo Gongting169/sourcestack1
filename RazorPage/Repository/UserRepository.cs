@@ -11,7 +11,10 @@ namespace sourcestack1.Repository
 {
     public class UserRepository
     {
-        private const string pName = "@name";
+        private const string Id = "Id";
+        private const string Password = "PASSWORD";
+        private const string Name = "USERNAME";
+        private const string InvitedBy = "InvitedBy";
         private static IList<User> users;
         static UserRepository()
         {
@@ -41,9 +44,8 @@ namespace sourcestack1.Repository
             IDataParameter pName = new SqlParameter("@Name", user.Name);
             IDataParameter pPassword = new SqlParameter("@Password", user.Password);
             IDataParameter pInvitedBy = new SqlParameter("@InvitedBy", user.InvitedBy.Id);
-            helper.Insert($"INSERT [USER](USERNAME,PASSWORD,InvitedBy) VALUES(@Name,@Password,@InvitedBy);", pName,pPassword,pInvitedBy);
+            helper.Insert($"INSERT [USER](USERNAME,PASSWORD,InvitedBy) VALUES(@Name,@Password,@InvitedBy);", pName, pPassword, pInvitedBy);
             helper.executeNonQuery(command);
-            //    command.CommandText = " SELECT ID from [USER] WHERE PASSWORD =@Password AND USERNAME =@Name";  //  类的职责划分
         }
         public IList<User> Get(int pageindex, int pagesize)
         {
@@ -57,21 +59,26 @@ namespace sourcestack1.Repository
         {
             User user = new User();
             DbHelper helper = new DbHelper();
-            IDataParameter pName = new SqlParameter("@name", user.Name);
-            IDbCommand command = new SqlCommand();
-            helper.ExecuteScalar("Select PASSWORD from [USER] Where [USERNAME] = @name;", pName);
-            object dbPassWord = helper.executeScalar(command);
-            if (dbPassWord == null)
-            {
-                Console.WriteLine("用户名不存在");
-                return null;
-            }
-            if (dbPassWord != user.Password)
-            {
-                Console.WriteLine("用户名或者密码错误");
-                return null;
-            }
-            return null;
+            IDataParameter pName = new SqlParameter("@name", name);
+            //IDbCommand command = new SqlCommand();
+            //IDataReader reader = helper.executeReader(command);
+            helper.ExecuteReader($"Select {Password} from [USER] Where {Name} = @name;", pName);
+            //if (!reader.Read())
+            //{
+            //    return null;
+            //}
+            //if (reader[Password].ToString() == null)
+            //{
+            //    Console.WriteLine(" 用户名不存在");
+            //    return null;
+            //}
+            //if (reader[Password].ToString() != user.Password)
+            //{
+            //    Console.WriteLine(" 用户名或者密码错误");
+            //    return null;
+            //}
+            //return (User)reader[Id];
+            return user;
         }
     }
 }

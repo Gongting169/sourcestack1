@@ -23,7 +23,10 @@ namespace sourcestack1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages().AddRazorPagesOptions(
-                opt =>{ opt.Conventions.AddPageRoute("/Article/Article?PageIndex={PageIndex}", "/Article/P{PageIndex}"); });
+                opt =>{
+                    opt.Conventions.AddPageRoute("/Article/Article", "/Article/Page-{id:int}");
+                    opt.Conventions.AddPageRoute("/Article/Single","/Article/{id :int }");
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -18,7 +18,7 @@ namespace sourcestack1.Entity
                 return new SqlConnection(connectionString);
             }
         }
-        private int ExecuteNonQuery(string cmdText, params IDataParameter[] parameters)
+        private int executenonquery(string cmdText, params IDataParameter[] parameters)
         {
             IDbCommand command = new SqlCommand();
             command.CommandText = cmdText;
@@ -98,15 +98,15 @@ namespace sourcestack1.Entity
         }
         public int Insert(string cmdText, params IDataParameter[] parameters)
         {
-            return ExecuteNonQuery(cmdText, parameters);
+            return executenonquery(cmdText, parameters);
         }
         public int Delete(string cmdText, params IDataParameter[] parameters)
         {
-            return ExecuteNonQuery(cmdText, parameters);
+            return executenonquery(cmdText, parameters);
         }
         public int Update(string cmdText, params IDataParameter[] parameters)
         {
-            return ExecuteNonQuery(cmdText, parameters);
+            return executenonquery(cmdText, parameters);
         }
     }
 }
