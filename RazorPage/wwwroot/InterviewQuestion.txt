@@ -520,6 +520,15 @@ connection==null：指变量指向的对象为null，所以会被垃圾回收 �
 3、dataset的适用 和局限有哪些？ASP.NET（B/S架构）：DataSet仍然存放在服务器  HTTP无状态，导致每一次请求 只有当C/S架构，客户电脑上跑着.NET时：
 4、transaction和transactionscope有什么区别没有？第一个是作用于的单个事务,可以使用using来释放资源和关闭数据库连接，第二个是：分布式事务：作用于不止一个事务，他会自动释放资源和关闭数据库
 
+2020年12月13日的面试题目:
+1、什么是orm？有什么作用？ 是一种框架，也是一种工具，object relationship database map,开发的时候使用是C#，存储的时候使用关系型数据库sql，两者之间可以通过映射建立关系：类名对应表名，属性对应列名
+建立和维护与数据库的连接  根据类结构生成数据库表结构  定义对象的获取和存储方法
+3、什么是EF：entity framework 是 orm框架的一种工具，和ADO.NET差不多可以连接数据库，比ado.net功能强大，
+2、要想建立映射关系可以有哪几种方式？ 要在C# code和数据库之间建立映射关系，EF提供了三种方式 DB first：适合于已有数据库结构的老项目：包含两种：  Code First：适合于新项目 migration
+3、DbContext和DbSet 这两个对象是ef的核心对象 DbContext代表和数据库的一次会话：维护（打开/关闭）数据库的连接  进行数据的同步，完成数据库的增删改查  DbSet基于DbContext，是一个entity的泛型集合
+4、Migration会： 将entity映射成相应的表结构。 再找到该DbContext中包含的所有entity 找到目标项目中的DbContext（应该有且仅有一个） 
+仅仅执行Add-Migration，数据库不会变化（演示） 执行Update-Database命令，才会利用Migrations文件夹下内容，同步数据库表结构。  每一次变更都可以需要Add-Migration和。 
+
 
 
 
