@@ -529,6 +529,11 @@ connection==null：指变量指向的对象为null，所以会被垃圾回收 �
 4、Migration会： 将entity映射成相应的表结构。 再找到该DbContext中包含的所有entity 找到目标项目中的DbContext（应该有且仅有一个） 
 仅仅执行Add-Migration，数据库不会变化（演示） 执行Update-Database命令，才会利用Migrations文件夹下内容，同步数据库表结构。  每一次变更都可以需要Add-Migration和。 
 
+2020年12月14日的面试题目：
+1、EF的自定义配置有哪几种方式？ 一种是在onmodelcreating，一种是在anontation里面设置 ，OnModelCreating在Moldel创建时被EF自动调用，通过modelBuilder.Entity<T> ()就可以设置T的自定义映射细节。
+默认的会把三种CLASS进行映射到数据库：1、dbcontext子类中Dbset<T>属性的泛型参数所指定的特定类型  OnModelCreating()中配置的Entity<T>里的泛型参数指定的类型。
+2、为什么需要Log? 是为了方便记录程序运行过程，可以帮助系统维护/支持人员发现错误异常
+
 
 
 
