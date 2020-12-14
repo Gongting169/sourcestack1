@@ -3,6 +3,7 @@ using CSharplearn;
 using CSharplearn.ProcedureObject;
 using CSharplearn.ProcedureObject.Enum;
 using CSharplearn.ProcedureObject.Generic;
+using sourcestack1.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,12 +21,21 @@ namespace CSharplearn
     {
         static void Main(string[] args)
         {
+            DbHelper helper = new DbHelper();
+
+            int[] ids = new int[] { 1,2,3,4,5};
+            for (int i = 0; i < ids.Length; i++)
+            {
+                string cmd = " DELETE BANK WHERE ID =@Id";
+                IDataParameter pId = new SqlParameter("@Id",ids[i]);
+                helper.Delete(cmd,pId);
+            }
             string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;
             Initial Catalog=18bang;Integrated Security=True;";
 
             //using (IDbConnection connection = new SqlConnection(connectionString))
             //{
-            //    connection.Open();
+            //    connection.Open(); 
             //    IDbCommand command = new SqlCommand();
             //    command.Connection = connection;
             //    command.CommandText = "";
