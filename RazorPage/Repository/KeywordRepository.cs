@@ -1,6 +1,8 @@
 ﻿using sourcestack1.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,37 +10,60 @@ namespace sourcestack1.Repository
 {
     public class KeywordRepository
     {
-        private static IList<Keyword> keywords;
-        static KeywordRepository()
-        {
-            keywords = new List<Keyword>
-            {
-                new Keyword(){ Id = 1,Name="C#"},
-                new Keyword(){Id=2,Name ="vs"},
-                new Keyword(){Id= 3,Name ="html"},
-                new Keyword(){Id= 4,Name ="入门"},
-                new Keyword(){Id= 5,Name ="ES6"},
-                new Keyword(){Id= 6,Name ="回调地狱"},
-                new Keyword(){Id= 7,Name ="promise"},
-                new Keyword(){Id= 8,Name ="JQuery"},
-                new Keyword(){Id= 9,Name ="AJax"},
-                new Keyword(){Id= 10,Name ="表单"},
-                new Keyword(){Id= 11,Name ="后台"},
-                new Keyword(){Id= 12,Name ="插件"},
-                new Keyword(){Id= 13,Name ="集合"},
-                new Keyword(){Id= 14,Name ="介绍"},
-                new Keyword(){Id= 15,Name ="历史"},
-                new Keyword(){Id= 16,Name ="JavaScript"},
-                new Keyword(){Id= 17,Name ="冒泡"},
-                new Keyword(){Id= 18,Name ="事件"},
-                new Keyword(){Id= 19,Name ="999天"},
-                new Keyword(){Id= 20,Name ="晚7点"},
-                new Keyword(){Id= 21,Name ="NoSql"},
-            };
-        }
+        private const string id = "ID";
+        private const string name = "NAME";
+        private const string articleid = "ArticleID";
+        private const string keywordid = "KeywordID";
+
+        DbHelper helper = new DbHelper();
         public Keyword Find(int id)
         {
-            return keywords.Where(k => k.Id == id).SingleOrDefault();
+            using (IDbConnection connection = helper.GetConnection())
+            {
+                connection.Open();
+                IDbCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = $"SELECT {KeywordRepository.id},{name} FROM KEYWORD WHERE {KeywordRepository.id}=@id ;";
+                IDataParameter pId = new SqlParameter("@id", id);
+                command.Parameters.Add(pId);
+                IDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    return new Keyword()
+                    {
+                        Id = (int)reader[KeywordRepository.id],
+                        Name = reader[name].ToString()
+                    };
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
+
+        public List<Keyword> FindArticle(int articleid)
+        {
+            using (IDbConnection connection = helper.GetConnection())
+            {
+                connection.Open();
+                IDbCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = $" SELECT {KeywordRepository.articleid},{keywordid} FROM ArticleKeword WHERE {KeywordRepository.articleid} =@ArticleId;  ";
+                IDataParameter pArticleId = new SqlParameter("@ArticleId", articleid);
+                command.Parameters.Add(pArticleId);
+                IDataReader reader = command.ExecuteReader();
+                List<Keyword> keywords = new List<Keyword>();
+                while (reader.Read())
+                {
+                    keywords.Add(Find((int)reader[keywordid]));
+                };
+                return keywords;
+            }
+        }
+
+
+
+
     }
 }
