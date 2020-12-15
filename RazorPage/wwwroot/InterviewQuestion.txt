@@ -534,6 +534,67 @@ connection==null：指变量指向的对象为null，所以会被垃圾回收 �
 默认的会把三种CLASS进行映射到数据库：1、dbcontext子类中Dbset<T>属性的泛型参数所指定的特定类型  OnModelCreating()中配置的Entity<T>里的泛型参数指定的类型。
 2、为什么需要Log? 是为了方便记录程序运行过程，可以帮助系统维护/支持人员发现错误异常
 
+2020年12月15日的面试题目：
+1、Update和attach有什么区别？ Delete可以优化，那么上面的更新，能否不用SELECT，而是直接UPDATE完成entity的更改同步？比如这样： 
+2、数据的增删改查一样需要两个EF核心对象： bContext代表和数据库的一次会话（session），可用于 维护（打开/关闭）数据库的连接 进行数据的同步，
+完成数据库的增删改查 DbSet基于DbContext，是一个entity的泛型集合（实现IEnumerable等），除了查（find方法）以外，SaveChanges()：将所有改动（增删改）同步到数据库 都要依靠SAvechange（）
+3、如果使用DbContext调用，建议使用泛型参数指定Entity EF的DbContext中维护着一个ChangeTracker：追踪记录着所有需要被“同步”到数据库的“改动”。 
+状态会在Add()/Remove()等方法中改变（注意：但不会在修改entity属性时改变，@想一想@：为什么？） 
+当调用SaveChanges()时，EF会根据ChangeTracker的内容（以及）决定相应的生成Insert/Update/Delete语句。 
+提醒：changeTracker是保存在DbContext中的 ，而不是Entity里面的 d()方法可以（也只能是）通过主键（可以是联合主键）查找到对应的Entity。  这样获得的Entity就会处于该DbContext的ChangeTracker控制之中。 
+EF并没有专门的“改”的方法。惯常的办法是从DbContext中获取到entity后予以修改， 改变student的IsFemale不会改变student的EntityState 但是，EF会在SaveChanges将现在的entity和它从数据库取出来时进行比对，
+最后，生成Update SQL语句：  注意C#代码里并没有调用Update()方法，EF在SaveChanges()中会自动侦测（detect）entity的改动，相应的生成Update语句。  通常来说，我们会首先通过DbContext得到一个entity， 
+时，s6会被加入到ChangeTracker，并被标记为Deleted，然后在  时被同步（Delete）。
+4、在实际的开发和维护中，logger记录程序运行过程，可以帮助系统维护/支持人员发现错误异常等。 
+我们这里使用logger，主要是为了学习。在EF core中，可以在OnConfiguring()中配置。  为了能够获得最详细（包含在数据库中）的信息，我们需要“开启敏感数据日志”： 
+开发中使用Debug 发布到生产环境用Warning或Error  前文中提到EnableSensitiveDataLogging()会显示数据库信息，有利于调试时查看具体信息。但是，项目发布以后
+，这样做就会有安全风险（黑客有可能拿到log文件）。 能不能在每次发布之前注释掉这一行代码？可以，但是这不是最佳方案，因为： 
+开发人员可能不愿意发布人员直接修改源代码
+可能会忘记遗漏掉这一步骤 
+项目中可能有多个类似的地方需要修改 这就告诉编译器：如果（#if）项目中定义了DEBUG，就编译（#if...#endif）之间的代码；否则，就直接略过。 Find()只能通过主键查询，更复杂的查询需要通过Linq才能完成。 
+注意其参数类型： 
+IQueryable：继承自IEnumerable，Linq查询语句使用的是Expression 
+IEnumerable的Linq查询使用的是Func，不会生成SQL语句 
+所以，IEnuerable会直接基于内存数据进行操作 
+可以使用AsQueryable()和AsEnumerable()进行转换
+Expression<Func<TSource, bool>>：Func被作为Expression的泛型参数 
+理解在Linq to EF中： 
+IQueryable并不真正存储查询结果，而是存储“动态查询语句”（dynamic query） 
+这些语句会被C#编译成表达式树（Expression Tree） 
+直到IQueryable被foreach、ToList()、Single()、Count()等调用，才会真正的连接数据库， 
+然后这些表达式树会被EF的Provider翻译成SQL语句，执行SQL语言 
+
+实现过程：Linq => provider => SQL，具体来说：Linq实现 
+EF将Linq查询语句进行“解释”，然后将结果发送给相应的Provider 
+Provider根据需要返回的结果（非常重要）生成相应的SQL语句并执行，返回查询结果（DataReader，还不是entity） 
+检查之前是否缓存查询结构对应的entity， 
+如果没有，new一个entity，填充数据，然后返回新new的entity； 
+如果已存在（一般是通过Id判断），直接返回缓存的entity 
+
+演示： 
+改动由DbContext里定义的Database Provider，生成增删改查的SQL语句并执行 
+（不同的数据库需要不同的provider，“即插即用”） 
+
+所以，选择使用IList和IQueryable时要当心： 
+IList会获取数据库的数据到内存（和Linq to Object不一样），IQuery不会。 
+可以使用AsQueryable()和AsEnumerable()进行转换
+best practise：查询方法的返回类型始终是 IQueryable<T> 
+表达式是又变量、数值（或常量）、运算符、函数组合起来，表示一定意义的式子，表达式树将代码表示为可以在运行时检查、修改或执行的结构。 C#提供了构建表达式的类和方法，从而可以在运行时动态的生成表达式！ 
+区别：
+Expression<Func<T>>：代表一个树状结构，记录的是Func<T>是什么（表达式/变量/方法调用等等），还需要进一步的操作（比如，调用Compile()）才能把表达式变成一个方法 
+Func<T>：代表一个委托，一个方法的引用 
+
+基于IEnumerable的查询表达式将会被编译成delegate 
+而基于IQueryable的将会被编译成expression tree 
+只有单行的Lambda表达式（及其子类，实际上内置的只有Expression<TDelegate>）才能被执行 
+Func和Expression<Func>
+Lambda表达式（准确的说，是Expresion Lambda，即lambda表达式=>右侧的部分）是创建“表达式树”的最精炼（concise）的元素。 
+所以，Lambda表达式既可以赋值给Func，也可以赋值给Expression<Func> 
+注意：上述过程，如果Query是“需要跟踪”的，在new entity之后还要将其加入tracker  为什么可以不需要跟踪？ 默认为需要跟踪（tracking）
+no-tracking query 
+Find()：首先在DbContext中查找，如果有，直接返回DbContext中的值；否则，从数据库中查找，同时存放在DbContext中。 
+不是proxy模式（NHibernate中使用）。为了性能，可以不使用引用对象而直接使用Id
+
 
 
 
