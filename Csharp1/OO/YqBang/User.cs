@@ -8,6 +8,7 @@ namespace CSharplearn
     sealed public class User : Entity<int>, ISendMessage, IChat
     {
         //public IList<Article> Articles { get; set; }
+        public int FaildTry { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
