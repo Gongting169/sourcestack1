@@ -11,10 +11,10 @@ namespace sourcestack1.Repository
 {
     public class UserRepository
     {
-        private const string Id = "Id";
-        private const string Password = "PASSWORD";
-        private const string Name = "USERNAME";
-        private const string InvitedBy = "InvitedBy";
+        private const string id = "Id";
+        private const string password = "PASSWORD";
+        private const string name = "USERNAME";
+        private const string invitedBy = "InvitedBy";
         private static IList<User> users;
         static UserRepository()
         {
@@ -45,7 +45,7 @@ namespace sourcestack1.Repository
             IDataParameter pPassword = new SqlParameter("@Password", user.Password);
             IDataParameter pInvitedBy = new SqlParameter("@InvitedBy", user.InvitedBy.Id);
             helper.Insert($"INSERT [USER](USERNAME,PASSWORD,InvitedBy) VALUES(@Name,@Password,@InvitedBy);", pName, pPassword, pInvitedBy);
-            helper.executeNonQuery(command);
+            //helper.executeNonQuery(command);
         }
         public IList<User> Get(int pageindex, int pagesize)
         {
@@ -55,30 +55,30 @@ namespace sourcestack1.Repository
         {
 
         }
-        public User GetByName(string name)
-        {
-            User user = new User();
-            DbHelper helper = new DbHelper();
-            IDataParameter pName = new SqlParameter("@name", name);
-            //IDbCommand command = new SqlCommand();
-            //IDataReader reader = helper.executeReader(command);
-            helper.ExecuteReader($"Select {Password} from [USER] Where {Name} = @name;", pName);
-            //if (!reader.Read())
-            //{
-            //    return null;
-            //}
-            //if (reader[Password].ToString() == null)
-            //{
-            //    Console.WriteLine(" 用户名不存在");
-            //    return null;
-            //}
-            //if (reader[Password].ToString() != user.Password)
-            //{
-            //    Console.WriteLine(" 用户名或者密码错误");
-            //    return null;
-            //}
-            //return (User)reader[Id];
-            return user;
-        }
+        //public User GetByName(string name)
+        //{
+        //    User user = new User();
+        //    DbHelper helper = new DbHelper();
+        //    IDataParameter pName = new SqlParameter("@name", name);
+        //    ////IDbCommand command = new SqlCommand();
+        //    ////IDataReader reader = helper.executeReader(command);
+        //    //helper.ExecuteReader($"Select {Password} from [USER] Where {Name} = @name;", pName);
+        //    ////if (!reader.Read())
+        //    ////{
+        //    ////    return null;
+        //    ////}
+        //    ////if (reader[Password].ToString() == null)
+        //    ////{
+        //    ////    Console.WriteLine(" 用户名不存在");
+        //    ////    return null;
+        //    ////}
+        //    ////if (reader[Password].ToString() != user.Password)
+        //    ////{
+        //    ////    Console.WriteLine(" 用户名或者密码错误");
+        //    ////    return null;
+        //    ////}
+        //    ////return (User)reader[Id];
+        //    //return user;
+        //}
     }
 }

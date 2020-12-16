@@ -9,97 +9,93 @@ namespace sourcestack1.Repository
 {
     public class ArticleRepository
     {
-        public int ArticlesCount = articles.Count;
-        public const string Id = "Article.ID";
-        public const string Author = "Article.AUTHOR";
-        public const string Content = "Article.Content";
-        public const string Title = "Article.Title";
-        public const string publishTime = "Article.PublishTime";
-        private static IList<Article> articles;
+        public int ArticlesCount = new ArticleRepository().GetArticleCount();
+        private const string id = "Article.ID";
+        private const string author = "Article.AUTHOR";
+        private const string content = "Article.Content";
+        private const string title = "Article.Title";
+        private const string publishtime = "Article.PublishTime";
         private const string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=18BANG;Integrated Security=True;";
-
-
-        public IList<Article> GetArticles()
+        DbHelper helper = new DbHelper();
+        public Article Find(int id)
         {
-            articles = new List<Article>();
-            using (IDbConnection  connection = new SqlConnection(connectionString))
+            using (IDbConnection connection = helper.GetConnection())
             {
                 connection.Open();
                 IDbCommand command = new SqlCommand();
                 command.Connection = connection;
-                command.CommandText =  $"SELECT { Id},{ Title},{ publishTime},{ Content}," +
-                        $"{Author} FROM ArticleKeword  AK  JOIN Article  ON Article.ID = AK.ArticleID" +
-                        $"JOIN KEYWORD ON KEYWORD.ID = AK.KeywordID;";
+                command.CommandText = $"SELECT {ArticleRepository.id},{author},{title},{content},{publishtime} FROM Article WHERE {ArticleRepository.id}=@id ;";
+                IDataParameter pId = new SqlParameter("@id", id);
+                command.Parameters.Add(pId);
                 IDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    //while ()
-                    //{
-
-                    //}
+                    return new Article()
+                    {
+                        Id = (int)reader[ArticleRepository.id],
+                        PublishTime = (DateTime)reader[publishtime],
+                        Title = (string)reader[title],
+                        Author = (User)reader[author],
+                        Body = (string)reader[content]
+                    };
+                }
+                else
+                {
+                    return null;
                 }
             }
-            return null;
         }
-        //public Article Find(int id)
-        //{
-        //    articles = new List<Article>();
-        //    using (IDbConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        connection.Open();
-        //        IDbCommand command = new SqlCommand();
-        //        command.Connection = connection;
-        //        command.CommandText = $"SELECT {Id} FROM ArticleKeword  AK  JOIN Article  ON Article.ID = AK.ArticleID" + $"JOIN KEYWORD ON KEYWORD.ID = AK.KeywordID;";
-        //        IDataReader reader = command.ExecuteReader();
-        //        if (reader.Read())
-        //        {
-        //            //while ()
-        //            //{
 
-        //            //}
-        //        }
-        //    }
-
-
-        //}
-        public IList<Article> Get(int PageIndex, int PageSize)
+        public List<Article> FindAuthor(int id)
         {
-            return articles.Skip((PageIndex - 1) * PageSize).Take(PageSize).ToList();
+            using (IDbConnection connection = helper.GetConnection())
+            {
+                connection.Open();
+                IDbCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = $" SELECT ID FROM Article a JOIN [USER] u ON u.Id = a.ArtUSERId WHERE @a.ID = {id};";
+                IDataParameter pArticleId = new SqlParameter("@a.ID",id);
+                command.Parameters.Add(pArticleId);
+                IDataReader reader = command.ExecuteReader();
+                List<Article> articles = new List<Article>();
+                while (reader.Read())
+                {
+                    articles.Add(Find((int)reader[id]));
+                };
+                return articles;
+            }
         }
-        public void Delete()
-        {
 
-        }
-        public void Save(Article article)
+        public int GetArticleCount()
         {
-            articles.Add(article);
+            using (IDbConnection connection = helper.GetConnection())
+            {
+                object result = helper.ExecuteScalar($"SELECT COUNT(ID) FROM Article;");
+                return (int)result;
+            }
         }
-        //public IDataReader GetDbArticle()
-        //{
-        //    using (IDbConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        try
-        //        {
-        //            connection.Open();
-        //            IDbCommand command = new SqlCommand();
-        //            IDataParameter parameter = new SqlParameter();
-        //            command.Parameters.Add(parameter);
-        //            command.Connection = connection;
-        //            command.CommandText = $"select COUNT(Article.ID) from ArticleKeword AK JOIN " +
-        //                $"Article ON Article.ID = AK.ArticleID " +
-        //                $"JOIN KEYWORD ON KEYWORD.ID = AK.KeywordID";
-        //            object length = command.ExecuteScalar();
-        //            command.CommandText = $"SELECT {Id},{Title},{publishTime},{Content}," +
-        //                $"{Author} FROM ArticleKeword  AK  JOIN Article  ON Article.ID = AK.ArticleID" +
-        //                $"JOIN KEYWORD ON KEYWORD.ID = AK.KeywordID";
-        //            command.ExecuteReader();
-        //            IDataReader reader = command.ExecuteReader();
-        //        }
-        //        catch (Exception)
-        //        {
-        //            throw;
-        //        }
-        //    }
-        //}
+        public List<Article> GetPages(int PageIndex, int PageSize)
+        {
+            List<Article> articles = new List<Article>();
+            using (IDbConnection connection = helper.GetConnection())
+            {
+                connection.Open();
+                IDbCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandText = $"SELECT ID FROM Article ORDER BY ID OFFSET {(PageIndex - 1) * PageSize} ROWS FETCH NEXT {PageSize} ROWS ONLY ;";
+                IDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    for (int i = 0; i < PageSize; i++)
+                    {
+                        articles.Add(Find((int)reader[i]));
+                    }
+                }
+                return articles;
+            }
+        }
+
+
+
     }
 }

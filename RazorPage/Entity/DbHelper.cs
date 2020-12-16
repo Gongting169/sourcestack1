@@ -19,7 +19,7 @@ namespace sourcestack1.Entity
         public int ExecuteNonQuery(string cmdText, params IDataParameter[] parameters)
         {
             int resultENQ;
-            using (IDbTransaction transaction = new DbHelper().GetConnection().BeginTransaction())
+            using (IDbTransaction transaction = GetConnection().BeginTransaction())
             {
                 try
                 {
@@ -30,7 +30,7 @@ namespace sourcestack1.Entity
                     {
                         command.Parameters.Add(parameters[i]);
                     }
-                    resultENQ = executeNonQuery(command);
+                    resultENQ = ExecuteNonQuery(command);
                     transaction.Commit();
                 }
                 catch (Exception)
@@ -41,7 +41,7 @@ namespace sourcestack1.Entity
                 return resultENQ;
             }
         }
-        public int executeNonQuery(IDbCommand command)
+        public int ExecuteNonQuery(IDbCommand command)
         {
             int resultExecuteNonQuery;
             using (IDbConnection connection = GetConnection())
@@ -68,7 +68,7 @@ namespace sourcestack1.Entity
         public object ExecuteScalar(string cmdText, params IDataParameter[] parameters)
         {
             object resultES;
-            using (IDbTransaction transaction = new DbHelper().GetConnection().BeginTransaction())
+            using (IDbTransaction transaction = GetConnection().BeginTransaction())
             {
                 try
                 {
@@ -80,7 +80,7 @@ namespace sourcestack1.Entity
                         command.Parameters.Add(parameters[i]);
 
                     }
-                    resultES = executeScalar(command);
+                    resultES = ExecuteScalar(command);
                     transaction.Commit();
                 }
                 catch (Exception)
@@ -91,7 +91,7 @@ namespace sourcestack1.Entity
                 return resultES;
             }
         }
-        public object executeScalar(IDbCommand command)
+        public object ExecuteScalar(IDbCommand command)
         {
             object resultScalar;
             using (IDbConnection connection = GetConnection())
@@ -154,7 +154,7 @@ namespace sourcestack1.Entity
         }
         public void UpdateRange(string cmdText, params IDataParameter[] parameters)
         {
-            using (IDbTransaction transaction = new DbHelper().GetConnection().BeginTransaction())
+            using (IDbTransaction transaction = GetConnection().BeginTransaction())
             {
                 try
                 {
@@ -204,7 +204,7 @@ namespace sourcestack1.Entity
         }
         public void DeleteRange(string cmdText, params IDataParameter[] parameters)
         {
-            using (IDbTransaction transaction = new DbHelper().GetConnection().BeginTransaction())
+            using (IDbTransaction transaction = GetConnection().BeginTransaction())
             {
                 try
                 {
@@ -254,7 +254,7 @@ namespace sourcestack1.Entity
         }
         public void InsertRange(string cmdText, params IDataParameter[] parameters)
         {
-            using (IDbTransaction transaction = new DbHelper().GetConnection().BeginTransaction())
+            using (IDbTransaction transaction = GetConnection().BeginTransaction())
             {
                 try
                 {

@@ -14,9 +14,6 @@ namespace sourcestack1
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
-            UserRepository userRepository = new UserRepository();
-            User user = new User();
-            userRepository.Save(user);
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

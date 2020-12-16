@@ -38,7 +38,7 @@ namespace sourcestack1.Pages.Article
              //    PageIndex = 1;
              //}
 
-            Articles = articleRepository.Get(PageIndex, PageSize);    
+            Articles = articleRepository.GetPages(PageIndex,PageSize);    
 
             ArticlelPageCounts = articleRepository.ArticlesCount % PageSize != 0 ? 
             ArticlelPageCounts = articleRepository.ArticlesCount / PageSize + 1 : ArticlelPageCounts = articleRepository.ArticlesCount / PageSize;
