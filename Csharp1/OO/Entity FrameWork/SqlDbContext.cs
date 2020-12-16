@@ -16,5 +16,24 @@ namespace CSharplearn.OO.Entity_FrameWork
             optionsBuilder.UseSqlServer(connectionstring);
             base.OnConfiguring(optionsBuilder);
         }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasCheckConstraint("CK_CreateTime", "CreateTime >= 2020/1/1")
+                .ToTable("Register")
+                .Property(u => u.Name)
+                .HasColumnName("UserName")
+                .HasMaxLength(256)
+                
+                ;
+
+
+
+
+            base.OnModelCreating(modelBuilder);
+
+        }
     }
 }
