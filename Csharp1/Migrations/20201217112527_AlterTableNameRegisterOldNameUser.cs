@@ -2,7 +2,7 @@
 
 namespace CSharplearn.Migrations
 {
-    public partial class AddOnModelCreatingAfterUserFaildTry : Migration
+    public partial class AlterTableNameRegisterOldNameUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

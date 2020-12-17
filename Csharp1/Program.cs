@@ -25,7 +25,7 @@ namespace CSharplearn
         {
             SqlDbContext context = new SqlDbContext();
             //var db = context.Database;
-            //db.Migrate();//类似于update database,会使用还没有被应用的migration，跟新到数据库，本身并不生成Migration文件，是依赖于migration文件的
+            //db.Migrate();
             //db.EnsureDeleted();
             //db.EnsureCreated();
 

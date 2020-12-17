@@ -2,16 +2,16 @@
 
 namespace CSharplearn.Migrations
 {
-    public partial class AfterModelCreating : Migration
+    public partial class AlterUserColunmNameLimitLengthAs256 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<int>(
-                name: "InvitedCode",
+            migrationBuilder.AlterColumn<string>(
+                name: "UserName",
                 table: "Register",
-                type: "int",
-                nullable: false,
-                defaultValue: 0,
+                type: "nvarchar(256)",
+                maxLength: 256,
+                nullable: true,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)",
                 oldNullable: true);
@@ -20,12 +20,14 @@ namespace CSharplearn.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "InvitedCode",
+                name: "UserName",
                 table: "Register",
                 type: "nvarchar(max)",
                 nullable: true,
-                oldClrType: typeof(int),
-                oldType: "int");
+                oldClrType: typeof(string),
+                oldType: "nvarchar(256)",
+                oldMaxLength: 256,
+                oldNullable: true);
         }
     }
 }

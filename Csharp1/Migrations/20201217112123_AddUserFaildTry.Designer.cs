@@ -4,14 +4,16 @@ using CSharplearn.OO.Entity_FrameWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CSharplearn.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    partial class SqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201217112123_AddUserFaildTry")]
+    partial class AddUserFaildTry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,10 +23,10 @@ namespace CSharplearn.Migrations
 
             modelBuilder.Entity("CSharplearn.User", b =>
                 {
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)")
-                        .HasColumnName("UserName");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<int>("BCredit")
                         .HasColumnType("int");
@@ -32,31 +34,36 @@ namespace CSharplearn.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("InvitedByName")
-                        .HasColumnType("nvarchar(256)");
+                    b.Property<int>("FaildTry")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("InvitedById")
+                        .HasColumnType("int");
 
                     b.Property<int>("InvitedCode")
                         .HasColumnType("int");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Reward")
                         .HasColumnType("int");
 
-                    b.HasKey("Name");
+                    b.HasKey("Id");
 
-                    b.HasIndex("InvitedByName");
+                    b.HasIndex("InvitedById");
 
-                    b.ToTable("Register");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CSharplearn.User", b =>
                 {
                     b.HasOne("CSharplearn.User", "InvitedBy")
                         .WithMany()
-                        .HasForeignKey("InvitedByName");
+                        .HasForeignKey("InvitedById");
 
                     b.Navigation("InvitedBy");
                 });

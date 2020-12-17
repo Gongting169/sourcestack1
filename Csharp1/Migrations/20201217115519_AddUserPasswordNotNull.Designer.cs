@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharplearn.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    [Migration("20201216132725_AddUserCreateTimeAfterModelCreating")]
-    partial class AddUserCreateTimeAfterModelCreating
+    [Migration("20201217115519_AddUserPasswordNotNull")]
+    partial class AddUserPasswordNotNull
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,10 +23,10 @@ namespace CSharplearn.Migrations
 
             modelBuilder.Entity("CSharplearn.User", b =>
                 {
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)")
-                        .HasColumnName("UserName");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<int>("BCredit")
                         .HasColumnType("int");
@@ -34,14 +34,14 @@ namespace CSharplearn.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Id")
+                    b.Property<int?>("InvitedById")
                         .HasColumnType("int");
-
-                    b.Property<string>("InvitedByName")
-                        .HasColumnType("nvarchar(256)");
 
                     b.Property<int>("InvitedCode")
                         .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -50,9 +50,9 @@ namespace CSharplearn.Migrations
                     b.Property<int>("Reward")
                         .HasColumnType("int");
 
-                    b.HasKey("Name");
+                    b.HasKey("Id");
 
-                    b.HasIndex("InvitedByName");
+                    b.HasIndex("InvitedById");
 
                     b.ToTable("Register");
                 });
@@ -61,7 +61,7 @@ namespace CSharplearn.Migrations
                 {
                     b.HasOne("CSharplearn.User", "InvitedBy")
                         .WithMany()
-                        .HasForeignKey("InvitedByName");
+                        .HasForeignKey("InvitedById");
 
                     b.Navigation("InvitedBy");
                 });

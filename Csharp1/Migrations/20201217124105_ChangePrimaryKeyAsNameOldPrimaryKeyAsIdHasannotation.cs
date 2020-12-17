@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CSharplearn.Migrations
 {
-    public partial class AddUserCreateTimeAfterModelCreating : Migration
+    public partial class ChangePrimaryKeyAsNameOldPrimaryKeyAsIdHasannotation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,36 +19,12 @@ namespace CSharplearn.Migrations
                 table: "Register");
 
             migrationBuilder.DropColumn(
-                name: "FaildTry",
+                name: "Id",
                 table: "Register");
 
             migrationBuilder.DropColumn(
                 name: "InvitedById",
                 table: "Register");
-
-            migrationBuilder.RenameColumn(
-                name: "Name",
-                table: "Register",
-                newName: "UserName");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Password",
-                table: "Register",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "",
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
-                oldNullable: true);
-
-            migrationBuilder.AlterColumn<int>(
-                name: "Id",
-                table: "Register",
-                type: "int",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "int")
-                .OldAnnotation("SqlServer:Identity", "1, 1");
 
             migrationBuilder.AlterColumn<string>(
                 name: "UserName",
@@ -59,15 +34,9 @@ namespace CSharplearn.Migrations
                 nullable: false,
                 defaultValue: "",
                 oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
+                oldType: "nvarchar(256)",
+                oldMaxLength: 256,
                 oldNullable: true);
-
-            migrationBuilder.AddColumn<DateTime>(
-                name: "CreateTime",
-                table: "Register",
-                type: "datetime2",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<string>(
                 name: "InvitedByName",
@@ -109,50 +78,26 @@ namespace CSharplearn.Migrations
                 table: "Register");
 
             migrationBuilder.DropColumn(
-                name: "CreateTime",
-                table: "Register");
-
-            migrationBuilder.DropColumn(
                 name: "InvitedByName",
                 table: "Register");
 
-            migrationBuilder.RenameColumn(
+            migrationBuilder.AlterColumn<string>(
                 name: "UserName",
                 table: "Register",
-                newName: "Name");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Password",
-                table: "Register",
-                type: "nvarchar(max)",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
-
-            migrationBuilder.AlterColumn<int>(
-                name: "Id",
-                table: "Register",
-                type: "int",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldType: "int")
-                .Annotation("SqlServer:Identity", "1, 1");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Register",
-                type: "nvarchar(max)",
+                type: "nvarchar(256)",
+                maxLength: 256,
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(256)",
                 oldMaxLength: 256);
 
             migrationBuilder.AddColumn<int>(
-                name: "FaildTry",
+                name: "Id",
                 table: "Register",
                 type: "int",
                 nullable: false,
-                defaultValue: 0);
+                defaultValue: 0)
+                .Annotation("SqlServer:Identity", "1, 1");
 
             migrationBuilder.AddColumn<int>(
                 name: "InvitedById",

@@ -2,23 +2,23 @@
 
 namespace CSharplearn.Migrations
 {
-    public partial class AddUserFaildTryafterinit : Migration
+    public partial class AddUserFaildTryNotMapped : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
+            migrationBuilder.DropColumn(
                 name: "FaildTry",
-                table: "Users",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+                table: "Register");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+            migrationBuilder.AddColumn<int>(
                 name: "FaildTry",
-                table: "Users");
+                table: "Register",
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
         }
     }
 }
