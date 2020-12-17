@@ -30,12 +30,12 @@ namespace CSharplearn
             //db.EnsureCreated();
 
 
-            //User user1 = new User()
-            //{
-            //    Name = "lgy"
-            //};
-            //dbContext.Users.Add(user1);
-            //dbContext.SaveChanges();
+            User user1 = new User()
+            {
+                Name = "lgy"
+            };
+            context.Users.Add(user1);
+            context.SaveChanges();
 
         }
     }
