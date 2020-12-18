@@ -29,13 +29,31 @@ namespace CSharplearn
             //db.EnsureDeleted();
             //db.EnsureCreated();
 
+            //利用EF，插入3个User对象 
+            //User user1 = new User()
+            //{
+            //    Name = "lgy",
+            //    Password ="1235"
+            //};
+            //User user = new User()
+            //{
+            //    Name = "马保国",
+            //    Password = "2578"
+            //};
+            //User user2 = new User()
+            //{
+            //    Name = "我会闪电五连鞭",
+            //    Password = "3698"
+            //};
+            //context.Users.Add(user1);
+            //context.Add(user);
+            //context.Add<User>(user2);
+            //context.SaveChanges();
 
-            User user1 = new User()
-            {
-                Name = "lgy"
-            };
-            context.Users.Add(user1);
-            context.SaveChanges();
+            //通过Id找到其中一个User对象 
+            User user3 = context.Find<User>("马保国");
+
+
 
         }
     }

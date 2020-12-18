@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharplearn.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    [Migration("20201217115124_AddUserFaildTryNotMapped")]
-    partial class AddUserFaildTryNotMapped
+    [Migration("20201218020608_AddUserCreateTimeIsUniqueNonClusterIndex")]
+    partial class AddUserCreateTimeIsUniqueNonClusterIndex
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,10 +23,10 @@ namespace CSharplearn.Migrations
 
             modelBuilder.Entity("CSharplearn.User", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)")
+                        .HasColumnName("UserName");
 
                     b.Property<int>("BCredit")
                         .HasColumnType("int");
@@ -34,33 +34,36 @@ namespace CSharplearn.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("InvitedById")
-                        .HasColumnType("int");
+                    b.Property<string>("InvitedByName")
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<int>("InvitedCode")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Reward")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("Name");
 
-                    b.HasIndex("InvitedById");
+                    b.HasIndex("InvitedByName");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Register");
+
+                    b.HasCheckConstraint("CK_CreateTime", "CreateTime >= '2020/1/1'");
                 });
 
             modelBuilder.Entity("CSharplearn.User", b =>
                 {
                     b.HasOne("CSharplearn.User", "InvitedBy")
                         .WithMany()
-                        .HasForeignKey("InvitedById");
+                        .HasForeignKey("InvitedByName");
 
                     b.Navigation("InvitedBy");
                 });

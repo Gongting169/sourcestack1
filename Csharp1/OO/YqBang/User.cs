@@ -19,7 +19,7 @@ namespace CSharplearn
         public int InvitedCode { get; set; }
         public int BCredit { get; set; }
         public int Reward { get; set; }
-        //public DateTime CreateTime { get; set; }
+        public DateTime CreateTime { get; set; }
 
         //public void Register()
         //{

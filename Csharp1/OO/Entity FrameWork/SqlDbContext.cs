@@ -34,8 +34,8 @@ namespace CSharplearn.OO.Entity_FrameWork
                 u.HasKey(s => s.Name);   //将User表的主键设置在Name列上 
                 u.Property(u => u.Password).IsRequired();   //Password不能为空
                 u.Ignore(u => u.FaildTry);    //User类中的属性FailedTry不用存储到数据库中 
-                u.HasCheckConstraint("CK_CreateTime", "CreateTime >= 2020/1/1");  // CreateTime不能小于2000年1月1日 no
-                u.HasIndex(s => s.Name).IsUnique();  //给CreateTime属性添加一个非聚集唯一索引 no
+                u.HasCheckConstraint("CK_CreateTime", "CreateTime >= '2020/1/1'"); //CreateTime不能小于2000年1月1日
+                u.HasIndex(s => s.Name).IsUnique();  //给CreateTime属性添加一个非聚集唯一索引 
             });
             base.OnModelCreating(modelBuilder);
         }

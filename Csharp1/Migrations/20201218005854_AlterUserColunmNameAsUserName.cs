@@ -2,10 +2,15 @@
 
 namespace CSharplearn.Migrations
 {
-    public partial class AlterUserColunmNameLimitLengthAs256 : Migration
+    public partial class AlterUserColunmNameAsUserName : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.RenameColumn(
+                name: "Name",
+                table: "Register",
+                newName: "UserName");
+
             migrationBuilder.AlterColumn<string>(
                 name: "UserName",
                 table: "Register",
@@ -19,8 +24,13 @@ namespace CSharplearn.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
+            migrationBuilder.RenameColumn(
                 name: "UserName",
+                table: "Register",
+                newName: "Name");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Name",
                 table: "Register",
                 type: "nvarchar(max)",
                 nullable: true,

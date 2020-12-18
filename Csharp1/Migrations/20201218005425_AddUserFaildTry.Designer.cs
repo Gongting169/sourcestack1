@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharplearn.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    [Migration("20201217115519_AddUserPasswordNotNull")]
-    partial class AddUserPasswordNotNull
+    [Migration("20201218005425_AddUserFaildTry")]
+    partial class AddUserFaildTry
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,8 +31,8 @@ namespace CSharplearn.Migrations
                     b.Property<int>("BCredit")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreateTime")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("FaildTry")
+                        .HasColumnType("int");
 
                     b.Property<int?>("InvitedById")
                         .HasColumnType("int");
@@ -44,7 +44,6 @@ namespace CSharplearn.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Reward")
@@ -54,7 +53,7 @@ namespace CSharplearn.Migrations
 
                     b.HasIndex("InvitedById");
 
-                    b.ToTable("Register");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CSharplearn.User", b =>

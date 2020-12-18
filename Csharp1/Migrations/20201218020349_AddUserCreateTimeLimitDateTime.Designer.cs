@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharplearn.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    [Migration("20201217124105_ChangePrimaryKeyAsNameOldPrimaryKeyAsIdHasannotation")]
-    partial class ChangePrimaryKeyAsNameOldPrimaryKeyAsIdHasannotation
+    [Migration("20201218020349_AddUserCreateTimeLimitDateTime")]
+    partial class AddUserCreateTimeLimitDateTime
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,6 +52,8 @@ namespace CSharplearn.Migrations
                     b.HasIndex("InvitedByName");
 
                     b.ToTable("Register");
+
+                    b.HasCheckConstraint("CK_CreateTime", "CreateTime >= '2020/1/1'");
                 });
 
             modelBuilder.Entity("CSharplearn.User", b =>
