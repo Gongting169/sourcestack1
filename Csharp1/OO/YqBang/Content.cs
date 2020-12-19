@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-    public abstract class Content : Entity<int>
+    public abstract class Content : Entity
     {
         public string Body { get; set; }
         public User Author { get; set; }
