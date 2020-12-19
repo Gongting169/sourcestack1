@@ -24,12 +24,11 @@ namespace CSharplearn
         static void Main(string[] args)
         {
             SqlDbContext context = new SqlDbContext();
-            var db = context.Database;
-
-            db.EnsureDeleted();
-            db.EnsureCreated();
-
+            //var db = context.Database;
             //db.Migrate();
+            //db.EnsureDeleted();
+            //db.EnsureCreated();
+
             //利用EF，插入3个User对象 
             //User user1 = new User()
             //{
@@ -58,12 +57,12 @@ namespace CSharplearn
             //context.SaveChanges();
 
             //通过Id找到其中一个User对象            
-            //User user4 = context.Find<User>("马保国");
-            //Console.WriteLine(user4.Name);
-            ////修改该User对象的Name属性，将其同步到数据库
-            //User user8 = context.Find<User>("lgy");
-            //user8.Name = "刘志秀";
-            //context.SaveChanges();
+            User user4 = context.Find<User>("马保国");
+            Console.WriteLine(user4.Name);
+            //修改该User对象的Name属性，将其同步到数据库
+            User user8 = context.Find<User>("lgy");
+            user8.Name = "刘志秀";
+            context.SaveChanges();
 
             //删除该Id用户
             //User user5 = new User() { Id = 3 };           
