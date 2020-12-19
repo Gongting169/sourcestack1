@@ -12,7 +12,7 @@ namespace CSharplearn
     {
         //public IList<Article> Articles { get; set; }
         public int FaildTry { get; set; }
-        //public int Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
         public User InvitedBy { get; set; }
