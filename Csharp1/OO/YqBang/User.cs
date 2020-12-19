@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CSharplearn.OO.YqBang;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,11 +9,11 @@ using System.Text;
 
 namespace CSharplearn
 {
-    sealed public class User : Entity<int>, ISendMessage, IChat
+    sealed public class User : Entity, ISendMessage, IChat
     {
         //public IList<Article> Articles { get; set; }
-        public int FaildTry { get; set; }
         public int Id { get; set; }
+        public int FaildTry { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
         public User InvitedBy { get; set; }
@@ -20,12 +21,7 @@ namespace CSharplearn
         public int BCredit { get; set; }
         public int Reward { get; set; }
         public DateTime CreateTime { get; set; }
-
-        //public void Register()
-        //{
-        //    InvitedBy.InvitedCode += 10;
-        //}
-
+        public Email Email { get; set; }
 
 
         void ISendMessage.Send()

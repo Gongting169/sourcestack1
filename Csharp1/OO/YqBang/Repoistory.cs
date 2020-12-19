@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-    class Repoistory : Entity<int>
+    class Repoistory : Entity
     {
         public virtual void Delete()
         {
