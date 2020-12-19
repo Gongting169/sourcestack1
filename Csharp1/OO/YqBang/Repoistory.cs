@@ -4,13 +4,13 @@ using System.Text;
 
 namespace CSharplearn
 {
-    class Repoistory : Entity<int>
+    public class Repoistory : Entity
     {
         public virtual void Delete()
         {
 
         }
-        public virtual  void Save()
+        public virtual void Save()
         {
 
         }

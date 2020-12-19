@@ -8,7 +8,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-    sealed public class User : Entity<int>, ISendMessage, IChat
+    sealed public class User : Entity, ISendMessage, IChat
     {
         //public IList<Article> Articles { get; set; }
         public int FaildTry { get; set; }
@@ -20,13 +20,6 @@ namespace CSharplearn
         public int BCredit { get; set; }
         public int Reward { get; set; }
         public DateTime CreateTime { get; set; }
-
-        //public void Register()
-        //{
-        //    InvitedBy.InvitedCode += 10;
-        //}
-
-
 
         void ISendMessage.Send()
         {
