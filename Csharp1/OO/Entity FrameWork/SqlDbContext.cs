@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Debug;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,12 +16,15 @@ namespace CSharplearn.OO.Entity_FrameWork
             string connectionstring =
                 @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = 17bang; Integrated Security = True; Connect Timeout = 30;";
             optionsBuilder
-               .UseSqlServer(connectionstring)
-#if DEBUG
+               .UseSqlServer(connectionstring)              
                .EnableSensitiveDataLogging()
-#endif
+               //.UseLoggerFactory(new LoggerFactory(new ILoggerProvider[]  //老版的写法
+               //     {
+               //   new DebugLoggerProvider((s,l)=>l ==LogLevel.Debug)     
+               //     }))
                .LogTo(
-                (id, level) => level == LogLevel.Error, log => Console.WriteLine(log));
+                (id, level) => level >= Microsoft.Extensions.Logging.LogLevel.Debug
+                , log => Console.WriteLine(log));
             base.OnConfiguring(optionsBuilder);
         }
 
