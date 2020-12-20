@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CSharplearn.OO.YqBang;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,6 +21,8 @@ namespace CSharplearn
         public int BCredit { get; set; }
         public int Reward { get; set; }
         public DateTime CreateTime { get; set; }
+        //public Email Email { get; set; }
+        //public int EmailId { get; set; }
 
         void ISendMessage.Send()
         {

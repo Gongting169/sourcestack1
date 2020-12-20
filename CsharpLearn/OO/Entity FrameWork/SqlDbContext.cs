@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CSharplearn.OO.YqBang;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Debug;
 using System;
@@ -41,6 +42,7 @@ namespace CSharplearn.OO.Entity_FrameWork
                 u.HasCheckConstraint("CK_CreateTime", "CreateTime >= '2020/1/1'"); //CreateTime不能小于2000年1月1日
                 u.HasIndex(s => s.Name).IsUnique();  //给CreateTime属性添加一个非聚集唯一索引 
             });
+            //modelBuilder.Entity<User>().HasOne<Email>(u => u.Email).WithOne().HasForeignKey<User>(u =>u.EmailId);
             base.OnModelCreating(modelBuilder);
         }
     }

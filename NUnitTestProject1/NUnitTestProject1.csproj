@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Csharp1\CSharplearn.csproj" />
+    <ProjectReference Include="..\CsharpLearn\CSharplearn.csproj" />
   </ItemGroup>
 
 </Project>
