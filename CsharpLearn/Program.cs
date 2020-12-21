@@ -24,37 +24,37 @@ namespace CSharplearn
         static void Main(string[] args)
         {
             SqlDbContext context = new SqlDbContext();
-            //var db = context.Database;
-            //db.Migrate();
-            //db.EnsureDeleted();
-            //db.EnsureCreated();
+            var db = context.Database;
+            ////db.Migrate();
+            db.EnsureDeleted();
+            db.EnsureCreated();
 
             //利用EF，插入3个User对象 
-            User user1 = new User()
-            {
-                Id = 1,
-                Name = "lgy",
-                Password = "1235",
-                CreateTime = new DateTime(2020, 5, 27)
-            };
-            User user2 = new User()
-            {
-                Id = 2,
-                Name = "马保国",
-                Password = "2578",
-                CreateTime = new DateTime(2020, 3, 8)
-            };
-            User user3 = new User()
-            {
-                Id = 3,
-                Name = "我会闪电五连鞭",
-                Password = "3698",
-                CreateTime = new DateTime(2020, 9, 1)
-            };
-            context.Users.Add(user1);
-            context.Add(user3);
-            context.Add<User>(user2);
-            context.SaveChanges();
+            //User user1 = new User()
+            //{
+            //    Id = 1,
+            //    Name = "lgy",
+            //    Password = "1235",
+            //    CreateTime = new DateTime(2020, 5, 27)
+            //};
+            //User user2 = new User()
+            //{
+            //    Id = 2,
+            //    Name = "马保国",
+            //    Password = "2578",
+            //    CreateTime = new DateTime(2020, 3, 8)
+            //};
+            //User user3 = new User()
+            //{
+            //    Id = 3,
+            //    Name = "我会闪电五连鞭",
+            //    Password = "3698",
+            //    CreateTime = new DateTime(2020, 9, 1)
+            //};
+            //context.Users.Add(user1);
+            //context.Add(user3);
+            //context.Add<User>(user2);
+            //context.SaveChanges();
 
             //通过name找到其中一个User对象            
             //User user4 = context.Find<User>("马保国");

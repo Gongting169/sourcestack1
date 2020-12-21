@@ -1,4 +1,5 @@
 ﻿using CSharplearn.OO.YqBang;
+using CSharplearn.ProcedureObject.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Debug;
@@ -10,26 +11,27 @@ namespace CSharplearn.OO.Entity_FrameWork
 {
     class SqlDbContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
-
+        public DbSet<Email> Emails { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<Problem> Problems { get; set; }
+        public DbSet<Suggest> Suggests { get; set; }
+        public DbSet<Content> Contents { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Appraise> Appraises { get; set; }
+        public DbSet<KeyWord> KeyWords { get; set; }
+        public DbSet<Summary> Summaries { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionstring =
                 @" Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = 17bang; Integrated Security = True; Connect Timeout = 30;";
             optionsBuilder
-               .UseSqlServer(connectionstring)              
+               .UseSqlServer(connectionstring)
                .EnableSensitiveDataLogging()
-               //.UseLoggerFactory(new LoggerFactory(new ILoggerProvider[]  //老版的写法
-               //     {
-               //   new DebugLoggerProvider((s,l)=>l ==LogLevel.Debug)     
-               //     }))
                .LogTo(
                 (id, level) => level >= Microsoft.Extensions.Logging.LogLevel.Debug
                 , log => Console.WriteLine(log));
             base.OnConfiguring(optionsBuilder);
         }
-
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>(u =>
@@ -42,7 +44,14 @@ namespace CSharplearn.OO.Entity_FrameWork
                 u.HasCheckConstraint("CK_CreateTime", "CreateTime >= '2020/1/1'"); //CreateTime不能小于2000年1月1日
                 u.HasIndex(s => s.Name).IsUnique();  //给CreateTime属性添加一个非聚集唯一索引 
             });
-            //modelBuilder.Entity<User>().HasOne<Email>(u => u.Email).WithOne().HasForeignKey<User>(u =>u.EmailId);
+            modelBuilder.Entity<User>().HasOne<Email>(u => u.Email).WithOne().HasForeignKey<User>(u => u.EmailId);
+            //modelBuilder.Entity<Suggest>().ToTable("Suggests");
+            //modelBuilder.Entity<Article>().ToTable("Articles");
+            //modelBuilder.Entity<Problem>().ToTable("Problems");
+            //modelBuilder.Entity<Content>().ToTable("Contents");
+            //modelBuilder.Entity<Appraise>().ToTable("Appraises");
+            //modelBuilder.Entity<Comment>().ToTable("Comments");
+            //modelBuilder.Entity<KeyWord>().ToTable("KeyWords");
             base.OnModelCreating(modelBuilder);
         }
     }

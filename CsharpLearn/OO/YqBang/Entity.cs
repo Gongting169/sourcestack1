@@ -4,8 +4,8 @@ using System.Text;
 
 namespace CSharplearn
 {
-   public  class Entity
+    public  class Entity
     {
-          public int  Id { get; }
+        public virtual int Id { get; set; }
     }
 }

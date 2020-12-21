@@ -7,7 +7,7 @@ namespace CSharplearn
 {
     public class Summary : Content,IAppraise
     {
-
+        //只有求助才有总结
 
 
 

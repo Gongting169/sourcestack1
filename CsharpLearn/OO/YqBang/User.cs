@@ -11,18 +11,15 @@ namespace CSharplearn
 {
     sealed public class User : Entity, ISendMessage, IChat
     {
-        //public IList<Article> Articles { get; set; }
         public int FaildTry { get; set; }
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
         public User InvitedBy { get; set; }
         public int InvitedCode { get; set; }
-        public int BCredit { get; set; }
         public int Reward { get; set; }
         public DateTime CreateTime { get; set; }
-        //public Email Email { get; set; }
-        //public int EmailId { get; set; }
+        public Email Email { get; set; }
+        public int EmailId { get; set; }
 
         void ISendMessage.Send()
         {

@@ -4,11 +4,11 @@ using System.Text;
 
 namespace CSharplearn
 {
-    public abstract class Content : Entity
+    public  class Content : Entity
     {
         public string Body { get; set; }
         public User Author { get; set; }
-        public DateTime createTime { get; private set; }
+        //public DateTime createTime { get;  set; }
         public DateTime PublishTime { get; set; }
         public void Publish() 
         {
