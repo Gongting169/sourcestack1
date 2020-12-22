@@ -32,4 +32,10 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CsharpLearn\CSharplearn.csproj" />
+    <ProjectReference Include="..\MVC\MVC.csproj" />
+    <ProjectReference Include="..\SelfStudy\SelfStudy.csproj" />
+  </ItemGroup>
+
 </Project>
