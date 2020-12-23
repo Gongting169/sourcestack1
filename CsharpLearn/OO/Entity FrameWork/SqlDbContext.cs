@@ -2,14 +2,13 @@
 using CSharplearn.ProcedureObject.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Debug;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CSharplearn.OO.Entity_FrameWork
 {
-    class SqlDbContext : DbContext
+    public class SqlDbContext : DbContext
     {
         public DbSet<Email> Emails { get; set; }
         public DbSet<Article> Articles { get; set; }
@@ -20,6 +19,7 @@ namespace CSharplearn.OO.Entity_FrameWork
         public DbSet<Appraise> Appraises { get; set; }
         public DbSet<KeyWord> KeyWords { get; set; }
         public DbSet<Summary> Summaries { get; set; }
+        public DbSet<ProblemStatus> ProblemStatuses { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionstring =
@@ -45,13 +45,16 @@ namespace CSharplearn.OO.Entity_FrameWork
                 u.HasIndex(s => s.Name).IsUnique();  //给CreateTime属性添加一个非聚集唯一索引 
             });
             modelBuilder.Entity<User>().HasOne<Email>(u => u.Email).WithOne().HasForeignKey<User>(u => u.EmailId);
-            //modelBuilder.Entity<Suggest>().ToTable("Suggests");
-            //modelBuilder.Entity<Article>().ToTable("Articles");
-            //modelBuilder.Entity<Problem>().ToTable("Problems");
-            //modelBuilder.Entity<Content>().ToTable("Contents");
-            //modelBuilder.Entity<Appraise>().ToTable("Appraises");
-            //modelBuilder.Entity<Comment>().ToTable("Comments");
-            //modelBuilder.Entity<KeyWord>().ToTable("KeyWords");
+            modelBuilder.Entity<ProblemStatus>().HasOne<Problem>(p => p.Problem).WithOne().HasForeignKey<ProblemStatus>(p => p.ProblemId);
+            modelBuilder.Entity<Suggest>().ToTable("Suggests");
+            modelBuilder.Entity<Article>().ToTable("Articles");
+            modelBuilder.Entity<Problem>().ToTable("Problems");
+            modelBuilder.Entity<Content>().ToTable("Contents");
+            modelBuilder.Entity<Appraise>().ToTable("Appraises");
+            modelBuilder.Entity<Comment>().ToTable("Comments");
+            modelBuilder.Entity<KeyWord>().ToTable("KeyWords");
+            modelBuilder.Entity<Summary>().ToTable("Summaries");
+            modelBuilder.Entity<ProblemStatus>().ToTable("ProblemStatuses");
             base.OnModelCreating(modelBuilder);
         }
     }

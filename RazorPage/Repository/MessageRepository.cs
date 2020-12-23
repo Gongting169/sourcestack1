@@ -35,5 +35,10 @@ namespace sourcestack1.Repository
         {
             return messages.Where(m => m.Id == id).SingleOrDefault();
         }
+
+        public void GetMessage()
+        {
+
+        }
     }
 }

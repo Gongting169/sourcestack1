@@ -546,12 +546,32 @@ provider根据需要返回的结果生成相应的sql语句并执行，返回查
 5、DbContext中有一个ChangeTracker，它干嘛用的？EF如何知道要追踪哪些entity？如何进行追踪（标记entity状态）？追踪了最后又如何处理？
 change tracker是用来记录追踪需要改动，同步到数据库里面的数据，同步的是改动的数据，凡是从context里面取出的数据都会被追踪
 
-2020年12月17日的面试题目：
-1、TPP和TpH有什么优缺点？
-2、什么是影子属性？
-3、什么是关联属性？
-4、关联对象的加载模式有哪几种？预先加载：会使用include方法   显示加载：会使用entry这个方法
+2020年12月22日的面试题目：
+1、MVC是一种怎么样的“模式”？MVVM呢？ Controller model view 当http 请求到达客户端之后，会交给controller来处理，controller请求响应之后，从model取数据，然后在从view哪里取数据
+，取到的数据在经过controller发送给客户端，MVVM：Model View ViewModel viewModel是中枢，model和view都是从viewmodel哪里取数据
+2、听说过model的“贫血/充血”模式么？MVC中的Model一般是哪种模式，为什么？MVC中route是怎么配置的？有哪些注意事项？一般使用的都是贫血模式：
+3、你会不会做“伪静态”页面（url中路径以.html结尾）？
+4、PageModel和Controller、HandlerMethod和Action有啥相似之处，又有啥区别？
+5、ViewBag本质上是什么？和ViewData有啥区别？
 
+2020年12月22日的面试题目：
+1、EF中关联entiy的LazyLoad在底层是如何实现的？
+2、一个entity（比如Classroom）引用了另外一个/系列entity（比如Students），删除父entity，子entity如何处理？EF默认如何处理？
+3、我们可以自定义EF的级联（cascade）删除策略么？怎么定义？其DeleteBehavior枚举，有Client和没Client有什么区别？
+4、能不能只删除entity之间的关系，不删除entity本身？一般怎么操作？
+5、听说过UoW么？它是干什么用的？在EF中如何使用事务？
+
+2020年12月22日的面试题目：
+1、EF中什么是影子属性，有什么作用？数据库上有一列，而对应的entity上却没有对应的属性，不是普通的属性类型，比如说：string、int等类型，这个属性的类型为entity类型，
+比如外键：起着连接的作用，管理相应的数据库，可以通过entry来取值，为了维护数据库而生成的，而不进行业务逻辑操作的这么一列，不让开发人员去操作这一列，仅仅是为了维护数据库
+2、有继承关系的entity，映射到数据库，有哪几种策略？各自优劣何在？有三种策略：TPH：table per hierarchy,子类和父类的属性都在一张表上，会生成多的一列：discriminator，用来记录行列对应的value
+是哪个entity的,查询也是一次就把结果查询出来，不会join查询，还需要进行配置在dbcontext里面吧映射的entity声明成Dbset属性，TPT：Table per type，子类和父类各自对应各自的表，子类的表的主键也是外键，
+不会有discriminator这么一列，查询的时候会join来联合查询，也是查询只查询一次，这就会使用discriminator,是为了把tph模式进行重用，所以才会使用到discrimiantor,而且还会把所有数据都给取出来
+，这样是为了方便类型转换，EFcore5.0开始支持 还需要在ONmodelcreating里面配置到那个表上
+3、EF是如何实现ER模型（1:1,1:N,N:N）映射的？为什么1:1不能默认，必须开发人员配置？要配置些什么？在对应的属性里面添加影子属性，1:N和N：N都是在各自的类里面添加集合的属性，因为1:1是特殊的
+1对多，配置了hasone :只能说明从学生拥有一张床，但不能证明这张床只对应一个学生，还必须配置withone（），还要配置hasforeignkey()把外键放在哪个表上
+4、EF为我们提供了3中加载关联entity的模式，具体是什么？各有什么利弊？
+5、实际开发中，你会采用哪些方式可以提高EF的性能？（SaveChanges/IQueryable/Select/FromSql/NoTrack/Include/Query……）
 
 
 

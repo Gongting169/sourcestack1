@@ -11,7 +11,6 @@ namespace CSharplearn
     {
         public string Title { get; set; }
         public DateTime LatestUpdateTime { get; set; }
-        public string Status { get; set; }
         public bool NeedRemoteHelp { get; set; }
         //一篇求助可以对应多个关键字
         public IList<KeyWord> KeyWords { get; set; }

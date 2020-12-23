@@ -2,7 +2,6 @@
 using CSharplearn.ProcedureObject;
 using CSharplearn.ProcedureObject.Enum;
 using CSharplearn.ProcedureObject.Generic;
-using E = sourcestack1.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,9 +12,9 @@ using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using static CSharplearn.ProcedureObject.Generic.Generic;
-using sourcestack1.Entity;
 using CSharplearn.OO.Entity_FrameWork;
 using Microsoft.EntityFrameworkCore;
+using CSharplearn.OO.YqBang;
 
 namespace CSharplearn
 {
@@ -26,9 +25,34 @@ namespace CSharplearn
             SqlDbContext context = new SqlDbContext();
             var db = context.Database;
             ////db.Migrate();
-            db.EnsureDeleted();
-            db.EnsureCreated();
-
+            //db.EnsureDeleted();
+            //db.EnsureCreated();
+            ProblemStatus status = new ProblemStatus()
+            {
+                Id = 1,
+                Name = "待求助",
+                ProblemId = 2
+            };
+            ProblemStatus problem = new ProblemStatus()
+            {
+                Id = 2,
+                Name = "已酬谢",
+                ProblemId = 3
+            };
+            ProblemStatus problem1 = new ProblemStatus()
+            {
+                Id = 3,
+                Name = "已撤销",
+                ProblemId = 1
+            };
+            ProblemStatus problem2 = new ProblemStatus()
+            {
+                Id = 4,
+                Name = "协助中",
+                ProblemId = 4
+            };
+            context.AddRange(problem, problem1, problem2, status);
+            context.SaveChanges();
             //利用EF，插入3个User对象 
             //User user1 = new User()
             //{

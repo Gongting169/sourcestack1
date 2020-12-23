@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Primitives;
 using sourcestack1.Entity;
 using sourcestack1.Repository;
 using E = sourcestack1.Entity;
@@ -23,31 +24,16 @@ namespace sourcestack1.Pages.Article
             articleRepository = new ArticleRepository();
         }
         public void OnGet()
-        {
-            if (Request.Query.ContainsKey("PageIndex"))
-            {
-                PageIndex = Convert.ToInt32(Request.Query["PageIndex"][0]);
-            }//else nothing
-
-             //if (Request.RouteValues.TryGetValue("PageIndex", out object PageIndex))
-             //{
-             //    PageIndex = Convert.ToInt32(Request.Query["PageIndex"][0]);
-             //}
-             //else
-             //{
-             //    PageIndex = 1;
-             //}
-
+        {   
+            PageIndex = Request.Query.TryGetValue("PageIndex", out StringValues result) ?Convert.ToInt32(result) : 1;
             Articles = articleRepository.GetPages(PageIndex,PageSize);    
-
             ArticlelPageCounts = articleRepository.ArticlesCount % PageSize != 0 ? 
             ArticlelPageCounts = articleRepository.ArticlesCount / PageSize + 1 : ArticlelPageCounts = articleRepository.ArticlesCount / PageSize;
             ArticlelPageCounts = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(articleRepository.ArticlesCount) / Convert.ToDouble(PageSize)));
         }
         public void Post()
         {
-       
-
+      
         }
     }
 }
