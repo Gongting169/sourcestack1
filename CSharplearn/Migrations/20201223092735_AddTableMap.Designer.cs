@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharplearn.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    [Migration("20201221122909_ReSetAddTableSummary")]
-    partial class ReSetAddTableSummary
+    [Migration("20201223092735_AddTableMap")]
+    partial class AddTableMap
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,10 +49,6 @@ namespace CSharplearn.Migrations
                     b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("PublishTime")
                         .HasColumnType("datetime2");
 
@@ -61,8 +57,24 @@ namespace CSharplearn.Migrations
                     b.HasIndex("AuthorName");
 
                     b.ToTable("Contents");
+                });
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Content");
+            modelBuilder.Entity("CSharplearn.OO.YqBang.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Body")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("CSharplearn.OO.YqBang.Email", b =>
@@ -84,6 +96,27 @@ namespace CSharplearn.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Emails");
+                });
+
+            modelBuilder.Entity("CSharplearn.OO.YqBang.ProblemStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProblemId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProblemId")
+                        .IsUnique();
+
+                    b.ToTable("ProblemStatuses");
                 });
 
             modelBuilder.Entity("CSharplearn.ProcedureObject.Generic.Appraise", b =>
@@ -199,7 +232,7 @@ namespace CSharplearn.Migrations
                 {
                     b.HasBaseType("CSharplearn.Content");
 
-                    b.Property<int>("Category")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -208,9 +241,11 @@ namespace CSharplearn.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(256)");
 
+                    b.HasIndex("CategoryId");
+
                     b.HasIndex("UserName");
 
-                    b.HasDiscriminator().HasValue("Article");
+                    b.ToTable("Articles");
                 });
 
             modelBuilder.Entity("CSharplearn.Problem", b =>
@@ -229,14 +264,10 @@ namespace CSharplearn.Migrations
                     b.Property<int>("Reward")
                         .HasColumnType("int");
 
-                    b.Property<string>("Status")
+                    b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Problem_Title");
-
-                    b.HasDiscriminator().HasValue("Problem");
+                    b.ToTable("Problems");
                 });
 
             modelBuilder.Entity("CSharplearn.ProcedureObject.Generic.Comment", b =>
@@ -250,8 +281,7 @@ namespace CSharplearn.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool>("NeedRemoteHelp")
-                        .HasColumnType("bit")
-                        .HasColumnName("Comment_NeedRemoteHelp");
+                        .HasColumnType("bit");
 
                     b.Property<int?>("ProblemId")
                         .HasColumnType("int");
@@ -268,7 +298,7 @@ namespace CSharplearn.Migrations
 
                     b.HasIndex("SuggestId");
 
-                    b.HasDiscriminator().HasValue("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("CSharplearn.Suggest", b =>
@@ -282,17 +312,16 @@ namespace CSharplearn.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Suggest_Title");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("Suggest");
+                    b.ToTable("Suggests");
                 });
 
             modelBuilder.Entity("CSharplearn.Summary", b =>
                 {
                     b.HasBaseType("CSharplearn.Content");
 
-                    b.HasDiscriminator().HasValue("Summary");
+                    b.ToTable("Summaries");
                 });
 
             modelBuilder.Entity("ArticleKeyWord", b =>
@@ -317,6 +346,17 @@ namespace CSharplearn.Migrations
                         .HasForeignKey("AuthorName");
 
                     b.Navigation("Author");
+                });
+
+            modelBuilder.Entity("CSharplearn.OO.YqBang.ProblemStatus", b =>
+                {
+                    b.HasOne("CSharplearn.Problem", "Problem")
+                        .WithOne()
+                        .HasForeignKey("CSharplearn.OO.YqBang.ProblemStatus", "ProblemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Problem");
                 });
 
             modelBuilder.Entity("CSharplearn.ProcedureObject.Generic.Appraise", b =>
@@ -380,11 +420,32 @@ namespace CSharplearn.Migrations
 
             modelBuilder.Entity("CSharplearn.Article", b =>
                 {
+                    b.HasOne("CSharplearn.OO.YqBang.Category", "Category")
+                        .WithMany("Articles")
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("CSharplearn.Content", null)
+                        .WithOne()
+                        .HasForeignKey("CSharplearn.Article", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+
                     b.HasOne("CSharplearn.User", "User")
                         .WithMany()
                         .HasForeignKey("UserName");
 
+                    b.Navigation("Category");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CSharplearn.Problem", b =>
+                {
+                    b.HasOne("CSharplearn.Content", null)
+                        .WithOne()
+                        .HasForeignKey("CSharplearn.Problem", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CSharplearn.ProcedureObject.Generic.Comment", b =>
@@ -392,6 +453,12 @@ namespace CSharplearn.Migrations
                     b.HasOne("CSharplearn.Article", "Article")
                         .WithMany("Comments")
                         .HasForeignKey("ArticleId");
+
+                    b.HasOne("CSharplearn.Content", null)
+                        .WithOne()
+                        .HasForeignKey("CSharplearn.ProcedureObject.Generic.Comment", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
 
                     b.HasOne("CSharplearn.Problem", "Problem")
                         .WithMany("Comments")
@@ -406,6 +473,29 @@ namespace CSharplearn.Migrations
                     b.Navigation("Problem");
 
                     b.Navigation("Suggest");
+                });
+
+            modelBuilder.Entity("CSharplearn.Suggest", b =>
+                {
+                    b.HasOne("CSharplearn.Content", null)
+                        .WithOne()
+                        .HasForeignKey("CSharplearn.Suggest", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CSharplearn.Summary", b =>
+                {
+                    b.HasOne("CSharplearn.Content", null)
+                        .WithOne()
+                        .HasForeignKey("CSharplearn.Summary", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CSharplearn.OO.YqBang.Category", b =>
+                {
+                    b.Navigation("Articles");
                 });
 
             modelBuilder.Entity("CSharplearn.Article", b =>

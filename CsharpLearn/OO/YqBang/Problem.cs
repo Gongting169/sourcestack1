@@ -1,4 +1,5 @@
 ﻿using CSharplearn.OO.Interface;
+using CSharplearn.OO.YqBang;
 using CSharplearn.ProcedureObject.Generic;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace CSharplearn
         public IList<KeyWord> KeyWords { get; set; }
         //一篇求助可以对应多个评论
         public IList<Comment> Comments { get; set; }
+        //一个求助状态对应多条求助
+        public IList<ProblemStatus> ProblemStatuses { get; set;}
         public bool Audit { get; set; }//悬赏是否实结
 
         private int reward;

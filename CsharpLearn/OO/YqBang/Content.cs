@@ -8,7 +8,6 @@ namespace CSharplearn
     {
         public string Body { get; set; }
         public User Author { get; set; }
-        //public DateTime createTime { get;  set; }
         public DateTime PublishTime { get; set; }
         public void Publish() 
         {

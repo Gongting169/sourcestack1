@@ -20,6 +20,7 @@ namespace CSharplearn.OO.Entity_FrameWork
         public DbSet<KeyWord> KeyWords { get; set; }
         public DbSet<Summary> Summaries { get; set; }
         public DbSet<ProblemStatus> ProblemStatuses { get; set; }
+        public DbSet<Category> Categories { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionstring =
@@ -38,7 +39,7 @@ namespace CSharplearn.OO.Entity_FrameWork
             {
                 u.ToTable("Register");  //将之前的User类名改为Register，但仍然能对应表User 
                 u.Property(u => u.Name).HasColumnName("UserName").HasMaxLength(256);  //将之前的User属性Name改成UserName，但仍然能对应表User的列Name 将Name的长度限制为256 
-                u.HasKey(s => s.Name);   //将User表的主键设置在Name列上 
+                //u.HasKey(s => s.Name);   //将User表的主键设置在Name列上 
                 u.Property(u => u.Password).IsRequired();   //Password不能为空
                 u.Ignore(u => u.FaildTry);    //User类中的属性FailedTry不用存储到数据库中 
                 u.HasCheckConstraint("CK_CreateTime", "CreateTime >= '2020/1/1'"); //CreateTime不能小于2000年1月1日
