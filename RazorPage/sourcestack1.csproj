@@ -34,7 +34,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CsharpLearn\CSharplearn.csproj" />
-    <ProjectReference Include="..\MVC\MVC.csproj" />
     <ProjectReference Include="..\SelfStudy\SelfStudy.csproj" />
   </ItemGroup>
 

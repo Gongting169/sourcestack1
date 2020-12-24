@@ -11,9 +11,9 @@ namespace sourcestack1.Entity
         public DateTime CreateTime { get; set; }
         public string Content { get; set; }
 
-        public  void Read()
+        public void Read()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
