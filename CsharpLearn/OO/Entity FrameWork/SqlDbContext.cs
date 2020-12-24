@@ -10,6 +10,7 @@ namespace CSharplearn.OO.Entity_FrameWork
 {
     public class SqlDbContext : DbContext
     {
+        public DbSet<User> Users { get; set; }
         public DbSet<Email> Emails { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Problem> Problems { get; set; }
@@ -21,6 +22,8 @@ namespace CSharplearn.OO.Entity_FrameWork
         public DbSet<Summary> Summaries { get; set; }
         public DbSet<ProblemStatus> ProblemStatuses { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<BPoint> BPoints { get; set; }
+        public DbSet<BMoney> BMoney { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionstring =
@@ -56,6 +59,8 @@ namespace CSharplearn.OO.Entity_FrameWork
             modelBuilder.Entity<KeyWord>().ToTable("KeyWords");
             modelBuilder.Entity<Summary>().ToTable("Summaries");
             modelBuilder.Entity<ProblemStatus>().ToTable("ProblemStatuses");
+            modelBuilder.Entity<BMoney>().ToTable("BMoney");
+            modelBuilder.Entity<BPoint>().ToTable("BPoints");
             base.OnModelCreating(modelBuilder);
         }
     }

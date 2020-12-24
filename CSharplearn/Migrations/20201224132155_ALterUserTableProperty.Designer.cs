@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSharplearn.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    [Migration("20201223092735_AddTableMap")]
-    partial class AddTableMap
+    [Migration("20201224132155_ALterUserTableProperty")]
+    partial class ALterUserTableProperty
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,8 +43,8 @@ namespace CSharplearn.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("AuthorName")
-                        .HasColumnType("nvarchar(256)");
+                    b.Property<int?>("AuthorId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Body")
                         .HasColumnType("nvarchar(max)");
@@ -54,9 +54,66 @@ namespace CSharplearn.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorName");
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("Contents");
+                });
+
+            modelBuilder.Entity("CSharplearn.OO.YqBang.BMoney", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("AddMinus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Frozen")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Kind")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("PublishTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Usable")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BMoney");
+                });
+
+            modelBuilder.Entity("CSharplearn.OO.YqBang.BPoint", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("AddMinus")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Kind")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("PublishTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Residual")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BPoints");
                 });
 
             modelBuilder.Entity("CSharplearn.OO.YqBang.Category", b =>
@@ -111,10 +168,15 @@ namespace CSharplearn.Migrations
                     b.Property<int>("ProblemId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ProblemId1")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProblemId")
                         .IsUnique();
+
+                    b.HasIndex("ProblemId1");
 
                     b.ToTable("ProblemStatuses");
                 });
@@ -138,8 +200,8 @@ namespace CSharplearn.Migrations
                     b.Property<int?>("SuggestId")
                         .HasColumnType("int");
 
-                    b.Property<string>("VoterName")
-                        .HasColumnType("nvarchar(256)");
+                    b.Property<int?>("VoterId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -149,7 +211,7 @@ namespace CSharplearn.Migrations
 
                     b.HasIndex("SuggestId");
 
-                    b.HasIndex("VoterName");
+                    b.HasIndex("VoterId");
 
                     b.ToTable("Appraises");
                 });
@@ -171,10 +233,10 @@ namespace CSharplearn.Migrations
 
             modelBuilder.Entity("CSharplearn.User", b =>
                 {
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)")
-                        .HasColumnName("UserName");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
@@ -182,14 +244,16 @@ namespace CSharplearn.Migrations
                     b.Property<int>("EmailId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
+                    b.Property<int?>("InvitedById")
                         .HasColumnType("int");
-
-                    b.Property<string>("InvitedByName")
-                        .HasColumnType("nvarchar(256)");
 
                     b.Property<int>("InvitedCode")
                         .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)")
+                        .HasColumnName("UserName");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -198,15 +262,16 @@ namespace CSharplearn.Migrations
                     b.Property<int>("Reward")
                         .HasColumnType("int");
 
-                    b.HasKey("Name");
+                    b.HasKey("Id");
 
                     b.HasIndex("EmailId")
                         .IsUnique();
 
-                    b.HasIndex("InvitedByName");
+                    b.HasIndex("InvitedById");
 
                     b.HasIndex("Name")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[UserName] IS NOT NULL");
 
                     b.ToTable("Register");
 
@@ -238,12 +303,12 @@ namespace CSharplearn.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(256)");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("UserName");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Articles");
                 });
@@ -343,7 +408,7 @@ namespace CSharplearn.Migrations
                 {
                     b.HasOne("CSharplearn.User", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorName");
+                        .HasForeignKey("AuthorId");
 
                     b.Navigation("Author");
                 });
@@ -355,6 +420,10 @@ namespace CSharplearn.Migrations
                         .HasForeignKey("CSharplearn.OO.YqBang.ProblemStatus", "ProblemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("CSharplearn.Problem", null)
+                        .WithMany("ProblemStatuses")
+                        .HasForeignKey("ProblemId1");
 
                     b.Navigation("Problem");
                 });
@@ -375,7 +444,7 @@ namespace CSharplearn.Migrations
 
                     b.HasOne("CSharplearn.User", "Voter")
                         .WithMany()
-                        .HasForeignKey("VoterName");
+                        .HasForeignKey("VoterId");
 
                     b.Navigation("Article");
 
@@ -396,7 +465,7 @@ namespace CSharplearn.Migrations
 
                     b.HasOne("CSharplearn.User", "InvitedBy")
                         .WithMany()
-                        .HasForeignKey("InvitedByName");
+                        .HasForeignKey("InvitedById");
 
                     b.Navigation("Email");
 
@@ -432,7 +501,7 @@ namespace CSharplearn.Migrations
 
                     b.HasOne("CSharplearn.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserName");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Category");
 
@@ -508,6 +577,8 @@ namespace CSharplearn.Migrations
             modelBuilder.Entity("CSharplearn.Problem", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("ProblemStatuses");
                 });
 
             modelBuilder.Entity("CSharplearn.ProcedureObject.Generic.Comment", b =>

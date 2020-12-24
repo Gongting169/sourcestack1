@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CSharplearn.OO.YqBang
 {
-    public class BMoney
+    public class BMoney : Entity
     {
         public DateTime PublishTime { get; set; }
         public string Kind { get; set; }//种类

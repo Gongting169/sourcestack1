@@ -3,14 +3,73 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CSharplearn.Migrations
 {
-    public partial class AddTableMap : Migration
+    public partial class MapTwoTableBpointBmoney : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
                 name: "BCredit",
-                table: "Register",
-                newName: "EmailId");
+                table: "Users",
+                newName: "FaildTry");
+
+            migrationBuilder.AlterColumn<int>(
+                name: "InvitedCode",
+                table: "Users",
+                type: "int",
+                nullable: false,
+                defaultValue: 0,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
+
+            migrationBuilder.AddColumn<DateTime>(
+                name: "CreateTime",
+                table: "Users",
+                type: "datetime2",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+
+            migrationBuilder.AddColumn<int>(
+                name: "EmailId",
+                table: "Users",
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
+
+            migrationBuilder.CreateTable(
+                name: "BMoney",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PublishTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Kind = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AddMinus = table.Column<int>(type: "int", nullable: false),
+                    Usable = table.Column<int>(type: "int", nullable: false),
+                    Reason = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Frozen = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BMoney", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BPoints",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PublishTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Kind = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AddMinus = table.Column<int>(type: "int", nullable: false),
+                    Residual = table.Column<int>(type: "int", nullable: false),
+                    Reason = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BPoints", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "Categories",
@@ -33,17 +92,17 @@ namespace CSharplearn.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Body = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AuthorName = table.Column<string>(type: "nvarchar(256)", nullable: true),
+                    AuthorId = table.Column<int>(type: "int", nullable: true),
                     PublishTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Contents", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Contents_Register_AuthorName",
-                        column: x => x.AuthorName,
-                        principalTable: "Register",
-                        principalColumn: "UserName",
+                        name: "FK_Contents_Users_AuthorId",
+                        column: x => x.AuthorId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -81,7 +140,7 @@ namespace CSharplearn.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(256)", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -100,10 +159,10 @@ namespace CSharplearn.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Articles_Register_UserName",
-                        column: x => x.UserName,
-                        principalTable: "Register",
-                        principalColumn: "UserName",
+                        name: "FK_Articles_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -221,7 +280,8 @@ namespace CSharplearn.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProblemId = table.Column<int>(type: "int", nullable: false)
+                    ProblemId = table.Column<int>(type: "int", nullable: false),
+                    ProblemId1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -232,6 +292,12 @@ namespace CSharplearn.Migrations
                         principalTable: "Problems",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProblemStatuses_Problems_ProblemId1",
+                        column: x => x.ProblemId1,
+                        principalTable: "Problems",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -281,7 +347,7 @@ namespace CSharplearn.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    VoterName = table.Column<string>(type: "nvarchar(256)", nullable: true),
+                    VoterId = table.Column<int>(type: "int", nullable: true),
                     Direction = table.Column<int>(type: "int", nullable: false),
                     ArticleId = table.Column<int>(type: "int", nullable: true),
                     CommentId = table.Column<int>(type: "int", nullable: true),
@@ -303,24 +369,23 @@ namespace CSharplearn.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Appraises_Register_VoterName",
-                        column: x => x.VoterName,
-                        principalTable: "Register",
-                        principalColumn: "UserName",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_Appraises_Suggests_SuggestId",
                         column: x => x.SuggestId,
                         principalTable: "Suggests",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Appraises_Users_VoterId",
+                        column: x => x.VoterId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Register_EmailId",
-                table: "Register",
-                column: "EmailId",
-                unique: true);
+                name: "IX_Users_EmailId",
+                table: "Users",
+                column: "EmailId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appraises_ArticleId",
@@ -338,9 +403,9 @@ namespace CSharplearn.Migrations
                 column: "SuggestId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Appraises_VoterName",
+                name: "IX_Appraises_VoterId",
                 table: "Appraises",
-                column: "VoterName");
+                column: "VoterId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ArticleKeyWord_KeyWordsId",
@@ -353,9 +418,9 @@ namespace CSharplearn.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Articles_UserName",
+                name: "IX_Articles_UserId",
                 table: "Articles",
-                column: "UserName");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_ArticleId",
@@ -373,9 +438,9 @@ namespace CSharplearn.Migrations
                 column: "SuggestId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Contents_AuthorName",
+                name: "IX_Contents_AuthorId",
                 table: "Contents",
-                column: "AuthorName");
+                column: "AuthorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_KeyWordProblem_ProblemsId",
@@ -388,9 +453,14 @@ namespace CSharplearn.Migrations
                 column: "ProblemId",
                 unique: true);
 
+            migrationBuilder.CreateIndex(
+                name: "IX_ProblemStatuses_ProblemId1",
+                table: "ProblemStatuses",
+                column: "ProblemId1");
+
             migrationBuilder.AddForeignKey(
-                name: "FK_Register_Emails_EmailId",
-                table: "Register",
+                name: "FK_Users_Emails_EmailId",
+                table: "Users",
                 column: "EmailId",
                 principalTable: "Emails",
                 principalColumn: "Id",
@@ -400,14 +470,20 @@ namespace CSharplearn.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Register_Emails_EmailId",
-                table: "Register");
+                name: "FK_Users_Emails_EmailId",
+                table: "Users");
 
             migrationBuilder.DropTable(
                 name: "Appraises");
 
             migrationBuilder.DropTable(
                 name: "ArticleKeyWord");
+
+            migrationBuilder.DropTable(
+                name: "BMoney");
+
+            migrationBuilder.DropTable(
+                name: "BPoints");
 
             migrationBuilder.DropTable(
                 name: "Emails");
@@ -443,13 +519,29 @@ namespace CSharplearn.Migrations
                 name: "Contents");
 
             migrationBuilder.DropIndex(
-                name: "IX_Register_EmailId",
-                table: "Register");
+                name: "IX_Users_EmailId",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "CreateTime",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "EmailId",
+                table: "Users");
 
             migrationBuilder.RenameColumn(
-                name: "EmailId",
-                table: "Register",
+                name: "FaildTry",
+                table: "Users",
                 newName: "BCredit");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "InvitedCode",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: true,
+                oldClrType: typeof(int),
+                oldType: "int");
         }
     }
 }

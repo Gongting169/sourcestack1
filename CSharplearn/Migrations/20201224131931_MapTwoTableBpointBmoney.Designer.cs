@@ -4,14 +4,16 @@ using CSharplearn.OO.Entity_FrameWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CSharplearn.Migrations
 {
     [DbContext(typeof(SqlDbContext))]
-    partial class SqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201224131931_MapTwoTableBpointBmoney")]
+    partial class MapTwoTableBpointBmoney
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -242,6 +244,9 @@ namespace CSharplearn.Migrations
                     b.Property<int>("EmailId")
                         .HasColumnType("int");
 
+                    b.Property<int>("FaildTry")
+                        .HasColumnType("int");
+
                     b.Property<int?>("InvitedById")
                         .HasColumnType("int");
 
@@ -249,12 +254,9 @@ namespace CSharplearn.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)")
-                        .HasColumnName("UserName");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Reward")
@@ -262,18 +264,11 @@ namespace CSharplearn.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmailId")
-                        .IsUnique();
+                    b.HasIndex("EmailId");
 
                     b.HasIndex("InvitedById");
 
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasFilter("[UserName] IS NOT NULL");
-
-                    b.ToTable("Register");
-
-                    b.HasCheckConstraint("CK_CreateTime", "CreateTime >= '2020/1/1'");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("KeyWordProblem", b =>
@@ -456,8 +451,8 @@ namespace CSharplearn.Migrations
             modelBuilder.Entity("CSharplearn.User", b =>
                 {
                     b.HasOne("CSharplearn.OO.YqBang.Email", "Email")
-                        .WithOne()
-                        .HasForeignKey("CSharplearn.User", "EmailId")
+                        .WithMany()
+                        .HasForeignKey("EmailId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

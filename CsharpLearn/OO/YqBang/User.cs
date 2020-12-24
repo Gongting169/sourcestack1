@@ -9,7 +9,7 @@ using System.Text;
 
 namespace CSharplearn
 {
-    sealed public class User : Entity, ISendMessage, IChat
+    sealed public class User : Entity
     {
         public int FaildTry { get; set; }
         public string Name { get; set; }
@@ -21,13 +21,5 @@ namespace CSharplearn
         public Email Email { get; set; }
         public int EmailId { get; set; }
 
-        void ISendMessage.Send()
-        {
-            throw new NotImplementedException();
-        }
-        void IChat.Send()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
