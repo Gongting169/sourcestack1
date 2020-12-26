@@ -24,18 +24,36 @@ namespace CSharplearn
         {
             SqlDbContext context = new SqlDbContext();
 
-            var db = context.Database;
-            ////db.Migrate();
-            db.EnsureDeleted();
-            db.EnsureCreated();
+            //var db = context.Database;
+            //////db.Migrate();
+            //db.EnsureDeleted();
+            //db.EnsureCreated();
 
             //context.SaveChanges();
-            //Content content = new Content()
-            //{
-            //    Body="明天真美好",
 
-
-            //};
+            Article article = new Article()
+            {
+                Title = "我是谁",
+                Body = "明天真美好",
+                PublishTime = new DateTime(2020, 8, 5),
+                Author =new User() { Id = 1},
+                KeyWords= new List<KeyWord>() {  new KeyWord() { Id =1},new KeyWord() { Id =2},new KeyWord() { Id =3} }             
+            };
+            Article article1 = new Article()
+            {
+                Title = "马保国练太极",
+                Body = "我会闪电五连鞭",
+                PublishTime = new DateTime(2020, 10, 1)
+            };
+            Article article2 = new Article()
+            {
+                Title = "中级必杀",
+                Body = "我会打太极",
+                PublishTime = new DateTime(2020, 8, 15)
+            };
+            //context.AddRange(article,article1,article2 );
+            //context.AddRange(content,content1,content2);
+            context.SaveChanges();
             //利用EF，插入3个User对象 
             //User user1 = new User()
             //{
@@ -84,7 +102,7 @@ namespace CSharplearn
             //    Captcha = "ts10",
             //    Enable = false
             //};
-            //context.AddRange(email2,email1,email);
+            //context.AddRange(email2, email1, email);
             //context.SaveChanges();
 
             //通过name找到其中一个User对象            

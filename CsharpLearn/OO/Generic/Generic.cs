@@ -4,27 +4,27 @@ using System.Text;
 
 namespace CSharplearn.ProcedureObject.Generic
 {
-    public delegate int ProvideWater(Person person);
+
     public class Generic
     {
-        //http://17bang.ren/Article/534 Lambda/匿名方法/闭包
-        //1、声明一个委托：打水（ProvideWater），可以接受一个Person类的参数，返回值为int类型
-        //使用：  //方法 //匿名方法 //lambda表达式 //给上述委托赋值，并运行该委托
-        /// <summary>
-        /// 用方法给委托变量赋值
-        /// </summary>
-        /// <param name="person"></param>
-        /// <returns>返回的是int类型的值</returns>
-        public static int Add(Person person)
-        {       
-            return person.Age++;
-        }
-        //声明一个方法GetWater()，该方法接受ProvideWater作为参数，并能将ProvideWater的返回值输出
-        public static int GetWater(ProvideWater provideWater )
-        {
-            Person person = new Person();
-            return provideWater(person);
-        }
+        ////http://17bang.ren/Article/534 Lambda/匿名方法/闭包
+        ////1、声明一个委托：打水（ProvideWater），可以接受一个Person类的参数，返回值为int类型
+        ////使用：  //方法 //匿名方法 //lambda表达式 //给上述委托赋值，并运行该委托
+        ///// <summary>
+        ///// 用方法给委托变量赋值
+        ///// </summary>
+        ///// <param name="person"></param>
+        ///// <returns>返回的是int类型的值</returns>
+        //public static int Add(Person person)
+        //{       
+        //    return person.Age++;
+        //}
+        ////声明一个方法GetWater()，该方法接受ProvideWater作为参数，并能将ProvideWater的返回值输出
+        //public static int GetWater(ProvideWater provideWater )
+        //{
+        //    Person person = new Person();
+        //    return provideWater(person);
+        //}
 
         //http://17bang.ren/Article/321  泛型的声明、约束、使用
         //用泛型改造二分查找、堆栈和双向链表
