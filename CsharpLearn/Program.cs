@@ -23,37 +23,68 @@ namespace CSharplearn
         static void Main(string[] args)
         {
             SqlDbContext context = new SqlDbContext();
-            //var db = context.Database;
-            //////db.Migrate();
-            //db.EnsureDeleted();
-            //db.EnsureCreated();
 
-            context.SaveChanges();
+            var db = context.Database;
+            ////db.Migrate();
+            db.EnsureDeleted();
+            db.EnsureCreated();
+
+            //context.SaveChanges();
+            //Content content = new Content()
+            //{
+            //    Body="明天真美好",
+
+
+            //};
             //利用EF，插入3个User对象 
             //User user1 = new User()
             //{
-            //    Id = 1,
             //    Name = "lgy",
             //    Password = "1235",
-            //    CreateTime = new DateTime(2020, 5, 27)
+            //    InvitedCode = 1586,
+            //    CreateTime = new DateTime(2020, 5, 27),
+            //    EmailId = 1
             //};
             //User user2 = new User()
             //{
-            //    Id = 2,
             //    Name = "马保国",
             //    Password = "2578",
-            //    CreateTime = new DateTime(2020, 3, 8)
+            //    InvitedCode = 2358,
+            //    CreateTime = new DateTime(2020, 3, 8),
+            //    EmailId = 2
             //};
             //User user3 = new User()
             //{
-            //    Id = 3,
             //    Name = "我会闪电五连鞭",
             //    Password = "3698",
-            //    CreateTime = new DateTime(2020, 9, 1)
+            //    InvitedCode = 1586,
+            //    CreateTime = new DateTime(2020, 9, 1),
+            //    EmailId = 3
             //};
             //context.Users.Add(user1);
             //context.Add(user3);
             //context.Add<User>(user2);
+            //context.SaveChanges();
+
+            //Email email = new Email()
+            //{
+            //    Name = "17832593@qq.com",
+            //    Captcha = "yu25",
+            //    Enable = true
+            //};
+            //Email email1 = new Email()
+            //{
+            //    Name = "1586259@qq.com",
+            //    Captcha = "yx85",
+            //    Enable = false
+            //};
+            //Email email2 = new Email()
+            //{
+            //    Name = "147258369@qq.com",
+            //    Captcha = "ts10",
+            //    Enable = false
+            //};
+            //context.AddRange(email2,email1,email);
             //context.SaveChanges();
 
             //通过name找到其中一个User对象            

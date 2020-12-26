@@ -8,11 +8,6 @@ namespace CSharplearn
     public class Summary : Content,IAppraise
     {
         //只有求助才有总结
-
-
-
-
-
         public void Agree(User Voter)
         {
             throw new NotImplementedException();

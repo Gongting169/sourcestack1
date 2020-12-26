@@ -82,7 +82,12 @@ namespace CSharplearn.Migrations
                     b.Property<int>("Usable")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("BMoney");
                 });
@@ -109,7 +114,12 @@ namespace CSharplearn.Migrations
                     b.Property<int>("Residual")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("BPoints");
                 });
@@ -236,10 +246,10 @@ namespace CSharplearn.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("CreateTime")
+                    b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("EmailId")
+                    b.Property<int?>("EmailId")
                         .HasColumnType("int");
 
                     b.Property<int?>("InvitedById")
@@ -257,13 +267,11 @@ namespace CSharplearn.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Reward")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("EmailId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[EmailId] IS NOT NULL");
 
                     b.HasIndex("InvitedById");
 
@@ -301,12 +309,7 @@ namespace CSharplearn.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Articles");
                 });
@@ -411,6 +414,20 @@ namespace CSharplearn.Migrations
                     b.Navigation("Author");
                 });
 
+            modelBuilder.Entity("CSharplearn.OO.YqBang.BMoney", b =>
+                {
+                    b.HasOne("CSharplearn.User", null)
+                        .WithMany("BMoney")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("CSharplearn.OO.YqBang.BPoint", b =>
+                {
+                    b.HasOne("CSharplearn.User", null)
+                        .WithMany("BPoints")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("CSharplearn.OO.YqBang.ProblemStatus", b =>
                 {
                     b.HasOne("CSharplearn.Problem", "Problem")
@@ -457,9 +474,7 @@ namespace CSharplearn.Migrations
                 {
                     b.HasOne("CSharplearn.OO.YqBang.Email", "Email")
                         .WithOne()
-                        .HasForeignKey("CSharplearn.User", "EmailId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CSharplearn.User", "EmailId");
 
                     b.HasOne("CSharplearn.User", "InvitedBy")
                         .WithMany()
@@ -497,13 +512,7 @@ namespace CSharplearn.Migrations
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
-                    b.HasOne("CSharplearn.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
                     b.Navigation("Category");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("CSharplearn.Problem", b =>
@@ -563,6 +572,13 @@ namespace CSharplearn.Migrations
             modelBuilder.Entity("CSharplearn.OO.YqBang.Category", b =>
                 {
                     b.Navigation("Articles");
+                });
+
+            modelBuilder.Entity("CSharplearn.User", b =>
+                {
+                    b.Navigation("BMoney");
+
+                    b.Navigation("BPoints");
                 });
 
             modelBuilder.Entity("CSharplearn.Article", b =>

@@ -23,8 +23,7 @@ namespace sourcestack1.Repository
                 else
                 {
                     throw new Exception();
-                }
-               
+                }          
             }
             Problem result = descByPublishTime ? context.Problems.OrderBy(p => p.PublishTime).SingleOrDefault() :
                 context.Problems.OrderByDescending(p => p.PublishTime).SingleOrDefault();

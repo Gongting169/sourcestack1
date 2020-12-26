@@ -61,6 +61,7 @@ namespace CSharplearn.OO.Entity_FrameWork
             modelBuilder.Entity<ProblemStatus>().ToTable("ProblemStatuses");
             modelBuilder.Entity<BMoney>().ToTable("BMoney");
             modelBuilder.Entity<BPoint>().ToTable("BPoints");
+            modelBuilder.Entity<Email>().ToTable("Emails");
             base.OnModelCreating(modelBuilder);
         }
     }

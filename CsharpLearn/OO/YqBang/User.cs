@@ -16,10 +16,11 @@ namespace CSharplearn
         public string Password { get; set; }
         public User InvitedBy { get; set; }
         public int InvitedCode { get; set; }
-        public int Reward { get; set; }
-        public DateTime CreateTime { get; set; }
+        public DateTime? CreateTime { get; set; }
         public Email Email { get; set; }
-        public int EmailId { get; set; }
+        public int? EmailId { get; set; }
+        public IList<BMoney> BMoney { get; set; } 
+        public IList<BPoint> BPoints { get; set; } 
 
     }
 }

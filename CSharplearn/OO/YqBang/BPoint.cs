@@ -12,5 +12,7 @@ namespace CSharplearn.OO.YqBang
         public int Residual { get; set; }//剩余的
         public string Reason { get; set; }//备注
 
+
+
     }
 }
