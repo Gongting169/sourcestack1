@@ -20,7 +20,6 @@ namespace CSharplearn.OO.Entity_FrameWork
         public DbSet<Appraise> Appraises { get; set; }
         public DbSet<KeyWord> KeyWords { get; set; }
         public DbSet<Summary> Summaries { get; set; }
-        public DbSet<ProblemStatus> ProblemStatuses { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<BPoint> BPoints { get; set; }
         public DbSet<BMoney> BMoney { get; set; }
@@ -49,7 +48,6 @@ namespace CSharplearn.OO.Entity_FrameWork
                 u.HasIndex(s => s.Name).IsUnique();  //给CreateTime属性添加一个非聚集唯一索引 
             });
             modelBuilder.Entity<User>().HasOne<Email>(u => u.Email).WithOne().HasForeignKey<User>(u => u.EmailId);
-            modelBuilder.Entity<ProblemStatus>().HasOne<Problem>(p => p.Problem).WithOne().HasForeignKey<ProblemStatus>(p => p.ProblemId);
             modelBuilder.Entity<Suggest>().ToTable("Suggests");
             modelBuilder.Entity<Article>().ToTable("Articles");
             modelBuilder.Entity<Problem>().ToTable("Problems");
@@ -58,7 +56,6 @@ namespace CSharplearn.OO.Entity_FrameWork
             modelBuilder.Entity<Comment>().ToTable("Comments");
             modelBuilder.Entity<KeyWord>().ToTable("KeyWords");
             modelBuilder.Entity<Summary>().ToTable("Summaries");
-            modelBuilder.Entity<ProblemStatus>().ToTable("ProblemStatuses");
             modelBuilder.Entity<BMoney>().ToTable("BMoney");
             modelBuilder.Entity<BPoint>().ToTable("BPoints");
             modelBuilder.Entity<Email>().ToTable("Emails");

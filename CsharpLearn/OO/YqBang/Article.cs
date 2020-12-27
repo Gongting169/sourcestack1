@@ -23,7 +23,6 @@ namespace CSharplearn
         {
             throw new NotImplementedException();
         }
-
         public void Disagree(User Voter)
         {
             throw new NotImplementedException();

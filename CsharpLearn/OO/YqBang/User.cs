@@ -13,9 +13,9 @@ namespace CSharplearn
     {
         public int FaildTry { get; set; }
         public string Name { get; set; }
-        public string Password { get; set; }
+        public string? Password { get; set; }
         public User InvitedBy { get; set; }
-        public int InvitedCode { get; set; }
+        public int? InvitedCode { get; set; }
         public DateTime? CreateTime { get; set; }
         public Email Email { get; set; }
         public int? EmailId { get; set; }
