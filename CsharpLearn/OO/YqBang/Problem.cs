@@ -1,4 +1,5 @@
-﻿using CSharplearn.OO.Interface;
+﻿using CSharplearn.OO.Enum;
+using CSharplearn.OO.Interface;
 using CSharplearn.OO.YqBang;
 using CSharplearn.ProcedureObject.Generic;
 using System;
@@ -11,6 +12,7 @@ namespace CSharplearn
     public class Problem : Content, IAppraise
     {
         public string Title { get; set; }
+        public ProblemStatus Status { get; set; }
         public DateTime LatestUpdateTime { get; set; }
         public bool NeedRemoteHelp { get; set; }
         //一篇求助可以对应多个关键字

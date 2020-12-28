@@ -1,18 +1,15 @@
-﻿using CSharplearn;
-using CSharplearn.OO.Entity_FrameWork;
-using CSharplearn.OO.Enum;
-using CSharplearn.OO.YqBang;
+﻿using CSharplearn.OO.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace sourcestack1.Repository
+namespace CSharplearn.OO.Entity_FrameWork
 {
-    public class ProblemRepository
+    public class EFWork
     {
         private SqlDbContext context;
-        public ProblemRepository()
+        public EFWork()
         {
             context = new SqlDbContext();
         }
@@ -56,9 +53,10 @@ namespace sourcestack1.Repository
                 return problems.Where(p => p.Status != ProblemStatus.Undo || p.Status != ProblemStatus.HaveReward);
             }
         }
-        public static IQueryable<Problem> GetExclude(this IQueryable<Problem> problems,IList<ProblemStatus> exclude)
+        public static IQueryable<Problem> GetExclude(this IQueryable<Problem> problems, IList<ProblemStatus> exclude)
         {
             return problems.Where(p => !exclude.Contains(p.Status));
         }
     }
 }
+

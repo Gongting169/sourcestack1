@@ -13,5 +13,9 @@ namespace MVC.Controllers
         {
             return View();
         }
+        public ActionResult New()
+        {
+            return View();
+        }
     }
 }

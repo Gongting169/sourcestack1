@@ -15,12 +15,13 @@ using static CSharplearn.ProcedureObject.Generic.Generic;
 using CSharplearn.OO.Entity_FrameWork;
 using Microsoft.EntityFrameworkCore;
 using CSharplearn.OO.YqBang;
+using CSharplearn.OO.Enum;
 
 namespace CSharplearn
 {
     public class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args)     
         {
             SqlDbContext context = new SqlDbContext();
             //var db = context.Database;
@@ -28,6 +29,8 @@ namespace CSharplearn
             //db.EnsureDeleted();
             //db.EnsureCreated();
             //context.SaveChanges();
+        
+           
         }
     }
 }
