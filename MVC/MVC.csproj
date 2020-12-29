@@ -122,13 +122,29 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\MoneyTradeController.cs" />
+    <Compile Include="Controllers\PasswordController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArticleModel.cs" />
+    <Compile Include="Models\ArticleSingleModel.cs" />
+    <Compile Include="Models\ContactEditModel.cs" />
+    <Compile Include="Models\LogOffModel.cs" />
+    <Compile Include="Models\LogOnModel.cs" />
+    <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\PlanNewModel.cs" />
+    <Compile Include="Models\ProfileWriteModel.cs" />
+    <Compile Include="Models\PwdForgetModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\SaleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -173,6 +189,15 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Plan\New.cshtml" />
     <Content Include="Views\MoneyTrade\Sale.cshtml" />
+    <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\Register\Home.cshtml" />
+    <Content Include="Views\Log\On.cshtml" />
+    <Content Include="Views\Log\Off.cshtml" />
+    <Content Include="Views\Article\Single.cshtml" />
+    <Content Include="Views\Profile\Write.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Contact\Edit.cshtml" />
+    <Content Include="Views\Password\Forget.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
