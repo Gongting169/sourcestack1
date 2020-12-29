@@ -132,6 +132,7 @@
     <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -146,6 +147,8 @@
     <Compile Include="Models\PwdForgetModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\SaleModel.cs" />
+    <Compile Include="Models\TaskHistoryModel.cs" />
+    <Compile Include="Models\TaskMonthModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +201,8 @@
     <Content Include="Views\Message\Index.cshtml" />
     <Content Include="Views\Contact\Edit.cshtml" />
     <Content Include="Views\Password\Forget.cshtml" />
+    <Content Include="Views\Task\Month.cshtml" />
+    <Content Include="Views\Task\History.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
