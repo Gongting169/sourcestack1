@@ -1,11 +1,12 @@
-﻿
+﻿@model MVC.Models.PlanNewModel
 @{
     ViewBag.Title = "New";
 }
 <div class=" container">
-    <div class=" row">
+    <div>
         <span title="" class="fa fa-calendar" data-original-title="2020年12月23日 11点21分" data-toggle="tooltip" data-placement="bottom"></span>
         <a class="text-info" href="http://17bang.ren/User/1" zyf-show-contact="1">叶飞</a>捡走了
+
         <span title="" data-original-title="" data-toggle="tooltip">
             <a style="color:" href="/User/4515" zyf-show-contact="4515">
                 witbunny
@@ -15,38 +16,48 @@
             <span>②</span>
         </a><a class="text-info" href="http://17bang.ren/FAQ/Money#gain">掉落</a>的 <b class="iconfont icon-money credit"></b> <a class="text-info" href="http://17bang.ren/FAQ/Money">帮帮币</a> 3枚
     </div>
+    <div class=" container">
         <h1>
             <span class=" fa fa-edit"></span>
             发现新目标
         </h1>
-    <div class=" col-lg-5 ">
-        <form action="/Plan/New" method="post" novalidate="novalidate">
+    </div>
+    <div class=" col-5 ">
+        @using (Html.BeginForm("New", "Plan", new { id = 258 }, FormMethod.Post))
+        {
             <div class="form-group">
                 <label>标题（必填）：</label>
-                <input name="Title" class="form-control" id="Title" type="text" placeholder="简明扼要，多个目标请分开发布" value="" data-val-required="* 标题不能为空" data-val-length-max="256" data-val-length="* 标题的长度不能大于256" data-val="true">
-                <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="Title"></span>
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "简明扼要，多个目标请分开发布" })
+                @Html.ValidationMessageFor(m => m.Title, "* 标题不能为空")
             </div>
             <div class="form-group">
                 <label>详细说明：</label>
-                <textarea name="Description" class="form-control" id="Description" placeholder="补充你认为需要说明的其他信息。比如：求温柔/凶狠好心人，最好同城/校……" rows="4" cols="20"></textarea>
+                @Html.TextAreaFor(m => m.Description, new
+                {
+                    @class = "form-control",
+               placeholder = "补充你认为需要说明的其他信息。比如：求温柔/凶狠好心人，最好同城/校……",
+                    rows = "4",
+                    cols = "20"
+                })
+                @Html.ValidationMessageFor(m => m.Description, "* 详细说明不能为空")
             </div>
             <div class="form-group">
                 <label>标签（必填）：</label>
-                <input name="KeyWords" class="form-control" id="KeyWords" type="text" placeholder="多个标签之间请用空格分开" value="" data-val-required="* 关键字不能为空" data-val-length-max="256" data-val-length="* 关键字的长度不能大于256" data-val="true">
-                <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="KeyWords"></span>
+                @Html.TextBoxFor(m => m.Keywords, new { @class = "form-control", placeholder = "多个标签之间请用空格分开" })
+                @Html.ValidationMessageFor(m => m.Keywords, "* 关键字不能为空")
             </div>
             <div class="form-group">
                 <label>开始执行（必填）：</label>
-                <input name="From" class="form-control" id="From" type="text" placeholder="默认为今天" value="2020年12月27日" data-val-required="* 开始执行日期不能为空" data-val="true" data-val-date="字段 开始执行日期 必须是日期。" data-provide="datepicker">
-                <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="From"></span>
+                @Html.TextBoxFor(m => m.BeginTime, new { @class = "form-control", placeholder = "默认为今天" })
+                @Html.ValidationMessageFor(m => m.BeginTime, "* 开始执行日期不能为空")
             </div>
             <div class="form-group">
                 <label>
-                    <a href="/FAQ/Plan#quit" zyf-faq-remind=""><span class="fa fa-question-circle text-info"></span></a>
+                    <a href="/FAQ/Plan#quit"><span class="fa fa-question-circle text-info"></span></a>
                     目标结束（必填）：
                 </label>
-                <input name="To" class="form-control" id="To" type="text" placeholder="默认为一年后" value="2021年12月27日" data-val-required="* 结束日期不能为空" data-val="true" data-val-date="字段 结束日期 必须是日期。" data-provide="datepicker" data-val-greater-than="From" data-val-greater="* 目标结束时间必须大于开始执行时间">
-                <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="To"></span>
+                @Html.TextBoxFor(m => m.EndTime, new { @class = "form-control", placeholder = "默认为一年后", value = "2021年12月27日" })
+                @Html.ValidationMessageFor(m => m.EndTime, "* 结束日期不能为空")
             </div>
             <div class="form-group">
                 <label>
@@ -65,17 +76,17 @@
                             <th>日</th>
                         </tr>
                         <tr>
-                            <td><input name="DaysInWeek" type="checkbox" checked="" value="1"></td>
-                            <td><input name="DaysInWeek" type="checkbox" checked="" value="2"></td>
-                            <td><input name="DaysInWeek" type="checkbox" checked="" value="3"></td>
-                            <td><input name="DaysInWeek" type="checkbox" checked="" value="4"></td>
-                            <td><input name="DaysInWeek" type="checkbox" checked="" value="5"></td>
-                            <td><input name="DaysInWeek" type="checkbox" checked="" value="6"></td>
-                            <td><input name="DaysInWeek" type="checkbox" checked="" value="7"></td>
+                            <td>@Html.CheckBox("DayInWeek", true, new { value = "1" }) </td>
+                            <td> @Html.CheckBox("DayInWeek", true, new { value = "2" })</td>
+                            <td>@Html.CheckBox("DayInWeek", true, new { value = "3" })</td>
+                            <td>@Html.CheckBox("DayInWeek", true, new { value = "4" })</td>
+                            <td>@Html.CheckBox("DayInWeek", true, new { value = "5" })<</td>
+                            <td>@Html.CheckBox("DayInWeek", true, new { value = "6" })</td>
+                            <td>@Html.CheckBox("DayInWeek", true, new { value = "7" })</td>
                         </tr>
                     </tbody>
                 </table>
-                <span class="field-validation-error" id="atLeastOneDay"></span>
+                @Html.ValidationMessageFor(m => m.DayInWeek, "* 记得要选择哟！")
             </div>
             <div class="form-group">
                 <label>
@@ -100,10 +111,17 @@
                     <a href="/FAQ/Plan#proof" zyf-faq-remind=""><span class="fa fa-question-circle text-info"></span></a>
                     证明：
                 </label>
-                <input name="Proof.Text" class="form-control" id="Proof_Text" type="text" placeholder="证据的文字描述" value="">
+                @Html.TextBoxFor(m => m.ProofText, new { @class = "form-control", placeholder = "证据的文字描述" })
                 <br>
-                <input name="Proof.Url" class="form-control" id="Proof_Url" type="text" placeholder="可以访问的网址，详见说明" value="">
+                @Html.TextBoxFor(m => m.ProofUrl, new { @class = "form-control", placeholder = "可以访问的网址，详见说明" })
             </div>
+        }
+        <form action="/Plan/New" method="post" novalidate="novalidate">
+
+
+
+
+
             <div class="form-group">
                 <label>
                     <a href="/FAQ/Plan#join" zyf-faq-remind=""><span class="fa fa-question-circle text-info"></span></a>
@@ -147,7 +165,7 @@
             </div>
         </form>
     </div>
-    <div class=" col-lg-5 col-lg-offset-1 ">
+    <div class=" col-5 offset-1 ">
         <h3 class="text-info" style="margin-bottom: 20px;"><span class="fa fa-question-circle "></span> 说明</h3>
         <ol class="page-introduction-ol" zyf-page-introduction-body="">
             <li>
@@ -158,6 +176,7 @@
                         <a title="" class="credit" href="/FAQ/Money" data-original-title="点击了解" data-toggle="tooltip">
                             <span class="iconfont icon-money"></span> 帮帮币
                         </a>
+
                     </li>
                     <li>
                         每天交作业。如果未交作业，“帮帮币”没了，(；′⌒`)

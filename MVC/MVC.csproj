@@ -145,6 +145,7 @@
     <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\ArticleSingleModel.cs" />
     <Compile Include="Models\ContactEditModel.cs" />
+    <Compile Include="Models\Keyword.cs" />
     <Compile Include="Models\LogOffModel.cs" />
     <Compile Include="Models\LogOnModel.cs" />
     <Compile Include="Models\MessageModel.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Models\SaleModel.cs" />
     <Compile Include="Models\TaskHistoryModel.cs" />
     <Compile Include="Models\TaskMonthModel.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
