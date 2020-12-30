@@ -13,14 +13,20 @@ namespace MVC
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
+             name: "RegisterHome",
+             url: "{Register}/{id}",
+             defaults: new { controller = "Register", action = "Home", id = UrlParameter.Optional }
+         );
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
              name: "MoneyTradeSale",
-             url: "MoneyTrade/Sale/{id}",
+             url: "{MoneyTrade}/{id}",
              defaults: new { controller = "MoneyTrade", action = "Sale", id = UrlParameter.Optional }
          );
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
              name: "PlanNew",
-             url: "{controller}/{action}/{id}",
+             url: "{Plan}/{id}",
              defaults: new { controller = "Plan", action = "New", id = UrlParameter.Optional }
          );
             routes.MapRoute(

@@ -4,11 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="@Url.Content("~/Content/image/logo.ico")" rel="stylesheet" type="image/ico" media="screen" />
+    <!--<link href="@Url.Content("~/Content/image/logo.ico")" rel="stylesheet" type="image/ico" media="screen" />-->
     @*<link href="@Url.Content("~/Content/css/StyleSheet1.css")" rel="stylesheet" />*@
-    <link href="@Url.Content("~/Content/css/font-awesome.css")" rel="stylesheet" />
+    <!--<link href="@Url.Content("~/Content/css/font-awesome.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />-->
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <header>
