@@ -2,6 +2,99 @@
 @{
     ViewBag.Title = "Forget";
 }
-
-<h2>Forget</h2>
+<div class="container">
+    <h2 style="margin-top :80px;margin-bottom :20px; font-size :30px">
+        (｡ŏ_ŏ) 忘了
+    </h2>
+    <hr />
+</div>
+<div class="container">
+    <div class="row">
+        <div class=" col-5">
+            <div style="border: 1px dashed; border-color: gainsboro; margin-top: 20px ">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active flex-sm-fill " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                           aria-controls="nav-home" aria-selected="true">
+                            <span class="fa fa-lock"></span>
+                            密码
+                        </a>
+                        <a class="nav-item nav-link  flex-sm-fill " id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                           aria-controls="nav-profile" aria-selected="false">
+                            <span class=" fa fa-user-circle-o"></span>
+                            用户名
+                        </a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent" style="margin-left:15px;margin-right:15px">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <form>
+                            <div class="form-group" style=" margin-top:15px">
+                                <label for="formGroupExampleInput"><b>Email：（* 必填）</b></label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="注册时填写的Email地址" />
+                            </div>
+                        </form>
+                        <div class="input-group ">
+                            <div class="form-group" style=" margin-top:10px">
+                                <label for="formGroupExampleInput"><b>通过用户名查找Email：</b></label>
+                            </div>
+                            <input type="text" class="form-control" placeholder="必须全称，且不要忘了点击 搜索 按钮"
+                                   aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">
+                                    <span class="fa fa-search"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top:10px">
+                    <label>验证码:(必填）</label>
+                    <div>
+                        <input type="text" class="form-control d-inline " id="exampleInputcaptcha" style="width :100px" size="4" />
+                        <span></span>
+                        <span style="margin-left :5px">点击输入框显示</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">提交</button>
+                <button type="reset" class=" btn btn-light">重置</button>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <div class="input-group ">
+                    <label for="exampleInputcaptcha">QQ：</label>
+                    <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">
+                            <span class=" fa fa-search"></span>
+                            查找
+                        </span>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <label for="exampleInputcaptcha">Email：</label>
+                    <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">
+                            <span class=" fa fa-search"></span>
+                            查找
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-5 offset-2 ">
+    <aside>
+        <h3 class="text-info " style="margin-bottom :10px">
+            <i class="fa fa-question-circle" aria-hidden="true" style="font-size :1.5rem"></i>
+            说明
+        </h3>
+        <ol>
+            <li><p>重置密码的邮件会发送到你填写的Email中。</p></li>
+            <li><p>输入用户名之后，还要点击旁边的 <span class=" fa fa-search">按钮</span> ，以完成Email地址的填写。</p></li>
+            <li><p>现目前，还没有针对未激活Email做特殊提示，请务必确保Email正确。</p></li>
+        </ol>
+    </aside>
+</div>
 

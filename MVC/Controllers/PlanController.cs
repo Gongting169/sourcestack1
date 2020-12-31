@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,7 +16,20 @@ namespace MVC.Controllers
         }
         public ActionResult New()
         {
-            return View();
+            return View(
+                new PlanNewModel()
+                {
+                    DayInWeeks = new List<SelectedItem>()
+                    {
+                 new SelectedItem() { DayInWeek = DayOfWeek.Monday},
+                 new SelectedItem() { DayInWeek = DayOfWeek.Tuesday},
+                 new SelectedItem() { DayInWeek = DayOfWeek.Wednesday},
+                 new SelectedItem() { DayInWeek = DayOfWeek.Thursday},
+                 new SelectedItem() { DayInWeek = DayOfWeek.Friday},
+                 new SelectedItem() { DayInWeek = DayOfWeek.Saturday},
+                 new SelectedItem() { DayInWeek = DayOfWeek.Sunday}
+                    }
+                });
         }
     }
 }

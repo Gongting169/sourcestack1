@@ -64,9 +64,8 @@
                 </div>
                 <div class="form-group ">
                     <label>验证密码:(*必填）</label>
-                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control", id = "inputpassword", placeholder = "和密码相同" })
+                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control",placeholder = "和密码相同" })
                     @Html.ValidationMessageFor(m => m.Password, "密码的长度不能小于4个字符，大于20个字符")
-
                 </div>
                 <div class="form-group ">
                     <label>验证码:(*必填）</label>

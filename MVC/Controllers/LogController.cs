@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,10 @@ namespace MVC.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        public ActionResult On()
+        {
+            return View( new LogOnModel() { RememberMe = true});
         }
     }
 }

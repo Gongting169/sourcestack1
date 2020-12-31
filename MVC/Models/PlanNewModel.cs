@@ -19,8 +19,14 @@ namespace MVC.Models
         public int CurrentCredit { get; set; }
         public int PunishCount { get; set; }
         public string Continue { get; set; }
+        public IList<SelectedItem> DayInWeeks { get; set; }
+
+
+    }
+
+    public class SelectedItem
+    {
+        public bool Checked { get; set; }
         public DayOfWeek DayInWeek { get; set; }
-
-
     }
 }

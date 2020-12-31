@@ -1,6 +1,16 @@
 ﻿@model MVC.Models.PlanNewModel
 @{
     ViewBag.Title = "New";
+    int[] dayOfLeave = new int[7];
+    for (int i = 0; i < 7; i++)
+    {
+        dayOfLeave[i] = i;
+    }
+    int[] superVisor = new int[8];
+    for (int i = 0; i < 8; i++)
+    {
+        superVisor[i] = i;
+    }
 }
 <div class=" container">
     <div>
@@ -76,17 +86,14 @@
                             <th>日</th>
                         </tr>
                         <tr>
-                            <td>@Html.CheckBox("DayInWeek", true, new { value = "1" }) </td>
-                            <td> @Html.CheckBox("DayInWeek", true, new { value = "2" })</td>
-                            <td>@Html.CheckBox("DayInWeek", true, new { value = "3" })</td>
-                            <td>@Html.CheckBox("DayInWeek", true, new { value = "4" })</td>
-                            <td>@Html.CheckBox("DayInWeek", true, new { value = "5" })<</td>
-                            <td>@Html.CheckBox("DayInWeek", true, new { value = "6" })</td>
-                            <td>@Html.CheckBox("DayInWeek", true, new { value = "7" })</td>
+                            @for (int i = 0; i < Model.DayInWeeks.Count; i++)
+                            {
+                                <td>@Html.CheckBoxFor(m => m.DayInWeeks[i].Checked) </td>
+                            }
                         </tr>
                     </tbody>
                 </table>
-                @Html.ValidationMessageFor(m => m.DayInWeek, "* 记得要选择哟！")
+                @Html.ValidationMessageFor(m => m.DayInWeeks, "* 记得要选择哟！")
             </div>
             <div class="form-group">
                 <label>
@@ -94,15 +101,8 @@
                     每周可请假：
                 </label>
                 <div class="input-group input-group-combined">
-                    <select name="DaysOfLeave" class="form-control" id="DaysOfLeave" data-val-required="DaysOfLeave 字段是必需的。" data-val="true" data-val-number="字段 DaysOfLeave 必须是一个数字。">
-                        <option selected="selected">0</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                    </select>
+                    @Html.DropDownListFor(m => m.DaysOfLeave, new SelectList(dayOfLeave), "-----", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.DaysOfLeave, "* 必须是一个数字")
                     <span class="input-group-addon">天</span>
                 </div>
             </div>
@@ -115,26 +115,13 @@
                 <br>
                 @Html.TextBoxFor(m => m.ProofUrl, new { @class = "form-control", placeholder = "可以访问的网址，详见说明" })
             </div>
-        }
-        <form action="/Plan/New" method="post" novalidate="novalidate">
-
-
-
-
-
             <div class="form-group">
                 <label>
                     <a href="/FAQ/Plan#join" zyf-faq-remind=""><span class="fa fa-question-circle text-info"></span></a>
                     好心人最多：
                 </label>
                 <div class="input-group input-group-combined">
-                    <select name="MaxNumberOfSupervisors" class="form-control" id="MaxNumberOfSupervisors" data-val-required="MaxNumberOfSupervisors 字段是必需的。" data-val="true" data-val-number="字段 MaxNumberOfSupervisors 必须是一个数字。">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+                    @Html.DropDownListFor(m => m.MaxNumberOfSupervisors, new SelectList(superVisor), new { @class = "form-control" })
                     <span class="input-group-addon">人</span>
                 </div>
             </div>
@@ -142,8 +129,8 @@
                 <label>
                     <a href="/FAQ/Plan#punish" zyf-faq-remind=""><span class="fa fa-question-circle text-info"></span></a>
                     未交作业罚金（必填）：（<a href="/Money/Owner">现有<span class="credit" zyf-current-money="">0</span>枚</a>
-                    <small title="" class="fa fa-refresh text-info" data-original-title="刷新" data-toggle="tooltip" zyf-money-available-refresh=""></small>
-                    <input name="CurrentCredit" id="CurrentCredit" type="hidden" value="0" zyf-hide-current-money="">）
+                    <small title="" class="fa fa-refresh text-info" data-original-title="刷新" data-toggle="tooltip"></small>
+                    @Html.TextBoxFor(m => m.CurrentCredit, new { type = "hidden", value = "0" })
                 </label>
                 <div class="input-group">
                     <span class="input-group-addon">
@@ -151,19 +138,22 @@
                             <span class="iconfont icon-money"></span>
                         </a>
                     </span>
-                    <input name="PunishCount" class="form-control" id="PunishCount" type="text" placeholder="正整数，建议10枚以上" value="" data-val-required="* 未交作业惩罚不能为空" data-val="true" data-val-number="字段 未交作业惩罚 必须是一个数字。" data-val-regex-pattern="^[1-9][0-9]*$" data-val-regex="* 未交作业惩罚只能为正整数" data-rule-creditenough="[zyf-current-money]">
+                    @Html.TextBoxFor(m => m.PunishCount, new { @class = "form-control", placeholder = "正整数，建议10枚以上" })
                     <span class="input-group-addon">枚</span>
                 </div>
-                <a class="pull-right" href="/FAQ/Money#gain" zyf-faq-remind=""><span class="fa fa-question-circle"></span> 如何获得“帮帮币”</a>
-                <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="PunishCount"></span>
+                <a class="pull-right" href="/FAQ/Money#gain"><span class="fa fa-question-circle"></span> 如何获得“帮帮币”</a>
+                @Html.ValidationMessageFor(m => m.PunishCount, "* 未交作业惩罚不能为空")
             </div>
             <div class="submit">
-                <input class="btn btn-primary" type="submit" value="提交" zyf-submit-once="">
+                <input class="btn btn-primary" type="submit" value="提交">
                 <label class="checkbox-inline" style="margin-left:16px;">
-                    <input name="Continue" type="checkbox" checked="" value="true">继续
+                    <label>
+                        @Html.RadioButtonFor(m => m.Continue, true, new { @checked = string.Empty })
+                    </label>
+                    继续
                 </label>
             </div>
-        </form>
+        }
     </div>
     <div class=" col-5 offset-1 ">
         <h3 class="text-info" style="margin-bottom: 20px;"><span class="fa fa-question-circle "></span> 说明</h3>
