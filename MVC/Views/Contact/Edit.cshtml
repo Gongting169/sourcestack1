@@ -1,7 +1,67 @@
-﻿
+﻿@model MVC.Models.ContactEditModel
 @{
     ViewBag.Title = "Edit";
 }
-
-<h2>Edit</h2>
+<div class="container body-content">
+    <div class="return-prepage pull-right ">
+        <a href="/Article/622"><span class="fa fa-share"></span> 返回</a>
+    </div>
+    <div class="dualcolumns-container">
+        <div class="page-header">
+            <h2>
+                <span class="fa fa-envelope " aria-hidden="true"></span> 修改联系方式
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-5">
+                @using (Html.BeginForm("Edit", "Contact", new { id = 732 }, FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label>@Html.LabelFor(m => m.QQ):</label>
+                        @Html.TextBoxFor(m => m.QQ, new { @class = "form-control", placeholder = "建议填写" })
+                        @Html.ValidationMessageFor(m => m.QQ)
+                    </div>
+                    <div class="form-group">
+                        <label>@Html.LabelFor(m => m.WeChat):</label>
+                        @Html.TextBoxFor(m => m.WeChat, new { @class = "form-control", placeholder = "建议填写" })
+                        @Html.ValidationMessageFor(m => m.WeChat)
+                    </div>
+                    <div class="form-group">
+                        <label>@Html.LabelFor(m => m.TelePhone):</label>
+                        <br>
+                        @Html.TextBoxFor(m => m.TelePhone, new { @class = "form-control", placeholder = "请谨慎考虑是否填写" })
+                    </div>
+                    <div class="form-group">
+                        <label>@Html.LabelFor(m => m.Other):</label>
+                        @Html.TextAreaFor(m => m.Other, new
+                        {
+                            @class = "form-control",
+                            placeholder = "需要说明的情况，比如加QQ时验证问题的回答，否则别人加不了，这就尴尬了。" +
+                            "φ(>ω<*) &#10;以及你能够接受的其他联系方式……",
+                            rows = "4",
+                            cols = "20"
+                        })
+                        @Html.ValidationMessageFor(m => m.Other)
+                    </div>
+                    <div class="submit" style="margin-bottom:50px">
+                        <input class="btn btn-primary" type="submit" value="修改">
+                        <span class="text-info" style="padding-left: 20px;">
+                            <span class="fa fa-info-circle"></span> 成功激活后自动返回<a href="prepage=%2fArticle%2f622">之前页面</a>
+                        </span>
+                    </div>
+                }
+            </div>
+            <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 visible-lg visible-md">
+                <div page-introduction="">
+                    <h3 class="text-info" style="margin-bottom: 20px;"><span class="fa fa-question-circle "></span> 说明</h3>
+                    <ol class="page-introduction-ol">
+                        <li>因为联系方式会公开显示，我们不建议你填写电话号码，以免个人信息被泄露。</li>
+                        <li>所以我们推荐使用QQ/微信等网络通信方式。</li>
+                        <li>注意填写QQ作为联系方式时，不要忘了留下“添加好友”的验证条件</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
