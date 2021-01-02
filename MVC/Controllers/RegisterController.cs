@@ -1,4 +1,5 @@
 ﻿using Glimpse.AspNet.Tab;
+using MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace MVC.Controllers
         {
             return View();
         }
-        public ActionResult Home(/*int id*/)
+        public ActionResult Home(RegisterModel registerModel )
         {
             return View();
         }

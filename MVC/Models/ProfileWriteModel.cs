@@ -12,7 +12,7 @@ namespace MVC.Models
         public bool IsMale { get; set; }
         public int BirthYear { get; set; }
         public int BirthMonth { get; set; }
-        public IList<ConstellationItem> Constellation { get; set; }
+        public ConstellationItem Constellation { get; set; }
         public IList<Keyword> Keywords { get; set; }
         public string SelfIntroduction { get; set; }
     }

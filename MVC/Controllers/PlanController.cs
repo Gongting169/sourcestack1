@@ -14,7 +14,7 @@ namespace MVC.Controllers
         {
             return View();
         }
-        public ActionResult New()
+        public ActionResult New(PlanNewModel newModel)
         {
             return View(
                 new PlanNewModel()

@@ -7,16 +7,16 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class LogController : Controller
+    public class ArticleSingleController : Controller
     {
-        // GET: Log
+        // GET: ArticleSingle
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult On(LogOnModel logOnModel )
+        public ActionResult Single(ArticleSingleModel singleModel )
         {
-            return View( new LogOnModel() { RememberMe = true});
+            return View();
         }
     }
 }

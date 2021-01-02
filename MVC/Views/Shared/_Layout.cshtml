@@ -11,185 +11,10 @@
 </head>
 <body>
     <header>
-        <div class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <a title="" href="/" data-original-title="返回首页" data-toggle="tooltip">
-                    <img class="pull-left" alt="一起帮Logo" src="~/Css/image/logo-big[1].jpg">
-                </a>
-                <p class="navbar-text pull-left">
-                    <span style="font-size:18px; font-weight:600;">一起帮</span>
-                    <span class="visible-md-inline visible-lg-inline">· 网络互助平台</span>
-                </p>
-                <a class="navbar-text pull-left" style="font-size:18px; margin-left:10px;" href="/Message/Mine">
-                    <span class="fa fa-bell  pull-left" style="color: lightblue;" zyf-bell=""></span>
-                </a>
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                            <span class="fa fa-question-circle"></span>
-                            求助</a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li class="dropdown-header">督导班</li>
-                                <li><a href="/Course/Confusion/New">
-                                    <span class="fa fa-eye"></span> 督导班</a> 
-                                </li>
-                                <li><a href="/Problem?excludeCanceled=true&amp;excludeRewarded=true">
-                                    <span class="fa fa-list"></span> 列表</a>
-                                </li>
-                                <li><a href="/Course/Confusion/New">
-                                    <span class="fa fa-edit"></span> 疑问发布</a> 
-                                </li>
-                                <li><a href="/Course/Confusion">
-                                    <span class="fa fa-list"></span> 疑问列表</a> 
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="/Problem?excludeCanceled=true&amp;excludeRewarded=true">
-                                    <span class="fa fa-list"></span> 列表</a> 
-                                </li>
-                                <li><a href="/Problem/New">
-                                    <span class="fa fa-edit"></span> 发布</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown"><span class="fa fa-eye" zyf-ducu-notices=""></span> 督促</a>
-                            <ul class="dropdown-menu" role="menu" zyf-navigator-ducu="">
-                                <li><a href="/Plan/New">
-                                    <span class="fa fa-edit fa-fw"></span> 求督促</a>
-                                </li>
-                                <li><a href="/Plan">
-                                    <span class="fa fa-gavel fa-fw"></span> 督促别人</a>
-                                </li>
-                                <li><a href="/Plan?my=f&amp;full=False&amp;due=False&amp;expire=False&amp;Frozen=False">
-                                    <span class="fa fa-list fa-fw"></span> 我的目标</a>
-                                </li>
-                                <li><a href="/Plan?my=s&amp;full=False&amp;due=False&amp;expire=True&amp;Frozen=False">
-                                    <span class="fa fa-list fa-fw"></span> 我的督促</a>
-                                </li>
-                                <li><a class="text-muted">
-                                    <span class="iconfont icon-money-bag"></span> 未交作业 </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="/Article" data-toggle="dropdown"><span class="iconfont icon-articles"></span> 文章</a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="/Article">
-                                    <span class="fa fa-list fa-fw"></span> 列表</a> 
-                                </li>
-                                <li><a href="/Article/_Apply" zyf-article-apply-link="">
-                                    <span class="fa fa-folder-open fa-fw"></span> 开通</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="text-primary dropdown-toggle" role="button" href="#" data-toggle="dropdown" zyf-navigator-loginstatus="">
-                                <span class="text-primary"><span class="fa fa-user-circle-o"></span><span zyf-current-username=""> dk</span> </span>
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li class="text-warning"><a href="" zyf-newbie-reminder-show="">
-                                    <span class="fa fa-list fa-fw"></span> 新手任务</a>
-                                </li>
-                                <li><a href="/User/Single">
-                                    <span class="fa fa-home fa-fw"></span> 我的主页</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li title="" data-original-title="明天16点44分更新" data-toggle="tooltip">
-                                    <a href="/FAQ/Bean">
-                                        <span class="bean">
-                                        <strong class="iconfont icon-beans"></strong> 帮帮豆
-                                        </span>
-                                        ：<span zyf-nav-current-ballots="">4</span> 颗
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Credit">
-                                        <span class="water">
-                                        <span class="iconfont icon-drips"></span> 帮帮点</span>
-                                        ：<span zyf-nav-current-credit="">185</span> 点 ③
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Money/Owner">
-                                        <span class="credit">
-                                        <span class="iconfont icon-money"></span> 帮帮币</span>
-                                        ：<span zyf-nav-current-money="">0</span> 枚
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="dropdown-header">
-                                <span class="fa fa-pencil-square-o"></span> 修改
-                                </li>
-                                <li><a href="/Password/Change?prepage=%2fArticle%2fCategory-64%3fsize%3d50">
-                                    <span class="fa fa-lock fa-fw"></span> 我的密码</a>
-                                </li>
-                                <li><a href="/Contact/Edit?prepage=%2fArticle%2fCategory-64%3fsize%3d50">
-                                    <span class="fa fa-envelope fa-fw"></span> 联系方式</a>
-                                </li>
-                                <li><a href="/Profile/Write?prepage=%2fArticle%2fCategory-64%3fsize%3d50">
-                                    <span class="fa fa-camera fa-fw"></span> 个人资料</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="/Log/Off?prepage=%2fArticle%2fCategory-64%3fsize%3d50">
-                                    <span class="fa fa-sign-out"></span> 退出登录</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                            <span class="fa fa-tachometer"></span> 后台<span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-bottom-fix" role="menu">
-                                <li><a href="/Invite">
-                                    <span class="fa fa-user-plus fa-fw"></span> 邀请注册</a>
-                                </li>
-                                <li><a href="/Message/Mine"><span class="fa fa-bell fa-fw">
-                                     </span> 我的消息</a>
-                                </li>
-                                <li><a href="/Draft">
-                                    <span class="fa fa-file-o fa-fw"></span> 我的草稿</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="dropdown-header">广告推广</li>
-                                <li><a href="/AdInContact/Write?prepage=%2fArticle%2fCategory-64%3fsize%3d50">
-                                    <span class="fa fa-link"></span> 联系方式</a>
-                                </li>
-                                <li><a href="/AdInWidget/Write?prepage=%2fArticle%2fCategory-64%3fsize%3d50">
-                                    <span class="fa fa-link"></span> 侧边栏</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="dropdown-header">帮帮币</li>
-                                <li><a href="/MoneyTrade/Market?prepage=%2fArticle%2fCategory-64%3fsize%3d50">
-                                    <b class="iconfont icon-shopping-cart-buy"></b> 购买</a>
-                                </li>
-                                <li><a href="/MoneyTrade/Sale?prepage=%2fArticle%2fCategory-64%3fsize%3d50">
-                                    <b class="iconfont icon-shopping-cart-sell"></b> 出售</a>
-                                </li>
-                                <li><a href="/MoneyTrade/BuyList">
-                                    <span class="fa fa-list"></span> 已购买</a>
-                                </li>
-                                <li><a href="/MoneyTrade/SaleList">
-                                    <span class="fa fa-list"></span> 已出售</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        @*<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
                 <div class="container">
                     <a class="navbar-brand" href="#">
-                        <img src="/images/logo-big.ico" alt="" class="d-inline-block  align-content-center " loading="lazy" />
+                        <img src="~/Css/image/logo-big[1].jpg" alt="" class="d-inline-block  align-content-center " loading="lazy" />
                     </a>
                     <span class="navbar-text">
                         <span style="font-size :18px;font-weight :600;">一起帮</span>
@@ -290,7 +115,6 @@
                                     <span class="dropdown-header">
                                         <span class="fa fa-pencil-square-o fa-fw"></span>修改
                                     </span>
-
                                     <a class="dropdown-item" href="#">
                                         <span class="fa fa-lock fa-fw"></span>我的密码
                                     </a>
@@ -347,7 +171,7 @@
                         </ul>
                     </div>
                 </div>
-            </nav>*@
+            </nav>
     </header>
     <main class="container" style="margin-top:100px">
         @RenderBody()

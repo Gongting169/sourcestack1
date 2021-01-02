@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +10,7 @@ namespace MVC.Controllers
     public class ArticleController : Controller
     {
         // GET: Article
-        public ActionResult Index()
+        public ActionResult Index(ArticleModel articleModel )
         {
             return View();
         }
