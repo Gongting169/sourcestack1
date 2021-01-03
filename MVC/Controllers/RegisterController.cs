@@ -20,7 +20,8 @@ namespace MVC.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(registerModel);
+                TempData["e"] = ModelState;
+                return RedirectToAction(nameof(Home));
             }
             //if ( != registerModel.Password)
             //{
@@ -39,6 +40,10 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult Home()
         {
+            if (TempData["e"] != null)
+            {
+                ModelState.Merge(TempData["e"] as ModelStateDictionary);
+            }
             return View();
         }
 

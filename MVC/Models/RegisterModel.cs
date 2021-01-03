@@ -33,5 +33,9 @@ namespace MVC.Models
         [StringLength(25,ErrorMessage ="* 确认密码的长度不能小于4,大于20",MinimumLength =1)]
         [Required(ErrorMessage ="* 确认密码不能为空")]
         public string ComfirmPassword { get; set; }
+
+
+
+
     }
 }

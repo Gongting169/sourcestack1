@@ -9,17 +9,15 @@ namespace MVC.Controllers
 {
     public class LogController : Controller
     {
-
-        public ActionResult Index()
-        {
-            return View();
-        }
         [HttpPost]
         public ActionResult On(LogOnModel logOnModel)
         {
+            HttpCookie cookie = new HttpCookie("LogOn");
+            Response.Cookies.Add(cookie);
             if (!ModelState.IsValid)
             {
-                return View(logOnModel);
+                TempData["e"] = ModelState;
+                return RedirectToAction(nameof(On));
             }
             //if (user == null)
             //{
@@ -36,6 +34,10 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult On() 
         {
+            if (TempData["e"] !=null)
+            {
+                ModelState.Merge(TempData["e"] as ModelStateDictionary);
+            }
             return View();
         }
 
