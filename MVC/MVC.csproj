@@ -142,6 +142,7 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Filter\ModelErrorTransferFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -309,7 +310,7 @@
     <Content Include="Views\Register\Home.cshtml" />
     <Content Include="Views\Log\On.cshtml" />
     <Content Include="Views\Log\Off.cshtml" />
-    <Content Include="Views\Article\Single.cshtml" />
+    <Content Include="Views\ArticleSingle\Single.cshtml" />
     <Content Include="Views\Profile\Write.cshtml" />
     <Content Include="Views\Message\Index.cshtml" />
     <Content Include="Views\Contact\Edit.cshtml" />
@@ -326,10 +327,18 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Register\RegisterPartial.cshtml" />
+    <Content Include="Views\Log\LogOnPartial.cshtml" />
+    <Content Include="Views\Profile\ProfilePartial.cshtml" />
+    <Content Include="Views\Plan\PlanNewPartial.cshtml" />
+    <Content Include="Views\Password\PwdForgetPartial.cshtml" />
+    <Content Include="Views\Message\MessagePartial.cshtml" />
+    <Content Include="Views\Contact\ContactPartial.cshtml" />
+    <Content Include="Views\ArticleSingle\ArticleSinglePartial.cshtml" />
+    <Content Include="Views\Article\ArticlePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ArticleSingle\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

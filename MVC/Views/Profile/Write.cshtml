@@ -4,7 +4,7 @@
     int[] years = new int[67];
     for (int i = 0; i < 67; i++)
     {
-        years[i] = 2023-i;
+        years[i] = 2023 - i;
     }
     int[] months = new int[12];
     for (int i = 0; i < 12; i++)
@@ -33,14 +33,14 @@
                     </div>
                     <div class="form-group form-inline">
                         <label>性别：</label>
-                        <div class="form-inline">                         
+                        <div class="form-inline">
                             <label class="form-check-label" for="Isfemal">
                                 @Html.RadioButtonFor(m => m.IsMale, true)  男
                             </label>
                         </div>
                         <div class="form-inline">
                             <label class="form-check-label" for="Isfemal">
-                              @Html.RadioButtonFor(m=>m.IsMale,false)  女
+                                @Html.RadioButtonFor(m => m.IsMale, false)  女
                             </label>
                         </div>
                     </div>
@@ -52,10 +52,10 @@
                                 <span class="input-group-text" style="border-radius:0px">年</span>
                             </span>
                             @Html.DropDownListFor(m => m.BirthMonth, new SelectList(months), "----", new { @class = "form-control" })
-                            <span  class="input-group-append">
+                            <span class="input-group-append">
                                 <span class="input-group-text" style="border-radius:0px">月</span>
                             </span>
-                            @Html.EnumDropDownListFor(m=>m.Constellation)
+                            @Html.EnumDropDownListFor(m => m.Constellation)
                             <div class="input-group-append">
                                 <span class="input-group-text">星座</span>
                             </div>
@@ -102,22 +102,13 @@
                     </div>
                     <div class="form-group">
                         <label>自我介绍:</label>
-                        @Html.TextAreaFor(m=>m.SelfIntroduction,new {@class="form-control",rows = "4",placeholder = "简单的介绍一下自己吧，不超过255字" })
+                        @Html.TextAreaFor(m => m.SelfIntroduction, new { @class = "form-control", rows = "4", placeholder = "简单的介绍一下自己吧，不超过255字" })
                     </div>
                     <button type="submit" class="btn btn-primary">提交</button>
                 </form>
             </div>
             <div class="col-lg-6 col-md-5 " style=" margin-left:40px">
-                <div class="container" style="margin-bottom:16px"></div>
-                <h3>
-                    <i class="fa fa-question-circle" aria-hidden="true"></i>
-                    说明
-                </h3>
-                <ol>
-                    <li style="margin-bottom:10px">头像仅接受jpg/png/gif格式，大小不超过256KB。</li>
-                    <li style="margin-bottom:10px">头像图片的建议宽度为300像素左右，过宽或过窄都有可能失真。</li>
-                    <li style="margin-bottom:10px">头像图片的建议宽度为300像素左右，过宽或过窄都有可能失真。</li>
-                </ol>
+                @Html.Partial("ProfilePartial")
             </div>
         </div>
         <hr />
