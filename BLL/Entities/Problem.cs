@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Entities 
 {
-    public class Problem
+    public class Problem:Content
     {
     }
 }

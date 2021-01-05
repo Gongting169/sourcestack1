@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Entities 
 {
-    public class HelpMoney
+    public class HelpMoney:Entity
     {
     }
 }

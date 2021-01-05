@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Entities
 {
-    public class BPoint
+    public class BPoint:Entity
     {
     }
 }

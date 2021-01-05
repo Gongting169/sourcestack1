@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Entities 
 {
-    public class Summary
+    public class Summary:Content
     {
     }
 }

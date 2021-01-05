@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.Entities 
+namespace BLL.Entities
 {
-    public class Message
+    public class Message :Entity
     {
     }
 }
