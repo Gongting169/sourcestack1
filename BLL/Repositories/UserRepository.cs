@@ -8,5 +8,14 @@ namespace Repositories
 {
     public class UserRepository
     {
+
+        public void Find(int id) 
+        {
+        
+        } 
+        public void GetByName(string name)
+        {
+
+        }
     }
 }

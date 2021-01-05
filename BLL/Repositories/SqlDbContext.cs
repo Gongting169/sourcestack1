@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Repositories 
 {
-    public class CategoryRepository
+    public class SqlDbContext
     {
     }
 }
