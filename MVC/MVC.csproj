@@ -337,7 +337,8 @@
     <Content Include="Views\Contact\ContactPartial.cshtml" />
     <Content Include="Views\ArticleSingle\ArticleSinglePartial.cshtml" />
     <Content Include="Views\Article\ArticlePartial.cshtml" />
-    <Content Include="Views\ArticleNew\ArticleNew.cshtml" />
+    <Content Include="Views\Article\New.cshtml" />
+    <Content Include="Views\Article\ArticleNewPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,8 +9,12 @@ namespace MVC.Controllers
 {
     public class ArticleController : Controller
     {
-        // GET: Article
-        public ActionResult Index(ArticleModel articleModel )
+        public ActionResult New(ArticleNewModel articleNewModel)
+        {
+            return View();
+        }
+
+        public ActionResult Index(ArticleModel articleModel)
         {
             return View();
         }

@@ -1,0 +1,203 @@
+﻿@model MVC.Models.ArticleNewModel
+@{
+    ViewBag.Title = "ArticleNew";
+    IDictionary<int, string> keyValues = new Dictionary<int, string>()
+{
+        {10,"默认分类"},
+        {12,"ffff" },
+        {20,"的程度成都"},
+        {21,"得得得得的"},
+        {22,"vvvvvvvv"},
+        {23,"帆帆帆帆帆帆帆帆帆帆"},
+        {24,"生活目标"},
+        {25,"生活目标"}
+    };
+    IDictionary<int, string> keyValues1 = new Dictionary<int, string>()
+{
+        {0,"---使用新的广告---" },
+        {10,"ddddd" },
+        {11,"fffff"},
+        {12,"kkkkk" }
+    };
+}
+<div class="container visible-md visible-lg top-user-message" zyf-user-message="">
+    <a class="pull-right" href="/Message/Index"><span class="fa fa-hand-o-right"></span> 全部消息</a>
+    <span title="" class="fa fa-calendar" data-original-title="2021年01月03日 10点15分" data-toggle="tooltip" data-placement="bottom"></span>
+    <span class="fa fa-thumbs-o-up text-success "></span> 因为注册时使用了
+    <a class="text-info" href="http://localhost:41958/User/7" zyf-show-contact="7">DK</a>的邀请码，系统赠送给
+    <span title="" data-original-title="" data-toggle="tooltip">
+        <a style="color:" href="/User/18" zyf-show-contact="18">
+            源栈
+        </a>
+    </span>
+    <a title="" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-original-title="初级学徒" data-toggle="tooltip">
+        <span>①</span>
+    </a>10点 <b class="iconfont icon-drips water"></b><a class="text-info" href="http://localhost:41958/FAQ/Credit">帮帮点</a>
+</div>
+<div class="container body-content">
+    <div class="row">
+        <div class="col-md-9">
+            <h2 class="page-header">
+                <span class="fa fa-pencil-square-o " aria-hidden="true"></span> 文章发布
+            </h2>
+            <div zyf-old-draft-check="">
+                <div class="yellow-highlight" style="padding:10px 10px 0 10px; margin-bottom:15px;">
+                    <p>你还有未使用的草稿（<a href="/Draft">查看全部</a>）。</p>
+                    <p>点击 <a href="/Article/Edit/54"><span class="fa fa-refresh"></span>这里</a> 使用最近一次生成的草稿。</p>
+                </div>
+            </div>
+            @using (Html.BeginForm("New", "Article", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label> @Html.LabelFor(m => m.Title)：（* 必填）</label>
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "来一个醒目的标题吧" })
+                    @Html.ValidationMessageFor(m => m.Title)
+                </div>
+                <div class="form-group">
+                    <label>内容：（* 必填）</label>
+                    <div class="ke-container ke-container-default" style="width: 100%;">
+                        <div class="ke-toolbar" style="display:block;" unselectable="on">
+                            <span title="HTML代码" class="ke-outline" unselectable="on" data-name="source">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-source" unselectable="on"></span>
+                            </span>
+                            <span class="ke-inline-block ke-separator"></span>
+                            <span title="段落" class="ke-outline" unselectable="on" data-name="formatblock"></span>
+                            <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-formatblock" unselectable="on"></span>
+                            <span title="文字大小" class="ke-outline" unselectable="on" data-name="fontsize">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span>
+                                <span title="粗体(Ctrl+B)" class="ke-outline" unselectable="on" data-name="bold"></span>
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span>
+                            </span>
+                            <span title="斜体(Ctrl+I)" class="ke-outline" unselectable="on" data-name="italic">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span>
+                            </span>
+                            <span title="下划线(Ctrl+U)" class="ke-outline" unselectable="on" data-name="underline">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span>
+                            </span>
+                            <span title="删除线" class="ke-outline" unselectable="on" data-name="strikethrough">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-strikethrough" unselectable="on"></span>
+                            </span>
+                            <span title="删除格式" class="ke-outline" unselectable="on" data-name="removeformat">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span>
+                            </span>
+                            <span class="ke-inline-block ke-separator"></span>
+                            <span title="表格" class="ke-outline" unselectable="on" data-name="table">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-table" unselectable="on"></span>
+                            </span>
+                            <span title="编号" class="ke-outline" unselectable="on" data-name="insertorderedlist">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span>
+                            </span>
+                            <span title="项目符号" class="ke-outline" unselectable="on" data-name="insertunorderedlist">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span>
+                            </span>
+                            <span class="ke-inline-block ke-separator"></span>
+                            <span title="超级链接" class="ke-outline" unselectable="on" data-name="link">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span>
+                            </span>
+                            <span title="取消超级链接" class="ke-outline" unselectable="on" data-name="unlink">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-unlink" unselectable="on"></span>
+                            </span>
+                            <span class="ke-inline-block ke-separator"></span>
+                            <span title="插入程序代码" class="ke-outline" unselectable="on" data-name="code">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-code" unselectable="on"></span>
+                            </span>
+                            <span title="插入引用" class="ke-outline" unselectable="on" data-name="quote">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-quote" unselectable="on"></span>
+                            </span>
+                            <span title="图片" class="ke-outline" unselectable="on" data-name="image">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span>
+                            </span>
+                            <span class="ke-inline-block ke-separator"></span>
+                            <span title="全屏显示(Esc)" class="ke-outline" unselectable="on" data-name="fullscreen">
+                                <span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span>
+                            </span>
+                        </div>
+                        <div class="ke-edit" style="height: 569px; display: block;">
+                            <iframe tabindex="-32768" class="ke-edit-iframe" frameborder="0"
+                                    style="width: 100%; height: 569px;" hidefocus="true"></iframe>
+                            <textarea tabindex="-32768" class="ke-edit-textarea" style="width: 100%;
+                            height: 569px; display: none;" hidefocus="true"></textarea>
+                        </div>
+                        <div class="ke-statusbar">
+                            <span class="ke-inline-block ke-statusbar-center-icon"></span>
+                            <span class="ke-inline-block ke-statusbar-right-icon"></span>
+                        </div>
+                    </div>
+                    @Html.TextAreaFor(m => m.Body, new
+                    {
+                        @class = "form-control",
+                        placeholder = "请直接粘贴原生HTML代码",
+                        rows = "30",
+                        cols = "20",
+                        style = "display: none;"
+                    })
+                    @Html.ValidationMessageFor(m => m.Body)
+                </div>
+                <div class="form-group">
+                    <label>添加到系列：</label>
+                    <a class="pull-right" href="/Category/Manage"><span class="fa fa-cog"></span>  管理</a>
+                    <div class="input-group">
+                        @Html.DropDownListFor(m => m.Category, new SelectList(keyValues, "Key", "Value"), "----", new { @class = "form-control" })
+                        <a class="btn input-group-addon" data-toggle="modal" data-target="#new-category">
+                            <span title="" class="fa fa-plus" data-original-title="添加" data-toggle="tooltip"></span> 新系列
+                        </a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>关键字：（* 必填）</label>
+                    @Html.TextBoxFor(m => m.Keywords, new { @class = "form-control", placeholder = "用空格分割，总长度不超过25个字符" })
+                    @Html.ValidationMessageFor(m => m.Keywords)
+                </div>
+                <div class="form-group">
+                    <label>摘要：（* 建议填写）</label>
+                    @Html.TextAreaFor(m => m.Digest, new
+                    {
+                        @class = "form-control",
+                   placeholder = "不填写的话，系统会截取文章前255字作为摘要显示",
+                        rows = "3",
+                        cols = "20"
+                    })
+                    @Html.ValidationMessageFor(m => m.Digest)
+                </div>
+                <div class="form-group">
+                    <a class="text-warning pull-right" zyf-ad-delete=""><span class="fa fa-remove"></span> 删除</a>
+                    <label>之前用过的广告：</label>
+                    @Html.DropDownListFor(m => m.Advertising, new SelectList(keyValues1, "Key", "Value"), "-----", new { @class = "form-control" })
+                </div>
+                <ul class="hide" zyf-ad-in-widget-history-url="">
+                    <li id="14">http://17bang.ren</li>
+                </ul>
+                <section class="yellow-highlight" style="padding:10px 20px; margin-bottom:20px;" zyf-ad-content-container="">
+                    <div class="text-right checkbox">
+                        <label>
+                            @Html.RadioButtonFor(m => m.ContentEdit, true)
+                            <input name="AdContent.Edit" type="hidden" value="false"> 修改
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>文字内容：（* 必填）</label>
+                        @Html.TextBoxFor(m => m.Content, new { @class = "form-control", placeholder = "最多不超过24个字符" })
+                        @Html.ValidationMessageFor(m => m.Content)
+                    </div>
+                    <div class="form-group">
+                        <label>链接：（* 必填）</label>
+                        @Html.TextBoxFor(m => m.ContentUrl, new { @class = "form-control", placeholder = "http或https开头的网址" })
+                        @Html.ValidationMessageFor(m => m.ContentUrl)
+                    </div>
+                </section>
+                <div class="submit">
+                    <input class="btn btn-primary loading" type="submit" value="发布" zyf-exclude-draft="" zyf-submit-once="">
+                    <button title="" class="btn btn-default" type="button" data-original-title="存为草稿" data-toggle="tooltip" zyf-submit-once=""
+                            zyf-write-draft="">
+                        保存
+                    </button>
+                    <small class="text-success" zyf-article-draft-remind=""></small>
+                    <input name="draftId" type="hidden" zyf-draft-hide-id="">
+                </div>
+            }
+        </div>
+        <div class="col-md-3" style=" margin-top:40px">
+            @Html.Partial("ArticleNewPartial")
+        </div>
+    </div>
+</div>
