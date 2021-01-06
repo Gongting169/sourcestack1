@@ -147,6 +147,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ArticleModel.cs" />
+    <Compile Include="Models\ArticleNewModel.cs" />
     <Compile Include="Models\ArticleSingleModel.cs" />
     <Compile Include="Models\ContactEditModel.cs" />
     <Compile Include="Models\Keyword.cs" />
@@ -336,6 +337,7 @@
     <Content Include="Views\Contact\ContactPartial.cshtml" />
     <Content Include="Views\ArticleSingle\ArticleSinglePartial.cshtml" />
     <Content Include="Views\Article\ArticlePartial.cshtml" />
+    <Content Include="Views\ArticleNew\ArticleNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
