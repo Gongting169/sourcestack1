@@ -8,5 +8,8 @@ namespace BLL.Entities
 {
     public class Content:Entity
     {
+        public string Body { get; set; }
+        public User Author { get; set; }
+        public DateTime PublishTime { get; set; }
     }
 }

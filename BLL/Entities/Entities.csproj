@@ -50,6 +50,8 @@
     <Compile Include="Content.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="Enum\AppraiseDirection.cs" />
+    <Compile Include="Enum\ProblemStatus.cs" />
     <Compile Include="HelpMoney.cs" />
     <Compile Include="Keyword.cs" />
     <Compile Include="Message.cs" />
