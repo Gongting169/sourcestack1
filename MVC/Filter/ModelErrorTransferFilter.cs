@@ -25,7 +25,7 @@ namespace MVC.Filter
                 //if (error != null)
                 //{
                 //    modelState.Merge(error);
-                //}
+                //} else nothing
             }
             else
             {
