@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace BLL.Repositories
 {
-    public class SuggestRepository:BaseRepository<Suggest>
+    public class SuggestRepository : BaseRepository<Suggest>
     {
+        public SuggestRepository(SqlDbContext context) : base(context)
+        {
+        }
     }
 }

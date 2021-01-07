@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace BLL.Repositories 
 {
-    public class CommentRepository:BaseRepository<Comment>
+    public class CommentRepository : BaseRepository<Comment>
     {
+        public CommentRepository(SqlDbContext context) : base(context)
+        {
+        }
     }
 }

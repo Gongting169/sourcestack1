@@ -9,5 +9,8 @@ namespace BLL.Repositories
 {
     public class CategoryRepository : BaseRepository<Category>
     {
+        public CategoryRepository(SqlDbContext context) : base(context)
+        {
+        }
     }
 }

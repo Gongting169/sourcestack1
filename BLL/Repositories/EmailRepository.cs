@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace BLL.Repositories
 {
-    public class EmailRepository:BaseRepository<Email>
+    public class EmailRepository : BaseRepository<Email>
     {
+        public EmailRepository(SqlDbContext context) : base(context)
+        {
+        }
     }
 }

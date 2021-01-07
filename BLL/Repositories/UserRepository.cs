@@ -12,13 +12,7 @@ namespace BLL.Repositories
     {
         public UserRepository(SqlDbContext context) : base(context)
         {
-
-
         }
-        //public void Publish(int id)
-        //{
-        //    context.
-        //}
         public User GetByName(string name)
         {
             return dbSet.Where(u => u.Name == name)

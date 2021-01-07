@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace BLL.Repositories 
 {
-    public class BMoneyRepository:BaseRepository<BMoney>
+    public class BMoneyRepository : BaseRepository<BMoney>
     {
+        public BMoneyRepository(SqlDbContext context) : base(context)
+        {
+        }
     }
 }

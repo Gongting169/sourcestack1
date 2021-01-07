@@ -9,5 +9,8 @@ namespace BLL.Repositories
 {
     public class AppraiseRepository : BaseRepository<Appraise>
     {
+        public AppraiseRepository(SqlDbContext context) : base(context)
+        {
+        }
     }
 }

@@ -9,5 +9,8 @@ namespace BLL.Repositories
 {
     public class SummaryRepository : BaseRepository<Summary>
     {
+        public SummaryRepository(SqlDbContext context) : base(context)
+        {
+        }
     }
 }
