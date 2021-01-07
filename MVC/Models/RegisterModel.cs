@@ -20,7 +20,7 @@ namespace MVC.Models
         [MaxLength(4, ErrorMessage = "* 验证码的长度只能为4")]
         [RegularExpression("[0-9]*", ErrorMessage = "* 验证码只能为4位数字")]
         [Required(ErrorMessage = "* 邀请码不能为空")]
-        public string InvitedCode { get; set; }
+        public int InvitedCode { get; set; }
 
         [StringLength(25, ErrorMessage = "* 邀请人的长度不能大于20", MinimumLength = 1)]
         [Required(ErrorMessage = "* 邀请人不能为空")]

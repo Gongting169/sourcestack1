@@ -15,7 +15,12 @@ namespace BLL.Entities
         public DateTime CreateTime { get; set; }
         public Email Email { get; set; }
         public int? EmailId { get; set; }
-        public IList<BMoney> BMoney { get; set; }
-        public IList<BPoint> BPoints { get; set; }
+        public int BMoney { get; set; }
+        public int BPoints { get; set; }
+
+        public void Register()
+        {
+            BMoney += new Random().Next(10);
+        }
     }
 }
