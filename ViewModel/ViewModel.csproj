@@ -41,21 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Models\ArticleModel.cs" />
-    <Compile Include="Models\ArticleNewModel.cs" />
-    <Compile Include="Models\ArticleSingleModel.cs" />
-    <Compile Include="Models\ContactEditModel.cs" />
-    <Compile Include="Models\LogOffModel.cs" />
-    <Compile Include="Models\LogOnModel.cs" />
-    <Compile Include="Models\MessageModel.cs" />
-    <Compile Include="Models\PlanNewModel.cs" />
-    <Compile Include="Models\ProfileWriteModel.cs" />
-    <Compile Include="Models\PwdForgetModel.cs" />
-    <Compile Include="Models\RegisterModel.cs" />
-    <Compile Include="Models\SaleModel.cs" />
-    <Compile Include="Models\TaskHistoryModel.cs" />
-    <Compile Include="Models\TaskMonthModel.cs" />
+    <Compile Include="ArticleModel.cs" />
+    <Compile Include="ArticleNewModel.cs" />
+    <Compile Include="ArticleSingleModel.cs" />
+    <Compile Include="ContactEditModel.cs" />
+    <Compile Include="LogOffModel.cs" />
+    <Compile Include="LogOnModel.cs" />
+    <Compile Include="MessageModel.cs" />
+    <Compile Include="PlanNewModel.cs" />
+    <Compile Include="ProfileWriteModel.cs" />
+    <Compile Include="PwdForgetModel.cs" />
+    <Compile Include="RegisterModel.cs" />
+    <Compile Include="SaleModel.cs" />
+    <Compile Include="TaskHistoryModel.cs" />
+    <Compile Include="TaskMonthModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

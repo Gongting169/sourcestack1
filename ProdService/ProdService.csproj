@@ -45,5 +45,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\Entities\Entities.csproj">
+      <Project>{1ee4a944-0c12-4768-8eec-7f4950778438}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BLL\Repositories\Repositories.csproj">
+      <Project>{6a489d6e-3e43-47ad-999d-9bd51ae9be4b}</Project>
+      <Name>Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{0c55ddc5-d1f2-40b1-b7d3-76dd812d33af}</Project>
+      <Name>ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
