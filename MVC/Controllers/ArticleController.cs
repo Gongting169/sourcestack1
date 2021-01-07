@@ -1,23 +1,19 @@
-﻿using BLL.Entities;
-using BLL.Repositories;
-using MVC.Models;
+﻿using ProdService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ViewModel;
 
 namespace MVC.Controllers
 {
     public class ArticleController : Controller
     {
-        private UserRepository userRepository;
-        private ArticleRepository articleRepository;
+        private ArticleService articleService;
         public ArticleController()
         {
-            SqlDbContext context = new SqlDbContext();
-            articleRepository = new ArticleRepository(context);
-            userRepository = new UserRepository(context);
+            articleService = new ArticleService();
         }
         [HttpPost]
         public ActionResult New(ArticleNewModel articleNewModel)
@@ -28,18 +24,7 @@ namespace MVC.Controllers
                 ModelState.AddModelError("", " 请输入正确的格式");
                 return View();
             }
-            User author = userRepository.Find(currentUserId);
-            Article article = new Article()
-            {
-                Title = articleNewModel.Title,
-                Body = articleNewModel.Body,
-                Author = author,
-                KeyWords = articleNewModel.Keywords,
-                Category = articleNewModel.Category,
-                PublishTime = DateTime.Now,
-            };
-            //还有一个用户发布文章消耗帮帮币问题：
-            articleRepository.Save(article);
+            articleService.Publish(articleNewModel, currentUserId);
             return View();
         }
         public ActionResult New()
