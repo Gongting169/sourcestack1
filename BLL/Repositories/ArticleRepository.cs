@@ -9,5 +9,14 @@ namespace BLL.Repositories
 {
     public class ArticleRepository:BaseRepository<Article>
     {
+        public ArticleRepository(SqlDbContext context) : base(context)
+        {
+        }
+
+        public void Publish()
+        {
+
+        }
+
     }
 }

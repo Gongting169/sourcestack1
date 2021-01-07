@@ -10,33 +10,35 @@ namespace BLL.Repositories
 {
     public class UserRepository : BaseRepository<User>
     {
-        public UserRepository()
+        public UserRepository(SqlDbContext context) : base(context)
         {
-            context = new SqlDbContext<User>();
+
+
         }
+        //public void Publish(int id)
+        //{
+        //    context.
+        //}
         public User GetByName(string name)
         {
-            return context.Entities
-                .Where(u => u.Name == name)
+            return dbSet.Where(u => u.Name == name)
                 .SingleOrDefault();
         }
         public User GetByPassword(string password)
         {
-            return context.Entities
-                .Where(u => u.Password == password)
+            return dbSet.Where(u => u.Password == password)
                 .SingleOrDefault();
         }
         public User GetByInvitedCode(int invitedCode)
         {
-            return context.Entities
-                .Where(u => u.InvitedBy .InvitedCode == invitedCode)
+            return dbSet.Where(u => u.InvitedBy.InvitedCode == invitedCode)
                 .SingleOrDefault();
         }
         public User GetByInvited(string invitedBy)
         {
-            return context.Entities
-                .Where(u => u.InvitedBy.Name == invitedBy)
+            return dbSet.Where(u => u.InvitedBy.Name == invitedBy)
                 .SingleOrDefault();
         }
+
     }
 }
