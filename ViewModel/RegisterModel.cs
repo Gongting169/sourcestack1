@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace MVC.Models
+namespace ViewModel
 {
     public class RegisterModel
     {

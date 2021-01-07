@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Repositories
 {
-    public class BaseRepository<T> where T : Entity
+    public class BaseRepository<T> where T : Entity, new()
     {
         protected SqlDbContext Context;
         protected DbSet<T> dbSet;
@@ -31,7 +31,13 @@ namespace BLL.Repositories
         {
             dbSet.Remove(entity);
             Context.SaveChanges();
+        }
 
+        public T LoadProxy(int id)
+        {
+            T entity = new T() { Id = id };
+            dbSet.Attach(entity);
+            return entity;
         }
     }
 }
