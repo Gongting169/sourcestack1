@@ -7,8 +7,8 @@
     <ProjectGuid>{D47C2FC3-C1BA-4D29-8891-C88719724890}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProdService</RootNamespace>
-    <AssemblyName>ProdService</AssemblyName>
+    <RootNamespace>SRV.ProdService</RootNamespace>
+    <AssemblyName>SRV.ProdService</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

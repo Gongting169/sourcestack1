@@ -348,15 +348,19 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MockService\MockService.csproj">
+    <ProjectReference Include="..\SRV\MockService\MockService.csproj">
       <Project>{17aaa390-7eff-4aab-a6bc-c6cf6d62cc21}</Project>
       <Name>MockService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ProdService\ProdService.csproj">
+    <ProjectReference Include="..\SRV\ProdService\ProdService.csproj">
       <Project>{d47c2fc3-c1ba-4d29-8891-c88719724890}</Project>
       <Name>ProdService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+    <ProjectReference Include="..\SRV\ServiceInterface\ServiceInterface.csproj">
+      <Project>{42367c1b-719f-440f-b9d6-621bbaa25e11}</Project>
+      <Name>ServiceInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SRV\ViewModel\ViewModel.csproj">
       <Project>{0c55ddc5-d1f2-40b1-b7d3-76dd812d33af}</Project>
       <Name>ViewModel</Name>
     </ProjectReference>

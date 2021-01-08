@@ -7,8 +7,8 @@
     <ProjectGuid>{17AAA390-7EFF-4AAB-A6BC-C6CF6D62CC21}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MockService</RootNamespace>
-    <AssemblyName>MockService</AssemblyName>
+    <RootNamespace>SRV.MockService</RootNamespace>
+    <AssemblyName>SRV.MockService</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
