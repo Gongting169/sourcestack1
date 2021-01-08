@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +54,10 @@
     <ProjectReference Include="..\BLL\Repositories\Repositories.csproj">
       <Project>{6a489d6e-3e43-47ad-999d-9bd51ae9be4b}</Project>
       <Name>Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServiceInterface\ServiceInterface.csproj">
+      <Project>{42367c1b-719f-440f-b9d6-621bbaa25e11}</Project>
+      <Name>ServiceInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
       <Project>{0c55ddc5-d1f2-40b1-b7d3-76dd812d33af}</Project>
