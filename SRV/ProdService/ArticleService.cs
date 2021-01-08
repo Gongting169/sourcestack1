@@ -1,5 +1,6 @@
 ﻿using BLL.Entities;
 using BLL.Repositories;
+using ServiceInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using ViewModel;
 
 namespace ProdService
 {
-    public class ArticleService
+    public class ArticleService:IArticleService
     {
         private UserRepository userRepository;
         private ArticleRepository articleRepository;

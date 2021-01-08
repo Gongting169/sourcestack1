@@ -10,6 +10,7 @@ namespace ServiceInterface
     public interface IUserService
     {
         void RegisterValidate(RegisterModel registerModel);
+         void LogOnValidate(LogOnModel logOnModel);
 
 
     }
