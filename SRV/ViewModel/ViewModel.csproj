@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D47C2FC3-C1BA-4D29-8891-C88719724890}</ProjectGuid>
+    <ProjectGuid>{0C55DDC5-D1F2-40B1-B7D3-76DD812D33AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProdService</RootNamespace>
-    <AssemblyName>ProdService</AssemblyName>
+    <RootNamespace>ViewModel</RootNamespace>
+    <AssemblyName>ViewModel</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,8 +32,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,26 +42,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticleService.cs" />
+    <Compile Include="ArticleModel.cs" />
+    <Compile Include="ArticleNewModel.cs" />
+    <Compile Include="ArticleSingleModel.cs" />
+    <Compile Include="ContactEditModel.cs" />
+    <Compile Include="LogOffModel.cs" />
+    <Compile Include="LogOnModel.cs" />
+    <Compile Include="MessageModel.cs" />
+    <Compile Include="PlanNewModel.cs" />
+    <Compile Include="ProfileWriteModel.cs" />
+    <Compile Include="PwdForgetModel.cs" />
+    <Compile Include="RegisterModel.cs" />
+    <Compile Include="SaleModel.cs" />
+    <Compile Include="TaskHistoryModel.cs" />
+    <Compile Include="TaskMonthModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BLL\Entities\Entities.csproj">
+    <ProjectReference Include="..\..\BLL\Entities\Entities.csproj">
       <Project>{1ee4a944-0c12-4768-8eec-7f4950778438}</Project>
       <Name>Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BLL\Repositories\Repositories.csproj">
-      <Project>{6a489d6e-3e43-47ad-999d-9bd51ae9be4b}</Project>
-      <Name>Repositories</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ServiceInterface\ServiceInterface.csproj">
-      <Project>{42367c1b-719f-440f-b9d6-621bbaa25e11}</Project>
-      <Name>ServiceInterface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
-      <Project>{0c55ddc5-d1f2-40b1-b7d3-76dd812d33af}</Project>
-      <Name>ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

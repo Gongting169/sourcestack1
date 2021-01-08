@@ -1,4 +1,5 @@
 ﻿using BLL.Repositories;
+using ServiceInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using ViewModel;
 
 namespace ProdService
 {
-    public class UserService
+    public class UserService ：IUserService
     {
         private UserRepository userRepository;
         public UserService()

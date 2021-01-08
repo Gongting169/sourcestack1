@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MockService
 {
-    public class Class1
+    class ArticleService
     {
     }
 }
