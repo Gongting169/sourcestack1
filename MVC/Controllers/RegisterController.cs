@@ -16,12 +16,27 @@ namespace MVC.Controllers
         private IUserService userService;
         public RegisterController()
         {
-            userService = new UserService();
+            //userService = new SRV.ProdService.UserService();
+            userService = new SRV.MockService.MUserService();
         }
         [HttpPost]
         public ActionResult Home(RegisterModel registerModel)
         {
-            userService.RegisterValidate(registerModel);
+            //bool hasLogIn = int.TryParse(Request.Cookies[Keys.User].Value, out int currentUserId);
+            //if (hasLogIn)
+            //{
+            //    //int id = userService.RegisterValidate(registerModel, currentUserId);
+            //}
+            //else
+            //{
+
+            //}
+            int userId = userService.Register(registerModel);
+            HttpCookie cookie = new HttpCookie(Keys.User, userId.ToString());
+            cookie.Values.Add(Keys.Id ,userId.ToString());
+            cookie.Values.Add(Keys.Password, registerModel.Password);
+            Response.Cookies.Add(new HttpCookie(Keys.User, userId.ToString()));
+            //userService.RegisterValidate(registerModel);
             //User user = new User()
             //{
             //    Name = registerModel.Name,

@@ -154,6 +154,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Keys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -167,7 +168,7 @@
     <Content Include="Css\css\font-awesome.min.css" />
     <Content Include="Css\font\fontawesome-webfont.svg" />
     <Content Include="Css\image\BackgroundImage.jpg" />
-    <Content Include="Css\image\logo-big[1].jpg" />
+    <Content Include="Css\image\logo-big.ico" />
     <Content Include="Css\image\logo.ico" />
     <Content Include="Css\css\StyleSheet1.css" />
     <Content Include="favicon.ico" />

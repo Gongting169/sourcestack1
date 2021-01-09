@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SRV.ViewModel
 {
-    class ArticleNewModel1
+    public class UserModel
     {
     }
 }

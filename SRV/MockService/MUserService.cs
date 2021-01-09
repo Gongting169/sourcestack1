@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SRV.ServiceInterface;
+using SRV.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,31 @@ using System.Threading.Tasks;
 
 namespace SRV.MockService
 {
-    public class MUserService
+    public class MUserService : IUserService
     {
+        public UserModel GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetPwdById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LogOnValidate(LogOnModel logOnModel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Register(RegisterModel registerModel)
+        {
+            return 986;
+        }
+
+        public void RegisterValidate(RegisterModel registerModel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

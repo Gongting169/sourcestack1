@@ -20,13 +20,13 @@ namespace SRV.ViewModel
         [MaxLength(4, ErrorMessage = "* 验证码的长度只能为4")]
         [RegularExpression("[0-9]*", ErrorMessage = "* 验证码只能为4位数字")]
         [Required(ErrorMessage = "* 邀请码不能为空")]
-        public int InvitedCode { get; set; }
+        public string InvitedCode { get; set; }
 
         [StringLength(25, ErrorMessage = "* 邀请人的长度不能大于20", MinimumLength = 1)]
         [Required(ErrorMessage = "* 邀请人不能为空")]
         public string InvitedBy { get; set; }
 
-        [StringLength(4, ErrorMessage = "验证码的长度只能为4", MinimumLength = 4)]
+        [StringLength(6, ErrorMessage = "验证码的长度只能为4", MinimumLength = 4)]
         [Required(ErrorMessage = "* 验证码不能为空")]
         public string Captcha { get; set; }
 

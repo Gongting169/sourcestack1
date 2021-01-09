@@ -60,6 +60,19 @@ namespace SRV.ProdService
             //    }
         }
 
+        public int Register(RegisterModel registerModel)
+        {
+            throw new NotImplementedException();
+        }
 
+        public UserModel GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetPwdById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

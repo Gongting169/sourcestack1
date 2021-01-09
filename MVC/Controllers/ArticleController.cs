@@ -20,14 +20,22 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult New(ArticleNewModel articleNewModel)
         {
-            int currentUserId = 1;
+            int currentUserId1 = 1;
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", " 请输入正确的格式");
                 return View();
             }
-            articleService.Publish(articleNewModel, currentUserId);
-            return View();
+            bool hasLogIn = int.TryParse(Request.Cookies[Keys.User].Value, out int currentUserId);
+            if (hasLogIn)
+            {
+                //int id = articleService.Publish(articleNewModel,currentUserId);
+            }
+            else
+            {
+
+            }
+            return RedirectToAction("New", new { id = currentUserId });
         }
         public ActionResult New()
         {
