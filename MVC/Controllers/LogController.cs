@@ -1,16 +1,16 @@
-﻿using ProdService;
+﻿using SRV.ProdService;
+using SRV.ServiceInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ViewModel;
 
 namespace MVC.Controllers
 {
     public class LogController : Controller
     {
-        private UserService userService;
+        private IUserService userService;
         public LogController()
         {
             userService = new UserService();

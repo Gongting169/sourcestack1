@@ -1,18 +1,19 @@
 ﻿using Glimpse.AspNet.Tab;
-using ProdService;
+using SRV.ProdService;
+using SRV.ServiceInterface;
+using SRV.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using ViewModel;
 
 namespace MVC.Controllers
 {
     public class RegisterController : Controller
     {
-        private UserService userService;
+        private IUserService userService;
         public RegisterController()
         {
             userService = new UserService();

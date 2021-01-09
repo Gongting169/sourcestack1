@@ -1,11 +1,11 @@
-﻿using BLL.Entities;
+﻿using SRV.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace ViewModel
+namespace SRV.ViewModel 
 {
     public class ProfileWriteModel
     {
@@ -14,7 +14,7 @@ namespace ViewModel
         public int BirthYear { get; set; }
         public int BirthMonth { get; set; }
         public ConstellationItem Constellation { get; set; }
-        public IList<Keyword> Keywords { get; set; }
+        public IList<KeywordModel> Keywords { get; set; }
         public string SelfIntroduction { get; set; }
     }
 

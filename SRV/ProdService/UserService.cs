@@ -1,14 +1,14 @@
 ﻿using BLL.Repositories;
-using ServiceInterface;
+using SRV.ServiceInterface;
+using SRV.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.ModelBinding;
-using ViewModel;
 
-namespace ProdService
+namespace SRV.ProdService 
 {
     public class UserService :IUserService
     {

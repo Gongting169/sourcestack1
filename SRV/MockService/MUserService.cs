@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MockService
+namespace SRV.MockService
 {
-    public class UserService
+    public class MUserService
     {
     }
 }

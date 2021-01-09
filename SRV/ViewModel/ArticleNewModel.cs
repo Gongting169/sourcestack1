@@ -1,13 +1,11 @@
-﻿using System.ComponentModel;
-using BLL.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using SRV.ViewModel;
 
-namespace ViewModel
+namespace SRV.ViewModel
 {
     public class ArticleNewModel
     {
@@ -20,11 +18,11 @@ namespace ViewModel
         [MaxLength(int.MaxValue, ErrorMessage = "* 正文的长度最小是25,最大不能超过2147483647")]
         [MinLength(25, ErrorMessage = "* 正文的长度最小是25,最大不能超过2147483647")]
         public string Body { get; set; }
-        public Category Category { get; set; }
+        public CategoryModel Category { get; set; }
 
         [Required(ErrorMessage ="* 关键字不能为空")]
         [StringLength(25,ErrorMessage ="* 关键字的长度不能大于25",MinimumLength =1)]
-        public IList<Keyword> Keywords { get; set; }
+        public IList<KeywordModel> Keywords { get; set; }
 
         [MaxLength(255,ErrorMessage ="* 摘要的长度不能超过255个字符")]
         public string Digest { get; set; }//摘要

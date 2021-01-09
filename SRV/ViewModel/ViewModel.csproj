@@ -65,8 +65,11 @@
   <ItemGroup>
     <Compile Include="ArticleModel.cs" />
     <Compile Include="ArticleNewModel.cs" />
+    <Compile Include="ArticleNewModel1.cs" />
     <Compile Include="ArticleSingleModel.cs" />
+    <Compile Include="CategoryModel.cs" />
     <Compile Include="ContactEditModel.cs" />
+    <Compile Include="KeywordModel.cs" />
     <Compile Include="LogOffModel.cs" />
     <Compile Include="LogOnModel.cs" />
     <Compile Include="MessageModel.cs" />
@@ -78,12 +81,6 @@
     <Compile Include="TaskHistoryModel.cs" />
     <Compile Include="TaskMonthModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\BLL\Entities\Entities.csproj">
-      <Project>{1ee4a944-0c12-4768-8eec-7f4950778438}</Project>
-      <Name>Entities</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

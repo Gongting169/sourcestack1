@@ -1,16 +1,18 @@
-﻿using ProdService;
+﻿
+using SRV.ProdService;
+using SRV.ServiceInterface;
+using SRV.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ViewModel;
 
 namespace MVC.Controllers
 {
     public class ArticleController : Controller
     {
-        private ArticleService articleService;
+        private IArticleService articleService;
         public ArticleController()
         {
             articleService = new ArticleService();

@@ -1,14 +1,15 @@
 ﻿using BLL.Entities;
 using BLL.Repositories;
-using ServiceInterface;
+using SRV.ServiceInterface;
+using SRV.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ViewModel;
 
-namespace ProdService
+
+namespace SRV.ProdService
 {
     public class ArticleService:IArticleService
     {
@@ -20,7 +21,7 @@ namespace ProdService
             articleRepository = new ArticleRepository(context);
             userRepository = new UserRepository(context);
         }
-        public void Publish(ArticleNewModel articleNewModel ,int currentUserId)
+        public void Publish(ArticleNewModel articleNewModel, int currentUserId)
         {
             User author = userRepository.Find(currentUserId);
             Article article = new Article()
@@ -28,18 +29,14 @@ namespace ProdService
                 Title = articleNewModel.Title,
                 Body = articleNewModel.Body,
                 Author = author,
-                KeyWords = articleNewModel.Keywords,
-                Category = articleNewModel.Category,
+                //KeyWords = articleNewModel.Keywords,
+                //Category = articleNewModel.Category, 
                 PublishTime = DateTime.Now,
             };
             //还有一个用户发布文章消耗帮帮币问题：
             articleRepository.Save(article);
 
         }
-
-
-
-
 
 
     }

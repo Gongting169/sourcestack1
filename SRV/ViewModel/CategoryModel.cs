@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MockService
+namespace SRV.ViewModel
 {
-    public class ArticleService
+    public class CategoryModel
     {
     }
 }

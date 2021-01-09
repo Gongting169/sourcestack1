@@ -1,16 +1,16 @@
-﻿using BLL.Entities;
+﻿using SRV.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ViewModel
+namespace SRV.ViewModel 
 {
     public class PlanNewModel
     {
         public string Title { get; set; }
         public string Description { get; set; }
-        public IList<Keyword> Keywords { get; set; }
+        public IList<KeywordModel> Keywords { get; set; }
         public DateTime BeginTime { get; set; }
         public DateTime EndTime { get; set; }
         public int DaysOfLeave { get; set; }
