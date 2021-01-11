@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceInterface", "SRV\Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "SRV\ViewModel\ViewModel.csproj", "{0C55DDC5-D1F2-40B1-B7D3-76DD812D33AF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JavaScript", "JavaScript\JavaScript.csproj", "{C6D12501-263C-43A4-B1EB-D137FF138E52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{0C55DDC5-D1F2-40B1-B7D3-76DD812D33AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C55DDC5-D1F2-40B1-B7D3-76DD812D33AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C55DDC5-D1F2-40B1-B7D3-76DD812D33AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6D12501-263C-43A4-B1EB-D137FF138E52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6D12501-263C-43A4-B1EB-D137FF138E52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6D12501-263C-43A4-B1EB-D137FF138E52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6D12501-263C-43A4-B1EB-D137FF138E52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
