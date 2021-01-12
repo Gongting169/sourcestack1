@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class ArticleSingleController : Controller
+    public class ArticleSingleController : BaseController
     {
         // GET: ArticleSingle
         public ActionResult Index()

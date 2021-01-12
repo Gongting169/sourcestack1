@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class TaskController : Controller
+    public class TaskController : BaseController
     {
         // GET: Task
         public ActionResult Index()

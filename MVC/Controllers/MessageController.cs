@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class MessageController : Controller
+    public class MessageController : BaseController
     {
         // GET: Message
         public ActionResult Index(MessageModel messageModel)

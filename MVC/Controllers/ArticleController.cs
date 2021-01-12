@@ -10,12 +10,16 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class ArticleController : Controller
+    public class ArticleController :BaseController 
     {
         private IArticleService articleService;
+        private IUserService userService;
         public ArticleController()
         {
-            articleService = new ArticleService();
+            //articleService = new SRV.MockService.MArticleService();
+            articleService = new SRV.ProdService.ArticleService();
+            userService = new SRV.ProdService.UserService();
+            //userService = new SRV.MockService.MUserService();
         }
         [HttpPost]
         public ActionResult New(ArticleNewModel articleNewModel)
@@ -26,16 +30,8 @@ namespace MVC.Controllers
                 ModelState.AddModelError("", " 请输入正确的格式");
                 return View();
             }
-            bool hasLogIn = int.TryParse(Request.Cookies[Keys.User].Value, out int currentUserId);
-            if (hasLogIn)
-            {
-                //int id = articleService.Publish(articleNewModel,currentUserId);
-            }
-            else
-            {
-
-            }
-            return RedirectToAction("New", new { id = currentUserId });
+     
+            return RedirectToAction("New", new { id = currentUserId1 });
         }
         public ActionResult New()
         {
