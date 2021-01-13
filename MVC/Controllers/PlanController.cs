@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class PlanController : BaseController
+    public class PlanController : Controller
     {
         // GET: Plan
         public ActionResult Index()

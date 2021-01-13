@@ -1,5 +1,4 @@
-﻿
-using SRV.ProdService;
+﻿using SRV.ProdService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
@@ -7,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MVC.Helpers;
 
 namespace MVC.Controllers
 {
-    public class ArticleController :BaseController 
+    public class ArticleController :Controller 
     {
         private IArticleService articleService;
         private IUserService userService;
@@ -30,7 +30,7 @@ namespace MVC.Controllers
                 ModelState.AddModelError("", " 请输入正确的格式");
                 return View();
             }
-     
+            int articleId = articleService.Publish(articleNewModel, Helper.GetCurrentUserId());
             return RedirectToAction("New", new { id = currentUserId1 });
         }
         public ActionResult New()

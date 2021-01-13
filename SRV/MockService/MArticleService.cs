@@ -10,7 +10,12 @@ namespace SRV.MockService
 {
     public class MArticleService : IArticleService
     {
-        public void Publish(ArticleNewModel articleNewModel, int currentUserId)
+        public ArticleSingleModel GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Publish(ArticleNewModel articleNewModel, int currentUserId)
         {
             throw new NotImplementedException();
         }

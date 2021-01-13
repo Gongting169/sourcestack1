@@ -55,6 +55,10 @@
       <Project>{6a489d6e-3e43-47ad-999d-9bd51ae9be4b}</Project>
       <Name>Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\GLB\Global\Global.csproj">
+      <Project>{ca2bf9bf-7f8b-435c-b180-546866a899cf}</Project>
+      <Name>Global</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ServiceInterface\ServiceInterface.csproj">
       <Project>{42367c1b-719f-440f-b9d6-621bbaa25e11}</Project>
       <Name>ServiceInterface</Name>

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class SharedController : BaseController
+    public class SharedController : Controller
     {
         public ActionResult _user(int? level)
         {

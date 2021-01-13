@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SRV.ProdService
 {
-    public class ArticleService:IArticleService
+    public class ArticleService : IArticleService
     {
         private UserRepository userRepository;
         private ArticleRepository articleRepository;
@@ -21,9 +21,14 @@ namespace SRV.ProdService
             articleRepository = new ArticleRepository(context);
             userRepository = new UserRepository(context);
         }
-        public void Publish(ArticleNewModel articleNewModel, int currentUserId)
+
+        public ArticleSingleModel GetById(int id)
         {
-            User author = userRepository.Find(currentUserId);
+            throw new NotImplementedException();
+        }
+        public int Publish(ArticleNewModel articleNewModel, int currentUserId)
+        {
+           User author = userRepository.LoadProxy(currentUserId);
             Article article = new Article()
             {
                 Title = articleNewModel.Title,
@@ -35,9 +40,12 @@ namespace SRV.ProdService
             };
             //还有一个用户发布文章消耗帮帮币问题：
             articleRepository.Save(article);
-
+            return article.Id;
         }
 
-
+        public int Publish(ArticleNewModel articleNewModel, int? currentUserId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

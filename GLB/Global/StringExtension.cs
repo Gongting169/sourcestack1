@@ -9,9 +9,9 @@ namespace GLB.Global
 {
     public static class StringExtension
     {
-        public static string Md5Crypt(this string source)
+        public static string MD5EnCrypt(this string source)
         {
-            Byte[] bytes = MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(source));
+            byte[] bytes = MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(source));
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < bytes.Length; i++)
             {

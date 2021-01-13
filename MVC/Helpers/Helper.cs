@@ -1,30 +1,31 @@
-﻿using SRV.ProdService;
+﻿using GLB.Global;
 using SRV.ServiceInterface;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
-using GLB.Global;
 
-namespace MVC.Controllers
+namespace MVC.Helpers
 {
-    public class BaseController : Controller
+    public class Helper
     {
-        private IUserService userService;
-        public BaseController()
+        private static IUserService userService;
+        public Helper()
         {
             userService = new SRV.MockService.MUserService();
             userService = new SRV.ProdService.UserService();
         }
+        public static void Delete(string name)
+        {
 
-        protected int? GetCurrentUserId()//是从cookie里面取值，取出userID来
+        }
+        public static int? GetCurrentUserId()//是从cookie里面取值，取出userID来
         {
             ///1.能够顺利的拿到
             ///2、没有cookie 取不到
             ///3、有cookie，但验证通不过
-            NameValueCollection userInfo = Request.Cookies[Keys.User].Values;
+            NameValueCollection userInfo = HttpContext.Current.Request.Cookies[Keys.User].Values;
             string pwdInCookie = userInfo[Keys.Password];
             bool hasUserId = int.TryParse(userInfo[Keys.Id], out int currentUserId);
             if (userInfo == null)
@@ -46,17 +47,11 @@ namespace MVC.Controllers
             }
             if (!hasUserId)
             {
-                throw new ArgumentException("无法从cookie里取到值");
+                // 应该要删除cookie
+                //throw new ArgumentException("无法从cookie里取到值");
             }
             return currentUserId;
         }
-
-
-
-
-
-
-
 
 
     }

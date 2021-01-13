@@ -1,4 +1,6 @@
-﻿using BLL.Repositories;
+﻿using BLL.Entities;
+using BLL.Repositories;
+using GLB.Global;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
@@ -62,7 +64,12 @@ namespace SRV.ProdService
 
         public int Register(RegisterModel registerModel)
         {
-            throw new NotImplementedException();
+            User user = new User()
+            {
+                Name = registerModel.Name,
+                Password = registerModel.Password.MD5EnCrypt(),
+            };
+            return user.Id;
         }
 
         public UserModel GetByName(string name)

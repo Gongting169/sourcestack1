@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class LogController : BaseController
+    public class LogController : Controller
     {
         private IUserService userService;
         public LogController()

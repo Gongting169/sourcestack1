@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class ContactController : BaseController
+    public class ContactController : Controller
     {
         // GET: Contact
         public ActionResult Index()

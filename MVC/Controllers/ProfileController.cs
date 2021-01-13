@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class ProfileController : BaseController
+    public class ProfileController : Controller
     {
         // GET: Profile
         public ActionResult Index()

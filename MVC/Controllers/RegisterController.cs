@@ -11,7 +11,7 @@ using System.Web.Routing;
 
 namespace MVC.Controllers
 {
-    public class RegisterController : BaseController
+    public class RegisterController : Controller
     {
         private IUserService userService;
         public RegisterController()

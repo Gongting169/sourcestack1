@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
-    public class MoneyTradeController : BaseController
+    public class MoneyTradeController : Controller
     {
         // GET: MoneyTrade
         public ActionResult Index()
