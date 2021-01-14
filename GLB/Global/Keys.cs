@@ -13,5 +13,6 @@ namespace GLB.Global
         public const string UserId = "UserId";
         public const string Id = "Id";
         public const string Password = "Password";
+        public const string DbContext ="DbContext";
     }
 }

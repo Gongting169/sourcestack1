@@ -150,6 +150,7 @@
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Filter\ContextRequestFilter.cs" />
     <Compile Include="Filter\ModelErrorTransferFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -14,8 +14,9 @@ namespace MVC.Controllers
         {
             return View();
         }
-        public ActionResult Single(ArticleSingleModel singleModel )
+        public ActionResult Single(int id )
         {
+            //ArticleSingleModel singleModel = articleRepository.GetById(id);
             return View();
         }
     }

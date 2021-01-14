@@ -22,7 +22,7 @@ namespace MVC.Controllers
             //userService = new SRV.MockService.MUserService();
         }
         [HttpPost]
-        public ActionResult New(ArticleNewModel articleNewModel)
+        public ActionResult New(ArticleNewModel articleNewModel)//没有登录不应该访问，差needlogon
         {
             int currentUserId1 = 1;
             if (!ModelState.IsValid)
@@ -30,7 +30,7 @@ namespace MVC.Controllers
                 ModelState.AddModelError("", " 请输入正确的格式");
                 return View();
             }
-            int articleId = articleService.Publish(articleNewModel, Helper.GetCurrentUserId());
+            int articleId = articleService.Publish(articleNewModel/*, Helper.GetCurrentUserId()*/);
             return RedirectToAction("New", new { id = currentUserId1 });
         }
         public ActionResult New()

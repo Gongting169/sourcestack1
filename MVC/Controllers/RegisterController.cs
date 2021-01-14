@@ -1,4 +1,5 @@
-﻿using Glimpse.AspNet.Tab;
+﻿using GLB.Global;
+using Glimpse.AspNet.Tab;
 using SRV.ProdService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
@@ -34,7 +35,7 @@ namespace MVC.Controllers
             int userId = userService.Register(registerModel);
             HttpCookie cookie = new HttpCookie(Keys.User, userId.ToString());
             cookie.Values.Add(Keys.Id ,userId.ToString());
-            cookie.Values.Add(Keys.Password, registerModel.Password);
+            cookie.Values.Add(Keys.Password, registerModel.Password.MD5EnCrypt());
             Response.Cookies.Add(new HttpCookie(Keys.User, userId.ToString()));
             //userService.RegisterValidate(registerModel);
             //User user = new User()
