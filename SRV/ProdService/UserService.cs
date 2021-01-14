@@ -10,15 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.ModelBinding;
 
-namespace SRV.ProdService 
+namespace SRV.ProdService
 {
-    public class UserService :IUserService
+    public class UserService : BaseService, IUserService
     {
         private UserRepository userRepository;
         public UserService()
         {
-            SqlDbContext context = new SqlDbContext();
-            userRepository = new UserRepository(context);
+            userRepository = new UserRepository(Context);
         }
         public void RegisterValidate(RegisterModel registerModel)
         {

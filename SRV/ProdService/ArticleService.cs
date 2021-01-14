@@ -11,24 +11,27 @@ using System.Threading.Tasks;
 
 namespace SRV.ProdService
 {
-    public class ArticleService : IArticleService
+    public class ArticleService : BaseService, IArticleService
     {
         private UserRepository userRepository;
         private ArticleRepository articleRepository;
         public ArticleService()
         {
-            SqlDbContext context = new SqlDbContext();
-            articleRepository = new ArticleRepository(context);
-            userRepository = new UserRepository(context);
+            articleRepository = new ArticleRepository(Context);
+            userRepository = new UserRepository(Context);
         }
 
         public ArticleSingleModel GetById(int id)
         {
             throw new NotImplementedException();
         }
-        public int Publish(ArticleNewModel articleNewModel, int currentUserId)
+        public int Publish(ArticleNewModel articleNewModel/*, int currentUserId*/)
         {
-           User author = userRepository.LoadProxy(currentUserId);
+            if (GetCurrentUser() == null)
+            {
+                throw new ArgumentException("");
+            }
+            User author = GetCurrentUser();
             Article article = new Article()
             {
                 Title = articleNewModel.Title,
@@ -43,9 +46,9 @@ namespace SRV.ProdService
             return article.Id;
         }
 
-        public int Publish(ArticleNewModel articleNewModel, int? currentUserId)
-        {
-            throw new NotImplementedException();
-        }
+        //public int Publish(ArticleNewModel articleNewModel/*, int? currentUserId*/)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
