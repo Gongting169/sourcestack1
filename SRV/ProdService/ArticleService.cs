@@ -1,4 +1,5 @@
-﻿using BLL.Entities;
+﻿using AutoMapper;
+using BLL.Entities;
 using BLL.Repositories;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
@@ -31,7 +32,10 @@ namespace SRV.ProdService
             {
                 throw new ArgumentException("");
             }
-            User author = GetCurrentUser();
+            Article article1 = articleRepository.Find(GetCurrentUser().Id);
+
+            User author = GetCurrentUser();           
+            ArticleNewModel model = mapper.Map<ArticleNewModel>(article1);
             Article article = new Article()
             {
                 Title = articleNewModel.Title,

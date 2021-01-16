@@ -1,7 +1,9 @@
-﻿using BLL.Entities;
+﻿using AutoMapper;
+using BLL.Entities;
 using BLL.Repositories;
 using GLB.Global;
 using SRV.ServiceInterface;
+using SRV.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -16,6 +18,17 @@ namespace SRV.ProdService
     public class BaseService
     {
         private UserRepository userRepository;
+        protected readonly static MapperConfiguration config;
+        static BaseService()
+        {
+            config = new MapperConfiguration
+                (cfg => cfg.CreateMap<Article, ArticleNewModel>());
+        }
+        protected IMapper mapper
+        {
+            get { return config.CreateMapper(); }
+        }
+
         public BaseService()
         {
             userRepository = new UserRepository(Context);
@@ -28,26 +41,41 @@ namespace SRV.ProdService
                 {
                     SqlDbContext context = new SqlDbContext();
                     context.Database.BeginTransaction();
-                    HttpContext.Current.Items[Keys.DbContext] = new SqlDbContext();
+                    HttpContext.Current.Items[Keys.DbContext] = context;
                 }//else nothing
                 return (SqlDbContext)HttpContext.Current.Items[Keys.DbContext];
             }
         }
-
-        public static void EndTransaction()
+        private static SqlDbContext getContextFromHttp()
         {
             object objContext = HttpContext.Current.Items[Keys.DbContext];
-            SqlDbContext cx = objContext as SqlDbContext;
-            using (DbContextTransaction transaction = cx.Database.CurrentTransaction)
+            return objContext as SqlDbContext;
+        }
+        public static void Commit()
+        {
+            SqlDbContext cx = getContextFromHttp();
+            if (cx != null)
             {
-                try
+                using (cx)
                 {
-                    transaction.Commit();
+                    using (DbContextTransaction transaction = cx.Database.CurrentTransaction)
+                    {
+                        transaction.Commit();
+                    }
                 }
-                catch (Exception)
+            }
+        }
+        public static void RollBack()
+        {
+            SqlDbContext cx = getContextFromHttp();
+            if (cx != null)
+            {
+                using (cx)
                 {
-                    transaction.Rollback();
-                    throw;
+                    using (DbContextTransaction transaction = cx.Database.CurrentTransaction)
+                    {
+                        transaction.Rollback();
+                    }
                 }
             }
         }

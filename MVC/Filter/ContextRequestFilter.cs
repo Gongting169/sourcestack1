@@ -11,7 +11,17 @@ namespace MVC.Filter
     {
         public void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            BaseService.EndTransaction();
+            if (!filterContext.IsChildAction)
+            {
+                if (filterContext.Exception == null)
+                {
+                    BaseService.Commit();
+                }
+                else
+                {
+                    BaseService.RollBack();
+                }
+            }
         }
 
         public void OnActionExecuting(ActionExecutingContext filterContext)
