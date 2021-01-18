@@ -4,6 +4,7 @@
 var yz = {};
 yz.fei = {};
 yz.fei.get = function (number) {
+
 };
 
 //yz.fei = {
