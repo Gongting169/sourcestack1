@@ -6,8 +6,7 @@
 //构建一个函数has9(number) ，可以判断number中是否带有数字9；（19 / 98）
 function  has9(number)
 {
-    var result = `${number}`.includes("9", `${number}`.indexOf("9")) == true ? true : false;
-    return result;
+   return  `${number}`.includes("9", `${number}`.indexOf("9")) ;  
 }
 //构建一个函数has8(number) ，可以判断number中是否带有数字8；
 function has8(number) {
