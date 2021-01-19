@@ -3,27 +3,31 @@
 //作业一
 //开始使用伪单元测试，
 //将每天 / 课的作业用不同的js文件分隔：
-//构建一个函数has9(number) ，可以判断number中是否带有数字9；（19 / 98）
+//构建一个函数has9(number) ，可以判断number中是否带有数字9；（19 / 98）万一number是个负数，小数 ？
 function  has9(number)
 {
-   return  `${number}`.includes("9", `${number}`.indexOf("9")) ;  
+    var result = `${number}`;
+    return result.includes("9", result.indexOf("9"));  
 }
 //构建一个函数has8(number) ，可以判断number中是否带有数字8；
 function has8(number) {
     while (number > 0) {
-        if (number % 10 == 8) {
+        if (number % 10 == 8)
+        {
             return true;
-        }
+        } //else nothing
         number = Math.trunc(number / 10);//trunc是取整数
     }
     return false;
 }
 //构建一个函数has6(number) ，可以判断number中是否带有数字6；
 function has6(number) {
-    while (number > 0) {
-        if (number % 10 == 8) {
+    while (number > 0)
+    {
+        if (number % 10 == 8)
+        {
             return true;
-        }
+        } // else nothing
         number = Math.trunc(number / 10);//trunc是取整数
     }
     return false;

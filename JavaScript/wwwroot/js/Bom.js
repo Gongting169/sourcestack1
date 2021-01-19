@@ -10,4 +10,14 @@
 //只用了不到8次就猜到，弹出：666！
 //用了8 - 10次猜到，弹出：猜到了。
 //用了10次都还没猜对，弹出：^ (*￣(oo) ￣)^
+function guessMe()//有两种情况。要么就猜中，要么就猜不中
+{
+    var random = Math.floor(Math.random() * 1000);
+    window.confirm("游戏玩法说明：");
+    for (var i = 0; i < 11; i++)
+    {
+
+    }
+
+}
 //    分别使用setInterval()使用setTimeout()实现：每隔1秒钟依次显示：第n周，源栈同学random人。（n逐次递增，random随机）

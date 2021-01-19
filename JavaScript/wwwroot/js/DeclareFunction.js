@@ -72,10 +72,10 @@ function deleteDuplicated(array)
 {
     for (var i = 0; i < array.length - 1; i++)
     {
-        if (array[i] == array[array.length - i-1])
+        if (array[i] == array[array.length - i])
         {
             array[i] = undefined;           
-        }
+        }// else nothing
     }
 }
 //创建一个函数getRandomArray(length, max) ，能返回一个长度不大于length，每个元素值不大于max的随机整数数组。
@@ -90,28 +90,36 @@ function getRandomArray(length, max)
 //不使用JavaScript内置函数，将一个字符串顺序颠倒，比如：'hello,yuanzhan' 变成 'nahznauy,olleh'。
 function reverse()
 {
-    var string = 'hello,yuanzhan', char = [], value = '';
-    for (var i = 0; i < string.length; i++)
+    var string = 'hello,yuanzhan',value = '';
+    for (var j = string.length - 1; j >= 0; j--)
     {
-        char[i] = string.charAt(i);
-    }
-    for (var j = char.length-1; j >= 0; j--)
-    {
-        value = value + char[j];
+        value = value + string[j];
     }
     console.log(value);
 }
 //统计出这段文字中有多少个单词：
-var word = `There are two ways to create a RegExp object: a literal notation and a constructor.To indicate strings,
+var words = `There are two ways to create a RegExp object: a literal notation and a constructor.To indicate strings,
 the parameters to the literal notation do not use quotation marks while the parameters to the constructor
 function do use quotation - marks.So the following expressions create the same regular expression `;
 //function statisticsCount()
 //{
-//    for (var i = 0; i < word.length; i++)
+//    var letter,count ;
+//    for (var i = 0; i < words.length; i++)
 //    {
-        
+//        if (words[i] === ' ')
+//        {
 
+//        }
+//        letter = ' ' + words[i] + ' ';
 //    }
+//    for (var j = 0; j < words.length; j++)
+//    {
+//        if (words[j] === letter)
+//        {
+//            count += 1  ;
+//        }//else nothing    
+//    }
+//   console.log(count);
 //}
 
 
