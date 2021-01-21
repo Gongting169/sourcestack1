@@ -19,5 +19,10 @@ namespace SRV.MockService
         {
             throw new NotImplementedException();
         }
+
+        public int Publish(ArticleNewModel articleNewModel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

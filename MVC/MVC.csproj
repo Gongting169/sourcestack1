@@ -146,6 +146,7 @@
     <Compile Include="Controllers\MoneyTradeController.cs" />
     <Compile Include="Controllers\PasswordController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
+    <Compile Include="Controllers\ProblemController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
@@ -334,11 +335,12 @@
     <Content Include="Views\Article\ArticlePartial.cshtml" />
     <Content Include="Views\Article\New.cshtml" />
     <Content Include="Views\Article\ArticleNewPartial.cshtml" />
+    <Content Include="Views\Problem\Index.cshtml" />
+    <Content Include="Views\Problem\Single.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
