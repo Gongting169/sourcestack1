@@ -13,19 +13,20 @@
 function guessMe()//有两种情况。要么就猜中，要么就猜不中
 {
     var random = Math.floor(Math.random() * 1000), isConfirm =
-        window.confirm("游戏玩法说明：您输入一个大于0,小于1000的整数与系统进行匹配,最后会输出相应的提示信息"),
-        input = Number.isInteger(window.prompt()) ? (+window.prompt()) : -1;//input还有个问题是小数呢？ 
+        window.confirm("游戏玩法说明：您输入一个大于0,小于1000的整数与系统进行匹配,最后会输出相应的提示信息");
+    //input还有个问题是小数呢？ 首先要判断输入是否符合要求
     if (isConfirm)
     {
-        for (var i = 0; i < 11; i++)
+        for (var i = 1; i < 11; i++)
         {
+            var input = Number.parseInt(window.prompt());
             if (input < 0 || input >= 1000)
             {
-                return alert("请正确的输入一个整数值0到1000之间");
+                 alert("请正确的输入一个整数值0到1000之间");
             }
             if (!input)
             {
-                return alert("请按照提示信息，输入正确的数字");
+                 alert("请按照提示信息，输入正确的数字");
             }
             if (random > input)
             {
@@ -35,12 +36,12 @@ function guessMe()//有两种情况。要么就猜中，要么就猜不中
             {
                 alert("您输入的值大了");
             }
-            else if (input === random && (i >= 8 || i <= 10))//这是猜中的情况，只是次数不一样的情况
+            else if (input === random && i >= 8 )
             {
                 alert("猜到了");
                 return;
             }
-            else if (input === random && (i < 8 || i >= 6))
+            else if (input === random && i < 8 && i >= 6)
             {
                 alert("666");
                 return;
@@ -48,8 +49,9 @@ function guessMe()//有两种情况。要么就猜中，要么就猜不中
             else if (input === random && i < 6)
             {
                 alert("碉堡了");
+                return;
             }
-            else if (input !== random && i > 10)// 这是一次都没有猜中的情况
+            else if (input !== random && i === 10)// 这是一次都没有猜中的情况
             {
                 alert("^ (*￣(oo) ￣)^");
                 return;
