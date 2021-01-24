@@ -20,30 +20,34 @@
 //    }
 //}
 //自行设计参数，将之前“累加求和”的代码封装成一个函数Sum() ，可以计算任意起始位置、任意步长（如：1, 3, 5……或者0, 5, 10, 15……）的等差数列之和。
-//function Sum(start, n, stepLength)//这是没有设定终点位置
+//function sum(start, n, stepLength)
 //{
-//    var sum = 0, i = 0, value;
-//    while (i <= n)
+//    var sum = 0, value;
+//    for (var i = 0; i < n; i++)
 //    {
 //        value = start + i * stepLength;
 //        sum = sum + value;
-//        i++;
 //    }
+//    return sum;
 //}
 //封装一个函数，建立一个函数getMaxNumber() ，可以接受任意多各种类型（整数、小数、正数、负数、字符串、布尔值等）的参数，并找出里面最大的数（忽略其他类型）
-function getMaxNumber(array)
-{
-    var max = 0, i = 0;
-    while (i < array.length - 1)
-    {
-        if (array[i] < array[i + 1])
-        {
-            max = array[i+1];
-        }// else nothing
-        i++;
-    }
-    console.log(max);
-}
+//function getMaxNumber() {
+//    var max = 0, result;
+//    for (var i = 0; i < arguments.length - 1; i++) {
+//        if (isNaN(arguments[i])) {
+//            if (Number.parseInt(arguments[i]) > 0) {
+//                result = arguments[i];
+//            } //else nothing
+//        }
+//        else {
+//            if (arguments[i] < arguments[i + 1]) {
+//                max = arguments[i + 1];
+//            }// else nothing
+//        }
+//        max = result > max ? max : result;       
+//    }
+//    return max;
+//}
 //封装一个函数Swap(arr, i, j) ，可以交换数组arr里下标 i 和 j 的值
 //function Swap( array,i, j)
 //{
@@ -66,61 +70,62 @@ function getMaxNumber(array)
 //    }
 //}
 //删除一个数组里面重复的元素
-//var array = [];
-//array.splice(i,1);//删除i处的1个元素
-function deleteDuplicated(array)
-{
-    for (var i = 0; i < array.length - 1; i++)
-    {
-        if (array[i] == array[array.length - i])
-        {
-            array[i] = undefined;           
-        }// else nothing
-    }
-}
-//创建一个函数getRandomArray(length, max) ，能返回一个长度不大于length，每个元素值不大于max的随机整数数组。
-function getRandomArray(length, max)
-{
-    var array = [];
-    for (var i = 0; i < length; i++) {
-        array[i] = Math.floor((Math.random() * max));
-        return array[i];
-    }   
-}
-//不使用JavaScript内置函数，将一个字符串顺序颠倒，比如：'hello,yuanzhan' 变成 'nahznauy,olleh'。
-function reverse()
-{
-    var string = 'hello,yuanzhan',value = '';
-    for (var j = string.length - 1; j >= 0; j--)
-    {
-        value = value + string[j];
-    }
-    console.log(value);
-}
-//统计出这段文字中有多少个单词：
-var words = `There are two ways to create a RegExp object: a literal notation and a constructor.To indicate strings,
-the parameters to the literal notation do not use quotation marks while the parameters to the constructor
-function do use quotation - marks.So the following expressions create the same regular expression `;
-//function statisticsCount()
+//function deleteDuplicated(array)
 //{
-//    var letter,count ;
-//    for (var i = 0; i < words.length; i++)
+//    var newArray = [];
+//    for (var i = 0; i < array.length - 1; i++)
 //    {
-//        if (words[i] === ' ')
+//        if (array[i] === array[array.length - i])
 //        {
-
+//            continue;
+//        } else
+//        {
+//            newArray[i] = array[i];
 //        }
-//        letter = ' ' + words[i] + ' ';
 //    }
-//    for (var j = 0; j < words.length; j++)
+//}
+//创建一个函数getRandomArray(length, max) ，能返回一个长度不大于length，每个元素值不大于max的随机整数数组。
+//function getRandomArray(length, max)
+//{
+//    var array = [];
+//    for (var i = 0; i < Math.floor(Math.random() * length); i++)
 //    {
-//        if (words[j] === letter)
-//        {
-//            count += 1  ;
-//        }//else nothing    
+//            array[i] = Math.floor((Math.random() * max));
 //    }
-//   console.log(count);
+//    return array;
+//}
+//不使用JavaScript内置函数，将一个字符串顺序颠倒，比如：'hello,yuanzhan' 变成 'nahznauy,olleh'。还可以利用下标来做
+//function reverse() {
+//    var string = 'hello,yuanzhan', value = '';
+//    for (var i = string.length - 1; i >= 0; i--)
+//    {
+//        value = value + string[j];
+//    }
+//    console.log(value);
 //}
 
+//统计出这段文字中有多少个单词：
+//var words = `There are two ways to create a RegExp object: a literal notation and a constructor.To indicate strings,
+//the parameters to the literal notation do not use quotation marks while the parameters to the constructor
+//function do use quotation - marks.So the following expressions create the same regular expression `, ;
+//function statisticsCount()
+//{
+//    var count = 0;
+//    words += " ";
+//    for (var i = 0; i < words.length; i++)
+//    {
+//        if (!isAlpha(words[i]))
+//        {
+//            if (isAlpha(words[i - 1]))
+//            {
+//                count++;
+//            }//else continue
+//        }//else continue
+//    }
+//    console.log(count);
+//}
+//function isAlpha(theChar)
+//{
+//    return (theChar >= "a" && theChar <= "z" || theChar >= "A" && theChar <= "Z")
 
-
+//}

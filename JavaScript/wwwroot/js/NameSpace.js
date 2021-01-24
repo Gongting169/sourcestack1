@@ -7,9 +7,6 @@ yz.fei.get = function (number) {
 
 };
 
-//yz.fei = {
-//    get: function (number) { }
-//};
 
 
 
