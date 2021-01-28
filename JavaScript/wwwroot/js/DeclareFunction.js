@@ -107,7 +107,7 @@
 //统计出这段文字中有多少个单词：
 //var words = `There are two ways to create a RegExp object: a literal notation and a constructor.To indicate strings,
 //the parameters to the literal notation do not use quotation marks while the parameters to the constructor
-//function do use quotation - marks.So the following expressions create the same regular expression `, ;
+//function do use quotation - marks.So the following expressions create the same regular expression `
 //function statisticsCount()
 //{
 //    var count = 0;

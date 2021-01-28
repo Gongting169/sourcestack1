@@ -22,20 +22,27 @@
 //}
 //console.log(min);
 //去除一个数组中重复的值（提示：仔细思考需求）要么全部删除，要么保留
-var array = [1, 3, 5, 3, 5, 6, 7, 8, 9],newArray=[];
-for (var i = 0; i < array.length-1; i++)
-{
-    if (array[i] === array[array.length - i])
-    {
-        continue;
-    } else
-    {
-        newArray[i] = array[i];
-    }
-    console.log(array[array.length - i]);
-    console.log(array[i]);
-    console.log(newArray[i]);
-}
+//var array = [1, 3, 5, 3, 5, 6, 7, 8, 9],newArray = [], index = 0;
+//for (var i = 0; i < array.length; i++)
+//{
+//    var temp = array[i];
+//    for (var j = 0; j < i; j++)
+//    {
+//        if (temp === array[j])
+//        {
+//            break;
+//        }
+//        else
+//        {
+//            if (i === j - 1)
+//            {
+//                newArray[index] = array[i];
+//                index++;
+//            }
+//        }
+//    }
+//}
+//console.log(newArray);
 //输出用空格代替0的杨辉三角形
 //var rows = 5,
 //    columns = rows * 2 - 1;
