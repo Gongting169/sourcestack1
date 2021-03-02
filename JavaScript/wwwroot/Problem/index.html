@@ -475,6 +475,7 @@
                         </li>
                     </ul>
                 </nav>
+
             </div>
             <div class="col-md-4 visible-md visible-lg">
                 <div class=" card" style="border-width:1px;border-style:dashed">
@@ -817,7 +818,7 @@
                     <nav class="nav flex-column">
                         <a class="nav-link active" href="http://17bang.ren/Article/261">
                             <span class="badge badge-dark">1</span>
-                            学编程,来 “源栈”！飞哥精品小班等着你……
+                            免费广告位，抢到就是赚到！
                         </a>
                         <a class="nav-link" href="/AdInWidget/_Free?position=2">
                             <span class="badge badge-dark">2</span>
@@ -844,15 +845,68 @@
                                 <span class="fa fa-buysellads"></span> 广告
                                 <span data-toggle="popover" data-placement="top" data-content="" data-container="body" type="">，你也可以发布哟！</span>
                             </small>
+                            <a  style="background-color:black; color:floralwhite;"
                         </a>
                     </nav>
                 </div>
             </div>
         </div>
     </div>
+    <form  method="post">
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">
+                            <span class="fa fa-buysellads"></span>申请免费广告位
+                        </h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
+                    </div>
+                    <div class="modal-body">
+                            <div class="mb-3">
+                                <a class="text-warning pull-right" zyf-ad-delete="">
+                                <span class="fa fa-remove"></span> 删除</a>
+                                <label for="recipient-name" class="col-form-label">之前用过的广告:</label>
+                                <select name="select" class=" form-control">
+                                    <option value="">------使用新的广告-----</option>
+                                    <option value="">我的消息</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-group" style="border:1px dashed ;border-radius :5px;
+                                 background-color :#ffffe0 ;padding :0 10px 0 10px;">
+                                    <label  class="pull-right" style="padding-top :20px;padding-right:10px;">
+                                        <input name="Content.Edit" id="Content_Edit" type="checkbox" value="true">
+                                                修改
+                                    </label>                              
+                                    <div class="form-group" style=" margin-top:50px;">
+                                        <label>文字内容:(*必填）</label>
+                                        <input type="text" class="form-control" placeholder="最多不超过24个字符">
+                                    </div>
+                                    <div style="margin-top :10px;" class="form-group ">
+                                        <label>链接:(*必填）</label>
+                                        <input type="text" class="form-control" placeholder="http或https开头的网址">
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">提交</button>
+                        <button type="reset" class="btn btn-primary">重填</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+  
     <script src="/js/DomProblem.js" type="text/javascript"></script>
     <script src="/js/EventType.js" type="text/javascript"></script>
-    <script src="/lib/jquery/dist/jquery.min.js"></script>
-    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+    <script src="/lib/jquery-validation/dist/jquery.validate.js" type="text/javascript"></script>
+    <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" type="text/javascript"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.js" type="text/javascript"></script>
 </body>
+
 </html>
