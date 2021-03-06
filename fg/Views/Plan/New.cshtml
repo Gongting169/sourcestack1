@@ -1,0 +1,163 @@
+﻿
+@model MVC.Models.PlanNewModel
+@{
+    ViewBag.Title = "New";
+    int[] dayOfLeave = new int[7];
+    for (int i = 0; i < 7; i++)
+    {
+        dayOfLeave[i] = i;
+    }
+    int[] superVisor = new int[8];
+    for (int i = 0; i < 8; i++)
+    {
+        superVisor[i] = i;
+    }
+}
+<div class=" container">
+    <div class=" row">
+        <span title="" class="fa fa-calendar" data-original-title="2020年12月23日 11点21分" data-toggle="tooltip" data-placement="bottom"></span>
+        <a class="text-info" href="http://17bang.ren/User/1" zyf-show-contact="1">叶飞</a>捡走了
+
+        <span title="" data-original-title="" data-toggle="tooltip">
+            <a style="color:" href="/User/4515" zyf-show-contact="4515">
+                witbunny
+            </a>
+        </span>
+        <a title="" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-original-title="中级学徒" data-toggle="tooltip">
+            <span>②</span>
+        </a><a class="text-info" href="http://17bang.ren/FAQ/Money#gain">掉落</a>的 <b class="iconfont icon-money credit"></b>
+        <a class="text-info" href="http://17bang.ren/FAQ/Money">帮帮币</a> 3枚
+        <div class=" container">
+            <h1>
+                <span class=" fa fa-edit"></span>
+                发现新目标
+            </h1>
+        </div>
+        <div class=" col-5 ">
+            @using (Html.BeginForm("New", "Plan", new { id = 258 }, FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label>标题（必填）：</label>
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "简明扼要，多个目标请分开发布" })
+                    @Html.ValidationMessageFor(m => m.Title)
+                </div>
+                <div class="form-group">
+                    <label>详细说明：</label>
+                    @Html.TextAreaFor(m => m.Description, new
+                    {
+                        @class = "form-control",
+                   placeholder = "补充你认为需要说明的其他信息。比如：求温柔/凶狠好心人，最好同城/校……",
+                        rows = "4",
+                        cols = "20"
+                    })
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+                <div class="form-group">
+                    <label>标签（必填）：</label>
+                    @Html.TextBoxFor(m => m.Keywords, new { @class = "form-control", placeholder = "多个标签之间请用空格分开" })
+                    @Html.ValidationMessageFor(m => m.Keywords)
+                </div>
+                <div class="form-group">
+                    <label>开始执行（必填）：</label>
+                    @Html.TextBoxFor(m => m.BeginTime, "{0:D}", new { @class = "form-control", placeholder = "默认为今天" })
+                    @Html.ValidationMessageFor(m => m.BeginTime)
+                </div>
+                <div class="form-group">
+                    <label>
+                        <a href="/FAQ/Plan#quit"><span class="fa fa-question-circle text-info"></span></a>
+                        目标结束（必填）：
+                    </label>
+                    @Html.TextBoxFor(m => m.EndTime, "{0:D}", new { @class = "form-control", placeholder = "默认为一年后", value = "2021年12月27日" })
+                    @Html.ValidationMessageFor(m => m.EndTime)
+                </div>
+                <div class="form-group">
+                    <label>
+                        <a href="/FAQ/Plan#leave" zyf-faq-remind=""><span class="fa fa-question-circle text-info"></span></a>
+                        （每周）交作业时间：
+                    </label>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>一</th>
+                                <th>二</th>
+                                <th>三</th>
+                                <th>四</th>
+                                <th>五</th>
+                                <th>六</th>
+                                <th>日</th>
+                            </tr>
+                            <tr>
+                                @for (int i = 0; i < Model.DayInWeeks.Count; i++)
+                                {
+                                    <td>@Html.CheckBoxFor(m => m.DayInWeeks[i].Checked) </td>
+                                }
+                            </tr>
+                        </tbody>
+                    </table>
+                    @Html.ValidationMessageFor(m => m.DayInWeeks)
+                </div>
+                <div class="form-group">
+                    <label>
+                        <a href="/FAQ/Plan#leave" zyf-faq-remind=""><span class="fa fa-question-circle text-info"></span></a>
+                        每周可请假：
+                    </label>
+                    <div class="input-group input-group-combined">
+                        @Html.DropDownListFor(m => m.DaysOfLeave, new SelectList(dayOfLeave), "-----", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.DaysOfLeave)
+                        <span class="input-group-addon">天</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <a href="/FAQ/Plan#proof" zyf-faq-remind=""><span class="fa fa-question-circle text-info"></span></a>
+                        证明：
+                    </label>
+                    @Html.TextBoxFor(m => m.ProofText, new { @class = "form-control", placeholder = "证据的文字描述" })
+                    <br>
+                    @Html.TextBoxFor(m => m.ProofUrl, new { @class = "form-control", placeholder = "可以访问的网址，详见说明" })
+                </div>
+                <div class="form-group">
+                    <label>
+                        <a href="/FAQ/Plan#join" zyf-faq-remind=""><span class="fa fa-question-circle text-info"></span></a>
+                        好心人最多：
+                    </label>
+                    <div class="input-group input-group-combined">
+                        @Html.DropDownListFor(m => m.MaxNumberOfSupervisors, new SelectList(superVisor), new { @class = "form-control" })
+                        <span class="input-group-addon">人</span>
+                    </div>
+                </div>
+                <div class="form-group" style="padding-bottom:20px">
+                    <label>
+                        <a href="/FAQ/Plan#punish" zyf-faq-remind=""><span class="fa fa-question-circle text-info"></span></a>
+                        未交作业罚金（必填）：（<a href="/Money/Owner">现有<span class="credit" zyf-current-money="">0</span>枚</a>
+                        <small title="" class="fa fa-refresh text-info" data-original-title="刷新" data-toggle="tooltip"></small>
+                        @Html.TextBoxFor(m => m.CurrentCredit, new { type = "hidden", value = "0" })
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <a title="" class="credit" href="/FAQ/Money" data-original-title="点击了解" data-toggle="tooltip">
+                                <span class="iconfont icon-money"></span>
+                            </a>
+                        </span>
+                        @Html.TextBoxFor(m => m.PunishCount, new { @class = "form-control", placeholder = "正整数，建议10枚以上" })
+                        <span class="input-group-addon">枚</span>
+                    </div>
+                    <a class="pull-right" href="/FAQ/Money#gain"><span class="fa fa-question-circle"></span> 如何获得“帮帮币”</a>
+                    @Html.ValidationMessageFor(m => m.PunishCount)
+                </div>
+                <div class="submit">
+                    <input class="btn btn-primary" type="submit" value="提交">
+                    <label class="checkbox-inline" style="margin-left:16px;">
+                        <label>
+                            @Html.RadioButtonFor(m => m.Continue, true, new { @checked = string.Empty })
+                        </label>
+                        继续
+                    </label>
+                </div>
+            }
+        </div>
+        <div class=" col-5 offset-1 ">
+            @Html.Partial("PlanNewPartial")
+        </div>
+    </div>
+</div>
