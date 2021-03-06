@@ -1,79 +1,79 @@
-﻿@model MVC.Models.ArticleModel
+﻿
 @{
     ViewBag.Title = "Index";
 }
-@*@foreach (var item in Model.Articles)
-{
-    <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px;margin-top:40px">
-        <div>
-            <small class="text-muted">
-                <span class="fa fa-calculator"></span>
-                <span>@item.PublishTime</span>
-            </small>
-            <small class="pull-right">
-                <span>作者：</span>
-                <a href="#">@item.Author.Name</a>
-            </small>
-        </div>
-        <h5>
-            <a href="/Article/Single?id= @item.Id ">@item.Title</a>
-        </h5>
-        <p style="word-break: break-all; clear: both; margin-top: 8px;">
-            @item.Body
-            <a href="#" title="全文">……</a>
-        </p>
-        <div>
-            <label>
-                <span class="fa fa-tags"></span>
-                关键字：
-            </label>
-            @for (int i = 0; i < item.Keywords.Count(); i++)
-            {
-                <span class="badge badge-pill badge-dark">@item.Keywords[i].Name</span>
-            }
-        </div>
-        <div class="pull-right" style="margin-bottom:10px">
-            <a href="#" style="margin-left:14px;color:#31708f">
-                <span class="fa fa-comments-o"></span>
-                <span>评论：</span>@item.Comments.Count
-            </a>
-            <a href="#" style="margin-left:14px;color:#31708f">
-                <span class="fa fa-thumbs-o-up"></span>
-                <span>赞：</span>@item.Appraises.Where(a => a.Direction == sourcestack1.Entity.AppraiseDirection.Up).Count()
-            </a>
-            <a href="#" style="margin-left:14px;color:#31708f">
-                <span class="fa fa-thumbs-o-down"></span>
-                <span>踩：</span>@item.Appraises.Where(a => a.Direction == sourcestack1.Entity.AppraiseDirection.Down).Count()
-            </a>
-        </div>
-    </div>
-}
-<nav aria-label="Page navigation example" style="margin-top:40px;margin-bottom:40px">
-    <ul class="pagination">
-        @if (Model.PageIndex != 1)
-        {
-            <li class="page-item">
-                <a class="page-link" href="/Article/Article?PageIndex=@(Model.PageIndex-1)" aria-label="Next">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-        }
-        @for (int i = 0; i < Model.ArticlelPageCounts; i++)
-        {
-            string active = Model.PageIndex == (i + 1) ? "active" : "null";
-            <li class="page-item @active">
-                <a class="page-link" href="/Article/Article?PageIndex=@(i+1)">@(i+1)</a>
-            </li>
-        }
-        @if (Model.PageIndex < Model.ArticlelPageCounts)
-        {
-            <li class="page-item">
-                <a class="page-link" href="/Article/Article?PageIndex=@(Model.PageIndex+1)" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        }
-    </ul>
-</nav>*@
 
+@*@foreach (var item in Model.Articles)
+    {
+        <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px;margin-top:40px">
+            <div>
+                <small class="text-muted">
+                    <span class="fa fa-calculator"></span>
+                    <span>@item.PublishTime</span>
+                </small>
+                <small class="pull-right">
+                    <span>作者：</span>
+                    <a href="#">@item.Author.Name</a>
+                </small>
+            </div>
+            <h5>
+                <a href="/Article/Single?id= @item.Id ">@item.Title</a>
+            </h5>
+            <p style="word-break: break-all; clear: both; margin-top: 8px;">
+                @item.Body
+                <a href="#" title="全文">……</a>
+            </p>
+            <div>
+                <label>
+                    <span class="fa fa-tags"></span>
+                    关键字：
+                </label>
+                @for (int i = 0; i < item.Keywords.Count(); i++)
+                {
+                    <span class="badge badge-pill badge-dark">@item.Keywords[i].Name</span>
+                }
+            </div>
+            <div class="pull-right" style="margin-bottom:10px">
+                <a href="#" style="margin-left:14px;color:#31708f">
+                    <span class="fa fa-comments-o"></span>
+                    <span>评论：</span>@item.Comments.Count
+                </a>
+                <a href="#" style="margin-left:14px;color:#31708f">
+                    <span class="fa fa-thumbs-o-up"></span>
+                    <span>赞：</span>@item.Appraises.Where(a => a.Direction == sourcestack1.Entity.AppraiseDirection.Up).Count()
+                </a>
+                <a href="#" style="margin-left:14px;color:#31708f">
+                    <span class="fa fa-thumbs-o-down"></span>
+                    <span>踩：</span>@item.Appraises.Where(a => a.Direction == sourcestack1.Entity.AppraiseDirection.Down).Count()
+                </a>
+            </div>
+        </div>
+    }
+    <nav aria-label="Page navigation example" style="margin-top:40px;margin-bottom:40px">
+        <ul class="pagination">
+            @if (Model.PageIndex != 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="/Article/Article?PageIndex=@(Model.PageIndex-1)" aria-label="Next">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            }
+            @for (int i = 0; i < Model.ArticlelPageCounts; i++)
+            {
+                string active = Model.PageIndex == (i + 1) ? "active" : "null";
+                <li class="page-item @active">
+                    <a class="page-link" href="/Article/Article?PageIndex=@(i+1)">@(i+1)</a>
+                </li>
+            }
+            @if (Model.PageIndex < Model.ArticlelPageCounts)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="/Article/Article?PageIndex=@(Model.PageIndex+1)" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>*@
 

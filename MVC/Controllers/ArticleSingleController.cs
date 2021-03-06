@@ -1,11 +1,10 @@
-﻿using SRV.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MVC.Controllers
+namespace fg.Controllers
 {
     public class ArticleSingleController : Controller
     {
@@ -14,7 +13,7 @@ namespace MVC.Controllers
         {
             return View();
         }
-        public ActionResult Single(int id )
+        public ActionResult Single(int id)
         {
             //ArticleSingleModel singleModel = articleRepository.GetById(id);
             return View();

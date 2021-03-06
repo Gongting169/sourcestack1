@@ -1,4 +1,5 @@
-﻿@model  SRV.ViewModel.RegisterModel
+﻿
+@model  SRV.ViewModel.RegisterModel
 @{
     ViewBag.Title = "注册.一起帮";
 }
@@ -15,6 +16,7 @@
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
     }
+
         .field-validation-error::before {
             content: "\f056";
         }
@@ -86,8 +88,9 @@
             }
         </div>
         <div class="col-md-6 col-md-offset-1">
-          @Html.Partial("RegisterPartial")
+            @Html.Partial("RegisterPartial")
         </div>
     </div>
     <hr />
 </div>
+

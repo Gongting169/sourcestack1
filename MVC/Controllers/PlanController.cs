@@ -1,11 +1,10 @@
-﻿using SRV.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MVC.Controllers
+namespace fg.Controllers
 {
     public class PlanController : Controller
     {
@@ -14,7 +13,7 @@ namespace MVC.Controllers
         {
             return View();
         }
-        public ActionResult New(PlanNewModel newModel)
+        public ActionResult New()
         {
             return View(
                 new PlanNewModel()

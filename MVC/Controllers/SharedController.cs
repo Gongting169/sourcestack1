@@ -4,16 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MVC.Controllers
+namespace fg.Controllers
 {
     public class SharedController : Controller
     {
+        // GET: Shared
         public ActionResult _user(int? level)
         {
             return View();
         }
         [ChildActionOnly]
-        public PartialViewResult  _logOnStatus()
+        public PartialViewResult _logOnStatus()
         {
             if (true)
             {
@@ -25,5 +26,6 @@ namespace MVC.Controllers
         {
             return View();
         }
+
     }
 }

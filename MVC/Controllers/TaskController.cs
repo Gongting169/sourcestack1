@@ -1,11 +1,10 @@
-﻿using SRV.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MVC.Controllers
+namespace fg.Controllers
 {
     public class TaskController : Controller
     {
@@ -14,13 +13,10 @@ namespace MVC.Controllers
         {
             return View();
         }
-        public ActionResult Month(TaskMonthModel monthModel)
+        public ActionResult Month()
         {
             return View();
         }
-        public ActionResult History(TaskHistoryModel historyModel)
-        {
-            return View();
-        }
+
     }
 }
