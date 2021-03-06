@@ -148,6 +148,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Css\Css\StyleSheet1.css" />
     <Content Include="Css\Font\css\font-awesome.css" />
     <Content Include="Css\Font\css\font-awesome.min.css" />
@@ -157,6 +159,7 @@
     <Content Include="Css\Image\logo.ico" />
     <Content Include="Css\Image\qq-group.png" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -167,6 +170,11 @@
     <Content Include="Css\Font\font\fontawesome-webfont.woff" />
     <Content Include="Css\Font\font\fontawesome-webfont.woff2" />
     <Content Include="Css\Font\font\FontAwesome.otf" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
