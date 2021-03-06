@@ -1,10 +1,11 @@
-﻿using System;
+﻿using SRV.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace fg.Controllers
+namespace MVC.Controllers
 {
     public class PlanController : Controller
     {
