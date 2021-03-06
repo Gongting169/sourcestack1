@@ -217,6 +217,8 @@
     <Content Include="Views\Register\RegisterPartial.cshtml" />
     <Content Include="Views\Task\History.cshtml" />
     <Content Include="Views\Task\Month.cshtml" />
+    <Content Include="Views\Password\Change.cshtml" />
+    <Content Include="Views\Email\Activate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

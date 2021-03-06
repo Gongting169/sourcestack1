@@ -68,12 +68,14 @@
     <Compile Include="ArticleSingleModel.cs" />
     <Compile Include="CategoryModel.cs" />
     <Compile Include="ContactEditModel.cs" />
+    <Compile Include="EmailModel.cs" />
     <Compile Include="KeywordModel.cs" />
     <Compile Include="LogOffModel.cs" />
     <Compile Include="LogOnModel.cs" />
     <Compile Include="MessageModel.cs" />
     <Compile Include="PlanNewModel.cs" />
     <Compile Include="ProfileWriteModel.cs" />
+    <Compile Include="PwdChangeModel.cs" />
     <Compile Include="PwdForgetModel.cs" />
     <Compile Include="RegisterModel.cs" />
     <Compile Include="SaleModel.cs" />
