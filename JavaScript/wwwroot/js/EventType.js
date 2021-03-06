@@ -251,14 +251,3 @@ function myselfDefine(event)
 
 
 
-
-var length2 = document.getElementById("Keywords").childElementCount;
-for (var k = 0; k < length2; k++)
-{
-    document.getElementById("Keywords").children[k].addEventListener("click", disappear); //删除关键字
-}
-function disappear()
-{
-    document.getElementById("Keywords")
-        .getElementsByClassName("badge badge-pill badge-dark")[k].remove();
-}
