@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,36 @@ namespace DbFactory
 {
     public class UserFactory
     {
+        User user = new User();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

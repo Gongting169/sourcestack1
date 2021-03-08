@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,10 @@ namespace DbFactory
     {
         static void Main(string[] args)
         {
+            SqlDbContext context = new SqlDbContext();
+            context.Database.Delete();
+            context.Database.Create();
+
         }
     }
 }
