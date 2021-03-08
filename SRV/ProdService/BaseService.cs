@@ -22,7 +22,13 @@ namespace SRV.ProdService
         static BaseService()
         {
             config = new MapperConfiguration
-                (cfg => cfg.CreateMap<Article, ArticleNewModel>());
+                (cfg => 
+                {
+                    cfg.CreateMap<Article, ArticleNewModel>().ReverseMap();
+                    cfg.CreateMap<User, UserModel>().ReverseMap();
+                    
+                }
+            );
         }
         protected IMapper mapper
         {

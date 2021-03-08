@@ -44,7 +44,7 @@
                             <a href="/User/Inviters" title="点击由系统推荐">没有邀请人</a> )
                         </label>
                         @Html.TextBoxFor(m => m.InvitedByName, new { @class = "form-control", placeholder = "他的用户名，模糊查询只能从头开始" })
-                        @Html.ValidationMessageFor(m => m.InvitedByName )
+                        @Html.ValidationMessageFor(m => m.InvitedByName)
                     </div>
                     <div style="margin-top :30px;" class="form-group ">
                         <label>邀请码:  （*必填）</label>

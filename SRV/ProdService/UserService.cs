@@ -1,4 +1,5 @@
-﻿using BLL.Entities;
+﻿using AutoMapper;
+using BLL.Entities;
 using BLL.Repositories;
 using GLB.Global;
 using SRV.ServiceInterface;
@@ -32,11 +33,10 @@ namespace SRV.ProdService
         public UserModel GetByName(string name)
         {
             User user = userRepository.GetByName(name);
-            return new UserModel()
-            {
-                Name = user.Name,
-                InvitedByName = user.InvitedBy.Name
-            };
+            MapperConfiguration config = new MapperConfiguration(cfg =>cfg.CreateMap<User,UserModel>());
+            IMapper mapper = config.CreateMapper();
+            UserModel model = Mapper.Map<UserModel>(user);
+            return model;
         }
 
         public string GetPwdById(int id)

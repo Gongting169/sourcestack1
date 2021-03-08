@@ -24,7 +24,10 @@ namespace SRV.ProdService
 
         public ArticleSingleModel GetById(int id)
         {
-            throw new NotImplementedException();
+            Article article = articleRepository.Find(id);
+            MapperConfiguration config = new MapperConfiguration(cfg => cfg.CreateMap<Article, ArticleSingleModel>());
+            IMapper mapper = config.CreateMapper();
+            return mapper.Map<ArticleSingleModel>(article);
         }
         public int Publish(ArticleNewModel articleNewModel/*, int currentUserId*/)
         {
@@ -34,7 +37,7 @@ namespace SRV.ProdService
             }
             Article article1 = articleRepository.Find(GetCurrentUser().Id);
 
-            User author = GetCurrentUser();           
+            User author = GetCurrentUser();
             ArticleNewModel model = mapper.Map<ArticleNewModel>(article1);
             Article article = new Article()
             {
