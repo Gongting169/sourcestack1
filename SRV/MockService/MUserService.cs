@@ -10,6 +10,11 @@ namespace SRV.MockService
 {
     public class MUserService : IUserService
     {
+        public string GetByInvitedCode(string invitedCode)
+        {
+            throw new NotImplementedException();
+        }
+
         public UserModel GetByName(string name)
         {
             throw new NotImplementedException();
@@ -19,20 +24,11 @@ namespace SRV.MockService
         {
             throw new NotImplementedException();
         }
-
-        public void LogOnValidate(LogOnModel logOnModel)
-        {
-            throw new NotImplementedException();
-        }
-
         public int Register(RegisterModel registerModel)
         {
             return 986;
         }
 
-        public void RegisterValidate(RegisterModel registerModel)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

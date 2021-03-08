@@ -8,11 +8,11 @@ namespace SRV.ViewModel
 {
     public class RegisterModel
     {
-        [StringLength(25, ErrorMessage = "* 用户名的长度不能大于20", MinimumLength = 1)]
+        [StringLength(256, ErrorMessage = "* 用户名的长度不能大于20", MinimumLength = 1)]
         [Required(ErrorMessage = "* 用户名不能为空")]
         public string Name { get; set; }
 
-        [StringLength(25, ErrorMessage = "* 密码的长度不能大于20,小于4", MinimumLength = 4)]
+        [StringLength(50, ErrorMessage = "* 密码的长度不能大于20,小于4", MinimumLength = 4)]
         [Required(ErrorMessage = "* 密码不能为空")]
         public string Password { get; set; }
 
@@ -22,9 +22,9 @@ namespace SRV.ViewModel
         [Required(ErrorMessage = "* 邀请码不能为空")]
         public string InvitedCode { get; set; }
 
-        [StringLength(25, ErrorMessage = "* 邀请人的长度不能大于20", MinimumLength = 1)]
+        [StringLength(256, ErrorMessage = "* 邀请人的长度不能大于20", MinimumLength = 1)]
         [Required(ErrorMessage = "* 邀请人不能为空")]
-        public string InvitedBy { get; set; }
+        public string InvitedByName { get; set; }
 
         [StringLength(6, ErrorMessage = "验证码的长度只能为4", MinimumLength = 4)]
         [Required(ErrorMessage = "* 验证码不能为空")]

@@ -23,12 +23,12 @@ namespace BLL.Repositories
             return dbSet.Where(u => u.Password == password)
                 .SingleOrDefault();
         }
-        public User GetByInvitedCode(int invitedCode)
+        public User GetByInvitedCode(string  invitedCode)
         {
             return dbSet.Where(u => u.InvitedBy.InvitedCode == invitedCode)
                 .SingleOrDefault();
         }
-        public User GetByInvited(string invitedBy)
+        public User GetByInvitedBy(string invitedBy)
         {
             return dbSet.Where(u => u.InvitedBy.Name == invitedBy)
                 .SingleOrDefault();

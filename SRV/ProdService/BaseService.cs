@@ -28,7 +28,6 @@ namespace SRV.ProdService
         {
             get { return config.CreateMapper(); }
         }
-
         public BaseService()
         {
             userRepository = new UserRepository(Context);
@@ -79,7 +78,6 @@ namespace SRV.ProdService
                 }
             }
         }
-
         public User GetCurrentUser()//是从cookie里面取值，取出user来
         {
             NameValueCollection userInfo = HttpContext.Current.Request.Cookies[Keys.User].Values;

@@ -20,6 +20,36 @@ namespace MVC.Controllers
         [HttpPost]
         public ActionResult Home(RegisterModel registerModel)
         {
+            if (!ModelState.IsValid)
+            {
+                TempData["e"] = ModelState;
+                return RedirectToAction("Home");
+            }
+            if (TempData["e"] != null)
+            {
+                ModelState.Merge(TempData["e"] as ModelStateDictionary);
+            }
+            if (registerModel.ComfirmPassword != registerModel.Password)
+            {
+                ModelState.AddModelError(nameof(registerModel.ComfirmPassword), "两次输入的密码不一致");
+                return RedirectToAction("Home");
+            }
+            if (userService.GetByName(registerModel.Name) != null )
+            {
+                ModelState.AddModelError(nameof(registerModel.Name), " 输入的用户名已重复");
+                return RedirectToAction("Home");
+            }
+            if (userService.GetByName(registerModel.InvitedByName) == null)
+            {
+                ModelState.AddModelError(nameof(registerModel.InvitedByName), " 邀请人不存在");
+                return RedirectToAction("Home");
+            }
+            if (userService.GetByInvitedCode(registerModel.InvitedCode) == null)
+            {
+                ModelState.AddModelError(nameof(registerModel.InvitedCode), " 邀请人的邀请码不存在");
+                return RedirectToAction("Home");
+            }
+
             //bool hasLogIn = int.TryParse(Request.Cookies[Keys.User].Value, out int currentUserId);
             //if (hasLogIn)
             //{
@@ -47,10 +77,6 @@ namespace MVC.Controllers
         [HttpGet]
         public ActionResult Home()
         {
-            //if (TempData["e"] != null)
-            //{
-            //    ModelState.Merge(TempData["e"] as ModelStateDictionary);
-            //}
             return View();
         }
     }

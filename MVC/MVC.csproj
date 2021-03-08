@@ -171,6 +171,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="JsFile\Register.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Css\Font\font\fontawesome-webfont.eot" />
@@ -236,6 +237,7 @@
     <Content Include="Views\Task\Month.cshtml" />
     <Content Include="Views\Password\Change.cshtml" />
     <Content Include="Views\Email\Activate.cshtml" />
+    <Content Include="Views\Shared\MessagePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

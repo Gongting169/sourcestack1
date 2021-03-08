@@ -19,48 +19,6 @@ namespace SRV.ProdService
         {
             userRepository = new UserRepository(Context);
         }
-        public void RegisterValidate(RegisterModel registerModel)
-        {
-            //if (!ModelState.IsValid)
-            //{
-            //    TempData["e"] = ModelState;
-            //    return RedirectToAction("Home");
-            //}
-            //if (registerModel.ComfirmPassword != registerModel.Password)
-            //{
-            //    ModelState.AddModelError(nameof(registerModel.ComfirmPassword), "两次输入的密码不一致");
-            //    return RedirectToAction("Home");
-            //}
-            //if (userRepository.GetByName(registerModel.Name) != null)
-            //{
-            //    ModelState.AddModelError(nameof(registerModel.Name), " 输入的用户名已重复");
-            //    return RedirectToAction("Home");
-            //}
-            //if (userRepository.GetByName(registerModel.InvitedBy) == null)
-            //{
-            //    ModelState.AddModelError(nameof(registerModel.InvitedBy), " 邀请人不存在");
-            //    return RedirectToAction("Home");
-            //}
-            //if (userRepository.GetByInvitedCode(registerModel.InvitedCode) == null)
-            //{
-            //    ModelState.AddModelError(nameof(registerModel.InvitedCode), " 邀请人的邀请码不存在");
-            //    return RedirectToAction("Home");
-            //}
-        }
-        public void LogOnValidate(LogOnModel logOnModel)
-        {
-            //    if (userRepository.GetByName(logOnModel.Name) == null)
-            //    {
-            //        ModelState.AddModelError(nameof(logOnModel.Name), "用户名不存在");
-            //        return View();
-            //    }
-            //    if (logOnModel.Password != userRepository.GetByPassword(logOnModel.Password).ToString())
-            //    {
-            //        ModelState.AddModelError(nameof(logOnModel.Password), "输入的密码或用户名错误");
-            //        return View();
-            //    }
-        }
-
         public int Register(RegisterModel registerModel)
         {
             User user = new User()
@@ -73,12 +31,24 @@ namespace SRV.ProdService
 
         public UserModel GetByName(string name)
         {
-            throw new NotImplementedException();
+            User user = userRepository.GetByName(name);
+            return new UserModel()
+            {
+                Name = user.Name,
+                InvitedByName = user.InvitedBy.Name
+            };
         }
 
         public string GetPwdById(int id)
         {
             throw new NotImplementedException();
         }
+
+        public string GetByInvitedCode( string invitedCode)
+        {
+            return new RegisterModel().InvitedCode;
+        }
+
+
     }
 }
