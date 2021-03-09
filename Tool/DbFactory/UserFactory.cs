@@ -38,7 +38,7 @@ namespace DbFactory
             xiaowei.Register();
             _context.Users.Add(xiaowei);
             _context.SaveChanges();
-            //UserRepository userRepository = new UserRepository( );
+            //UserRepository userRepository = new UserRepository(Helper.GetDbContext1());
             //userRepository.Save(xiaowei);
             return xiaowei;
   

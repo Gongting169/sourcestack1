@@ -16,7 +16,7 @@ namespace BLL.Repositories
 
     public class SqlDbContext : DbContext
     {
-        public SqlDbContext() : base("17bang")
+        public SqlDbContext() : base("18bang")
         {
             Database.Log = s => Debug.WriteLine(s);
         }
