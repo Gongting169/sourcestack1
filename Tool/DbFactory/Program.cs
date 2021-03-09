@@ -12,8 +12,11 @@ namespace DbFactory
         static void Main(string[] args)
         {
             SqlDbContext context = new SqlDbContext();
-            context.Database.Delete();
-            context.Database.Create();
+            context.SaveChanges();
+            Helper.GetDbContext1().Database.Delete();
+            Helper.GetDbContext1().Database.Create();
+
+            UserFactory.Creat();
 
         }
     }
