@@ -1,13 +1,14 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title </title>
     <link rel="shortcut icon" type="image/ico" href="~/Css/Image/logo-big.ico" media="screen" />
-    <link rel="stylesheet" href="~/Content/font-awesome.css"/>
+    <link rel="stylesheet" href="~/Content/font-awesome.css" />
     <link rel="stylesheet" href="~/Css/Css/StyleSheet1.css" />
-    <link rel="stylesheet" href="~/Content/bootstrap.css"/>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
 </head>
 <body>
     <header>
@@ -19,7 +20,7 @@
                 <p class="navbar-text pull-left">
                     <span style="font-size:20px; font-weight:800;">一起帮</span>
                     <span class="visible-md-inline visible-lg-inline">·网络互助平台</span>
-                </p> 
+                </p>
                 <a class="navbar-text pull-left" style="font-size:18px; margin-left:10px;" href="">
                     <span class="fa fa-bell  pull-left fa-2x " style="color:darkblue;font-size:2.1rem;" yqBang-bell=""></span>
                 </a>
@@ -82,7 +83,7 @@
                                     <a href="#"><span class="fa fa-list"></span> 我的督促</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="iconfont icon-money" ></i> 未交作业</a>
+                                    <a href="#"><i class="iconfont icon-money"></i> 未交作业</a>
                                 </li>
                             </ul>
                         </li>
@@ -104,117 +105,34 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                                role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-user-circle-o" aria-hidden="true"></i> DK
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>未登录
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#"><span class="fa fa-list fa-fw"></span> 新手任务</a>
+                                    <a href="#"><span class="fa fa-sign-in"></span> 登录 </a>
                                 </li>
                                 <li>
-                                    <a href="#"><span class="fa fa-home fa-fw"></span> 我的主页</a>
+                                    <a href="#"><span class="fa fa-registered"></span> 注册 </a>
                                 </li>
-                                <li role="separator" class="divider"></li>
+
                                 <li>
-                                    <a href="#">
-                                        <span class="icon-beans"><strong class="iconfont icon-beans"></strong> 帮帮豆</span>
-                                        <span zyf-nav-current-ballots="">13</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="water"><strong class="iconfont icon-beans"></strong> 帮帮点</span>
-                                        ：<span zyf-nav-current-credit="">182</span> 点 ②
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="credit"><span class="iconfont icon-money"></span> 帮帮币</span>
-                                        ：<span zyf-nav-current-money="">0</span> 枚
-                                    </a>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li class="dropdown-header">
-                                    <span class="fa fa-pencil-square-o fa-fw"></span> 修改
-                                </li>
-                                <li>
-                                    <a href="#"><span class="fa fa-lock fa-fw"></span> 我的密码</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="fa fa-envelope fa-fw"></span>联系方式</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="fa fa-camera fa-fw"></span> 个人资料</a>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <a href="#"><span class="fa fa-sign-out"></span> 退出登录</a>
+                                    <a href="#"><span class="fa fa-lock"> 忘记密码</span> </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                               role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-tachometer" aria-hidden="true"></i>  后台
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#"><span class="fa fa-user-plus fa-fw"></span> 邀请注册</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="fa fa-bell fa-fw"></span> 我的消息</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="fa fa-file-o fa-fw"></span> 我的草稿</a>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li class="dropdown-header"> 广告推广</li>
-                                <li>
-                                    <a href="#"><span class="fa fa-link"></span> 联系方式</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="fa fa-link"></span> 侧边栏</a>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li class="dropdown-header"> 帮帮币</li>
-                                <li>
-                                    <a href="#"><i class="iconfont icon-shopping-cart-buy"></i> 购买</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="iconfont icon-shopping-cart-sell"></i> 出售</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="fa fa-list"></span> 已购买</a>
-                                </li>
-                                <li>
-                                    <a href="#"><span class="fa fa-list"></span> 已出售</a>
-                                </li>
-                            </ul>
-                        </li>
+
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    @Html.Partial("MessagePartial")
+    <div style=" margin-top:60px;border-width:170px;">
+        @Html.Partial("MessagePartial")
+    </div>  
     <main class="container" style="margin-top:100px">
         @RenderBody()
     </main>
-    <div class="container">
-        <div class="row">
-            <a href="#" class="btn btn-primary text-center" style="position: fixed;bottom: 150px;right:38px">
-                <span class="fa fa-question-circle-o"></span>
-                <br />
-                帮助
-            </a>
-            <a href="#" class=" btn btn-primary  text-center" style="position:fixed;bottom:85px; right:38px">
-                <span class="fa fa-comments-o"></span>
-                <br />
-                反馈
-            </a>
-        </div>
-    </div>
     <footer>
         <div class="container" style=" margin-top:10px">
             <div class="row">
@@ -247,3 +165,4 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
 </html>
+
