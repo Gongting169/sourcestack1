@@ -33,9 +33,7 @@ namespace SRV.ProdService
         public UserModel GetByName(string name)
         {
             User user = userRepository.GetByName(name);
-            MapperConfiguration config = new MapperConfiguration(cfg =>cfg.CreateMap<User,UserModel>());
-            IMapper mapper = config.CreateMapper();
-            UserModel model = Mapper.Map<UserModel>(user);
+            UserModel model = mapper.Map<UserModel>(user);
             return model;
         }
 

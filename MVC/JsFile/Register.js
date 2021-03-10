@@ -1,24 +1,33 @@
 ﻿
-
-$.ajax({
-    url: "Register/Home",
-    beforeSend: function (event)
+$(document).ready(
+    function ()
     {
-       
-    },
-    success: function (data)
-    {
+        $('#UserName').change(function ()
+        {
+            var sname = this.value;
 
-    },
-    error: function (jqxhR,textStatus,errorThrown)
-    {
+            $.ajax({
+                url: "/Register/Home",
+                method: "Post",
+                beforeSend: function (event)
+                {
 
-    },
-    complete: function ()
-    {
+                },
+                success: function (data)
+                {
+                },
+                error: function (jqxhR, textStatus, errorThrown)
+                {
+                    console.log(jqxhR);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                }
+            });
+        })
+    })
 
-    }
-});
+
+
 
 
 

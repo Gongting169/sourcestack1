@@ -25,9 +25,8 @@ namespace SRV.ProdService
         public ArticleSingleModel GetById(int id)
         {
             Article article = articleRepository.Find(id);
-            MapperConfiguration config = new MapperConfiguration(cfg => cfg.CreateMap<Article, ArticleSingleModel>());
-            IMapper mapper = config.CreateMapper();
-            return mapper.Map<ArticleSingleModel>(article);
+            ArticleSingleModel singleModel = mapper.Map<ArticleSingleModel>(article);
+            return singleModel ;
         }
         public int Publish(ArticleNewModel articleNewModel/*, int currentUserId*/)
         {

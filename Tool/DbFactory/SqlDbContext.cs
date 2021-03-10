@@ -16,18 +16,18 @@ namespace DbFactory
             Database.Log = Console.WriteLine;
             Database.Log = s => Debug.Write(s);
         }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Email> Emails { get; set; }
-        public DbSet<Article> Articles { get; set; }
-        public DbSet<Problem> Problems { get; set; }
-        public DbSet<Suggest> Suggests { get; set; }
-        public DbSet<Content> Contents { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<Appraise> Appraises { get; set; }
-        public DbSet<Keyword> KeyWords { get; set; }
-        public DbSet<Summary> Summaries { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<BPoint> BPoints { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Email> Email { get; set; }
+        public DbSet<Article> Article { get; set; }
+        public DbSet<Problem> Problem { get; set; }
+        public DbSet<Suggest> Suggest { get; set; }
+        public DbSet<Content> Content { get; set; }
+        public DbSet<Comment> Comment { get; set; }
+        public DbSet<Appraise> Appraise { get; set; }
+        public DbSet<Keyword> KeyWord { get; set; }
+        public DbSet<Summary> Summarie { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<BPoint> BPoint { get; set; }
         public DbSet<BMoney> BMoney { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

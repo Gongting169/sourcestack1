@@ -34,7 +34,7 @@ namespace MVC.Controllers
                 ModelState.AddModelError(nameof(registerModel.ComfirmPassword), "两次输入的密码不一致");
                 return RedirectToAction("Home");
             }
-            if (userService.GetByName(registerModel.Name) != null )
+            if (userService.GetByName(registerModel.Name) != null)
             {
                 ModelState.AddModelError(nameof(registerModel.Name), " 输入的用户名已重复");
                 return RedirectToAction("Home");
@@ -49,7 +49,6 @@ namespace MVC.Controllers
                 ModelState.AddModelError(nameof(registerModel.InvitedCode), " 邀请人的邀请码不存在");
                 return RedirectToAction("Home");
             }
-
             //bool hasLogIn = int.TryParse(Request.Cookies[Keys.User].Value, out int currentUserId);
             //if (hasLogIn)
             //{
@@ -59,11 +58,11 @@ namespace MVC.Controllers
             //{
 
             //}
-            int userId = userService.Register(registerModel);
-            HttpCookie cookie = new HttpCookie(Keys.User, userId.ToString());
-            cookie.Values.Add(Keys.Id, userId.ToString());
-            cookie.Values.Add(Keys.Password, registerModel.Password.MD5EnCrypt());
-            Response.Cookies.Add(new HttpCookie(Keys.User, userId.ToString()));
+            //int userId = userService.Register(registerModel);
+            //HttpCookie cookie = new HttpCookie(Keys.User, userId.ToString());
+            //cookie.Values.Add(Keys.Id, userId.ToString());
+            //cookie.Values.Add(Keys.Password, registerModel.Password.MD5EnCrypt());
+            //Response.Cookies.Add(new HttpCookie(Keys.User, userId.ToString()));
             //userService.RegisterValidate(registerModel);
             //User user = new User()
             //{
@@ -72,12 +71,30 @@ namespace MVC.Controllers
             //};
             //user.Register();
             //int id = userRepository.Save(user);
-            return View();
+            UserModel user = userService.GetByName(registerModel.Name);
+            return Json (user);
         }
         [HttpGet]
         public ActionResult Home()
         {
             return View();
         }
+        [HttpPost]
+        public JsonResult Check(string name )
+        {
+            if (userService.GetByName(name) == null)
+            {
+                return Json("请输入用户名");
+            }
+            else if (userService.GetByName(name) != null)
+            {
+                return Json("用户名已重复");
+            }
+            else
+            {
+                return Json(true);
+            }
+        }
+
     }
 }
