@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+<div>
+    @foreach (var item in ViewData.Model)
+    {
+
+    <div zyf-search-username-result="">
+        <div>
+            <div class="user-search-result-row">
+                <div class="user-search-result-cell radio">
+                    <label>
+                        <input name="SelectedUserId" type="radio" checked="checked" value="18">
+                        @item.
+                    </label>
+                </div>
+                <div class="user-search-result-cell">
+                    <a href="/User/18"><span class="fa fa-hand-o-right"></span> 主页</a>
+                </div>
+            </div>
+            <div class="user-search-result-row">
+                <div class="user-search-result-cell radio">
+                    <label>
+                        <input name="SelectedUserId" type="radio" value="122">
+                        Dk3807
+                    </label>
+                </div>
+                <div class="user-search-result-cell">
+                    <a href="/User/122"><span class="fa fa-hand-o-right"></span> 主页</a>
+                </div>
+            </div>
+            <div class="user-search-result-row">
+                <div class="user-search-result-cell radio">
+                    <label>
+                        <input name="SelectedUserId" type="radio" value="4162">
+                        dkarhyo
+                    </label>
+                </div>
+                <div class="user-search-result-cell">
+                    <a href="/User/4162"><span class="fa fa-hand-o-right"></span> 主页</a>
+                </div>
+            </div>
+            <div class="user-search-result-row">
+                <div class="user-search-result-cell radio">
+                    <label>
+                        <input name="SelectedUserId" type="radio" value="2621">
+                        dkdk
+                    </label>
+                </div>
+                <div class="user-search-result-cell">
+                    <a href="/User/2621"><span class="fa fa-hand-o-right"></span> 主页</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+

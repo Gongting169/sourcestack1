@@ -50,8 +50,9 @@ namespace Captcha
                 }
                 //画图片的边框线
                 g.DrawRectangle(new Pen(Color.Silver), 0, 0, image.Width - 1, image.Height - 1);
-                //保存图片数据
-                image.Save(@"D:\YUANZHAN作业\Photo.jpg", ImageFormat.Jpeg);
+            //保存图片数据         
+            string pathString = @"D:\Captcha\ImageCaptchaCode";
+                image.Save(pathString, ImageFormat.Jpeg);
 
         }
     }

@@ -16,7 +16,6 @@ namespace Captcha
             captcha2.create();
 
 
-
         }
 
 

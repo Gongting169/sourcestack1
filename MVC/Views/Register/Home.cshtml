@@ -43,7 +43,13 @@
                             邀请人:  (*必填 ，
                             <a href="/User/Inviters" title="点击由系统推荐">没有邀请人</a> )
                         </label>
-                        @Html.TextBoxFor(m => m.InvitedByName, new { @class = "form-control", placeholder = "他的用户名，模糊查询只能从头开始" })
+                        @Html.TextBoxFor(m => m.InvitedByName, new { @class = "form-control", placeholder = "他的用户名，模糊查询只能从头开始",id="InvitedByName"})
+                        <div style=" display:none;">
+                            @*@foreach (var item in )
+                            {
+
+                            }*@
+                        </div>
                         @Html.ValidationMessageFor(m => m.InvitedByName)
                     </div>
                     <div style="margin-top :30px;" class="form-group ">
@@ -70,16 +76,22 @@
                 <div class="form-group ">
                     <label>验证码:  (*必填）</label>
                     <br />
-                    <span>
-                        @Html.TextBoxFor(m => m.Captcha, new
-                        {
-                            style = "width :100px;display:inline ",
-                            size = "4",
-                            @class = "form-control d-inline"
-                        })
-                        <span>点击输入框显示</span>
+                    @Html.TextBoxFor(m => m.Captcha, new
+                    {
+                        style = "width :100px;display:inline ",
+                        size = "4",
+                        @class = "form-control d-inline",
+                        id = "CaptchaCode",
+                        yqbang_captcha = " "
+                    })
+                    <img id="imgCode" style="height: 24px; vertical-align:middle; display:none;" />
+                    <span style=" margin-left: 5px; margin-top: 10px; display:none;" yqbang_refresh_captcha=" ">
+                        <a style=" font-size:12px;">看不清，换一张</a>
                     </span>
+                    <span yqbang_captcha_hide=" ">点击输入框显示</span>
+                    <div>
                     @Html.ValidationMessageFor(m => m.Captcha)
+                </div>
                 </div>
                 <input type="submit" class="btn btn-primary" value="提交" />
                 <button type="reset" style="background-color: #e6e6e6" class="btn btn-default">重置</button>

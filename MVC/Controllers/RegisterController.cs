@@ -71,8 +71,7 @@ namespace MVC.Controllers
             //};
             //user.Register();
             //int id = userRepository.Save(user);
-            UserModel user = userService.GetByName(registerModel.Name);
-            return Json (user);
+            return View();
         }
         [HttpGet]
         public ActionResult Home()
@@ -80,21 +79,24 @@ namespace MVC.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult Check(string name )
+        public JsonResult Check(string name)
         {
-            if (userService.GetByName(name) == null)
+            if (userService.GetByName(name) != null)
             {
-                return Json("请输入用户名");
-            }
-            else if (userService.GetByName(name) != null)
-            {
-                return Json("用户名已重复");
-            }
-            else
-            {
-                return Json(true);
-            }
+                return Json("* 用户名已重复");
+            }//else nothing
+            return Json(true);
         }
-
+        public ActionResult GetInvitedByResult(RegisterModel registerModel)
+        {
+            ViewData.Model = userService.GetSerializeName(registerModel.Name);
+            return View(ViewData.Model);
+        }
+        public ActionResult ShowCode()
+        {
+            string code = Captcha.GenerateCode();
+            byte[] buffer = Captcha.create(code);
+            return File(buffer, @"image/jpeg");
+        }
     }
 }
