@@ -238,6 +238,7 @@
     <Content Include="Views\Email\Activate.cshtml" />
     <Content Include="Views\Shared\MessagePartial.cshtml" />
     <Content Include="Views\Shared\Layout\_Dual.cshtml" />
+    <Content Include="Views\Register\InvitedBySerializeName.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

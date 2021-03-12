@@ -22,11 +22,9 @@ namespace SRV.ProdService
         }
         public int Register(RegisterModel registerModel)
         {
-            User user = new User()
-            {
-                Name = registerModel.Name,
-                Password = registerModel.Password.MD5EnCrypt(),
-            };
+            User user = mapper.Map<User>(registerModel);
+            userRepository.Save(user);
+            user.Register();
             return user.Id;
         }
 
@@ -42,9 +40,16 @@ namespace SRV.ProdService
             throw new NotImplementedException();
         }
 
-        public string GetByInvitedCode( string invitedCode)
+        public string GetByInvitedCode(string invitedCode)
         {
             return new RegisterModel().InvitedCode;
+        }
+
+        public List<RegisterModel> GetSerializeName(string name)
+        {
+            List<RegisterModel> model = mapper
+                .Map<List<RegisterModel>>(userRepository.GetSerializeName(name));
+            return model;
         }
 
 

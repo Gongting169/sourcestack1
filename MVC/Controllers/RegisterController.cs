@@ -63,14 +63,7 @@ namespace MVC.Controllers
             //cookie.Values.Add(Keys.Id, userId.ToString());
             //cookie.Values.Add(Keys.Password, registerModel.Password.MD5EnCrypt());
             //Response.Cookies.Add(new HttpCookie(Keys.User, userId.ToString()));
-            //userService.RegisterValidate(registerModel);
-            //User user = new User()
-            //{
-            //    Name = registerModel.Name,
-            //    Password = registerModel.Password
-            //};
-            //user.Register();
-            //int id = userRepository.Save(user);
+            userService.Register(registerModel);
             return View();
         }
         [HttpGet]
@@ -87,10 +80,10 @@ namespace MVC.Controllers
             }//else nothing
             return Json(true);
         }
-        public ActionResult GetInvitedByResult(RegisterModel registerModel)
-        {
-            ViewData.Model = userService.GetSerializeName(registerModel.Name);
-            return View(ViewData.Model);
+        public ActionResult InvitedBySerializeName(RegisterModel registerModel)
+        {      
+            List<RegisterModel> models = userService.GetSerializeName(registerModel.InvitedByName);          
+            return View(models);
         }
         public ActionResult ShowCode()
         {

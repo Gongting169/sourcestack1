@@ -1,18 +1,14 @@
 ﻿
-
-
 ///在邀请人这一栏输入，就可以得到一系列的用户名 已什么开头的用户
 $(document).ready(function ()
 {
     $('#InvitedByName').blur(function ()
     {
         var $this = $(this);
-        console.log($this.val());
         $.ajax({
-            url: "/Register/GetResult",
+            url: "/Register/InvitedBySerializeName",
             method: "POST",
             data: { InvitedByName: $this.val() },
-            
             beforeSend: function ()
             {
 
@@ -20,21 +16,34 @@ $(document).ready(function ()
             success: function (data)
             {
                 var $data = $(data);
-                console.log($data.serialize());
-                console.log(data);
-                
+                $("[yqbang_invitedByName_serialize]").append($data);
+                //$("[yqbang_invitedByName]").click(function ()
+                //{
+                //    $this = $(this);
+                //    if ($this.attr("checked") === "checked")
+                //    {
+                //        $('#InvitedByName').val() = $this.attr("checked").text();
+                //    }//else nothing 
+                //})
+
+                //$this.blur(function ()
+                //{
+                //    $("[yqbang_invitedbyname_serialize]").remove();
+                //})
 
             },
-            error: function ()
+            error: function (e, t, x)
             {
-
+                console.log(e);
+                console.log(t);
+                console.log(x);
             },
             complete: function ()
             {
 
             }
         })
-  })
+    })
 })
 /// 验证码
 $(document).ready(function ()

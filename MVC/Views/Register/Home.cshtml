@@ -44,11 +44,8 @@
                             <a href="/User/Inviters" title="点击由系统推荐">没有邀请人</a> )
                         </label>
                         @Html.TextBoxFor(m => m.InvitedByName, new { @class = "form-control", placeholder = "他的用户名，模糊查询只能从头开始",id="InvitedByName"})
-                        <div style=" display:none;">
-                            @*@foreach (var item in )
-                            {
+                        <div yqbang_invitedByName_serialize=" " >
 
-                            }*@
                         </div>
                         @Html.ValidationMessageFor(m => m.InvitedByName)
                     </div>

@@ -1,0 +1,26 @@
+﻿@model List<SRV.ViewModel.RegisterModel>
+@{
+    ViewBag.Title = "View";
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+            <div yqbang_search_username_result="">
+                <div >
+                    <div class="user-search-result-row">
+                        <div class="user-search-result-cell radio">
+                            <label id="InputValue">
+                                <input name="SelectedUserId" type="radio" checked=""  yqbang_invitedByName =" ">
+                                @item.Name
+                            </label>
+                        </div>
+                    </div>
+                    <span class="user-search-result-cell" style=" padding-left:20px;">
+                        <a href="/User/18"><span class="fa fa-hand-o-right"></span> 主页</a>
+                    </span>
+                </div>
+            </div>
+}
+
+
+
