@@ -23,7 +23,7 @@ namespace BLL.Repositories
             return dbSet.Where(u => u.Password == password)
                 .SingleOrDefault();
         }
-        public User GetByInvitedCode(string  invitedCode)
+        public User GetByInvitedCode(string invitedCode)
         {
             return dbSet.Where(u => u.InvitedBy.InvitedCode == invitedCode)
                 .SingleOrDefault();
@@ -32,6 +32,14 @@ namespace BLL.Repositories
         {
             return dbSet.Where(u => u.InvitedBy.Name == invitedBy)
                 .SingleOrDefault();
+        }
+
+        public List<User> GetSerializeName(string name1)
+        {
+            List<User> users = new List<User>();
+            var query = dbSet
+                .Where(u => u.InvitedBy.Name.StartsWith(name1.Trim()));
+            return query.ToList();
         }
 
     }

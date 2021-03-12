@@ -5,12 +5,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SRV.ViewModel 
+namespace SRV.ViewModel
 {
     public class RegisterModel
-    { 
-        [Remote("Check", "Register",HttpMethod ="post",ErrorMessage = "* 用户名已重复")]
-        [StringLength(20,ErrorMessage ="* 用户名的长度不能大于20")]  
+    {
+        [Remote("Check", "Register", HttpMethod = "post")]
+        [StringLength(20, ErrorMessage = "* 用户名的长度不能大于20")]
         [Required(ErrorMessage = "* 用户名不能为空")]
         public string Name { get; set; }
 
@@ -25,7 +25,7 @@ namespace SRV.ViewModel
         public string InvitedCode { get; set; }
 
 
-        [MaxLength(20,ErrorMessage ="* 邀请人的长度不能大于20")]
+        [MaxLength(20, ErrorMessage = "* 邀请人的长度不能大于20")]
         [Required(ErrorMessage = "* 邀请人不能为空")]
         public string InvitedByName { get; set; }
 
@@ -36,9 +36,8 @@ namespace SRV.ViewModel
 
         [StringLength(25, ErrorMessage = "* 确认密码的长度不能小于4,大于20", MinimumLength = 1)]
         [Required(ErrorMessage = "* 确认密码不能为空")]
-        [System.ComponentModel.DataAnnotations.Compare(nameof(Password),ErrorMessage ="* 密码与确认密码不一致")]
+        [System.ComponentModel.DataAnnotations.Compare(nameof(Password), ErrorMessage = "* 密码与确认密码不一致")]
         public string ComfirmPassword { get; set; }
-
 
 
 

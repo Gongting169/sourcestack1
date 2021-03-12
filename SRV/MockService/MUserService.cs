@@ -24,11 +24,20 @@ namespace SRV.MockService
         {
             throw new NotImplementedException();
         }
+
+        public RegisterModel GetSerializeName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public int Register(RegisterModel registerModel)
         {
             return 986;
         }
 
-
+        List<RegisterModel> IUserService.GetSerializeName(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

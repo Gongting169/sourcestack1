@@ -29,7 +29,7 @@ namespace CSharplearn
             //db.EnsureDeleted();
             //db.EnsureCreated();
             //context.SaveChanges();
-        
+            context.Users.Where(u => u.Name.StartsWith("小")).ToList();
            
         }
     }

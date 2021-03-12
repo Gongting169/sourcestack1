@@ -13,6 +13,6 @@ namespace SRV.ServiceInterface
         UserModel GetByName(string name);
         string GetPwdById(int id);
         string GetByInvitedCode(string invitedCode);
-
+       List<RegisterModel> GetSerializeName(string name);
     }
 }

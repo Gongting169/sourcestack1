@@ -17,6 +17,7 @@ namespace DbFactory
             Helper.GetDbContext1().Database.Create();
 
             UserFactory.Creat();
+            //Helper.GetDbContext1().User.Where(u =>u.InvitedBy.Name.StartsWith())
 
         }
     }

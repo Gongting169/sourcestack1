@@ -28,20 +28,19 @@ namespace DbFactory
 
         private static User Register(string name)
         {
-            User xiaowei = new User()
-            {
-                Name = name,
-                Password = pwd,
-                Id = 1,
+            User user = new User();
 
-            };
-            xiaowei.Register();
-            _context.User.Add(xiaowei);
+            user.Name = name;
+            user.Password = pwd;
+            user.Id = 1;
+
+            user.Register();
+            _context.User.Add(user);
             _context.SaveChanges();
             //UserRepository userRepository = new UserRepository(Helper.GetDbContext1());
             //userRepository.Save(xiaowei);
-            return xiaowei;
-  
+            return user;
+
 
 
         }
