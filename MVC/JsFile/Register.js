@@ -17,20 +17,19 @@ $(document).ready(function ()
             {
                 var $data = $(data);
                 $("[yqbang_invitedByName_serialize]").append($data);
-                //$("[yqbang_invitedByName]").click(function ()
-                //{
-                //    $this = $(this);
-                //    if ($this.attr("checked") === "checked")
-                //    {
-                //        $('#InvitedByName').val() = $this.attr("checked").text();
-                //    }//else nothing 
-                //})
-
+                $("input[name='SelectedUserId']").click(function ()
+                {
+                    var $this = $(this);
+                    if ($this.is(":checked"))
+                    {
+                        $('#InvitedByName').val() = " ";
+                        $('#InvitedByName').val() =  $("input[name='SelectedUserId'][checked]").val();
+                    }
+                })
                 //$this.blur(function ()
                 //{
                 //    $("[yqbang_invitedbyname_serialize]").remove();
                 //})
-
             },
             error: function (e, t, x)
             {

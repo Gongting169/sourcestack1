@@ -28,16 +28,20 @@ namespace SRV.ProdService
             return user.Id;
         }
 
-        public UserModel GetByName(string name)
+        public RegisterModel GetByRegisterName(string name)//注册时查找用户名
         {
-            User user = userRepository.GetByName(name);
-            UserModel model = mapper.Map<UserModel>(user);
+            RegisterModel model = mapper.Map<RegisterModel>(userRepository.GetByName(name));
             return model;
         }
-
-        public string GetPwdById(int id)
+        public LogOnModel GetByLogOnName(string name)//登录时查找用户名是否存在
         {
-            throw new NotImplementedException();
+            LogOnModel model = mapper.Map<LogOnModel>(userRepository.GetByName(name));
+            return model;
+        }
+        public string GetPassword(string password)
+        {
+            User user = userRepository.GetByPassword(password.MD5EnCrypt());
+            return user.Password;
         }
 
         public string GetByInvitedCode(string invitedCode)

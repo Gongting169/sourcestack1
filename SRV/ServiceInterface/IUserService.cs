@@ -10,9 +10,10 @@ namespace SRV.ServiceInterface
     public interface IUserService
     {
         int Register(RegisterModel registerModel);
-        UserModel GetByName(string name);
-        string GetPwdById(int id);
+        string  GetPassword(string password);
         string GetByInvitedCode(string invitedCode);
        List<RegisterModel> GetSerializeName(string name);
+        LogOnModel GetByLogOnName(string name);
+        RegisterModel GetByRegisterName(string name);
     }
 }

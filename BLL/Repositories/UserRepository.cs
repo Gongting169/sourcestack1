@@ -1,5 +1,6 @@
 ﻿using BLL.Entities;
 using BLL.Repositories;
+using GLB.Global;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,28 +16,29 @@ namespace BLL.Repositories
         }
         public User GetByName(string name)
         {
-            return dbSet.Where(u => u.Name == name)
-                .SingleOrDefault();
+            var query = dbSet.Where(u => u.Name == name);
+            return query.SingleOrDefault();
+
         }
         public User GetByPassword(string password)
         {
-            return dbSet.Where(u => u.Password == password)
-                .SingleOrDefault();
+            var query = dbSet.Where(u => u.Password == password.MD5EnCrypt());
+           return query.SingleOrDefault();
         }
         public User GetByInvitedCode(string invitedCode)
         {
-            return dbSet.Where(u => u.InvitedBy.InvitedCode == invitedCode)
-                .SingleOrDefault();
+            var user = dbSet.Where(u => u.InvitedBy.InvitedCode == invitedCode);
+            return user.SingleOrDefault();
         }
         public User GetByInvitedBy(string invitedBy)
         {
-            return dbSet.Where(u => u.InvitedBy.Name == invitedBy)
-                .SingleOrDefault();
+            var query = dbSet.Where(u => u.InvitedBy.Name == invitedBy);
+            return query.SingleOrDefault();
+
         }
 
         public List<User> GetSerializeName(string name1)
         {
-            List<User> users = new List<User>();
             var query = dbSet
                 .Where(u => u.InvitedBy.Name.StartsWith(name1.Trim()));
             return query.ToList();

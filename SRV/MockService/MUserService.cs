@@ -15,7 +15,17 @@ namespace SRV.MockService
             throw new NotImplementedException();
         }
 
+        public LogOnModel GetByLogOnName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
         public UserModel GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public RegisterModel GetByRegisterName(string name)
         {
             throw new NotImplementedException();
         }

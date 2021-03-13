@@ -75,6 +75,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\GLB\Global\Global.csproj">
+      <Project>{ca2bf9bf-7f8b-435c-b180-546866a899cf}</Project>
+      <Name>Global</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{1ee4a944-0c12-4768-8eec-7f4950778438}</Project>
       <Name>Entities</Name>

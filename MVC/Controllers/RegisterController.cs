@@ -34,12 +34,12 @@ namespace MVC.Controllers
                 ModelState.AddModelError(nameof(registerModel.ComfirmPassword), "两次输入的密码不一致");
                 return RedirectToAction("Home");
             }
-            if (userService.GetByName(registerModel.Name) != null)
+            if (userService.GetByRegisterName(registerModel.Name)!= null)
             {
                 ModelState.AddModelError(nameof(registerModel.Name), " 输入的用户名已重复");
                 return RedirectToAction("Home");
             }
-            if (userService.GetByName(registerModel.InvitedByName) == null)
+            if (userService.GetByRegisterName(registerModel.InvitedByName)  == null)
             {
                 ModelState.AddModelError(nameof(registerModel.InvitedByName), " 邀请人不存在");
                 return RedirectToAction("Home");
@@ -74,7 +74,7 @@ namespace MVC.Controllers
         [HttpPost]
         public JsonResult Check(string name)
         {
-            if (userService.GetByName(name) != null)
+            if (userService.GetByRegisterName(name)  != null)
             {
                 return Json("* 用户名已重复");
             }//else nothing

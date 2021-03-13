@@ -1,4 +1,5 @@
-﻿using SRV.ProdService;
+﻿using GLB.Global;
+using SRV.ProdService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
 using System;
@@ -30,17 +31,17 @@ namespace MVC.Controllers
             {
                 ModelState.Merge(TempData["e"] as ModelStateDictionary);
             }
-            if (userService.GetByName(logOnModel.Name) == null)
+            if (userService.GetByLogOnName(logOnModel.Name)  == null)
             {
                 ModelState.AddModelError(nameof(logOnModel.Name), "用户名不存在");
                 return View();
             }
-            //if (logOnModel.Password != userService.GetPwdById(logOnModel.) .GetByPassword(logOnModel.Password).ToString())
-            //{
-            //    ModelState.AddModelError(nameof(logOnModel.Password), "输入的密码或用户名错误");
-            //    return View();
-            //}
-            return View(new LogOnModel() { RememberMe = true });
+            if (logOnModel.Password.MD5EnCrypt() != userService.GetPassword(logOnModel.Password.MD5EnCrypt()))
+            {
+                ModelState.AddModelError(nameof(logOnModel.Password), "输入的密码或用户名错误");
+                return View();
+            }
+            return View();
         }
         [HttpGet]
         public ActionResult On()
