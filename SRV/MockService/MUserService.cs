@@ -30,7 +30,22 @@ namespace SRV.MockService
             throw new NotImplementedException();
         }
 
+        public int GetIdByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetPassword(string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public string GetPwdById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetPwdById(int? currentUserId)
         {
             throw new NotImplementedException();
         }
@@ -43,6 +58,11 @@ namespace SRV.MockService
         public int Register(RegisterModel registerModel)
         {
             return 986;
+        }
+
+        string  IUserService.GetPassword(string password)
+        {
+            throw new NotImplementedException();
         }
 
         List<RegisterModel> IUserService.GetSerializeName(string name)

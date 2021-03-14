@@ -22,26 +22,31 @@ namespace SRV.ProdService
         }
         public int Register(RegisterModel registerModel)
         {
-            User user = mapper.Map<User>(registerModel);
-            userRepository.Save(user);
+            User user = new User()
+            {
+                Name = registerModel.Name,
+                Password = registerModel.Password.MD5EnCrypt(),
+                InvitedCode = registerModel.InvitedCode,
+                InvitedBy = new User().InvitedBy            
+            };
             user.Register();
+            userRepository.Save(user);
             return user.Id;
         }
 
-        public RegisterModel GetByRegisterName(string name)//注册时查找用户名
+        public RegisterModel GetByRegisterName(string name)//注册时查找用户名 坚持per view per model
         {
             RegisterModel model = mapper.Map<RegisterModel>(userRepository.GetByName(name));
             return model;
         }
-        public LogOnModel GetByLogOnName(string name)//登录时查找用户名是否存在
+        public LogOnModel GetByLogOnName(string name)
         {
             LogOnModel model = mapper.Map<LogOnModel>(userRepository.GetByName(name));
             return model;
         }
         public string GetPassword(string password)
         {
-            User user = userRepository.GetByPassword(password.MD5EnCrypt());
-            return user.Password;
+         return  userRepository.GetByPassword(password);           
         }
 
         public string GetByInvitedCode(string invitedCode)
@@ -56,6 +61,15 @@ namespace SRV.ProdService
             return model;
         }
 
-
+        public string GetPwdById(int? currentUserId)
+        {
+            return userRepository.GetPwdById(currentUserId);
+        }
+         
+        public int GetIdByName(string name)
+        {
+            return userRepository.GetIdByName(name);
+        }
+      
     }
 }

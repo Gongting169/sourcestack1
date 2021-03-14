@@ -18,12 +18,21 @@ namespace BLL.Repositories
         {
             var query = dbSet.Where(u => u.Name == name);
             return query.SingleOrDefault();
-
         }
-        public User GetByPassword(string password)
+        public int GetIdByName(string name)
+        {       
+            var query = dbSet.Where(u => u.Name == name).Select(u => u.Id);
+            return query.FirstOrDefault();
+        }
+        public string  GetByPassword(string password)
         {
-            var query = dbSet.Where(u => u.Password == password.MD5EnCrypt());
+            var query = dbSet.Where(u => u.Password == password).Select(u =>u.Password);
            return query.SingleOrDefault();
+        }
+        public string GetPwdById(int? currentUserId)
+        {
+           var query = dbSet.Where(u => u.Id == currentUserId).Select(u => u.Password);
+            return query.FirstOrDefault();
         }
         public User GetByInvitedCode(string invitedCode)
         {
@@ -34,15 +43,13 @@ namespace BLL.Repositories
         {
             var query = dbSet.Where(u => u.InvitedBy.Name == invitedBy);
             return query.SingleOrDefault();
-
         }
-
         public List<User> GetSerializeName(string name1)
         {
             var query = dbSet
                 .Where(u => u.InvitedBy.Name.StartsWith(name1.Trim()));
             return query.ToList();
         }
-
+       
     }
 }

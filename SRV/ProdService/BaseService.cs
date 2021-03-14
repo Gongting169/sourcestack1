@@ -19,10 +19,14 @@ namespace SRV.ProdService
     {
         private UserRepository userRepository;
         protected readonly static MapperConfiguration config;
+        public BaseService()
+        {
+            userRepository = new UserRepository(Context);          
+        }
         static BaseService()
         {
             config = new MapperConfiguration
-                (cfg => 
+                (cfg =>
                 {
                     cfg.CreateMap<Article, ArticleNewModel>().ReverseMap();
                     cfg.CreateMap<User, UserModel>().ReverseMap();
@@ -35,10 +39,7 @@ namespace SRV.ProdService
         {
             get { return config.CreateMapper(); }
         }
-        public BaseService()
-        {
-            userRepository = new UserRepository(Context);
-        }
+
         protected SqlDbContext Context
         {
             get
@@ -95,27 +96,22 @@ namespace SRV.ProdService
             {
                 return null;
             }
-            if (string.IsNullOrWhiteSpace(userInfo[Keys.Id]))
-            {
-                throw new ArgumentNullException($" 从cookie里面找不到ID的值");
-            }
             if (string.IsNullOrWhiteSpace(pwdInCookie))
             {
                 throw new ArgumentNullException($" 从cookie里面找不到ID所对应的Password的值");
             }
-            if (current.Password != pwdInCookie)
+            if (current.Password != pwdInCookie.MD5EnCrypt())
             {
-                throw new ArgumentException($" 输入的密码无法匹配");
+                throw new ArgumentException($" 参数异常无法匹配");
             }
             if (!hasUserId)
             {
-                // 应该要删除cookie
-                //如果当前用户未登录
-                //throw new ArgumentException("无法从cookie里取到值");
+                HttpCookie cookie = HttpContext.Current.Request.Cookies[Keys.User];
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                cookie.Values.Clear();
+                HttpContext.Current.Response.Cookies.Add(cookie);
             }
             return current;
         }
-
-
     }
 }
