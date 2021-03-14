@@ -49,21 +49,12 @@ namespace MVC.Controllers
                 ModelState.AddModelError(nameof(registerModel.InvitedCode), " 邀请人的邀请码不存在");
                 return RedirectToAction("Home");
             }
-            //bool hasLogIn = int.TryParse(Request.Cookies[Keys.User].Value, out int currentUserId);
-            //if (hasLogIn)
-            //{
-            //    //int id = userService.RegisterValidate(registerModel, currentUserId);
-            //}
-            //else
-            //{
 
-            //}
-            //int userId = userService.Register(registerModel);
-            //HttpCookie cookie = new HttpCookie(Keys.User, userId.ToString());
-            //cookie.Values.Add(Keys.Id, userId.ToString());
-            //cookie.Values.Add(Keys.Password, registerModel.Password.MD5EnCrypt());
-            //Response.Cookies.Add(new HttpCookie(Keys.User, userId.ToString()));
-            userService.Register(registerModel);
+            int userId = userService.Register(registerModel);
+            HttpCookie cookie = new HttpCookie(Keys.User);
+            cookie.Values.Add(Keys.Id, userId.ToString());
+            cookie.Values.Add(Keys.Password, registerModel.Password.MD5EnCrypt());
+            Response.Cookies.Add(cookie);
             return View();
         }
         [HttpGet]

@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewBag.Title </title>
     <link rel="shortcut icon" type="image/ico" href="~/Css/Image/logo-big.ico" media="screen" />
-    <link rel="stylesheet" href="~/Content/font-awesome.css"/>
+    <link rel="stylesheet" href="~/Content/font-awesome.css" />
     <link rel="stylesheet" href="~/Css/Css/StyleSheet1.css" />
-    <link rel="stylesheet" href="~/Content/bootstrap.css"/>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
 </head>
 <body>
     <header>
@@ -19,7 +25,7 @@
                 <p class="navbar-text pull-left">
                     <span style="font-size:20px; font-weight:800;">一起帮</span>
                     <span class="visible-md-inline visible-lg-inline">·网络互助平台</span>
-                </p> 
+                </p>
                 <a class="navbar-text pull-left" style="font-size:18px; margin-left:10px;" href="">
                     <span class="fa fa-bell  pull-left fa-2x " style="color:darkblue;font-size:2.1rem;" yqBang-bell=""></span>
                 </a>
@@ -82,7 +88,7 @@
                                     <a href="#"><span class="fa fa-list"></span> 我的督促</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="iconfont icon-money" ></i> 未交作业</a>
+                                    <a href="#"><i class="iconfont icon-money"></i> 未交作业</a>
                                 </li>
                             </ul>
                         </li>
@@ -197,7 +203,9 @@
             </div>
         </nav>
     </header>
-    @Html.Partial("MessagePartial")
+    <div style=" margin-top:59px;border-width:170px;">
+        @Html.Partial("MessagePartial")
+    </div>
     <main class="container" style="margin-top:100px">
         @RenderBody()
     </main>
@@ -240,10 +248,5 @@
             </div>
         </div>
     </footer>
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
 </html>

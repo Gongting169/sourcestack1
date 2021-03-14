@@ -1,4 +1,5 @@
 ﻿using GLB.Global;
+using MVC.Helpers;
 using SRV.ProdService;
 using SRV.ServiceInterface;
 using SRV.ViewModel;
@@ -13,9 +14,10 @@ namespace MVC.Controllers
     public class LogController : Controller
     {
         private IUserService userService;
-
+        private RegisterModel registerModel;
         public LogController()
         {
+            registerModel = new RegisterModel();
             userService = new SRV.ProdService.UserService();
             //userService = new SRV.MockService.MUserService();
         }
@@ -31,16 +33,27 @@ namespace MVC.Controllers
             {
                 ModelState.Merge(TempData["e"] as ModelStateDictionary);
             }
-            if (userService.GetByLogOnName(logOnModel.Name)  == null)
+            LogOnModel onModel = userService.GetByLogOnName(logOnModel.Name);//只取一次
+            if (onModel.Name == null)
             {
                 ModelState.AddModelError(nameof(logOnModel.Name), "用户名不存在");
                 return View();
             }
-            if (logOnModel.Password.MD5EnCrypt() != userService.GetPassword(logOnModel.Password.MD5EnCrypt()))
+            if (logOnModel.Password != onModel.Password)
             {
                 ModelState.AddModelError(nameof(logOnModel.Password), "输入的密码或用户名错误");
                 return View();
             }
+            int id = userService.GetIdByName(logOnModel.Name);
+            string pwd = userService.GetPwdById(id);
+            HttpCookie cookie = new HttpCookie(Keys.User);
+            cookie.Values.Add(Keys.Id, id.ToString());
+            cookie.Values.Add(Keys.Password, pwd.MD5EnCrypt());
+            Response.Cookies.Add(cookie);
+            if (logOnModel.RememberMe)
+            {
+                cookie.Expires = DateTime.Now.AddMonths(1);
+            }// else nothing 
             return View();
         }
         [HttpGet]

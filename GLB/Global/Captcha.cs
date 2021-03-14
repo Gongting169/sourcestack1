@@ -29,7 +29,7 @@ namespace GLB.Global
         public static byte[] create(string validateCode)
         {
             Random random = new Random();           
-            Bitmap image = new Bitmap((int)Math.Ceiling(validateCode.Length * 12.0), 22);
+            Bitmap image = new Bitmap((int)Math.Ceiling(validateCode.Length * 13.0), 22);
             Graphics g = Graphics.FromImage(image);
             //清空图片背景色
             g.Clear(Color.White);
