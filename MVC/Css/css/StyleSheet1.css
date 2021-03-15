@@ -1,2 +1,13 @@
 ﻿body {
 }
+.widget {
+    border: 2px,dashed;
+    background-color: #ffffe0;
+    border-radius: 4px 5px;
+}
+.yellow-highlight {
+    padding: 15px 0px 5px 10px;
+    margin-bottom: 30px;
+    -ms-word-break: inherit;
+    word-break: break-all;
+}
