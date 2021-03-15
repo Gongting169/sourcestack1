@@ -34,7 +34,7 @@ namespace SRV.ProdService
             return user.Id;
         }
 
-        public RegisterModel GetByRegisterName(string name)//注册时查找用户名 坚持per view per model
+        public RegisterModel GetByRegisterName(string name)//注册时查找用户名
         {
             RegisterModel model = mapper.Map<RegisterModel>(userRepository.GetByName(name));
             return model;

@@ -8,12 +8,12 @@ namespace SRV.ViewModel
 {
     public class LogOnModel
     {
-        [MaxLength(256,ErrorMessage ="* 用户名的长度不能超过20")]
+        [MaxLength(20,ErrorMessage ="* 用户名的长度不能超过20")]
         [Required(ErrorMessage ="* 用户名不能为空")]
         public string Name { get; set; }
 
         [Required(ErrorMessage ="* 密码不能为空")]
-        [StringLength(256,ErrorMessage ="* 密码的长度不能小于4,不能大于20",MinimumLength =4)]
+        [StringLength(20,ErrorMessage ="* 密码的长度不能小于4,不能大于20",MinimumLength =4)]
         public string Password { get; set; }
 
         [Required(ErrorMessage ="* 验证码不能为空")]

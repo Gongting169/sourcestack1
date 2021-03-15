@@ -33,7 +33,7 @@ namespace MVC.Controllers
             {
                 ModelState.Merge(TempData["e"] as ModelStateDictionary);
             }
-            LogOnModel onModel = userService.GetByLogOnName(logOnModel.Name);//只取一次
+            LogOnModel onModel = userService.GetByLogOnName(logOnModel.Name);
             if (onModel.Name == null)
             {
                 ModelState.AddModelError(nameof(logOnModel.Name), "用户名不存在");
@@ -61,8 +61,10 @@ namespace MVC.Controllers
         {
             return View();
         }
-
-
+        public ActionResult Off()
+        {
+            return View();
+        }
 
     }
 }
