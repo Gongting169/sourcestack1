@@ -1,4 +1,4 @@
-﻿using BLL.Repositories;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +11,9 @@ namespace DbFactory
     {
         static void Main(string[] args)
         {
-            SqlDbContext context = new SqlDbContext();
-            context.SaveChanges();
-            Helper.GetDbContext1().Database.Delete();
-            Helper.GetDbContext1().Database.Create();
-
+            Helper.GetDbContext().Database.Delete();
+            Helper.GetDbContext().Database.Create();
             UserFactory.Creat();
-            //Helper.GetDbContext1().User.Where(u =>u.InvitedBy.Name.StartsWith())
 
         }
     }

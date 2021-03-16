@@ -1,4 +1,5 @@
-﻿using BLL.Repositories;
+﻿
+using BLL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,7 @@ namespace DbFactory
             _context = new SqlDbContext();
         }
 
-        internal static SqlDbContext GetDbContext1()
-        {
-            return _context;
-        }
-
+        internal static  SqlDbContext GetDbContext() => _context;
 
 
 

@@ -1,4 +1,5 @@
-﻿using BLL.Entities;
+﻿
+using BLL.Entities;
 using BLL.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,39 +11,26 @@ namespace DbFactory
 {
     public class UserFactory
     {
-        private static SqlDbContext _context;
-        static UserFactory()
-        {
-            _context = new SqlDbContext();
-        }
 
-        public const string pwd = "1234";
+        internal static User ZhangSan, LiSi, XiaoWei, WangWu;
         internal static void Creat()
         {
-            User xiaowei = Register("小伟");
-            User xiaoliu = Register("小刘");
-            User xiaozhu = Register("小朱");
-            User xiaotian = Register("小田");
-
+            ZhangSan = Register("张三");
+            LiSi = Register("李四");
+            XiaoWei = Register("小伟");
+            WangWu = Register("王五");
         }
 
         private static User Register(string name)
         {
+            const string pwd = "1234";
             User user = new User();
-
             user.Name = name;
             user.Password = pwd;
-            user.Id = 1;
-
             user.Register();
-            _context.User.Add(user);
-            _context.SaveChanges();
-            //UserRepository userRepository = new UserRepository(Helper.GetDbContext1());
-            //userRepository.Save(xiaowei);
+            UserRepository userRepository = new UserRepository(Helper.GetDbContext());
+            userRepository.Save(user);
             return user;
-
-
-
         }
 
 

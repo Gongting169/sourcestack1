@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Repositories
 {
-    public class SqlDbContext<T> : SqlDbContext where T : class
+    public class SqlDbContext<T> : SqlDbContext where T : Entity
     {
         public DbSet<T> Entities { get; set; }
     }

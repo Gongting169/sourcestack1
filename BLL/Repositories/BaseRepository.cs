@@ -10,12 +10,12 @@ namespace BLL.Repositories
 {
     public class BaseRepository<T> where T : Entity, new()
     {
-        protected SqlDbContext Context;
+        protected SqlDbContext context;
         protected DbSet<T> dbSet;
-        public BaseRepository(SqlDbContext context)
+        public BaseRepository(SqlDbContext context1)
         {
-            this.Context = context;
-            dbSet = context.Set<T>();
+            this.context = context1;
+            dbSet = context1.Set<T>();
         }
         public T Find(int id)
         {
@@ -24,13 +24,13 @@ namespace BLL.Repositories
         public int Save(T entity)
         {
             dbSet.Add(entity);
-            Context.SaveChanges();
+            context.SaveChanges();
             return entity.Id;
         }
         public void Delete(T entity)
         {
             dbSet.Remove(entity);
-            Context.SaveChanges();
+            context.SaveChanges();
         }
 
         public T LoadProxy(int id)

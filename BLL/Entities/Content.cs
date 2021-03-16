@@ -10,6 +10,10 @@ namespace BLL.Entities
     {
         public string Body { get; set; }
         public User Author { get; set; }
-        public DateTime PublishTime { get; set; }
+        public DateTime PublishTime 
+        { 
+            get => DateTime.Now; 
+            set { } 
+        }
     }
 }
