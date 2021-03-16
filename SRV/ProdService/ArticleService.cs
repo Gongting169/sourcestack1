@@ -21,40 +21,29 @@ namespace SRV.ProdService
             articleRepository = new ArticleRepository(Context);
             userRepository = new UserRepository(Context);
         }
-
+        public int Publish(ArticleNewModel articleNewModel)
+        {
+            if (GetCurrentUser() == null)
+            {
+                throw new ArgumentException(" 当前用户参数发生异常");
+            }
+            //Article article = mapper.Map<Article>(articleNewModel);
+            Article article = new Article() 
+            { 
+            Title = articleNewModel.Title,
+            Body = articleNewModel.Body,
+            PublishTime = DateTime.Now,
+            Author = GetCurrentUser()            
+            };
+            articleRepository.Save(article);
+            return article.Id;
+        }
         public ArticleSingleModel GetById(int id)
         {
             Article article = articleRepository.Find(id);
             ArticleSingleModel singleModel = mapper.Map<ArticleSingleModel>(article);
-            return singleModel ;
-        }
-        public int Publish(ArticleNewModel articleNewModel/*, int currentUserId*/)
-        {
-            if (GetCurrentUser() == null)
-            {
-                throw new ArgumentException("");
-            }
-            Article article1 = articleRepository.Find(GetCurrentUser().Id);
-
-            User author = GetCurrentUser();
-            ArticleNewModel model = mapper.Map<ArticleNewModel>(article1);
-            Article article = new Article()
-            {
-                Title = articleNewModel.Title,
-                Body = articleNewModel.Body,
-                Author = author,
-                //KeyWords = articleNewModel.Keywords,
-                //Category = articleNewModel.Category, 
-                PublishTime = DateTime.Now,
-            };
-            //还有一个用户发布文章消耗帮帮币问题：
-            articleRepository.Save(article);
-            return article.Id;
+            return singleModel;
         }
 
-        //public int Publish(ArticleNewModel articleNewModel/*, int? currentUserId*/)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

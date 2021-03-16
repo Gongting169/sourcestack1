@@ -8,5 +8,9 @@ namespace SRV.ViewModel
 {
     public class KeywordModel
     {
+        public string Name { get; set; }
+
+        public string Used { get; set; }
+       
     }
 }

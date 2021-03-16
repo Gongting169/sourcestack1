@@ -4,8 +4,17 @@ $(document).ready(function ()
 {
     setInterval(function ()
     {
-        $("[yqBang-bell]")[0].style = $("[yqBang-bell]")[0].style = "color: darkblue" ? "color: lightblue" : "color:darkblue";
-    },1000)
+        $("[yqBang-bell]").toggleClass('lightblue')
+
+        //if ($("[yqBang-bell]")[0].style === 'color:lightblue')
+        //{
+        //    $("[yqBang-bell]")[0].style === 'color:darkblue';
+        //}
+        //else
+        //{
+        //    $("[yqBang-bell]")[0].style === 'color:darkblue';
+        //}
+    }, 2000)
 })
 
 

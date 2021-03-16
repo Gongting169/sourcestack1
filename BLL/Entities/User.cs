@@ -12,14 +12,15 @@ namespace BLL.Entities
         public string Password { get; set; }
         public User InvitedBy { get; set; }
         public string InvitedCode { get; set; }
-        public Email Email { get; set; }
-        public int? EmailId { get; set; }
+        //public Email Email { get; set; }
+        //public int? EmailId { get; set; }
         public int BMoney { get; set; }
         public int BPoints { get; set; }
 
         public void Register()
         {
             BMoney += new Random().Next(10);
+            BPoints += new Random().Next(10);
         }
     }
 }

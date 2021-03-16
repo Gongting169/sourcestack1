@@ -9,7 +9,7 @@ namespace SRV.ServiceInterface
 {
     public interface IArticleService
     {
-        int Publish(ArticleNewModel articleNewModel/*, int? currentUserId*/);
+        int Publish(ArticleNewModel articleNewModel);
         ArticleSingleModel GetById(int id);
     }
 }

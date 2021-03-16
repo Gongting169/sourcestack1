@@ -44,12 +44,6 @@ namespace MVC.Controllers
                 ModelState.AddModelError(nameof(registerModel.InvitedByName), " 邀请人不存在");
                 return RedirectToAction("Home");
             }
-            if (userService.GetByInvitedCode(registerModel.InvitedCode) == null)
-            {
-                ModelState.AddModelError(nameof(registerModel.InvitedCode), " 邀请人的邀请码不存在");
-                return RedirectToAction("Home");
-            }
-
             int userId = userService.Register(registerModel);
             HttpCookie cookie = new HttpCookie(Keys.User);
             cookie.Values.Add(Keys.Id, userId.ToString());

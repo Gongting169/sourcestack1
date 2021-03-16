@@ -34,11 +34,6 @@ namespace BLL.Repositories
            var query = dbSet.Where(u => u.Id == currentUserId).Select(u => u.Password);
             return query.FirstOrDefault();
         }
-        public User GetByInvitedCode(string invitedCode)
-        {
-            var user = dbSet.Where(u => u.InvitedBy.InvitedCode == invitedCode);
-            return user.SingleOrDefault();
-        }
         public User GetByInvitedBy(string invitedBy)
         {
             var query = dbSet.Where(u => u.InvitedBy.Name == invitedBy);
@@ -47,7 +42,7 @@ namespace BLL.Repositories
         public List<User> GetSerializeName(string name1)
         {
             var query = dbSet
-                .Where(u => u.InvitedBy.Name.StartsWith(name1.Trim()));
+                .Where(u => u.InvitedBy.Name.StartsWith(name1));
             return query.ToList();
         }
        
