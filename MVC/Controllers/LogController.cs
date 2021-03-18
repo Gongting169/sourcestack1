@@ -27,7 +27,7 @@ namespace MVC.Controllers
             if (!ModelState.IsValid)
             {
                 TempData["e"] = ModelState;
-                return RedirectToAction(nameof(On));
+                return RedirectToAction(nameof(On));              
             }
             if (TempData["e"] != null)
             {
@@ -39,16 +39,17 @@ namespace MVC.Controllers
                 ModelState.AddModelError(nameof(logOnModel.Name), "用户名不存在");
                 return View();
             }
-            if (logOnModel.Password != onModel.Password)
+            if (logOnModel.Password.MD5EnCrypt() != onModel.Password)
             {
                 ModelState.AddModelError(nameof(logOnModel.Password), "输入的密码或用户名错误");
                 return View();
             }
-            int id = userService.GetIdByName(logOnModel.Name);
+            
+            int? id = CookieHelper.GetCurrentUserId();
             string pwd = userService.GetPwdById(id);
             HttpCookie cookie = new HttpCookie(Keys.User);
             cookie.Values.Add(Keys.Id, id.ToString());
-            cookie.Values.Add(Keys.Password, pwd.MD5EnCrypt());
+            cookie.Values.Add(Keys.Password, pwd);
             Response.Cookies.Add(cookie);
             if (logOnModel.RememberMe)
             {
@@ -65,6 +66,11 @@ namespace MVC.Controllers
         {
             return View();
         }
-
+        public ActionResult ShowCode()
+        {
+            string code = Captcha.GenerateCode();
+            byte[] buffer = Captcha.create(code);
+            return File(buffer, @"image/jpeg");
+        }
     }
 }

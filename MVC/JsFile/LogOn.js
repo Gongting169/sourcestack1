@@ -7,7 +7,7 @@ $(document).ready(function ()
         var $image = $("#imgCode");
         if ($image.is(":not([src])"))
         {
-            $($image).attr("src", "/Register/ShowCode?key=" + Math.random()).show();
+            $($image).attr("src", "/Log/ShowCode?key=" + Math.random()).show();
             $("[yqbang_refresh_captcha]").show();
             $("[yqbang_captcha_hide]").hide();
         }// else nothing

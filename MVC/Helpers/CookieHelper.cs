@@ -10,7 +10,8 @@ namespace MVC.Helpers
 {
     public class CookieHelper
     {
-        private static IUserService service;
+        private static IUserService service;//使用cookiehelper的原因是：controller调用baseservice的方法，按照视频的写法 需要添加对entity的引用
+        //当返回的是一个id时 ，会造成Stack Overflow异常，而且代码有部分重复查询浪费性能
         public CookieHelper()
         {
             service = new SRV.ProdService.UserService();
