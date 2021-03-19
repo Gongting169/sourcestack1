@@ -27,14 +27,10 @@ namespace SRV.ProdService
             {
                 throw new ArgumentException(" 当前用户参数发生异常");
             }
-            //Article article = mapper.Map<Article>(articleNewModel);
-            Article article = new Article() 
-            { 
-            Title = articleNewModel.Title,
-            Body = articleNewModel.Body,
-            PublishTime = DateTime.Now,
-            Author = GetCurrentUser()            
-            };
+            Article article = mapper.Map<Article>(articleNewModel);
+            article.PublishTime = DateTime.Now;
+            article.Author.Id = GetCurrentUser().Id;//容易理解
+            //Author = GetCurrentUser();//          
             articleRepository.Save(article);
             return article.Id;
         }
@@ -44,6 +40,10 @@ namespace SRV.ProdService
             ArticleSingleModel singleModel = mapper.Map<ArticleSingleModel>(article);
             return singleModel;
         }
-
+        public IList<ArticleModel> GetAllArticle()
+        {
+            IList<ArticleModel> models = mapper.Map<IList<ArticleModel>>(articleRepository.GetAllArticle());
+            return models ;
+        }
     }
 }

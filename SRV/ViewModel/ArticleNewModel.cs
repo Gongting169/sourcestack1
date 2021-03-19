@@ -10,7 +10,7 @@ namespace SRV.ViewModel
 {
     public class ArticleNewModel
     {
-        [StringLength(256, ErrorMessage = ("* 标题的长度不能超过255个字符"), MinimumLength = 10)]
+        [StringLength(256, ErrorMessage = ("* 标题的长度不能超过255个字符"))]
         [Required(ErrorMessage = "* 标题不能为空")]
         [Display(Name = "标题")]
         public string Title { get; set; }

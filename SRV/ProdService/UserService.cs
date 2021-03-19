@@ -22,7 +22,9 @@ namespace SRV.ProdService
         }
         public int Register(RegisterModel registerModel)
         {
-            User user = new User()
+            User user = mapper.Map<User>(registerModel);
+            user.Password = registerModel.Password.MD5EnCrypt();
+            new User()
             {
                 Name = registerModel.Name,
                 Password = registerModel.Password.MD5EnCrypt(),

@@ -10,6 +10,11 @@ namespace SRV.MockService
 {
     public class MArticleService : IArticleService
     {
+        public IList<ArticleModel> GetAllArticle()
+        {
+            throw new NotImplementedException();
+        }
+
         public ArticleSingleModel GetById(int id)
         {
             throw new NotImplementedException();

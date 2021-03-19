@@ -1,9 +1,9 @@
-﻿
+﻿@model List<SRV.ViewModel.ArticleModel>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "精品文章·一起帮";
 }
 
-@*@foreach (var item in Model.Articles)
+@foreach (var item in Model)
     {
         <div style="border-bottom-width:1px;border-bottom-style:dashed;padding-top:10px;margin-top:40px">
             <div>
@@ -75,5 +75,5 @@
                 </li>
             }
         </ul>
-    </nav>*@
+    </nav>
 

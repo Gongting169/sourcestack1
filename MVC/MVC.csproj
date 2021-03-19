@@ -437,8 +437,8 @@
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Article\ArticleNewPartial.cshtml" />
     <Content Include="Views\Article\ArticlePartial.cshtml" />
-    <Content Include="Views\ArticleSingle\Single.cshtml" />
-    <Content Include="Views\ArticleSingle\ArticleSinglePartial.cshtml" />
+    <Content Include="Views\Article\Single.cshtml" />
+    <Content Include="Views\Article\ArticleSinglePartial.cshtml" />
     <Content Include="Views\Contact\Edit.cshtml" />
     <Content Include="Views\Contact\ContactPartial.cshtml" />
     <Content Include="Views\Log\On.cshtml" />
