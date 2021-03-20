@@ -4,16 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL.Entities 
+namespace BLL.Entities
 {
-    public class Content:Entity
+    public class Content : Entity
     {
+        public Content()
+        {
+
+        }
         public string Body { get; set; }
         public User Author { get; set; }
-        public DateTime PublishTime 
-        { 
-            get => DateTime.Now; 
-            set { } 
+        public DateTime PublishTime { get; set; }
+         public static DateTime SetPublishTime(DateTime dateTime)
+        {
+            return dateTime;
         }
+
     }
 }

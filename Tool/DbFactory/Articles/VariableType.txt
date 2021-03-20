@@ -1,0 +1,1238 @@
+﻿
+<div class="container body-content">
+        
+
+        
+<div class="row" style="margin-top:55px">
+    <div class="col-md-8">
+        
+    <img class="img-responsive" style="margin-bottom:20px;" src="/Images/%e6%ba%90%e6%a0%88%e4%b8%8a%e8%af%be%e5%95%a6.jpg">
+    <div class="text-primary h2-inline">
+        <span class="iconfont icon-article"></span> C#：面向过程：变量和类型
+    </div>
+    <hr>
+
+        <span class="visible-xs-inline visible-sm-inline flag" style="top:60px;">
+            <a zyf-show-widget="">
+                
+    <span class="fa fa-window-restore"></span> 更多
+
+            </a>
+        </span>
+        
+
+<div>
+    <span><small class="text-muted" zyf-datetime="">
+    <span>
+        <span class="fa fa-calendar"></span> <span zyf-can-hide=""> 2019年02月19日 08点29分</span>
+    </span>
+</small>
+</span>
+    <span class="pull-right">
+        <span zyf-article-arthor="">
+            作者：<a href="/Article/User-1">叶飞</a>
+
+        </span>
+        <a class="hide" style="margin-left:14px;" href="/Article/Edit/284" data-author-id="1" zyf-article-edit=""><span class="fa fa-pencil-square-o"></span> 修改</a>
+    </span>
+    <div style="clear:both; word-break:break-all; padding-top:20px;">
+        <p>
+	<span></span>我们来把这句代码改一下：
+</p>
+<pre class="prettyprint lang-cs prettyprinted"><span class="pln">&nbsp; &nbsp; </span><span class="com">//Console.WriteLine("源栈欢迎你！");</span><span class="pln">
+
+&nbsp; &nbsp; </span><span class="com">//修改为：</span><span class="pln">
+&nbsp; &nbsp; </span><span class="kwd">string</span><span class="pln"> greet</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp; greet </span><span class="pun">=</span><span class="pln"> </span><span class="str">"源栈欢迎你！"</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp; </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="pln">greet</span><span class="pun">);</span></pre>
+<p>
+	<br>
+</p>
+<h3>
+	*注释*
+</h3>
+<p>
+	<span></span> 
+</p>
+<p>
+	C#中提供三种注释（comment）：
+</p>
+<ul>
+	<li>
+		//：行注释。注释的内容从 // 开始，直到这一行结束。
+	</li>
+	<li>
+		/**/：块注释。注释的内容从&nbsp;<span>/* 开始，到 */ 结束。注释的内容既可以是一行，也可以是多行。</span> 
+	</li>
+	<li>
+		///：多行注释。严格来讲这应该就是行注释（<span>//</span>）的延续：它和//唯一的区别就是///引导的<span>注释内容在换行时会自动添加///头（<em>演示</em>）
+<pre class="prettyprint lang-cs prettyprinted"><span class="pln">    </span><span class="com">///第一行注释</span><span class="pln">
+    </span><span class="com">///换行自动生成"///"</span><span class="pln">
+    </span><span class="com">///</span></pre>
+</span> 
+	</li>
+</ul>
+<span> 
+<p>
+	<em>（复习：注释的作用</em><em>）</em> 
+</p>
+<p>
+	<span style="font-size:12px;">PS：以上注释命名都是飞哥自己取的，^_^</span> 
+</p>
+</span> 
+<h3>
+	<br>
+</h3>
+<h3>
+	变量
+</h3>
+<p>
+	继续我们之前代码，修改后的代码实际上是引入了<span>string</span><strong>变量</strong>greet。
+</p>
+<h4>
+	<br>
+</h4>
+<h4>
+	一个盒子
+</h4>
+<p>
+	变量（variable），可以把它想象成一个“盒子”：
+</p>
+<p>
+	</p><table border="1">
+		<tbody><tr>
+			<td>
+				<span style="font-size:16px;"><strong>语句</strong></span> 
+			</td>
+			<td>
+				<span style="font-size:16px;"><strong>用盒子做比喻</strong></span> 
+			</td>
+			<td>
+				<span style="font-size:16px;"><strong>业内说法</strong></span> 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span>string greet;</span><br>
+			</td>
+			<td>
+				新建一个可以装string类型数据的盒子，盒子被取名为greet<br>
+			</td>
+			<td>
+				<span><strong>声明<span>（declare）</span></strong>了一个string类型的变量greet</span><br>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<span>greet = "源栈欢迎你！"</span><br>
+			</td>
+			<td>
+				<span>把数据</span><span>"源栈欢迎你！"放到greet这个盒子里</span><br>
+			</td>
+			<td>
+				将<strong>变量值</strong><span>"源栈欢迎你！"<strong>赋值（assign）</strong>给</span>greet
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Console.WriteLine(greet);<br>
+			</td>
+			<td>
+				取出greet中的数据，并在控制台输出
+			</td>
+			<td>
+				<strong>使用</strong>变量greet，将其控制台输出
+			</td>
+		</tr>
+	</tbody></table>
+<p></p>
+<p>
+	注意：我们使用变量，就是使用变量这个盒子中存放的数据。
+</p>
+<p>
+	此外所谓变量的“<span>变</span>”，就是盒子中存放的数据是可以变化的：
+</p>
+<pre class="prettyprint lang-cs prettyprinted"><span class="pln">&nbsp; &nbsp; </span><span class="com">//修改为：</span><span class="pln">
+&nbsp; &nbsp; </span><span class="kwd">string</span><span class="pln"> greet</span><span class="pun">;</span><span class="pln">
+&nbsp; &nbsp; greet </span><span class="pun">=</span><span class="pln"> </span><span class="str">"源栈欢迎你！"</span><span class="pun">;</span><span class="pln">&nbsp; &nbsp; &nbsp;</span><span class="com">/*第一次赋值*/</span><span class="pln">
+&nbsp; &nbsp; </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="pln">greet</span><span class="pun">);</span><span class="pln">
+
+&nbsp; &nbsp; </span><span class="com">//再添加：</span><span class="pln">
+&nbsp; &nbsp; greet </span><span class="pun">=</span><span class="pln"> </span><span class="str">"大神小班"</span><span class="pun">;</span><span class="pln">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="com">/*第二次赋值*/</span><span class="pln">
+&nbsp; &nbsp; </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="pln">greet</span><span class="pun">);</span></pre>
+<p>
+	<a href="http://17bang.ren/Article/292" target="_blank"><strong><span></span>赋值</strong></a><span></span>：将“值”赋予给变量
+</p>
+<p>
+	一个盒子一次只能存放一条数据。所以第二次赋值，就将greet中存放的数据“<span>变</span>”成了"大神小班"——这就是变量（variable）名称的由来。
+</p>
+<p>
+	变量也可以在声明的时候马上赋值：
+</p>
+<pre class="prettyprint lang-cs prettyprinted"><span class="pln">    </span><span class="kwd">string</span><span class="pln"> greet </span><span class="pun">=</span><span class="pln"> </span><span class="str">"源栈欢迎你！"</span><span class="pun">;</span></pre>
+<p>
+	在变量未赋值前，它会有一个<a href="https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/keywords/default-values-table" target="_blank" rel="nofollow">默认值</a>。默认值依变量类型不同而不同，比如string类型的默认值是“<span>空字符串</span>”。
+</p>
+<h4>
+	<br>
+</h4>
+<h4>
+	常量
+</h4>
+<p>
+	和变量相对的是常量（constant）。常量就不应该想像成一个“<span>盒子</span>”，或者你只能把它想像成这样一个有些奇怪的盒子：
+</p>
+<ul>
+	<li>
+		一旦创建，就马上要放入内容
+	</li>
+	<li>
+		一旦放入内容，就再也不能改变内容
+	</li>
+</ul>
+<p>
+	声明常量需要关键字const：
+</p>
+<pre class="prettyprint lang-cs prettyprinted"><span class="pln">    </span><span class="com">//报错：常量一旦声明必须马上赋值</span><span class="pln">
+    </span><span class="kwd">const</span><span class="pln"> </span><span class="kwd">string</span><span class="pln"> greet</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="kwd">const</span><span class="pln"> </span><span class="kwd">string</span><span class="pln"> greet </span><span class="pun">=</span><span class="pln"> </span><span class="str">"源栈欢迎你！"</span><span class="pun">;</span><span class="pln">
+    </span><span class="com">//报错：常量赋值后无法更改</span><span class="pln">
+    greet </span><span class="pun">=</span><span class="pln"> </span><span class="str">"大神小班"</span><span class="pun">;</span></pre>
+<p>
+	常量在编译时处理，字面量（赋值给变量的值<span></span>）也就是常量。
+</p>
+<p>
+	<strong>注意</strong>：
+</p>
+<ul>
+	<li>
+		变量和常量都<strong>必须</strong>先声明，再使用。否则<em>报错</em>
+	</li>
+	<li>
+		只声明，不警告，会有<em>警告</em><br>
+	</li>
+</ul>
+<h4>
+	<br>
+</h4>
+<h4>
+	语法解析
+</h4>
+<p>
+	从上述代码，我们可以看出一些C#中的基本语法点：
+</p>
+<ul>
+	<li>
+		关键字：string/const这些都是关键字，关键字会高亮显示，变量名不得使用关键字
+	</li>
+	<li>
+		空格：一个空格和多个空格效果是一样的，关键字和变量名之间必须使用空格分隔
+	</li>
+	<li>
+		分号（;）：一条语句的结束，<strong>不</strong>以换行符而是以;为准
+	</li>
+	<li>
+		空行：所以，由空白和换行符组成的空行不会影响代码运行，同学们注意合理使用空行增加代码的可读性
+	</li>
+</ul>
+变量和运算符结合，就形成<strong>表达式</strong><strong>（expression）</strong>。
+<p>
+	将（某些）表达式用分号（;）分隔，就形成<strong>语句（statement）</strong>。哪些表达式可以构成语句呢？我们可以看VS的提示：
+</p>
+<p>
+	<img title="" class="img-responsive" alt="" src="http://17bang.ren/Images/Summary/2020/3/6/1/表达式.png" data-original-title="" zyf-img=""> 
+</p>
+<p>
+	所以，赋值表达式就可以是语句。
+</p>
+<p>
+	除了记忆，我们还可以从原理上来理解：语句，就像一句话一样，是一条<strong>完整的</strong>对计算机的指示。“<span>不完整</span>”的指示就不能是一条语句。比如：3+2;就不完整，3+2=5，但等于5之后呢？是赋值给一个变量，还是把它控制<span></span>台输出来？得给句话啊！所以，这才是语句：
+</p>
+<pre class="prettyprint lang-cs prettyprinted"><span class="pln">    </span><span class="typ">int</span><span class="pln"> sum </span><span class="pun">=</span><span class="pln"> </span><span class="lit">3</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln">
+    </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="lit">3</span><span class="pun">+</span><span class="lit">2</span><span class="pun">);</span></pre>
+<h4>
+	<br>
+</h4>
+<h4>
+	作用域（scope）
+</h4>
+<p>
+	即：变量起<strong>作用</strong>的领<strong>域</strong>。
+</p>
+<p>
+	该“领域”就是：变量声明所在的花括号（{}）内。
+</p>
+<ul>
+	<li>
+		在该领域内，不能有同名的变量声明
+	</li>
+	<li>
+		在该领域外，变量不能被使用<br>
+	</li>
+</ul>
+<p>
+	<span></span><em>演示：略</em><span></span>
+</p>
+<h4>
+	<span><br>
+</span> 
+</h4>
+<h3>
+	<span>强类型</span><span>语言</span> 
+</h3>
+<p>
+	C#是一种“<span>强类型</span><span>语言</span>”，所以：
+</p>
+<ul>
+	<li>
+		在声明变量的时候，必须指明变量的类型。
+	</li>
+	<li>
+		而且类型一旦声明，该变量就只能存储这种类型的数据
+	</li>
+</ul>
+<pre class="prettyprint lang-cs prettyprinted"><span class="pln">    </span><span class="com">//不能省略string类型声明</span><span class="pln">
+    </span><span class="kwd">string</span><span class="pln"> greet </span><span class="pun">=</span><span class="pln"> </span><span class="str">"源栈欢迎你！"</span><span class="pun">;</span><span class="pln">
+    </span><span class="com">//greet已经是string类型的变量，就不能再被赋值为int（整数）类型数据了</span><span class="pln">
+    greet </span><span class="pun">=</span><span class="pln"> </span><span class="lit">986</span><span class="pun">;</span></pre>
+<h4>
+	<br>
+</h4>
+<h4>
+	推导类型var
+</h4>
+<p>
+	你可能看到有这样的写法：
+</p>
+<pre class="prettyprint lang-cs prettyprinted"><span class="pln">    </span><span class="kwd">var</span><span class="pln"> </span><span class="com">/*不是string*/</span><span class="pln"> greet </span><span class="pun">=</span><span class="pln"> </span><span class="str">"源栈欢迎你！"</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">var</span><span class="pln"> </span><span class="com">/*不是int*/</span><span class="pln"> fee </span><span class="pun">=</span><span class="pln"> </span><span class="lit">986</span><span class="pun">;</span></pre>
+咦？var究竟是什么类型，为什么又可以作为字符串（string）greet的类型声明，又可以作为整数（int）fee的类型声明？是不是使用var定义的变量就是“<span>类型可变</span>”，<span>是“弱类型”的？</span> 
+<p>
+	<span style="font-size:16px;">错！</span>由关键字var定义的变量，仍然是强类型变量。它其实就是一个“<strong>语法糖</strong>”（即方便了代码的书写，但没有在语法<span>本质上进行<span>改变</span></span>），又被称之为“推导类型”，即：
+</p>
+<p>
+	由var定义的变量，其类型是由赋值数据类型决定的，或者说，C#编译器会自动推导出其类型。<br>
+<img title="" class="img-responsive" alt="" src="/Images/Summary/2020/3/5/1/var类型变量.png" data-original-title="" zyf-img=""> 
+</p>
+<p>
+	所以，上述代码中，greet就是string类型，fee就是int类型。而且他们一旦被定义，就不能再更改：
+</p>
+<pre class="prettyprint lang-cs prettyprinted"><span class="pln">    </span><span class="kwd">var</span><span class="pln"> greet</span><span class="pun">;</span><span class="pln">    </span><span class="com">//报错：greet未被赋值，无法推导其类型</span></pre>
+<p>
+	<br>
+</p>
+<p>
+	<span style="font-size:16px;">但是</span>，飞哥不建议在任何时候都使用<strong>var</strong>，甚至要求同学们只能在特定情况下才能使用var。因为滥用var，会降低代码的可读性，尤其是当赋值的数据类型不能“<span>一眼看穿（使用了方法等）</span>”的时候。
+</p>
+<p>
+	<br>
+</p>
+<p>
+	<strong></strong> 
+</p>
+<h3>
+	<strong>常用变量类型</strong> 
+</h3>
+<p>
+	<strong><strong></strong></strong> 
+</p>
+<h4>
+	<br>
+</h4>
+<h4>
+	字符和字符串
+</h4>
+<p>
+	<span><em>复习：编码</em></span><em></em> 
+</p>
+<ul>
+	<li>
+		char：字符，包括字母（如a）、数字（如1）、运算符号（如+）、标点符号（如。）和其他符号（如~），以及一些功能性符号（如ctrl）。实际开发中用得不多，但它是字符串的基础。<br>
+<strong>注意</strong>：C#中：<br>
+		<ol>
+			<li>
+				一个字符变量只能存储一个字符
+			</li>
+			<li>
+				字符用<strong>单</strong>引号（''）包裹
+			</li>
+		</ol>
+	</li>
+	<li>
+		string：字符串，在编程开发中大量使用，本质上就是由一个一个的字符“串”起来的。关于她的内容实现机制，后文会有详述……字符串用<strong>双</strong>引号（“”）包裹
+	</li>
+</ul>
+<pre class="prettyprint lang-cs prettyprinted"><span class="pln">    </span><span class="kwd">char</span><span class="pln"> source </span><span class="pun">=</span><span class="pln"> </span><span class="str">'源'</span><span class="pun">;</span><span class="pln">
+    </span><span class="kwd">string</span><span class="pln"> welcome </span><span class="pun">=</span><span class="pln"> </span><span class="str">"源栈欢迎您"</span><span class="pun">;</span></pre>
+<p>
+	<br>
+</p>
+<h4>
+	数值
+</h4>
+<p>
+	数值（numeric）类型分为<strong>整数</strong>和<strong>小数</strong>。
+</p>
+<p>
+	<br>
+</p>
+<p>
+	<strong>1）整数</strong> 
+</p>
+<p>
+	C#根据“最多能够存储的数值大小”，将整数分为：
+</p>
+<ul>
+	<li>
+		byte：8位
+	</li>
+	<li>
+		short：16位
+	</li>
+	<li>
+		int：32位
+	</li>
+	<li>
+		long：64位
+	</li>
+</ul>
+<p>
+	上述所称的“位（bit）”，又被称之为“长度（Length）”，是指变量以二进制形式存储时，能够占据的空间。我们可以把1位，想象成1格，每一格都只能存放1或0。所以：
+</p>
+<ul>
+	<li>
+		1位，只能存2个（2的1次方，用2^1表示）数字：1和0，最大为1；
+	</li>
+	<li>
+		2位，只能存4个（2^2）数字：00/01/10/11，最大为11（二进制）
+	</li>
+	<li>
+		3位，只能存8个（2^3）数字：000/001/010/011/100/101/110/111，最大为111
+	</li>
+	<li>
+		……
+	</li>
+	<li>
+		8位，就能够存2^8个数字，最大为11111111，转换为十进制：2^8-1=255
+	</li>
+</ul>
+但是，除了byte，short/int/long都是既能存正数，也能存负数，所以需要额外占用一位（格）来存正/负符号，所以他们的存储范围是 -2^(n-1) -1到 2^(n-1)-1<br>
+<p>
+	同时，除byte外，short/int/long都可以在类型前面加一个<strong>u</strong>，将其限定为<strong>正</strong>整数。
+</p>
+<p>
+	超过最大存储数值的赋值会报错：
+</p>
+<pre class="prettyprint lang-cs prettyprinted"><span class="pln">    </span><span class="kwd">byte</span><span class="pln"> b </span><span class="pun">=</span><span class="pln"> </span><span class="lit">255</span><span class="pun">;</span><span class="pln">   </span><span class="com">//OK</span><span class="pln">
+    </span><span class="kwd">byte</span><span class="pln"> b </span><span class="pun">=</span><span class="pln"> </span><span class="lit">257</span><span class="pun">;</span><span class="pln">   </span><span class="com">//报错</span><span class="pln">
+    </span><span class="kwd">short</span><span class="pln"> s </span><span class="pun">=</span><span class="pln"> </span><span class="lit">257</span><span class="pun">;</span><span class="pln">  </span><span class="com">//OK</span></pre>
+<p>
+	我们实际开发中，最常用的是int类型；I/O文件流时，会使用到byte。
+</p>
+<p>
+	<span><strong>注意</strong>：区分"32"和32，有引号（“”）和没引号</span> 
+</p>
+<p>
+	<br>
+</p>
+<p>
+	<strong>2）小数</strong> 
+</p>
+<p>
+	计算机中小数的存储比整数麻烦一些，但大体上来说，小数也可以说是“按能存储的数值的大小”
+</p>
+<ul>
+	<li>
+		float（浮点/单精度）：
+	</li>
+	<li>
+		double（双精度，默认）：
+	</li>
+	<li>
+		decimal：
+	</li>
+</ul>
+<p>
+	<br>
+</p>
+<pre class="prettyprint lang-cs prettyprinted"><span class="pln">    </span><span class="typ">float</span><span class="pln"> score </span><span class="pun">=</span><span class="pln"> </span><span class="lit">85.5F</span><span class="pun">;</span><span class="pln">    </span><span class="com">//不要忘了F后缀</span><span class="pln">
+    </span><span class="kwd">double</span><span class="pln"> avgScore </span><span class="pun">=</span><span class="pln"> </span><span class="lit">92.32345</span><span class="pun">;</span><span class="pln">    </span><span class="com">//可以不要后缀</span><span class="pln">
+    </span><span class="kwd">decimal</span><span class="pln"> height </span><span class="pun">=</span><span class="pln"> </span><span class="lit">76.38M</span><span class="pun">;</span><span class="pln">    </span><span class="com">//不要忘了F后缀</span></pre>
+<p>
+	<br>
+</p>
+<h4>
+	布尔值
+</h4>
+<p>
+	bool：值<strong>只能</strong>是true/false，（和其他语言不通）<strong>不能</strong>是1/0啥的……
+</p>
+<p>
+	<br>
+</p>
+<h3>
+	<strong>类型转换<span></span></strong> 
+</h3>
+<p>
+	相关（近似，比如数值类型）间可以有：
+</p>
+<ul>
+	<li>
+		隐式（自动）：短变长
+<pre class="prettyprint lang-cs prettyprinted"><span class="typ">int</span><span class="pln"> age </span><span class="pun">=</span><span class="pln"> </span><span class="lit">23</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">long</span><span class="pln"> lage </span><span class="pun">=</span><span class="pln"> age</span><span class="pun">;</span><span class="pln">             </span><span class="com">//int可隐式转换成long</span></pre>
+	</li>
+	<li>
+		显式：长变短
+<pre class="prettyprint lang-cs prettyprinted"><span class="kwd">short</span><span class="pln"> sAge </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">short</span><span class="pun">)</span><span class="pln">age</span><span class="pun">;</span><span class="pln">     </span><span class="com">//int转换成short需要显式转换，注意可能有“精度”损失</span><span class="pln">
+</span><span class="com">//string strAge = (string)age; //无法在“大类”之间进行强制转换</span></pre>
+	</li>
+</ul>
+<span>不是所有的类型间都可以进行强制（显式）转换，完全<span></span><em>不相关</em><span></span>类型间的转换需要使用<span></span></span>函数：Convert.ToXXX() / Parse() /ToString()，
+<pre class="prettyprint lang-cs prettyprinted"><span class="com">//大类之间通过函数进行转换</span><span class="pln">
+</span><span class="kwd">string</span><span class="pln"> strAge </span><span class="pun">=</span><span class="pln"> </span><span class="str">"23"</span><span class="pun">;</span><span class="pln">
+</span><span class="typ">float</span><span class="pln"> fAge </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Convert</span><span class="pun">.</span><span class="typ">ToSingle</span><span class="pun">(</span><span class="pln">strAge</span><span class="pun">);</span><span class="pln">
+</span><span class="typ">int</span><span class="pln"> iAge </span><span class="pun">=</span><span class="pln"> </span><span class="typ">int</span><span class="pun">.</span><span class="typ">Parse</span><span class="pun">(</span><span class="pln">strAge</span><span class="pun">);</span><span class="pln">
+
+</span><span class="com">//strAge = "二十三";</span><span class="pln">
+</span><span class="com">//float wAge = Convert.ToSingle(strAge);  //无法转换，运行时错误</span></pre>
+<p>
+	理解<span></span>：运行时错误 vs 编译时错误
+</p>
+<h3>
+	<br>
+</h3>
+<h3>
+	作业：
+</h3>
+<p>
+	观察一起帮<a href="http://17bang.ren/Profile/Write" target="_blank">个人资料</a>页面，用合适的变量类型存储页面用户输入信息，并解释为什么。
+</p>
+<br>
+<p>
+	<strong> </strong> 
+</p>
+<strong></strong>
+    </div>
+    <div class="clearfix" style="padding-top:10px;">
+        <div>
+            <label><span class="fa fa-tags"></span>  关键字：</label>
+                <span class="badge">源栈培训</span>
+                <span class="badge">C#</span>
+                <span class="badge">编程基础</span>
+                <span class="badge">变量</span>
+                <span class="badge">数据类型</span>
+        </div>
+        <div class="article-appraise appraise-status pull-right">
+            <a class="appraise-status-item text-success" href="/Article/Appraise?id=284&amp;direction=1" data-author-id="1" zyf-vote="">
+    <span class="fa fa-thumbs-o-up"></span>
+    <span class="visible-sm-inline visible-md-inline visible-lg-inline">赞：</span>
+    <span zyf-votes-count="">67</span>
+</a>
+<a class="appraise-status-item text-muted" href="/Article/Appraise?id=284&amp;direction=-1" data-author-id="1" zyf-vote="">
+    <span class="fa fa-thumbs-o-down"></span>
+    <span class="visible-sm-inline visible-md-inline visible-lg-inline">踩：</span>
+    <span zyf-votes-count="">0</span>
+</a>
+
+        </div>
+        <div style="padding-bottom:25px;" zyf-article-donate-container="">
+    <div style="clear:both;margin-left:auto;margin-right:auto;width:65px;height:65px;">
+        <div title="" class="yellow-highlight text-center" data-original-title="点击打赏" data-toggle="tooltip" data-author-id="1" data-article-id="284" zyf-article-donate-btn="">
+            <span class="iconfont icon-money credit fa-2x"></span><br>打赏
+        </div>
+    </div>
+    <div class="article-donate">
+        <span class="fa fa-smile-o fa-2x text-success pull-left" style="display:table-cell;"></span>
+        <div style="display:table-cell;">
+            <div>已收到打赏的 
+    <a title="" class="credit" href="/FAQ/Money" data-original-title="点击了解" data-toggle="tooltip">
+        <span class="iconfont icon-money"></span> 帮帮币
+    </a>
+ ：</div>
+            <div class="clearfix" zyf-problem-donors-container=""><span class="pull-left" style="padding:5px 10px 0 0;" zyf-article-donar="">
+    <span>
+
+<span title="" data-original-title="" data-toggle="tooltip">
+    <a style="color:" href="/User/3959" zyf-show-contact="3959">
+        友人
+    </a>
+</span>
+<a title="" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-original-title="高级教师" data-toggle="tooltip">
+    <span>⑥</span>
+</a>：<strong class="credit">2 </strong>枚</span>
+</span></div>
+        </div>
+        <hr>
+        <div class="text-muted" style="clear:both;">
+            <span class="fa fa-info-circle"></span>
+            你的 <span class="credit">打赏</span> 非常重要！<br>
+            为了<a href="/FAQ/Article#grant">保证文章的质量</a>，每一篇文章的发布，都已经消耗了作者 1 枚
+    <a title="" class="credit" href="/FAQ/Money" data-original-title="点击了解" data-toggle="tooltip">
+        <span class="iconfont icon-money"></span> 帮帮币
+    </a>
+。<br>
+            没有“帮帮币”，作者无法发布新的文章。
+        </div>
+    </div>
+</div>
+
+        <div style="clear:both;">
+            <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1616210718219"><a class="bds_more" href="#" data-cmd="more"></a><a title="分享到QQ空间" class="bds_qzone" href="#" data-cmd="qzone"></a><a title="分享到新浪微博" class="bds_tsina" href="#" data-cmd="tsina"></a><a title="分享到腾讯微博" class="bds_tqq" href="#" data-cmd="tqq"></a><a title="分享到人人网" class="bds_renren" href="#" data-cmd="renren"></a><a title="分享到微信" class="bds_weixin" href="#" data-cmd="weixin"></a></div>
+<script>window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdPic": "", "bdStyle": "0", "bdSize": "16" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+        </div>
+    </div>
+
+        <div style="margin-top:20px;">
+            <div class="yellow-highlight" style="padding:5px 10px;">
+    <a title="" style="color:#354756" href="/FAQ/Ad#article" data-original-title="这是什么？" data-toggle="tooltip">投稿人推广：</a> <a href="http://17bang.ren/Article/261">学编程，来 “源栈”！飞哥精品小班等着你……</a>
+</div>
+
+        </div>
+    <a name="new-comment"></a>
+    <div style="padding-top:20px;">
+        
+<div class="hide yellow-highlight need-login" zyf-not-logon="">
+    <span class="fa fa-exclamation-triangle" style="color:yellowgreen;"></span>
+    你还没有登录，不能进行相关操作。请<a href="/Log/On?prepage=%2fArticle%2f284">登录</a>或<a href="/Register/Home?prepage=%2fArticle%2f284">注册</a>。
+    （<a class="small" href="/Shared/_JoinUs" zyf-why-joinus=""><span class="fa fa-question-circle"></span> 为什么要加入我们</a>）
+</div>
+        <div zyf-logon="">
+            <h4>
+                <span class="fa fa-send"></span> <label>我有话说：</label>
+            </h4>
+            
+<script src="/Scripts/kindeditor-v4.1/kindeditor.js"></script>
+<script src="/Scripts/kindeditor-v4.1/lang/zh_CN.js"></script>
+<script src="/Scripts/kindeditor.help.js"></script>
+<form action="/Article/284" method="post" novalidate="novalidate">    <div zyf-comment-reply-reminder=""></div>
+<input name="CommentBody.ReplyId" id="CommentBody_ReplyId" type="hidden" value="" zyf-comment-reply-id="" data-val-number="字段 ReplyId 必须是一个数字。" data-val="true"><span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="CommentBody.ReplyId"></span>    <div class="form-group">
+        <div class="ke-container ke-container-default" style="width: 100%;"><div class="ke-toolbar" style="display:block;" unselectable="on"><span title="HTML代码" class="ke-outline" unselectable="on" data-name="source"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-source" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span title="段落" class="ke-outline" unselectable="on" data-name="formatblock"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-formatblock" unselectable="on"></span></span><span title="文字大小" class="ke-outline" unselectable="on" data-name="fontsize"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fontsize" unselectable="on"></span></span><span title="粗体(Ctrl+B)" class="ke-outline" unselectable="on" data-name="bold"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-bold" unselectable="on"></span></span><span title="斜体(Ctrl+I)" class="ke-outline" unselectable="on" data-name="italic"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-italic" unselectable="on"></span></span><span title="下划线(Ctrl+U)" class="ke-outline" unselectable="on" data-name="underline"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-underline" unselectable="on"></span></span><span title="删除线" class="ke-outline" unselectable="on" data-name="strikethrough"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-strikethrough" unselectable="on"></span></span><span title="删除格式" class="ke-outline" unselectable="on" data-name="removeformat"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-removeformat" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span title="表格" class="ke-outline" unselectable="on" data-name="table"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-table" unselectable="on"></span></span><span title="编号" class="ke-outline" unselectable="on" data-name="insertorderedlist"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertorderedlist" unselectable="on"></span></span><span title="项目符号" class="ke-outline" unselectable="on" data-name="insertunorderedlist"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-insertunorderedlist" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span title="超级链接" class="ke-outline" unselectable="on" data-name="link"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-link" unselectable="on"></span></span><span title="取消超级链接" class="ke-outline" unselectable="on" data-name="unlink"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-unlink" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span title="插入程序代码" class="ke-outline" unselectable="on" data-name="code"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-code" unselectable="on"></span></span><span title="插入引用" class="ke-outline" unselectable="on" data-name="quote"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-quote" unselectable="on"></span></span><span title="图片" class="ke-outline" unselectable="on" data-name="image"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-image" unselectable="on"></span></span><span class="ke-inline-block ke-separator"></span><span title="全屏显示(Esc)" class="ke-outline" unselectable="on" data-name="fullscreen"><span class="ke-toolbar-icon ke-toolbar-icon-url ke-icon-fullscreen" unselectable="on"></span></span></div><div class="ke-edit" style="height: 100px; display: block;"><iframe tabindex="-32768" class="ke-edit-iframe" frameborder="0" style="width: 100%; height: 100px;" hidefocus="true"></iframe><textarea tabindex="-32768" class="ke-edit-textarea" style="width: 100%; height: 100px; display: none;" hidefocus="true"></textarea></div><div class="ke-statusbar"><span class="ke-inline-block ke-statusbar-center-icon"></span><span class="ke-inline-block ke-statusbar-right-icon"></span></div></div><textarea name="CommentBody.Content" class="form-control" id="CommentBody_Content" style="display: none;" placeholder="精选评论有帮帮币奖励哟！O(∩_∩)O~" rows="4" cols="20" data-val="true" zyf-new-comment="" zyf-kindeditor="" data-val-required="* 正文不能为空"></textarea>
+        <span class="field-validation-valid" data-valmsg-replace="true" data-valmsg-for="CommentBody.Content"></span>
+    </div>
+    <div class="submit" zyf-logon="">
+        <input class="btn btn-primary" type="submit" value="提交" zyf-submit-once="" zyf-problem-comment-submit="">
+        <input class="btn btn-default" type="reset" value="重置">
+    </div>
+
+<div class="hide yellow-highlight need-login" zyf-not-logon="">
+    <span class="fa fa-exclamation-triangle" style="color:yellowgreen;"></span>
+    你还没有登录，不能进行相关操作。请<a href="/Log/On?prepage=%2fArticle%2f284">登录</a>或<a href="/Register/Home?prepage=%2fArticle%2f284">注册</a>。
+    （<a class="small" href="/Shared/_JoinUs" zyf-why-joinus=""><span class="fa fa-question-circle"></span> 为什么要加入我们</a>）
+</div></form><script>
+    $(document).ready(function () {
+
+        $("[zyf-problem-comment-submit]").on("click", function (event) {
+            event.preventDefault();
+            var $this = $(this),
+                $form = $this.parents("form")
+                ;
+            if ($form.valid()) {
+                $.ajax({
+                    url: "/Article/284",
+                    data: $form.serialize(),
+                    method: "POST",
+                    success: function (data) {
+                        showRemind('<p>' +
+                            '<span class="fa fa-check text-success" style="margin-right:10px;"></span>' +
+                            '<span>恭喜！评论发布成功。</span>' +
+                            '</p>');
+                        $("[zyf-new-comment]").val("");
+                        if (editor !== undefined) {
+                            editor.html("");
+                        }
+                        $("[zyf-comment-count]").text(
+                            parseInt($("[zyf-comment-count]").text()) + 1);
+
+                        $("[zyf-comment-reply-reminder]").html("");
+
+                        var $comment = $(data);
+                        //为自定义处理预留的函数
+                        if (typeof afterCommentSubmit !== "undefined" &&
+                            $.isFunction(afterCommentSubmit)) {
+                            afterCommentSubmit($comment, $this);
+                        }
+
+                        $("#published_comment").before($comment);
+
+                    },
+                    failed: JqueryAjaxError
+                })
+            }
+        })
+
+    })
+</script>
+        </div>
+    </div>
+    <div style="margin-top: 25px;">
+        <div class="checkbox pull-left">
+            <label>
+                <input name="inCategory" id="inCategory" type="checkbox" value="true" zyf-nav-in-category=""><input name="inCategory" type="hidden" value="false">
+                在系列 <a href="/Article/Category-68"><span class="fa fa-folder"></span> C#语法</a>
+ 中的：
+            </label>
+        </div>
+        <a class="btn btn-default btn-sm pull-right" href="/Article/Category-68?fulltext=1&amp;articleId=284">
+            <span class="iconfont icon-pages"></span> 全系列阅读
+        </a>
+        <div style="clear:both; margin-bottom:20px; padding:10px 15px; border: 2px dashed #808080; border-radius:4px 5px;" zyf-article-nav-container="">
+    <div>
+        <span class="fa fa-arrow-up"></span>
+        上一篇：
+            <a href="/Article/282">为什么要讲数据结构和算法？以及如何学习数据结构和算法</a>
+
+    </div>
+    <div style="margin-top:6px;">
+        <span class="fa fa-arrow-down"></span>
+        下一篇：
+            <a href="/Article/285">源栈培训：Github - 记录我们的成长</a>
+    </div>
+</div>
+
+    </div>
+    <a name="comments"></a>
+    <div class="appraise-status" style="clear:both; margin-top: 15px;">
+        <span class="lead" style="margin-right:20px">
+            <span class="fa fa-comments-o"></span>
+            <span class="visible-sm-inline visible-md-inline visible-lg-inline">评论</span><small>
+                （ <span title="" data-original-title="精选评论" data-toggle="tooltip" zyf-comment-of-article-count="">0</span> / <span title="" data-original-title="全部评论" data-toggle="tooltip">0</span> ）
+            </small>
+        </span>
+    </div>
+    <div zyf-comment-of-article="">
+        <div id="published_comment"></div>
+        <div zyf-comments-container="">
+</div>
+
+    </div>
+</div>
+
+    </div>
+    <div class="col-md-4 visible-md visible-lg">
+        
+    
+
+    
+
+
+<div class="widget clearfix" zyf-widget-content="">
+        <h4>
+            <span class="fa fa-folder text-primary"></span>
+            <a href="/Article/Category-93">后台开发</a>
+        </h4>
+        <hr>
+            <div style="margin-bottom:10px; padding-left: 40px;">
+            <h4>
+                <span class="fa fa-folder text-primary"></span>
+                <a href="/Article/Category-61">ADO和EF</a>
+            </h4>
+            <p>
+                如何通过C#进行数据库的读取，包含ADO.NET和Entity Framework相关知识……
+            </p>
+        </div>
+        <div style="margin-bottom:10px; padding-left: 40px;">
+            <h4>
+                <span class="fa fa-folder text-primary"></span>
+                <a href="/Article/Category-62">ASP.NET框架</a>
+            </h4>
+            <p>
+                综合之前所学，连接前端和数据库，包括RazorPage、MVC和其他（如WebForm/WebApi等）技术……
+            </p>
+        </div>
+        <div style="margin-bottom:10px; padding-left: 40px;">
+            <h4>
+                <span class="fa fa-folder text-primary"></span>
+                <a href="/Article/Category-63">RazorPages（Core）</a>
+            </h4>
+            <p>
+                微软推荐的、最新的、基于Razor页面和.NET core的新一代Web项目开发技术，包括Razor Tag Helper、Model绑定和Validation、Session/Cookie、内置依赖注入等……
+            </p>
+        </div>
+        <div style="margin-bottom:10px; padding-left: 40px;">
+            <h4>
+                <span class="fa fa-folder text-primary"></span>
+                <a href="/Article/Category-64">MVC（Framework）</a>
+            </h4>
+            <p>
+                过去两年间最流行的、基于.NET Framework和MVC模式的ASP.NET MVC框架，主要用于讲解安全、性能、架构和各种实战功能演示……
+            </p>
+        </div>
+        <div style="margin-bottom:10px; padding-left: 40px;">
+            <h4>
+                <span class="fa fa-folder text-primary"></span>
+                <a href="/Article/Category-68">C#语法</a>
+            </h4>
+            <p>
+                从入门的变量赋值、分支循环、到面向对象，以及更先进的语言特性，如：泛型、Lambda、Linq、异步方法等…………
+            </p>
+        </div>
+        <div style="margin-bottom:10px; padding-left: 40px;">
+            <h4>
+                <span class="fa fa-folder text-primary"></span>
+                <a href="/Article/Category-81">Java语法</a>
+            </h4>
+            <p>
+                面向过程的变量赋值、分支循环和函数封装；面向对象的封装、继承和多态；以及更高阶的常用类库（集合/IO/多线程……）、lambda等
+            </p>
+        </div>
+        <div style="margin-bottom:10px; padding-left: 40px;">
+            <h4>
+                <span class="fa fa-folder text-primary"></span>
+                <a href="/Article/Category-90">Java Web开发</a>
+            </h4>
+            <p>
+                
+            </p>
+        </div>
+        <div style="margin-bottom:10px; padding-left: 40px;">
+            <h4>
+                <span class="fa fa-folder text-primary"></span>
+                <a href="/Article/Category-91">SpringMVC</a>
+            </h4>
+            <p>
+                
+            </p>
+        </div>
+        <div style="margin-bottom:10px; padding-left: 40px;">
+            <h4>
+                <span class="fa fa-folder text-primary"></span>
+                <a href="/Article/Category-101">分层架构和综合实战</a>
+            </h4>
+            <p>
+                
+            </p>
+        </div>
+    <a class="btn pull-right" href="/Article"><span class="fa fa-hand-o-right"></span> 全部</a>
+</div>
+
+    <div class="widget clearfix" zyf-widget-content="">
+    <div style="font-size:24px;"><span class="fa fa-tags "></span> 关键字</div>
+    <hr>
+    <div zyf-keyword-widget-content=""><div class="user-tags">
+        <a title="" href="/Problem?keyword=163" data-original-title="已使用242次" data-toggle="tooltip" zyf-keyword-widget-id="163">
+            <span class="badge" style="font-size:21px; background-color:rgba(51, 51, 51, 0.96875)">
+                编程开发语言
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=169" data-original-title="已使用97次" data-toggle="tooltip" zyf-keyword-widget-id="169">
+            <span class="badge" style="font-size:20.5px; background-color:rgba(51, 51, 51, 0.9375)">
+                C#
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=170" data-original-title="已使用71次" data-toggle="tooltip" zyf-keyword-widget-id="170">
+            <span class="badge" style="font-size:20px; background-color:rgba(51, 51, 51, 0.90625)">
+                JAVA
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=162" data-original-title="已使用68次" data-toggle="tooltip" zyf-keyword-widget-id="162">
+            <span class="badge" style="font-size:19.5px; background-color:rgba(51, 51, 51, 0.875)">
+                工具软件
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=171" data-original-title="已使用55次" data-toggle="tooltip" zyf-keyword-widget-id="171">
+            <span class="badge" style="font-size:19px; background-color:rgba(51, 51, 51, 0.84375)">
+                Javascript
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=164" data-original-title="已使用55次" data-toggle="tooltip" zyf-keyword-widget-id="164">
+            <span class="badge" style="font-size:18.5px; background-color:rgba(51, 51, 51, 0.8125)">
+                顾问咨询
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=199" data-original-title="已使用32次" data-toggle="tooltip" zyf-keyword-widget-id="199">
+            <span class="badge" style="font-size:18px; background-color:rgba(51, 51, 51, 0.78125)">
+                html
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=182" data-original-title="已使用25次" data-toggle="tooltip" zyf-keyword-widget-id="182">
+            <span class="badge" style="font-size:17.5px; background-color:rgba(51, 51, 51, 0.75)">
+                VisualStudio
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=161" data-original-title="已使用24次" data-toggle="tooltip" zyf-keyword-widget-id="161">
+            <span class="badge" style="font-size:17px; background-color:rgba(51, 51, 51, 0.71875)">
+                操作系统
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=184" data-original-title="已使用19次" data-toggle="tooltip" zyf-keyword-widget-id="184">
+            <span class="badge" style="font-size:16.5px; background-color:rgba(51, 51, 51, 0.6875)">
+                职场
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=173" data-original-title="已使用18次" data-toggle="tooltip" zyf-keyword-widget-id="173">
+            <span class="badge" style="font-size:16px; background-color:rgba(51, 51, 51, 0.65625)">
+                Python
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=188" data-original-title="已使用18次" data-toggle="tooltip" zyf-keyword-widget-id="188">
+            <span class="badge" style="font-size:15.5px; background-color:rgba(51, 51, 51, 0.625)">
+                法律
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=174" data-original-title="已使用18次" data-toggle="tooltip" zyf-keyword-widget-id="174">
+            <span class="badge" style="font-size:15px; background-color:rgba(51, 51, 51, 0.59375)">
+                SQL
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=89" data-original-title="已使用14次" data-toggle="tooltip" zyf-keyword-widget-id="89">
+            <span class="badge" style="font-size:14.5px; background-color:rgba(51, 51, 51, 0.5625)">
+                .net
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=200" data-original-title="已使用13次" data-toggle="tooltip" zyf-keyword-widget-id="200">
+            <span class="badge" style="font-size:14px; background-color:rgba(51, 51, 51, 0.53125)">
+                CSS
+            </span>
+        </a>
+        <a title="" href="/Problem?keyword=167" data-original-title="已使用12次" data-toggle="tooltip" zyf-keyword-widget-id="167">
+            <span class="badge" style="font-size:13.5px; background-color:rgba(51, 51, 51, 0.5)">
+                Linux
+            </span>
+        </a>
+</div></div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="直接输入关键字查找" zyf-keyword-widget-search-value="">
+                <span class="input-group-addon" zyf-keyword-widget-search-btn=""><span class="fa fa-search"></span></span>
+            </div>
+            
+        </div>
+        <div class="col-sm-4">
+            <a class="btn btn-default" href="" zyf-keyword-widget-another="1">
+                <span class="fa fa-random"></span>
+                <span style="margin-left:5px;">换一批</span>
+            </a>
+        </div>
+    </div>
+</div>
+    <div class="clearfix" style="margin-bottom:30px;" zyf-widget-content="">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-justified nav-tabs-colored" role="tablist">
+        <li role="presentation">
+            <a role="tab" aria-controls="profile" href="#planscan" data-toggle="tab">
+                <span class="fa fa-eye"></span> 每日督促
+            </a>
+        </li>
+        <li class="active" role="presentation">
+            <a role="tab" aria-controls="messages" style="color:red;" href="#contribute" data-toggle="tab">
+                <span class="fa fa-heart"></span> 排行榜
+            </a>
+        </li>
+        <li role="presentation">
+            <a role="tab" aria-controls="home" href="#register" data-toggle="tab">
+                <span class="fa fa-user-circle-o"></span> 新注册
+            </a>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane" id="planscan" role="tabpanel"><table class="table-none-border">
+        <tbody>
+            <tr>
+                <td style="font-size:18px" colspan="2"><span class="fa fa-calendar-check-o fa-fw"></span> 2021年03月19日</td>
+            </tr>
+            <tr>
+                <th>共扫描目标：</th>
+                <td><span class="fa fa-flag-o fa-fw"></span> 8 个</td>
+            </tr>
+            <tr>
+                <th>当天休息：</th>
+                <td><span class="fa fa-ban fa-fw text-muted"></span> 6 人</td>
+            </tr>
+            <tr>
+                <th>已交作业：</th>
+                <td><span class="fa fa-check text-success fa-fw"></span> 0 份</td>
+            </tr>
+            <tr>
+                <th>请假：</th>
+                <td><span class="fa fa-coffee fa-fw"></span>  0 人</td>
+            </tr>
+            <tr>
+                <th>未交作业：</th>
+                <td><a zyf-task-not-complete=""><span class="fa fa-remove fa-fw"></span> 2 人</a></td>
+            </tr>          
+        </tbody>
+    </table></div>
+        <div class="tab-pane active" id="contribute" role="tabpanel">
+            <table class="table-none-border order-list">
+    <tbody>
+<tr zyf-user-most-order="1">
+    <td style="width: 40px;"><span class="order-tag item-1">1</span></td>
+    <td>       
+<span title="" data-original-title="" data-toggle="tooltip">
+    <a style="color:" href="/User/4550" zyf-show-contact="4550">
+        unkownn
+    </a>
+</span>
+<a title="" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-original-title="中级学徒" data-toggle="tooltip">
+    <span>②</span>
+</a>
+    </td>
+    <td>44</td>
+</tr>
+<tr zyf-user-most-order="2">
+    <td style="width: 40px;"><span class="order-tag item-2">2</span></td>
+    <td>        
+<span title="" data-original-title="" data-toggle="tooltip">
+    <a style="color:" href="/User/4548" zyf-show-contact="4548">
+        Edwin521
+    </a>
+</span>
+<a title="" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-original-title="初级学徒" data-toggle="tooltip">
+    <span>①</span>
+</a>
+    </td>
+    <td>30</td>
+</tr>
+<tr zyf-user-most-order="3">
+    <td style="width: 40px;"><span class="order-tag item-3">3</span></td>
+    <td>        
+<span title="" data-original-title="捐赠 5" data-toggle="tooltip">
+    <a style="color:#DCB962" href="/User/1" zyf-show-contact="1">
+        叶飞
+    </a>
+</span>
+<a title="" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-original-title="大宗师" data-toggle="tooltip">
+    <span>⑩</span>
+</a>
+    </td>
+    <td>28</td>
+</tr>
+<tr zyf-user-most-order="4">
+    <td style="width: 40px;"><span class="order-tag item">4</span></td>
+    <td>        
+<span title="" data-original-title="捐赠 1015.5" data-toggle="tooltip">
+    <a style="color:#DCB962" href="/User/18" zyf-show-contact="18">
+        dk
+    </a>
+</span>
+<a title="" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-original-title="初级教师" data-toggle="tooltip">
+    <span>④</span>
+</a>
+    </td>
+    <td>21</td>
+</tr>
+<tr zyf-user-most-order="5">
+    <td style="width: 40px;"><span class="order-tag item">5</span></td>
+    <td>        
+<span title="" data-original-title="" data-toggle="tooltip">
+    <a style="color:" href="/User/4549" zyf-show-contact="4549">
+        Gabriel 
+    </a>
+</span>
+<a title="" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-original-title="初级学徒" data-toggle="tooltip">
+    <span>①</span>
+</a>
+    </td>
+    <td>11</td>
+</tr>
+<tr zyf-user-most-order="6">
+    <td style="width: 40px;"><span class="order-tag item">6</span></td>
+    <td>
+<span title="" data-original-title="" data-toggle="tooltip">
+    <a style="color:" href="/User/4551" zyf-show-contact="4551">
+        忠哲
+    </a>
+</span>
+<a title="" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-original-title="初级学徒" data-toggle="tooltip">
+    <span>①</span>
+</a>
+    </td>
+    <td>10</td>
+</tr>
+<tr zyf-user-most-order="7">
+    <td style="width: 40px;"><span class="order-tag item">7</span></td>
+    <td>       
+<span title="" data-original-title="" data-toggle="tooltip">
+    <a style="color:" href="/User/4506" zyf-show-contact="4506">
+        pi31415
+    </a>
+</span>
+<a title="" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-original-title="中级学徒" data-toggle="tooltip">
+    <span>②</span>
+</a>
+    </td>
+    <td>2</td>
+</tr>
+<tr zyf-user-most-order="8">
+    <td style="width: 40px;"><span class="order-tag item">8</span></td>
+    <td>        
+<span title="" data-original-title="" data-toggle="tooltip">
+    <a style="color:" href="/User/4531" zyf-show-contact="4531">
+        uao
+    </a>
+</span>
+<a title="" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-original-title="初级学徒" data-toggle="tooltip">
+    <span>①</span>
+</a>
+    </td>
+    <td>2</td>
+</tr>    </tbody>
+</table>
+            <div class="clearfix" style="padding-top:10px;" zyf-user-widget-most-contribute="">
+                <a class="btn pull-right" href="/User/MyMost?on=Contribute">
+                    <span class="fa fa-hand-o-right"></span> 我的排名
+                </a>
+            </div>
+        </div>
+        <div class="tab-pane" id="register" role="tabpanel">    <div style="margin-bottom:10px;">
+        <small class="text-muted" zyf-datetime="">
+    <span>
+        <span class="fa fa-calendar"></span> <span zyf-can-hide=""> 2021年03月15日 16点45分</span>
+    </span>
+</small>
+        <div>            
+<span title="" data-toggle="tooltip">
+    <a style="color:" href="/User/4551" zyf-show-contact="4551">
+        忠哲
+    </a>
+</span>
+<a title="初级学徒" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-toggle="tooltip">
+    <span>①</span>
+</a>
+<span></span>
+<span></span>
+        </div>
+    </div>
+    <div style="margin-bottom:10px;">
+        <small class="text-muted" zyf-datetime="">
+    <span>
+        <span class="fa fa-calendar"></span> <span zyf-can-hide=""> 2021年03月15日 11点51分</span>
+    </span>
+</small>
+        <div>          
+<span title="" data-toggle="tooltip">
+    <a style="color:" href="/User/4550" zyf-show-contact="4550">
+        unkownn
+    </a>
+</span>
+<a title="中级学徒" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-toggle="tooltip">
+    <span>②</span>
+</a>
+<span></span>
+<span></span>
+        </div>
+    </div>
+    <div style="margin-bottom:10px;">
+        <small class="text-muted" zyf-datetime="">
+    <span>
+        <span class="fa fa-calendar"></span> <span zyf-can-hide=""> 2021年03月15日 08点59分</span>
+    </span>
+</small>
+        <div>          
+<span title="" data-toggle="tooltip">
+    <a style="color:" href="/User/4549" zyf-show-contact="4549">
+        Gabriel 
+    </a>
+</span>
+<a title="初级学徒" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-toggle="tooltip">
+    <span>①</span>
+</a>
+<span></span>
+<span></span>
+        </div>
+    </div>
+    <div style="margin-bottom:10px;">
+        <small class="text-muted" zyf-datetime="">
+    <span>
+        <span class="fa fa-calendar"></span> <span zyf-can-hide=""> 2021年03月13日 19点29分</span>
+    </span>
+</small>
+        <div>           
+<span title="" data-toggle="tooltip">
+    <a style="color:" href="/User/4548" zyf-show-contact="4548">
+        Edwin521
+    </a>
+</span>
+<a title="初级学徒" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-toggle="tooltip">
+    <span>①</span>
+</a>
+<span></span>
+<span></span>
+        </div>
+    </div>
+    <div style="margin-bottom:10px;">
+        <small class="text-muted" zyf-datetime="">
+    <span>
+        <span class="fa fa-calendar"></span> <span zyf-can-hide=""> 2021年03月08日 08点36分</span>
+    </span>
+</small>
+        <div>           
+<span title="" data-toggle="tooltip">
+    <a style="color:" href="/User/4547" zyf-show-contact="4547">
+        和光同尘
+    </a>
+</span>
+<a title="中级学徒" class="text-muted" style="position:relative; top:-1px;" href="/FAQ/Credit#" data-toggle="tooltip">
+    <span>②</span>
+</a>
+<span></span>
+<span></span>
+        </div>
+    </div>
+<div class="clearfix">
+    <a class="btn pull-right" href="/User/Index"><span class="fa fa-hand-o-right"></span> 更多</a>
+</div></div>
+    </div>
+</div>
+    <div class="widget clearfix" zyf-widget-content="">
+        <div class="ad-in-widget order-list">
+            <span class="item-1 order-tag">1</span>
+                <a href="/AdInWidget/_Free?position=1" zyf-adinwidget-free="">免费广告位，抢到就是赚到！</a>
+        </div>
+        <div class="ad-in-widget order-list">
+            <span class="item-2 order-tag">2</span>
+                <a href="/AdInWidget/_Free?position=2" zyf-adinwidget-free="">免费广告位，抢到就是赚到！</a>
+        </div>
+        <div class="ad-in-widget order-list">
+            <span class="item-3 order-tag">3</span>
+                <a href="/AdInWidget/_Free?position=3" zyf-adinwidget-free="">免费广告位，抢到就是赚到！</a>
+        </div>
+        <div class="ad-in-widget order-list">
+            <span class="item order-tag">4</span>
+                <a href="/AdInWidget/_Free?position=4" zyf-adinwidget-free="">免费广告位，抢到就是赚到！</a>
+        </div>
+        <div class="ad-in-widget order-list">
+            <span class="item order-tag">5</span>
+                <a href="/AdInWidget/_Free?position=5" zyf-adinwidget-free="">免费广告位，抢到就是赚到！</a>
+        </div>
+    <div class="ad-in-widget order-list">
+        <span class="item order-tag">6</span> 本站主机由<a href="http://www.west.cn/index.asp?ReferenceID=563969">西部数码</a>提供
+    </div>
+    <a class="pull-right text-muted" href="/AdInWidget/Write">
+        <small zyf-ad-in-widget-remind="">
+            <span class="fa fa-buysellads"></span> 广告
+            <span class="hide" zyf-ad-in-widget-remind-suffix="">，你也可以发布哟！</span>
+        </small>
+    </a>
+</div>
+    <div tabindex="-1" class="modal fade" role="dialog" zyf-adinwidget-free-modal="">
+    </div><!-- /.modal -->
+    </div>
+</div>
+        <a class="feedback flag text-center" style="right: 63px; bottom: 132px;" href="/Contact/Us" zyf-global-feedback="">
+   <span class="fa fa-question-circle-o"></span><br>帮助
+</a>
+<a class="feedback flag text-center" style="right: 63px; bottom: 80px;" href="/Suggest/New" zyf-global-feedback="">
+    <span class="fa fa-comments-o"></span><br>反馈
+</a>
+        <hr>
+        <footer>
+            <div>
+                <a href="/About/Us">关于我们</a> |
+                <a href="/Code">源栈课堂</a> |
+                <a href="/FAQ">常见问题</a> |
+                <a href="/Suggest">意见建议</a> |
+                <a href="/Notice">历史通知</a> |
+                <a class="text-success" href="/Donate">友情捐赠</a> |
+                <a class="text-info" href="/About/Partner">诚邀合伙人</a>
+            </div>
+            <p class="pull-right"><a href="http://www.miitbeian.gov.cn">渝ICP备18007191号（备案）</a>© 2021 - 自由<img src="/Images/freeflying.ico"></p>
+        </footer>
+    </div>

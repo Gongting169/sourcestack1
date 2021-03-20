@@ -52,8 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppraiseFactory.cs" />
     <Compile Include="ArticleFactory.cs" />
+    <Compile Include="CommentFactory.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="KeywordFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserFactory.cs" />
@@ -71,6 +74,18 @@
       <Project>{6a489d6e-3e43-47ad-999d-9bd51ae9be4b}</Project>
       <Name>Repositories</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Articles\Array.txt" />
+    <Content Include="Articles\Branch.txt" />
+    <Content Include="Articles\ConsoleProgram.txt" />
+    <Content Include="Articles\Express.txt" />
+    <Content Include="Articles\Jinjie.txt" />
+    <Content Include="Articles\Method.txt" />
+    <Content Include="Articles\Parameter.txt" />
+    <Content Include="Articles\VariableType.txt" />
+    <Content Include="Articles\XunHuan.txt" />
+    <Content Include="Articles\YuanZu.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

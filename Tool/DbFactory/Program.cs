@@ -14,6 +14,20 @@ namespace DbFactory
             Helper.GetDbContext().Database.Delete();
             Helper.GetDbContext().Database.Create();
             UserFactory.Creat();
+            try
+            {
+                Helper.GetDbContext().Database.BeginTransaction();
+                KeywordFactory.Creat();
+                ArticleFactory.Create();
+                AppraiseFactory.Create();
+                Helper.GetDbContext().Database.CurrentTransaction.Commit();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
     }

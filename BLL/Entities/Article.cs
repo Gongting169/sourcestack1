@@ -8,7 +8,6 @@ namespace BLL.Entities
 {
     public class Article:Content
     {
-
         public string Title { get; set; }
         //每个文章和评论都有一个评价
         //一篇文章可以有多个评论

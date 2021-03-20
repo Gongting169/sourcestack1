@@ -18,7 +18,7 @@ namespace DbFactory
 
         internal static  SqlDbContext GetDbContext() => _context;
 
-
+        internal static DateTime baseLine = DateTime.Now.AddMonths(-1);
 
     }
 }

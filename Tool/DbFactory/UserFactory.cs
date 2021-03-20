@@ -28,8 +28,7 @@ namespace DbFactory
             user.Name = name;
             user.Password = pwd;
             user.Register();
-            UserRepository userRepository = new UserRepository(Helper.GetDbContext());
-            userRepository.Save(user);
+            new UserRepository(Helper.GetDbContext()).Save(user);
             return user;
         }
 
