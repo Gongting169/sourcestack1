@@ -49,7 +49,7 @@ namespace MVC.Controllers
             cookie.Values.Add(Keys.Id, userId.ToString());
             cookie.Values.Add(Keys.Password, registerModel.Password.MD5EnCrypt());
             Response.Cookies.Add(cookie);
-            return View();
+            return RedirectToAction("On","Log");
         }
         [HttpGet]
         public ActionResult Home()

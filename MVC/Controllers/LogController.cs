@@ -44,8 +44,8 @@ namespace MVC.Controllers
                 ModelState.AddModelError(nameof(logOnModel.Password), "输入的密码或用户名错误");
                 return View();
             }
-            
-            int? id = CookieHelper.GetCurrentUserId();
+
+            int id = userService.GetIdByName(logOnModel.Name);
             string pwd = userService.GetPwdById(id);
             HttpCookie cookie = new HttpCookie(Keys.User);
             cookie.Values.Add(Keys.Id, id.ToString());

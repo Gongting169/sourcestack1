@@ -9,6 +9,7 @@ namespace SRV.ViewModel
 {
     public class RegisterModel
     {
+        public string Id { get; set; }
         [Remote("Check", "Register", HttpMethod = "post")]
         [StringLength(20, ErrorMessage = "* 用户名的长度不能大于20")]
         [Required(ErrorMessage = "* 用户名不能为空")]
