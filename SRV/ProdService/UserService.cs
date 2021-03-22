@@ -23,14 +23,8 @@ namespace SRV.ProdService
         public int Register(RegisterModel registerModel)
         {
             User user = mapper.Map<User>(registerModel);
+            user.InvitedBy = userRepository.GetByName(registerModel.InvitedByName);
             user.Password = registerModel.Password.MD5EnCrypt();
-            new User()
-            {
-                Name = registerModel.Name,
-                Password = registerModel.Password.MD5EnCrypt(),
-                InvitedCode = registerModel.InvitedCode,
-                InvitedBy = new User().InvitedBy            
-            };
             user.Register();
             userRepository.Save(user);
             return user.Id;

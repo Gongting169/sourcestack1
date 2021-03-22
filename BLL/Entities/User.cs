@@ -11,6 +11,7 @@ namespace BLL.Entities
         public string Name { get; set; }
         public string Password { get; set; }
         public User InvitedBy { get; set; }
+        public int InvitedById { get; set; }
         public string InvitedCode { get; set; }
         //public Email Email { get; set; }
         //public int? EmailId { get; set; }
