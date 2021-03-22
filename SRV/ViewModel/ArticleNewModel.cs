@@ -24,7 +24,7 @@ namespace SRV.ViewModel
 
         [Required(ErrorMessage = "* 关键字不能为空")]
         [StringLength(25, ErrorMessage = "* 关键字的长度不能大于25", MinimumLength = 1)]
-        public string Keywords { get; set; }
+        public string  Keywords { get; set; }
 
         [MaxLength(255, ErrorMessage = "* 摘要的长度不能超过255个字符")]
         public string Digest { get; set; }//摘要
