@@ -15,9 +15,13 @@ namespace BLL.Entities
         public string Body { get; set; }
         public User Author { get; set; }
         public DateTime PublishTime { get; set; }
-         public static DateTime SetPublishTime(DateTime dateTime)
+        public static DateTime SetPublishTime(DateTime dateTime)
         {
             return dateTime;
+        }
+        public void Publish()
+        {
+            PublishTime = DateTime.Now;
         }
 
     }

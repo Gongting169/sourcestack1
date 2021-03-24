@@ -129,7 +129,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
-    <Compile Include="Controllers\ArticleSingleController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -388,6 +387,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="JsFile\ArticleSingle.js" />
     <Content Include="JsFile\Shared.js" />
     <Content Include="JsFile\LogOn.js" />
     <Content Include="JsFile\Register.js" />
@@ -435,10 +435,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Article\New.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
-    <Content Include="Views\Article\ArticleNewPartial.cshtml" />
-    <Content Include="Views\Article\ArticlePartial.cshtml" />
+    <Content Include="Views\Article\_ArticleNew.cshtml" />
+    <Content Include="Views\Article\_Article.cshtml" />
     <Content Include="Views\Article\Single.cshtml" />
-    <Content Include="Views\Article\ArticleSinglePartial.cshtml" />
+    <Content Include="Views\Article\_Single.cshtml" />
     <Content Include="Views\Contact\Edit.cshtml" />
     <Content Include="Views\Contact\ContactPartial.cshtml" />
     <Content Include="Views\Log\On.cshtml" />
@@ -464,6 +464,7 @@
     <Content Include="Views\Shared\Layout\_Dual.cshtml" />
     <Content Include="Views\Register\InvitedBySerializeName.cshtml" />
     <Content Include="Views\Log\Off.cshtml" />
+    <Content Include="Views\Article\_Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
