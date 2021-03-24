@@ -21,16 +21,18 @@ namespace SRV.ProdService
         protected readonly static MapperConfiguration config;
         public BaseService()
         {
-            userRepository = new UserRepository(Context);          
+            userRepository = new UserRepository(Context);
         }
         static BaseService()
         {
             config = new MapperConfiguration
                 (cfg =>
                 {
-                    cfg.CreateMap<Article, ArticleNewModel>().ReverseMap();
+                    cfg.CreateMap<Article, ArticleNewModel>().ReverseMap().ForMember(a => a.KeyWords, opt => opt.Ignore())
+                    .ForMember(a => a.Category, opt => opt.Ignore())
+                    .ForMember(a => a.PublishTime, opt => opt.Ignore());
                     cfg.CreateMap<User, UserModel>().ReverseMap();
-                    cfg.CreateMap<User, RegisterModel>().ReverseMap();
+                    cfg.CreateMap<User, RegisterModel>().ReverseMap().ForMember(u => u.InvitedBy, opt => opt.Ignore());
                     cfg.CreateMap<User, LogOnModel>().ReverseMap();
                     cfg.CreateMap<Article, ArticleSingleModel>().ReverseMap();
                     cfg.CreateMap<Article, ArticleModel>().ReverseMap();

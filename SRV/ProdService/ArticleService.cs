@@ -61,7 +61,7 @@ namespace SRV.ProdService
             IList<ArticleModel> models = mapper.Map<IList<ArticleModel>>(articleRepository.GetAllArticle());
             return models;
         }
-        public ArticleSingleModel GetPreOrNextArticleId(int id)
+        public ArticleSingleModel GetPreOrNextArticleId(int id)//获取上一篇和下一篇文章
         {
             Article preArticle = articleRepository.GetPreviousArticleId(id).FirstOrDefault();
             Article nextArticle = articleRepository.GetNextArticleId(id).FirstOrDefault();

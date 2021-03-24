@@ -12,5 +12,6 @@ namespace SRV.ServiceInterface
         int Publish(ArticleNewModel articleNewModel);
         ArticleSingleModel GetById(int id);
         IList<ArticleModel> GetAllArticles();
+        ArticleSingleModel GetPreOrNextArticleId(int id);
     }
 }
