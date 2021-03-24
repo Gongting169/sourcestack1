@@ -26,25 +26,67 @@ namespace MVC.Controllers
                 ModelState.AddModelError("", " 请输入正确的格式");
                 return View();
             }
-            int articleId = articleService.Publish(articleNewModel/*CookieHelper.GetCurrentUserId()*/);
+            int articleId = articleService.Publish(articleNewModel);
             return RedirectToAction(nameof(Single), new { id = articleId });
-            
         }
         [HttpGet]
         public ActionResult New()
         {
             return View();
         }
+
         public ActionResult Index(int articleId)
         {
-            List<ArticleModel> models = (List<ArticleModel>)articleService.GetAllArticle();
+            List<ArticleModel> models = (List<ArticleModel>)articleService.GetAllArticles();
             return View(models);
         }
-        public ActionResult Single(int id)
+        [HttpPost]
+        public ActionResult Index()
         {
-            ArticleSingleModel singleModel = articleService.GetById(id);
+            return View();
+        }
+
+
+        public ActionResult Single(/*int id*/)
+        {
+            ArticleSingleModel singleModel = new ArticleSingleModel();
+            singleModel = articleService.GetById(/*id*/ 3);
+            singleModel = articleService.GetPreOrNextArticleId(/*id*/3);
             return View(singleModel);
         }
+
+        //public JsonResult Get
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }
