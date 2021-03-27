@@ -2,22 +2,22 @@
 
 $(document).ready(function ()
 {
-    setInterval(function ()
-    {
-        $("[yqBang-bell]").toggleClass('lightblue')
-
-        //if ($("[yqBang-bell]")[0].style === 'color:lightblue')
-        //{
-        //    $("[yqBang-bell]")[0].style === 'color:darkblue';
-        //}
-        //else
-        //{
-        //    $("[yqBang-bell]")[0].style === 'color:darkblue';
-        //}
-    }, 2000)
+    setInterval(swap, 1000);
 })
 
+function swap()
+{
+    var bell = $("[yqBang-bell]")[0].style;
+    if (bell.color != 'lightblue')
+    {
+        bell.color = 'lightblue';
+    }
+    else
+    {
+        bell.color = 'darkblue';
+    }
 
+}
 
 
 
