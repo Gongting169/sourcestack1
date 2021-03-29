@@ -42,7 +42,7 @@ namespace SRV.ProdService
         }
         public string GetPassword(string password)
         {
-         return  userRepository.GetByPassword(password);           
+            return userRepository.GetByPassword(password);
         }
 
         public string GetByInvitedCode(string invitedCode)
@@ -61,11 +61,15 @@ namespace SRV.ProdService
         {
             return userRepository.GetPwdById(currentUserId);
         }
-         
+
         public int GetIdByName(string name)
         {
             return userRepository.GetIdByName(name);
         }
-      
+        public UserModel SwitchCurrentUser()
+        {
+            UserModel model = mapper.Map<UserModel>(GetCurrentUser());
+            return model;
+        }
     }
 }

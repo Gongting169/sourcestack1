@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppraiseService.cs" />
     <Compile Include="ArticleService.cs" />
     <Compile Include="BaseService.cs" />
     <Compile Include="KeywordService.cs" />
