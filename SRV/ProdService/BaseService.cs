@@ -28,15 +28,17 @@ namespace SRV.ProdService
             config = new MapperConfiguration
                 (cfg =>
                 {
-                    cfg.CreateMap<Article, ArticleNewModel>().ReverseMap().ForMember(a => a.KeyWords, opt => opt.Ignore())
+                    cfg.CreateMap<Article, ArticleNewModel>().ReverseMap()
+                    .ForMember(a => a.KeyWords, opt => opt.Ignore())
                     .ForMember(a => a.Category, opt => opt.Ignore())
                     .ForMember(a => a.PublishTime, opt => opt.Ignore());
                     cfg.CreateMap<User, UserModel>().ReverseMap();
-                    cfg.CreateMap<User, RegisterModel>().ReverseMap().ForMember(u => u.InvitedBy, opt => opt.Ignore());
+                    cfg.CreateMap<User, RegisterModel>().ReverseMap()
+                    .ForMember(u => u.InvitedBy, opt => opt.Ignore());
                     cfg.CreateMap<User, LogOnModel>().ReverseMap();
                     cfg.CreateMap<Article, ArticleSingleModel>().ReverseMap();
                     cfg.CreateMap<Article, ArticleModel>().ReverseMap();
-
+                    cfg.CreateMap<Appraise, ArticleSingleModel>().ReverseMap();
                 }
             );
         }

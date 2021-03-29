@@ -13,8 +13,7 @@ namespace BLL.Repositories
         {
         }
 
-        //找出所有文章放到列表页里面去
-        public IList<Article> GetAllArticle()
+        public IList<Article> GetAllArticles()
         {
             return dbSet.Take<Article>(dbSet.Count<Article>()).ToList();
         }
@@ -25,28 +24,27 @@ namespace BLL.Repositories
             {
                 throw new ArgumentException("参数的值不能匹配");
             }
-            if (id == 1)
+            if (id == 1)//不能返回null 
             {
-                return null;
+                return dbSet.Where(a => a.Id == id).Take(1);
             }
             else
             {
-                return dbSet.OrderByDescending(a => a.Id < id).Take(1);
+                return dbSet.Where(a => a.Id < id).OrderByDescending(a => a.Id).Take(1);
             }
         }
-
         public IQueryable<Article> GetNextArticleId(int id)
         {
-            int cId = dbSet.Where(a =>a.Id > id).Max(a => a.Id);
+            int cId = dbSet.Max(a => a.Id);
             if (id < cId)
             {
                 return dbSet.Where(a => a.Id > id).OrderBy(a => a.Id).Take(1);
             }
             else
             {
-                if (id == cId)
+                if (id == cId)// 返回null不行
                 {
-                    return null;
+                    return dbSet.Where(a => a.Id == id).OrderBy(a => a.Id).Take(1);
                 }
                 else
                 {
@@ -55,8 +53,14 @@ namespace BLL.Repositories
             }
         }
 
-
-
+        public IQueryable<Article> GetArticleRelevance(int id)
+        {
+            return dbSet.Where(a => a.Id == id);
+        }
+        public IQueryable<string> GetAuthorById(int id)
+        {
+            return dbSet.Where(a => a.Id == id).Select(a => a.Author.Name);
+        }
 
     }
 }

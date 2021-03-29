@@ -19,6 +19,7 @@ namespace SRV.ViewModel
         [MaxLength(int.MaxValue, ErrorMessage = "* 正文的长度最小是25,最大不能超过2147483647")]
         [MinLength(25, ErrorMessage = "* 正文的长度最小是25,最大不能超过2147483647")]
         public string Body { get; set; }
+
         public string Category { get; set; }
 
         [Required(ErrorMessage = "* 关键字不能为空")]
@@ -27,6 +28,7 @@ namespace SRV.ViewModel
 
         [MaxLength(255, ErrorMessage = "* 摘要的长度不能超过255个字符")]
         public string Digest { get; set; }//摘要
+
         public string Advertising { get; set; }
 
         [Required(ErrorMessage = "* 文本不能为空")]
@@ -35,15 +37,33 @@ namespace SRV.ViewModel
         //[Url()]
         [Required(ErrorMessage = "* 链接不能为空")]
         public string ContentUrl { get; set; }
+
         public string ContentEdit { get; set; }
+
         public string PublishTime { get; set; }
-        public string AuthorName { get; set; }
+
         [AllowHtml]
         [Required(ErrorMessage = "* 评论的内容不能为空")]
         public string CommentBody { get; set; }
+
         public string PreArticleId { get; set; }
+
         public string NextArticleId { get; set; }
+
         public string PreArticleTitle { get; set; }
+
         public string NextArticleTitle { get; set; }
+
+        public string AppraiseDirection { get; set; }
+
+        public string AppraiseDownCount { get; set; }
+
+        public string AppraiseUPCount { get; set; }
+
+        public string ArticleId { get; set; }
+
+        public string AuthorName { get; set; }
+        public string CurrentUser { get; set; }
+
     }
 }

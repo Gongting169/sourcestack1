@@ -18,11 +18,13 @@ namespace SRV.ProdService
         private ArticleRepository articleRepository;
         private KeywordRepository keywordRepository;
         private ArticleSingleModel singleModel;
+        private AppraiseRepository appraiseRepository;
         public ArticleService()
         {
             articleRepository = new ArticleRepository(Context);
             userRepository = new UserRepository(Context);
             keywordRepository = new KeywordRepository(Context);
+            appraiseRepository = new AppraiseRepository(Context);
             singleModel = new ArticleSingleModel();
         }
         public int Publish(ArticleNewModel articleNewModel)
@@ -36,7 +38,7 @@ namespace SRV.ProdService
             article.Publish();
             article.Author = GetCurrentUser();
             article.KeyWords = new List<Keyword>();
-            for (int i = 0; i < container.Length ; i++)
+            for (int i = 0; i < container.Length; i++)
             {
                 Keyword keyword = keywordRepository.GetByName(container[i]);
                 if (keyword == null)
@@ -52,13 +54,13 @@ namespace SRV.ProdService
         }
         public ArticleSingleModel GetById(int id)
         {
-            Article article = articleRepository.Find(id);
+            Article article = articleRepository.GetArticleRelevance(id).SingleOrDefault();
             singleModel = mapper.Map<ArticleSingleModel>(article);
             return singleModel;
         }
         public IList<ArticleModel> GetAllArticles()
         {
-            IList<ArticleModel> models = mapper.Map<IList<ArticleModel>>(articleRepository.GetAllArticle());
+            IList<ArticleModel> models = mapper.Map<IList<ArticleModel>>(articleRepository.GetAllArticles());
             return models;
         }
         public ArticleSingleModel GetPreOrNextArticleId(int id)//获取上一篇和下一篇文章
@@ -73,6 +75,9 @@ namespace SRV.ProdService
             return singleModel;
         }
 
-
+        public string GetAuthorById(int id)
+        {
+            return articleRepository.GetAuthorById(id).SingleOrDefault();
+        }
     }
 }
