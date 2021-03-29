@@ -9,21 +9,14 @@ namespace BLL.Entities
 {
     public class Appraise : Entity
     {
-        public User Voter { get; set; }
-        public AppraiseDirection Direction { get;  set; }
-
+        public virtual User Voter { get; set; }
+        public AppraiseDirection DirectionUp { get; set; }
+        public AppraiseDirection DirectionDown { get; set; }
+        public int UpCount { get; set; }
+        public int DownCount { get; set; }
         //每个文章和评论都有一个评价
-        public Article Article { get; set; }
-        public Comment Comment { get; set; }
+        public virtual Article Article { get; set; }
+        public virtual Comment Comment { get; set; }
         public Suggest Suggest { get; set; }
-        public void Agree()
-        {
-            Direction = AppraiseDirection.Up;
-        }
-
-        public void Disagree()
-        {
-            Direction = AppraiseDirection.Down;
-        }
     }
 }

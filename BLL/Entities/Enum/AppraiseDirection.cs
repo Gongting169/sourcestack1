@@ -8,7 +8,7 @@ namespace BLL.Entities.Enum
 {
     public enum AppraiseDirection
     {
-        Up,
-        Down
+        Up = 1,
+        Down = 2
     }
 }

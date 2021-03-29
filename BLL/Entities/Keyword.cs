@@ -10,7 +10,7 @@ namespace BLL.Entities
     {
         public string Name { get; set; }
         public int Used { get; set; }
-        public IList<Article> Articles { get; set; }
-        public IList<Problem> Problems { get; set; }
+        public virtual IList<Article> Articles { get; set; }
+        public  IList<Problem> Problems { get; set; }
     }
 }

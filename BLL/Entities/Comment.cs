@@ -13,11 +13,11 @@ namespace BLL.Entities
         public bool NeedRemoteHelp { get; set; }//是够需要开启远程协助
 
         //一篇文章可以有多个评论
-        public Article Article { get; set; }
+        public virtual Article Article { get; set; }
         //每个文章和评论都有一个评价
-        public IList<Appraise> Appraises { get; set; }
+        public virtual IList<Appraise> Appraises { get; set; }
         //一篇求助对应多个评论
-        public Problem Problem { get; set; }
-        public Suggest Suggest { get; set; }
+        public  Problem Problem { get; set; }
+        public  Suggest Suggest { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace BLL.Entities
 
         }
         public string Body { get; set; }
-        public User Author { get; set; }
+        public virtual User Author { get; set; }
         public DateTime PublishTime { get; set; }
         public static DateTime SetPublishTime(DateTime dateTime)
         {

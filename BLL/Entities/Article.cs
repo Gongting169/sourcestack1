@@ -13,9 +13,9 @@ namespace BLL.Entities
         //一篇文章可以有多个评论
         //一篇文章可以有多个关键字，一个关键字可以对应多篇文章
         //一个分类对应多篇文章
-        public IList<Comment> Comments { get; set; }
-        public IList<Keyword> KeyWords { get; set; }
-        public IList<Appraise> Appraises { get; set; }
-        public Category Category { get; set; }
+        public virtual  IList<Comment> Comments { get; set; }
+        public virtual IList<Keyword> KeyWords { get; set; }
+        public virtual IList<Appraise> Appraises { get; set; }
+        public  Category Category { get; set; }
     }
 }
