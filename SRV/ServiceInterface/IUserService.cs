@@ -17,5 +17,6 @@ namespace SRV.ServiceInterface
         RegisterModel GetByRegisterName(string name);
         string GetPwdById(int? currentUserId);
         int GetIdByName(string name);
+        UserModel SwitchCurrentUser();
     }
 }
