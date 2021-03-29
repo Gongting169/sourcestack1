@@ -54,8 +54,8 @@
                     </small>
                 </span>
                 <span class="pull-right">
-                    <span zyf-article-arthor="">
-                        作者：<a href="/Article/User-1">@Model.AuthorName</a>
+                    <span yqbang-article-arthor=" ">
+                        作者：<a href="/Article/User-1" >@Model.AuthorName</a>
                     </span>
                     <a class="hide" style="margin-left:14px;" href="#" data-author-id="1" yqbang-article-edit="">
                         <span class="fa fa-pencil-square-o"></span> 修改
@@ -67,24 +67,32 @@
                 <div class="clearfix" style="margin-top:10px;">
                     <div>
                         <label><span class="fa fa-tags"></span> 关键字：</label>
-                        <span class="badge">C#</span>
-                        <span class="badge">数组</span>
+                        @foreach (var item in Model.Keywords)
+                        {
+                            <span class="badge">@item</span>
+                        }
+                        @*@for (int i = 0; i < @Model.Keywords.Count(); i++)
+                            {
+                                <span class="badge">@Model.Keywords[i]</span>
+                            }*@
                     </div>
                     <div class="article-appraise appraise-status pull-right">
-                        <a class="appraise-status-item text-success" @*href="/Article/Appraise?id=294&amp;direction=1"*@ yqbang-vote=" " data-toggle="modal" data-target="#singleModal">
+                        <a class="appraise-status-item text-success" href="/Article/Appraise?id=294&amp;direction=1"
+                           yqbang-vote=" " data-toggle="modal" data-target="#singleModal">
                             <span class="fa fa-thumbs-o-up"></span>
                             <span class="visible-sm-inline visible-md-inline visible-lg-inline">赞：</span>
-                            <span zyf-votes-count="">0</span>
+                            <span yqbang-votes-agreecount="">@Model.AppraiseUPCount</span>
                         </a>
-                        <a class="appraise-status-item text-muted" @*href="/Article/Appraise?id=294&amp;direction=-1"*@ yqbang-vote=" " data-toggle="modal" data-target="#singleModal">
+                        <a class="appraise-status-item text-muted" href="/Article/Appraise?id=294&amp;direction=-1" 
+                           yqbang-vote=" " data-toggle="modal" data-target="#singleModal">
                             <span class="fa fa-thumbs-o-down"></span>
                             <span class="visible-sm-inline visible-md-inline visible-lg-inline">踩：</span>
-                            <span zyf-votes-count="">0</span>
+                            <span yqbang-votes-disagreecount="">@Model.AppraiseDownCount</span>
                         </a>
                     </div>
                     <div style="padding-bottom:25px;" zyf-article-donate-container="">
                         <div style="clear:both;margin-left:auto;margin-right:auto;width:65px;height:65px;">
-                            <div title="" class="yellow-highlight text-center" data-original-title="点击打赏" 
+                            <div title="" class="yellow-highlight text-center" data-original-title="点击打赏"
                                  data-author-id="1" data-article-id="294" yqbang-article-donate-btn=" " data-toggle="modal" data-target="#donateModal">
                                 <span class="iconfont icon-money credit fa-2x"></span><br>打赏
                             </div>
@@ -183,12 +191,33 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">
-              <span class=" fa fa-info-circle"></span>友情提示
+                    <span class=" fa fa-info-circle"></span>友情提示
                 </h4>
             </div>
             <div class="modal-body">
                 <p>
-                    <span class=" fa fa-exclamation-triangle"></span>你的帮帮币不够啦。<a href="/Article/Account">如何获得</a> 
+                    <span class=" fa fa-exclamation-triangle"></span>你的帮帮币不够啦。<a href="/Article/Account">如何获得</a>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="UnableAppraiseModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    <span class=" fa fa-info-circle"></span>友情提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <span class=" fa fa-exclamation-triangle"></span>自己不能评价自己的内容
                 </p>
             </div>
             <div class="modal-footer">
