@@ -37,8 +37,10 @@ namespace DbFactory
             Appraise appraise = new Appraise();
             appraise.Voter = UserFactory.LiSi;
             appraise.Article = ArticleFactory.array;
-            appraise.Direction = AppraiseDirection.Down;
-            appraise.Direction = AppraiseDirection.Up;
+            appraise.DirectionDown = AppraiseDirection.Down;
+            appraise.DirectionUp = AppraiseDirection.Up;
+            appraise.UpCount = 1;
+            appraise.DownCount = 1;
             new AppraiseRepository(Helper.GetDbContext()).Save(appraise);
             return appraise;
         }
@@ -52,8 +54,10 @@ namespace DbFactory
             Appraise appraise = new Appraise();
             appraise.Voter = UserFactory.WangWu;
             appraise.Article = ArticleFactory.branch;
-            appraise.Direction = AppraiseDirection.Down;
-            appraise.Direction = AppraiseDirection.Up;
+            appraise.DirectionDown = AppraiseDirection.Down;
+            appraise.DirectionUp = AppraiseDirection.Up;
+            appraise.UpCount = 1;
+            appraise.DownCount = 1;
             new AppraiseRepository(Helper.GetDbContext()).Save(appraise);
             return appraise;
         }
@@ -67,8 +71,10 @@ namespace DbFactory
             Appraise appraise = new Appraise();
             appraise.Voter = UserFactory.XiaoWei;
             appraise.Article = ArticleFactory.express;
-            appraise.Direction = AppraiseDirection.Down;
-            appraise.Direction = AppraiseDirection.Up;
+            appraise.DirectionDown = AppraiseDirection.Down;
+            appraise.DirectionUp = AppraiseDirection.Up;
+            appraise.UpCount = 1;
+            appraise.DownCount = 1;
             new AppraiseRepository(Helper.GetDbContext()).Save(appraise);
             return appraise;
         }
@@ -82,8 +88,10 @@ namespace DbFactory
             Appraise appraise = new Appraise();
             appraise.Voter = UserFactory.ZhangSan;
             appraise.Article = ArticleFactory.jinJie;
-            appraise.Direction = AppraiseDirection.Down;
-            appraise.Direction = AppraiseDirection.Up;
+            appraise.DirectionDown = AppraiseDirection.Down;
+            appraise.DirectionUp = AppraiseDirection.Up;
+            appraise.UpCount = 1;
+            appraise.DownCount = 1;
             new AppraiseRepository(Helper.GetDbContext()).Save(appraise);
             return appraise;
         }
@@ -97,8 +105,10 @@ namespace DbFactory
             Appraise appraise = new Appraise();
             appraise.Voter = UserFactory.LiSi;
             appraise.Article = ArticleFactory.method;
-            appraise.Direction = AppraiseDirection.Down;
-            appraise.Direction = AppraiseDirection.Up;
+            appraise.DirectionDown = AppraiseDirection.Down;
+            appraise.DirectionUp = AppraiseDirection.Up;
+            appraise.UpCount = 1;
+            appraise.DownCount = 1;
             new AppraiseRepository(Helper.GetDbContext()).Save(appraise);
             return appraise;
         }
@@ -112,8 +122,10 @@ namespace DbFactory
             Appraise appraise = new Appraise();
             appraise.Voter = UserFactory.WangWu;
             appraise.Article = ArticleFactory.consoleProgram;
-            appraise.Direction = AppraiseDirection.Down;
-            appraise.Direction = AppraiseDirection.Up;
+            appraise.DirectionDown = AppraiseDirection.Down;
+            appraise.DirectionUp = AppraiseDirection.Up;
+            appraise.UpCount = 1;
+            appraise.DownCount = 1;
             new AppraiseRepository(Helper.GetDbContext()).Save(appraise);
             return appraise;
         }
@@ -127,8 +139,10 @@ namespace DbFactory
             Appraise appraise = new Appraise();
             appraise.Voter = UserFactory.XiaoWei;
             appraise.Article = ArticleFactory.variable;
-            appraise.Direction = AppraiseDirection.Down;
-            appraise.Direction = AppraiseDirection.Up;
+            appraise.DirectionDown = AppraiseDirection.Down;
+            appraise.DirectionUp = AppraiseDirection.Up;
+            appraise.UpCount = 1;
+            appraise.DownCount = 1;
             new AppraiseRepository(Helper.GetDbContext()).Save(appraise);
             return appraise;
         }
@@ -142,8 +156,10 @@ namespace DbFactory
             Appraise appraise = new Appraise();
             appraise.Voter = UserFactory.ZhangSan;
             appraise.Article = ArticleFactory.xunHuan;
-            appraise.Direction = AppraiseDirection.Down;
-            appraise.Direction = AppraiseDirection.Up;
+            appraise.DirectionDown = AppraiseDirection.Down;
+            appraise.DirectionUp = AppraiseDirection.Up;
+            appraise.UpCount = 1;
+            appraise.DownCount = 1;
             new AppraiseRepository(Helper.GetDbContext()).Save(appraise);
             return appraise;
         }
@@ -157,8 +173,10 @@ namespace DbFactory
             Appraise appraise = new Appraise();
             appraise.Voter = UserFactory.LiSi;
             appraise.Article = ArticleFactory.yuanZu;
-            appraise.Direction = AppraiseDirection.Down;
-            appraise.Direction = AppraiseDirection.Up;
+            appraise.DirectionDown = AppraiseDirection.Down;
+            appraise.DirectionUp = AppraiseDirection.Up;
+            appraise.UpCount = 1;
+            appraise.DownCount = 1;
             new AppraiseRepository(Helper.GetDbContext()).Save(appraise);
             return appraise;
         }
@@ -172,8 +190,10 @@ namespace DbFactory
             Appraise appraise = new Appraise();
             appraise.Voter = UserFactory.WangWu;
             appraise.Article = ArticleFactory.method;
-            appraise.Direction = AppraiseDirection.Down;
-            appraise.Direction = AppraiseDirection.Up;
+            appraise.DirectionDown = AppraiseDirection.Down;
+            appraise.DirectionUp = AppraiseDirection.Up;
+            appraise.UpCount = 1;
+            appraise.DownCount = 1;
             new AppraiseRepository(Helper.GetDbContext()).Save(appraise);
             return appraise;
         }
@@ -187,8 +207,10 @@ namespace DbFactory
             Appraise appraise = new Appraise();
             appraise.Voter = UserFactory.XiaoWei;
             appraise.Article = ArticleFactory.parameter;
-            appraise.Direction = AppraiseDirection.Down;
-            appraise.Direction = AppraiseDirection.Up;
+            appraise.DirectionDown = AppraiseDirection.Down;
+            appraise.DirectionUp = AppraiseDirection.Up;
+            appraise.UpCount = 1;
+            appraise.DownCount = 1;
             new AppraiseRepository(Helper.GetDbContext()).Save(appraise);
             return appraise;
         }

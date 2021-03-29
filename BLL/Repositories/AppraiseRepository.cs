@@ -12,5 +12,32 @@ namespace BLL.Repositories
         public AppraiseRepository(SqlDbContext context) : base(context)
         {
         }
+
+
+        public IQueryable<Appraise> GetAppraiseRelevance(int id)
+        {
+            return dbSet.Where(a => a.Id == id);
+        }
+        public IQueryable<Appraise> GetArticleAppraise(int aId)
+        {
+            return dbSet.Where(a => a.Article.Id == aId);
+        }
+
+        public int Attach(Appraise appraise)
+        {
+            //dbSet.Attach(appraise);
+            context.SaveChanges();
+            return appraise.Id;
+        }
+
+
+
+
+
+
+
+
+
+
     }
 }
