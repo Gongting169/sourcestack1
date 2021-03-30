@@ -112,7 +112,7 @@ namespace DbFactory
             article.PublishTime = Helper.baseLine.AddDays(5);
             article.Title = title;
             article.KeyWords = new List<Keyword>() { KeywordFactory.csharp, KeywordFactory.java, KeywordFactory.js };
-            article.Comments = new List<Comment>() { };
+            article.Comments = new List<Comment>() {CommentFactory.branch };
             article.Appraises = new List<Appraise>() { AppraiseFactory.aBranch };
             new ArticleRepository(Helper.GetDbContext()).Save(article);
             return article;

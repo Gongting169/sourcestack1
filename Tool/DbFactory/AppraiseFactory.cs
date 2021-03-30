@@ -58,6 +58,7 @@ namespace DbFactory
             appraise.DirectionUp = AppraiseDirection.Up;
             appraise.UpCount = 1;
             appraise.DownCount = 1;
+            appraise.Comment = CommentFactory.branch;
             new AppraiseRepository(Helper.GetDbContext()).Save(appraise);
             return appraise;
         }

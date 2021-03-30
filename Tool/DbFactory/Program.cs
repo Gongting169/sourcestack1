@@ -7,19 +7,21 @@ using System.Threading.Tasks;
 
 namespace DbFactory
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Helper.GetDbContext().Database.Delete();
             Helper.GetDbContext().Database.Create();
-            UserFactory.Creat();
+
             try
             {
                 Helper.GetDbContext().Database.BeginTransaction();
                 KeywordFactory.Creat();
                 ArticleFactory.Create();
                 AppraiseFactory.Create();
+                CommentFactory.Create();
+                UserFactory.Creat();
                 Helper.GetDbContext().Database.CurrentTransaction.Commit();
 
             }
