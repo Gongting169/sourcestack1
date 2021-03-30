@@ -9,43 +9,20 @@ namespace SRV.ViewModel
 {
     public class ArticleSingleModel
     {
-        [StringLength(256, ErrorMessage = ("* 标题的长度不能超过255个字符"))]
-        [Required(ErrorMessage = "* 标题不能为空")]
-        [Display(Name = "标题")]
+
         public string Title { get; set; }
 
-        [AllowHtml]
-        [Required(ErrorMessage = "* 正文不能为空")]
-        [MaxLength(int.MaxValue, ErrorMessage = "* 正文的长度最小是25,最大不能超过2147483647")]
-        [MinLength(25, ErrorMessage = "* 正文的长度最小是25,最大不能超过2147483647")]
         public string Body { get; set; }
 
         public string Category { get; set; }
 
-        [Required(ErrorMessage = "* 关键字不能为空")]
-        [StringLength(25, ErrorMessage = "* 关键字的长度不能大于25", MinimumLength = 1)]
-        public string Keywords { get; set; }
-
-        [MaxLength(255, ErrorMessage = "* 摘要的长度不能超过255个字符")]
-        public string Digest { get; set; }//摘要
-
-        public string Advertising { get; set; }
-
-        [Required(ErrorMessage = "* 文本不能为空")]
-        [MaxLength(50, ErrorMessage = "* 文本的长度不能大于30")]
-        public string Content { get; set; }
-        //[Url()]
-        [Required(ErrorMessage = "* 链接不能为空")]
-        public string ContentUrl { get; set; }
-
-        public string ContentEdit { get; set; }
-
         public string PublishTime { get; set; }
 
-        [AllowHtml]
-        [Required(ErrorMessage = "* 评论的内容不能为空")]
-        public string CommentBody { get; set; }
+        public string ArticleId { get; set; }
 
+        public string AuthorName { get; set; }
+
+        #region 文章上一篇和下一篇
         public string PreArticleId { get; set; }
 
         public string NextArticleId { get; set; }
@@ -53,17 +30,16 @@ namespace SRV.ViewModel
         public string PreArticleTitle { get; set; }
 
         public string NextArticleTitle { get; set; }
+        #endregion
 
-        public string AppraiseDirection { get; set; }
 
-        public string AppraiseDownCount { get; set; }
-
-        public string AppraiseUPCount { get; set; }
-
-        public string ArticleId { get; set; }
-
-        public string AuthorName { get; set; }
         public string CurrentUser { get; set; }
+
+        public IList<CommentModel> Comments { get; set; }
+
+        public  IList<AppraiseModel> Appraises { get; set;}
+
+        public IList<KeywordModel> Keywords { get; set; }
 
     }
 }
