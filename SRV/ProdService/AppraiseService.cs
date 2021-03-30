@@ -21,17 +21,15 @@ namespace SRV.ProdService
         }
 
 
-        public ArticleSingleModel GetById(int id)
+        public AppraiseModel GetById(int id)
         {
-            Appraise appraise = appraiseRepository.GetAppraiseRelevance(id).SingleOrDefault();
-            ArticleSingleModel singleModel = mapper.Map<ArticleSingleModel>(appraise);
-            singleModel.AppraiseUPCount =Convert.ToString(appraise.UpCount);
-            singleModel.AppraiseDownCount =Convert.ToString(appraise.DownCount);
-            return singleModel;
+            Appraise appraise = appraiseRepository.GetRelevance(id).SingleOrDefault();
+            AppraiseModel model = mapper.Map<AppraiseModel>(appraise);
+            return model;
         }
         public int SaveAgreeOrDisagree(int aId, string direction)
         {
-            Appraise appraise = appraiseRepository.GetArticleAppraise(Convert.ToInt32(aId)).SingleOrDefault();
+            Appraise appraise = appraiseRepository.GetAppraise(Convert.ToInt32(aId)).SingleOrDefault();
             Context.Set<Appraise>().Attach(appraise);
             if (direction == "1")
             {

@@ -19,12 +19,14 @@ namespace SRV.ProdService
         private KeywordRepository keywordRepository;
         private ArticleSingleModel singleModel;
         private AppraiseRepository appraiseRepository;
+        private CommentRepository commentRepository;
         public ArticleService()
         {
             articleRepository = new ArticleRepository(Context);
             userRepository = new UserRepository(Context);
             keywordRepository = new KeywordRepository(Context);
             appraiseRepository = new AppraiseRepository(Context);
+            commentRepository = new CommentRepository(Context);
             singleModel = new ArticleSingleModel();
         }
         public int Publish(ArticleNewModel articleNewModel)
@@ -54,7 +56,7 @@ namespace SRV.ProdService
         }
         public ArticleSingleModel GetById(int id)
         {
-            Article article = articleRepository.GetArticleRelevance(id).SingleOrDefault();
+            Article article = articleRepository.GetRelevance(id).SingleOrDefault();         
             singleModel = mapper.Map<ArticleSingleModel>(article);
             return singleModel;
         }
@@ -77,7 +79,7 @@ namespace SRV.ProdService
 
         public string GetAuthorById(int id)
         {
-            return articleRepository.GetAuthorById(id).SingleOrDefault();
+            return articleRepository.GetAuthorNameById(id).SingleOrDefault();
         }
     }
 }
