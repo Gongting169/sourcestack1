@@ -14,14 +14,17 @@ namespace BLL.Repositories
         }
 
 
-        public IQueryable<Appraise> GetAppraiseRelevance(int id)
+        public IQueryable<Appraise> GetRelevance(int id)
         {
             return dbSet.Where(a => a.Id == id);
         }
-        public IQueryable<Appraise> GetArticleAppraise(int aId)
+
+
+        public IQueryable<Appraise> GetAppraise(int aId)
         {
             return dbSet.Where(a => a.Article.Id == aId);
         }
+
 
         public int Attach(Appraise appraise)
         {

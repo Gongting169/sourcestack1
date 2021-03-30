@@ -17,9 +17,12 @@ namespace BLL.Repositories
         {
             return dbSet.Where(k => k.Name == name).SingleOrDefault();
         }
-   
 
 
+        public IQueryable<Keyword> GetRelevance(int id)
+        {
+            return dbSet.Where(a => a.Id == id);
+        }
 
 
     }

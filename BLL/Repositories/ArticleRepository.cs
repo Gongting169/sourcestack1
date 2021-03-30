@@ -53,11 +53,13 @@ namespace BLL.Repositories
             }
         }
 
-        public IQueryable<Article> GetArticleRelevance(int id)
+        public IQueryable<Article> GetRelevance(int id)
         {
             return dbSet.Where(a => a.Id == id);
         }
-        public IQueryable<string> GetAuthorById(int id)
+
+
+        public IQueryable<string> GetAuthorNameById(int id)
         {
             return dbSet.Where(a => a.Id == id).Select(a => a.Author.Name);
         }
