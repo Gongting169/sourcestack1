@@ -465,6 +465,7 @@
     <Content Include="Views\Register\InvitedBySerializeName.cshtml" />
     <Content Include="Views\Log\Off.cshtml" />
     <Content Include="Views\Article\_Comment.cshtml" />
+    <Content Include="Views\Article\_ArticleComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
