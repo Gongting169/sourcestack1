@@ -9,7 +9,7 @@ namespace SRV.ServiceInterface
 {
    public interface IAppraiseService
     {
-        ArticleSingleModel GetById(int id);
+        AppraiseModel GetById(int id);
         int SaveAgreeOrDisagree(int id,string direction);
     }
 }

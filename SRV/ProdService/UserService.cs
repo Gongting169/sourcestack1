@@ -66,7 +66,7 @@ namespace SRV.ProdService
         {
             return userRepository.GetIdByName(name);
         }
-        public UserModel SwitchCurrentUser()
+        public UserModel GetCurrentUserModel()
         {
             UserModel model = mapper.Map<UserModel>(GetCurrentUser());
             return model;

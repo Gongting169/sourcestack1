@@ -9,6 +9,6 @@ namespace SRV.ServiceInterface
 {
     public interface ICommentService
     {
-        ArticleSingleModel GetById(int id);
+       CommentModel GetById(int id);
     }
 }
