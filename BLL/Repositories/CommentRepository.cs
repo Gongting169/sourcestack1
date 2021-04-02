@@ -13,6 +13,10 @@ namespace BLL.Repositories
         {
         }
 
+        public IQueryable<Comment> GetOderByDescLocation(int id)
+        {
+            return dbSet.Where(c => c.Article.Id == id).OrderByDescending(c => c.Location);
+        }
 
         public IQueryable<Comment> GetComment(int aId)
         {
@@ -23,6 +27,11 @@ namespace BLL.Repositories
         public IQueryable<Comment> GetRelevance(int id)
         {
             return dbSet.Where(a => a.Id == id);
+        }
+          
+        public int  GetCountById(int aId)
+        {
+           return dbSet.Where(a => a.Article.Id == aId).Count<Comment>();
         }
 
     }

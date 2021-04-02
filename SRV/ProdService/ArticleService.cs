@@ -54,17 +54,27 @@ namespace SRV.ProdService
             articleRepository.Save(article);
             return article.Id;
         }
+
+
         public ArticleSingleModel GetById(int id)
         {
-            Article article = articleRepository.GetRelevance(id).SingleOrDefault();         
+            Article article = articleRepository.GetRelevance(id).SingleOrDefault();
             singleModel = mapper.Map<ArticleSingleModel>(article);
+            IList<Comment> comments = commentRepository.GetOderByDescLocation(id).ToList();
+            singleModel.Comments = mapper.Map<IList<Comment>, IList<CommentModel>>(comments);
+            int commentAmount = commentRepository.GetCountById(id);
+            singleModel.CommentCount = Convert.ToString(commentAmount);
             return singleModel;
         }
+
+
         public IList<ArticleModel> GetAllArticles()
         {
             IList<ArticleModel> models = mapper.Map<IList<ArticleModel>>(articleRepository.GetAllArticles());
             return models;
         }
+
+
         public ArticleSingleModel GetPreOrNextArticleId(int id)//获取上一篇和下一篇文章
         {
             Article preArticle = articleRepository.GetPreviousArticleId(id).FirstOrDefault();
@@ -81,5 +91,7 @@ namespace SRV.ProdService
         {
             return articleRepository.GetAuthorNameById(id).SingleOrDefault();
         }
+
+
     }
 }
