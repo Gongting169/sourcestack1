@@ -33,6 +33,7 @@ namespace BLL.Repositories
                 return dbSet.Where(a => a.Id < id).OrderByDescending(a => a.Id).Take(1);
             }
         }
+
         public IQueryable<Article> GetNextArticleId(int id)
         {
             int cId = dbSet.Max(a => a.Id);

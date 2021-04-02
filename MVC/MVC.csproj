@@ -437,8 +437,8 @@
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Article\_ArticleNew.cshtml" />
     <Content Include="Views\Article\_Article.cshtml" />
-    <Content Include="Views\Article\Single.cshtml" />
-    <Content Include="Views\Article\_Single.cshtml" />
+    <Content Include="Views\Article\Single\Single.cshtml" />
+    <Content Include="Views\Article\Single\_Single.cshtml" />
     <Content Include="Views\Contact\Edit.cshtml" />
     <Content Include="Views\Contact\ContactPartial.cshtml" />
     <Content Include="Views\Log\On.cshtml" />
@@ -464,8 +464,8 @@
     <Content Include="Views\Shared\Layout\_Dual.cshtml" />
     <Content Include="Views\Register\InvitedBySerializeName.cshtml" />
     <Content Include="Views\Log\Off.cshtml" />
-    <Content Include="Views\Article\_Comment.cshtml" />
-    <Content Include="Views\Article\_ArticleComment.cshtml" />
+    <Content Include="Views\Article\Single\_Comment.cshtml" />
+    <Content Include="Views\Article\Single\_PublishComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

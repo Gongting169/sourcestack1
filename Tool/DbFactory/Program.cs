@@ -17,11 +17,11 @@ namespace DbFactory
             try
             {
                 Helper.GetDbContext().Database.BeginTransaction();
+                UserFactory.Creat();
                 KeywordFactory.Creat();
                 ArticleFactory.Create();
                 AppraiseFactory.Create();
                 CommentFactory.Create();
-                UserFactory.Creat();
                 Helper.GetDbContext().Database.CurrentTransaction.Commit();
 
             }
@@ -30,7 +30,6 @@ namespace DbFactory
 
                 throw;
             }
-
 
 
         }

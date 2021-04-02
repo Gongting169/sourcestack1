@@ -17,13 +17,13 @@ namespace MVC
             routes.MapRoute(
                 name: "ArticleSingle",
                 url: "Article/{id}",
-                new { controller = "Article", action = "Single" },
-                constraints: new { id = @"\d*" }
+                new { controller = "Article", action = "Single"},
+                constraints: new { id = @"[0-9]+" }
                 );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index",id = UrlParameter.Optional}
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
