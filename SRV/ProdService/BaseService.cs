@@ -39,7 +39,8 @@ namespace SRV.ProdService
                     cfg.CreateMap<Article, ArticleSingleModel>().ReverseMap();
                     cfg.CreateMap<Article, ArticleModel>().ReverseMap();
                     cfg.CreateMap<Appraise, AppraiseModel>().ReverseMap();
-                    cfg.CreateMap<Comment, CommentModel>().ReverseMap();
+                    cfg.CreateMap<Comment, CommentModel>().ReverseMap()
+                    .ForMember(c => c.PublishTime, opt => opt.Ignore());
                     cfg.CreateMap<Keyword, KeywordModel>().ReverseMap();
                 }
             );
