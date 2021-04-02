@@ -22,6 +22,12 @@ namespace SRV.ViewModel
 
         public string AuthorName { get; set; }
 
+        public string CommentCount { get; set; }//算谁的职责？
+
+        [AllowHtml]
+        [Required(ErrorMessage = "* 评论的内容不能为空")]
+        public string EditorBody { get; set; }
+
         #region 文章上一篇和下一篇
         public string PreArticleId { get; set; }
 
@@ -37,7 +43,7 @@ namespace SRV.ViewModel
 
         public IList<CommentModel> Comments { get; set; }
 
-        public  IList<AppraiseModel> Appraises { get; set;}
+        public IList<AppraiseModel> Appraises { get; set; }
 
         public IList<KeywordModel> Keywords { get; set; }
 
