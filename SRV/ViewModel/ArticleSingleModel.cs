@@ -7,8 +7,10 @@ using System.Web.Mvc;
 
 namespace SRV.ViewModel
 {
-    public class ArticleSingleModel
+    public class ArticleSingleModel : BaseModel
     {
+
+        public int Id { get; set; }
 
         public string Title { get; set; }
 
@@ -16,30 +18,25 @@ namespace SRV.ViewModel
 
         public string Category { get; set; }
 
-        public string PublishTime { get; set; }
+        public DateTime PublishTime { get; set; }
 
-        public string ArticleId { get; set; }
+        public UserModel Author { get; set; }
 
-        public string AuthorName { get; set; }
-
-        public string CommentCount { get; set; }//算谁的职责？
+        public int  CommentCount { get; set; }//算谁的职责？
 
         [AllowHtml]
         [Required(ErrorMessage = "* 评论的内容不能为空")]
         public string EditorBody { get; set; }
 
         #region 文章上一篇和下一篇
-        public string PreArticleId { get; set; }
+        public int PreArticleId { get; set; }
 
-        public string NextArticleId { get; set; }
+        public int NextArticleId { get; set; }
 
         public string PreArticleTitle { get; set; }
 
         public string NextArticleTitle { get; set; }
         #endregion
-
-
-        public string CurrentUser { get; set; }
 
         public IList<CommentModel> Comments { get; set; }
 

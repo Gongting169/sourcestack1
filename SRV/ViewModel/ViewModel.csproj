@@ -67,7 +67,9 @@
     <Compile Include="ArticleModel.cs" />
     <Compile Include="ArticleNewModel.cs" />
     <Compile Include="ArticleSingleModel.cs" />
+    <Compile Include="BaseModel.cs" />
     <Compile Include="CategoryModel.cs" />
+    <Compile Include="ChildCommentModel.cs" />
     <Compile Include="CommentModel.cs" />
     <Compile Include="ContactEditModel.cs" />
     <Compile Include="EmailModel.cs" />

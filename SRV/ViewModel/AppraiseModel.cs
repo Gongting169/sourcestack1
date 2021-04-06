@@ -9,19 +9,19 @@ namespace SRV.ViewModel
     public class AppraiseModel
     {
 
-        public string SupportCount { get; set; }
+        public int SupportCount { get; set; }
 
-        public string OpposeCount { get; set; }//反对数量
+        public int OpposeCount { get; set; }//反对数量
 
 
-        public string DownCount { get; set; }
+        public int DownCount { get; set; }
 
-        public string UPCount { get; set; }
+        public int UPCount { get; set; }
 
-        public ArticleSingleModel ArticleSingle { get; set; }
+        public ArticleSingleModel Article { get; set; }
 
         public CommentModel Comment { get; set; }
 
-
+        public UserModel Voter { get; set; }
     }
 }
