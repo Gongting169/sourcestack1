@@ -13,6 +13,6 @@ namespace SRV.ServiceInterface
         ArticleSingleModel GetById(int id);
         IList<ArticleModel> GetAllArticles();
         ArticleSingleModel GetPreOrNextArticleId(int id);
-        string GetAuthorById(int id);
+        UserModel GetAuthorBy(int id);
     }
 }

@@ -60,9 +60,9 @@ namespace BLL.Repositories
         }
 
 
-        public IQueryable<string> GetAuthorNameById(int id)
+        public IQueryable<User> GetAuthorBy(int id)
         {
-            return dbSet.Where(a => a.Id == id).Select(a => a.Author.Name);
+            return dbSet.Where(a => a.Id == id).Select(a => a.Author);
         }
 
     }
