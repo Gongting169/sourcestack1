@@ -60,10 +60,8 @@ namespace SRV.ProdService
         {
             Article article = articleRepository.GetRelevance(id).SingleOrDefault();
             singleModel = mapper.Map<ArticleSingleModel>(article);
-            IList<Comment> comments = commentRepository.GetOderByDescLocation(id).ToList();
-            singleModel.Comments = mapper.Map<IList<Comment>, IList<CommentModel>>(comments);
-            int commentAmount = commentRepository.GetCountById(id);
-            singleModel.CommentCount = Convert.ToString(commentAmount);
+            int commentAmount = commentRepository.GetByArticle(id).Count<Comment>();
+            singleModel.CommentCount = commentAmount;
             return singleModel;
         }
 
@@ -79,17 +77,17 @@ namespace SRV.ProdService
         {
             Article preArticle = articleRepository.GetPreviousArticleId(id).FirstOrDefault();
             Article nextArticle = articleRepository.GetNextArticleId(id).FirstOrDefault();
-            singleModel.PreArticleId = Convert.ToString(preArticle.Id);
+            singleModel.PreArticleId = preArticle.Id;
             singleModel.PreArticleTitle = preArticle.Title;
 
-            singleModel.NextArticleId = Convert.ToString(nextArticle.Id);
+            singleModel.NextArticleId = nextArticle.Id;
             singleModel.NextArticleTitle = nextArticle.Title;
             return singleModel;
         }
 
-        public string GetAuthorById(int id)
+        public UserModel GetAuthorBy(int id)
         {
-            return articleRepository.GetAuthorNameById(id).SingleOrDefault();
+            return mapper.Map<UserModel>(articleRepository.GetAuthorBy(id).SingleOrDefault());
         }
 
 
