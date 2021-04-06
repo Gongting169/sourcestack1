@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -437,7 +438,7 @@
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Article\_ArticleNew.cshtml" />
     <Content Include="Views\Article\_Article.cshtml" />
-    <Content Include="Views\Article\Single\Single.cshtml" />
+    <Content Include="Views\Article\Single.cshtml" />
     <Content Include="Views\Article\Single\_Single.cshtml" />
     <Content Include="Views\Contact\Edit.cshtml" />
     <Content Include="Views\Contact\ContactPartial.cshtml" />
@@ -466,10 +467,12 @@
     <Content Include="Views\Log\Off.cshtml" />
     <Content Include="Views\Article\Single\_Comment.cshtml" />
     <Content Include="Views\Article\Single\_PublishComment.cshtml" />
+    <Content Include="Views\Article\Single\_CommentReply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
