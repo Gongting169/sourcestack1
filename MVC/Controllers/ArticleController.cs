@@ -33,60 +33,113 @@ namespace MVC.Controllers
             int articleId = articleService.Publish(articleNewModel);
             return RedirectToAction(nameof(Single), new { id = articleId });
         }
+
+
         [HttpGet]
         public ActionResult New()
         {
             return View();
         }
 
+
+
         public ActionResult Index(int articleId)
         {
             List<ArticleModel> models = (List<ArticleModel>)articleService.GetAllArticles();
             return View(models);
         }
+
+
         [HttpPost]
         public ActionResult Index()
         {
             return View();
         }
+
+
         public ActionResult Single(int id)
         {
             ArticleSingleModel singleModel = new ArticleSingleModel();
             singleModel = articleService.GetById(id);
             singleModel = articleService.GetPreOrNextArticleId(id);
-            //return View(singleModel);
-            return View("Single/Single", singleModel);
+            return View(singleModel);
         }
 
-        public JsonResult GetArticleUserInfo(string aId, string direction)
-        {
 
+        /// <summary>
+        /// 文章的点赞和点踩
+        /// </summary>
+        /// <param name="aId"></param>
+        /// <param name="direction"></param>
+        /// <returns></returns>
+        public JsonResult ArticleAppraise(int  id, string direction)
+        {
             UserModel user = userService.GetCurrentUserModel();
-            ArticleSingleModel singleModel = new ArticleSingleModel();
-            singleModel.AuthorName = articleService.GetAuthorById(Convert.ToInt32(aId));
-            if (singleModel.AuthorName == user.Name)
+            UserModel voter = articleService.GetAuthorBy(id); 
+            if (user == voter)
             {
-                throw new Exception("作者不能点赞自己的文章");
+                throw new Exception("自己不能评价自己的文章");
             }
-            int appraiseId = appraiseService.SaveAgreeOrDisagree(Convert.ToInt32(aId), direction);
-            AppraiseModel appraise = appraiseService.GetById(appraiseId);
-            singleModel.CurrentUser = user.Name;//把当前用户传递给前台，在前台进行比较
-            return Json(new { singleModel.CurrentUser, appraise.DownCount, appraise.UPCount });
+            if (direction == "1")
+            {
+                return Json(appraiseService.ArticleAgree(id, direction), JsonRequestBehavior.AllowGet);            
+            }
+            else
+            {
+                return Json(appraiseService.ArticleDisagree(id,direction), JsonRequestBehavior.AllowGet);             
+            }
         }
 
-        public PartialViewResult PublishComment(string html, string aId)//判断用户是否登录没有去做
+
+        /// <summary>
+        /// 发布一篇评论，判断用户是否登录还没有去做
+        /// </summary>
+        /// <param name="html"></param>
+        /// <param name="aId"></param>
+        /// <returns></returns>
+        public PartialViewResult PublishComment(string html, int  aId)
         {
-            ArticleSingleModel singleModel = new ArticleSingleModel();
             CommentModel model = new CommentModel();
             model.Body = html;
-            int commentId = commentService.SaveComment(model, Convert.ToInt32(aId));
+            int commentId = commentService.Save(model, aId);
             model = commentService.GetById(commentId);
-            return PartialView("Single/_PublishComment",model);
+            return PartialView("Single/_PublishComment", model);
         }
 
 
+        /// <summary>
+        /// 评论的点赞和点踩
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public JsonResult CommentAppraise(int id, string direction)
+        {
+            UserModel user = userService.GetCurrentUserModel();
+            UserModel voter = commentService.GetAuthorBy(id);
+            if (user == voter)
+            {
+                throw new Exception("自己不能评价自己的文章");
+            }
+            if (direction == "1")
+            {
+                return Json(appraiseService.CommentAgree(id, direction), JsonRequestBehavior.AllowGet);            
+            }
+            else
+            {
+                return Json(appraiseService.CommentDisagree(id, direction), JsonRequestBehavior.AllowGet);               
+            }
+        }
 
 
+        /// <summary>
+        /// 能够回复别人的评论
+        /// </summary>
+        /// <returns></returns>
+        //[ChildActionOnly]
+        //public PartialViewResult _CommentReply(ChildCommentModel model)
+        //{
+        //    return PartialView("/Single/_CommentReply.cshtml", commentService.SaveReply(model));
+        //}
 
 
 

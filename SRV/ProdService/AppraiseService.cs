@@ -13,33 +13,115 @@ namespace SRV.ProdService
     public class AppraiseService : BaseService, IAppraiseService
     {
         private AppraiseRepository appraiseRepository;
+        private CommentRepository commentRepository;
         private ArticleRepository articleRepository;
         public AppraiseService()
         {
             appraiseRepository = new AppraiseRepository(Context);
             articleRepository = new ArticleRepository(Context);
+            commentRepository = new CommentRepository(Context);
         }
-
 
         public AppraiseModel GetById(int id)
         {
-            Appraise appraise = appraiseRepository.GetRelevance(id).SingleOrDefault();
+            Appraise appraise = appraiseRepository.GetRelevanceBy(id).SingleOrDefault();
             AppraiseModel model = mapper.Map<AppraiseModel>(appraise);
             return model;
         }
-        public int SaveAgreeOrDisagree(int aId, string direction)
+
+
+        /// <summary>
+        /// 文章的评价
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="direction"></param>
+        /// <returns></returns>
+        public int SaveArticle(int id, string direction)
         {
-            Appraise appraise = appraiseRepository.GetAppraise(Convert.ToInt32(aId)).SingleOrDefault();
-            Context.Set<Appraise>().Attach(appraise);
+            Appraise appraise = new Appraise();
+            appraise.Voter = GetCurrentUser();
+            appraise.Article = articleRepository.Find(id); 
             if (direction == "1")
             {
-                appraise.UpCount = appraise.UpCount + 1;
+                appraise.UpCount += 1;
             }
             else
             {
-                appraise.DownCount = appraise.DownCount + 1;
+                appraise.DownCount += 1;
             }
-            return appraiseRepository.Attach(appraise);//这里有个模糊需求，就是当前用户点赞之后是覆盖以前用户，还是新建一个用户记录着点赞和点踩           
+
+            return appraiseRepository.Save(appraise);
+        }
+
+
+        /// <summary>
+        /// 依据文章Id返回这篇文章点赞的数量
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public int ArticleAgree(int id, string direction)
+        {
+            SaveArticle(id, direction);
+            return appraiseRepository.GetByArticle(id).Select(a => a.UpCount).Sum();
+        }
+
+
+        /// <summary>
+        /// 依据文章Id返回这篇文章点踩的数量
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public int ArticleDisagree(int id, string direction)
+        {
+            SaveArticle(id, direction);
+            return appraiseRepository.GetByArticle(id).Select(a => a.DownCount).Sum();
+        }
+
+
+       /// <summary>
+       /// 评论的评价
+       /// </summary>
+       /// <param name="id"></param>
+       /// <param name="direction"></param>
+       /// <returns></returns>
+        public int SaveComment(int id, string direction)
+        {
+            Appraise appraise = new Appraise();
+            appraise.Voter = GetCurrentUser();
+            appraise.Comment = commentRepository.Find(id);
+            if (direction == "1")
+            {
+                appraise.SupportCount += 1;
+            }
+            else
+            {
+                appraise.OpposeCount += 1;
+            }
+            return appraiseRepository.Save(appraise);
+        }
+
+
+        /// <summary>
+        /// 依据评论Id返回这篇评论点赞的数量
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public int CommentAgree(int id, string direction)
+        {
+            SaveComment(id, direction);
+            return appraiseRepository.GetByComment(id).Select(a => a.SupportCount).Sum();
+        }
+
+
+        /// <summary>
+        /// 依据评论Id返回这篇评论点踩的数量
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public int CommentDisagree(int id, string direction)
+        {
+            SaveComment(id, direction);
+            return appraiseRepository.GetByComment(id).Select(a => a.OpposeCount).Sum();
         }
 
     }

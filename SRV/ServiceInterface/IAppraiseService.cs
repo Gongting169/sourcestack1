@@ -7,9 +7,15 @@ using System.Threading.Tasks;
 
 namespace SRV.ServiceInterface
 {
-   public interface IAppraiseService
+    public interface IAppraiseService
     {
         AppraiseModel GetById(int id);
-        int SaveAgreeOrDisagree(int id,string direction);
+        int SaveArticle(int id, string direction);
+        int ArticleDisagree(int id, string direction);
+        int ArticleAgree(int id, string direction);
+
+        int SaveComment(int id, string direction);
+        int CommentDisagree(int id, string direction);
+        int CommentAgree(int id, string direction);
     }
 }
