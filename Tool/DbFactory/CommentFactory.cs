@@ -24,7 +24,6 @@ namespace DbFactory
             comment.Author = user;
             comment.Body = body;
             comment.Appraises = appraise;
-            comment.Location = location;
             comment.PublishTime = publishTime;
             comment.Reply = reply;
             new CommentRepository(Helper.GetDbContext()).Save(comment);
