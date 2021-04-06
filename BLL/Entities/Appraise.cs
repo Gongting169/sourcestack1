@@ -15,9 +15,6 @@ namespace BLL.Entities
         //一篇文章可以有多个关键字，一个关键字可以对应多篇文章
         public virtual User Voter { get; set; }
 
-        public AppraiseDirection DirectionUp { get; set; }
-
-        public AppraiseDirection DirectionDown { get; set; }
         #region 每个文章所对应评价的点赞和点踩
         public int UpCount { get; set; }
 

@@ -31,7 +31,7 @@ namespace SRV.ProdService
 
 
         /// <summary>
-        /// 文章的评价
+        /// 文章的点赞和点踩
         /// </summary>
         /// <param name="id"></param>
         /// <param name="direction"></param>
@@ -79,7 +79,7 @@ namespace SRV.ProdService
 
 
        /// <summary>
-       /// 评论的评价
+       /// 评论的点赞和点踩
        /// </summary>
        /// <param name="id"></param>
        /// <param name="direction"></param>

@@ -128,6 +128,7 @@ namespace MVC.Controllers
             {
                 return Json(appraiseService.CommentDisagree(id, direction), JsonRequestBehavior.AllowGet);               
             }
+
         }
 
 
