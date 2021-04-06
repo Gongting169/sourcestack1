@@ -5,6 +5,9 @@
         <h4>
             <span class="fa fa-send"></span> <label>我有话说：</label>
         </h4>
+        <div yqbang-reply-location="">
+
+        </div>
         <form method="post" novalidate="novalidate">
             @Html.TextAreaFor(m => m.EditorBody, new
                      {
@@ -58,9 +61,31 @@
         </small>
     </span>
     <div yqbang-comments-container="" data-toggle="modal">
-        @foreach (var item in Model.Comments)
+        @if (Model.Comments.Count < 0)
         {
-            @Html.Partial("Single/_PublishComment", item)
+            throw new Exception("评论的数量不能小于一个非负数值");
+        }
+        else
+        {
+            if (Model.Comments.Count == 0)
+            {
+                foreach (var item in Model.Comments)
+                {
+                    @Html.Partial("Single/_PublishComment", item)
+                }
+            }
+            else
+            {
+                for (int i = Model.Comments.Count - 1; i < Model.Comments.Count; i--)
+                {
+                    if (i < 0)
+                    {
+                        break;
+                    }
+                    @Html.Partial("Single/_PublishComment", Model.Comments[i], new ViewDataDictionary { { "i", i + 1 } })
+                    @*@Html.Action("_CommentReply","Article",new { i = i})*@
+                }
+            }
         }
     </div>
 </div>

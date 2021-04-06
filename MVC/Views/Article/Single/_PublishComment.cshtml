@@ -5,32 +5,32 @@
         clear: both;
         border-bottom: 1px solid #eee;
         padding-bottom: 5px;
-        height: 100px;
     }
 
     .comment-body {
-        margin-top: 5px;
-        margin-bottom: 10px;
+        margin-top: 10px;
+        margin-bottom: 15px;
     }
 
     a[name] {
         margin-top: -50px;
         padding-bottom: 50px;
     }
-    .appraise-status-item{
-        margin-left:20px;
+
+    .appraise-status-item {
+        margin-left: 20px;
     }
 </style>
 
-<a data-name=@Model.Location data-comment-id=@Model.Id zyf-comment-anchor=""></a>
+<a data-name=@ViewData["i"] data-comment-id=@Model.Id zyf-comment-anchor=""></a>
 <div class="clearfix comment-container" style="background-color: aliceblue;" data-has-handpicked="False" yqbang-problem-comment="">
     <div>
-        <small class="text-muted" zyf-datetime="">
+        <small class="text-muted" yqbang-datetime="">
             <span>
-                <span class="fa fa-calendar"></span> <span zyf-can-hide=""> @Model.PublishTime</span>
+                <span class="fa fa-calendar"></span> <span yqbang-can-hide=""> @Model.PublishTime.ToString("yyyy年MM月dd日 hh点mm分")</span>
             </span>
         </small>
-        <small class="text-primary">--- 第 @Model.Location 楼 ---</small>
+        <small class="text-primary" yqbang-reply-location="">--- 第 @ViewData["i"] 楼 ---</small>
         <a class="hide" href="/Article/Comment/Handpick?id=389" zyf-comment-of-article-handpick="">
             <span class="fa fa-flag"></span> 推荐
         </a>
@@ -47,38 +47,29 @@
         </span>
     </div>
     <div class="comment-body clearfix">
-        <p><small class="text-info">--- 回复：<a href="#1" data-reply-id="380" yqbang-comment-reply-layer="">第 1 楼</a> ---</small></p>
-        @Model.Body
+        @Html.Raw(@Model.Body)
     </div>
     <div class="appraise-status pull-right">
         <span class="hide" yqbang-comment-hide="">
             <a class="hide" style="margin-left:40px;" href="#new-comment" data-current-comment-layer="3"
-               data-current-comment-id="389" yqbang-comment-delete="">
+               data-current-comment-id=@Model.Id yqbang-comment-delete="">
                 <span class="fa fa-trash"></span> 删除
             </a>
-            <a style="margin-left:40px;" href="#new-comment" data-current-comment-layer="3"
-               data-current-comment-id="389" yqbang-comment-reply="">
+            <a style="margin-left:40px;" href="#new-comment" data-current-comment-layer=@ViewData["i"]
+               data-current-comment-id=@Model.Id yqbang-comment-reply="">
                 <span class="fa fa-send"></span> 回复
             </a>
         </span>
-        <a class="appraise-status-item" href="/Article/Comment/Appraise?id=389&amp;direction=1" data-author-id=@Model.Author.Id yqbang-vote="">
+        <a class="appraise-status-item" href="/Article/CommentAppraise?id=@Model.Id&amp;direction=1" data-author-id=@Model.Author.Id yqbang-comment-vote="">
             <span class="fa fa-thumbs-o-up text-success"></span> 支持
-            @foreach (var item in Model.Appraises)
-            {
-                <span zyf-votes-count="">@item.SupportCount</span>
-            }
+            <span yqbang-votes-count="">@Model.Appraises.Sum(a => a.SupportCount) </span>
         </a>
-        <a class="appraise-status-item" href="/Article/Comment/Appraise?id=389&amp;direction=-1" data-author-id=@Model.Author.Id yqbang-vote="">
+        <a class="appraise-status-item" href="/Article/CommentAppraise?id=@Model.Id&amp;direction=-1" data-author-id=@Model.Author.Id yqbang-comment-vote="">
             <span class="fa fa-thumbs-o-down text-success"></span> 反对
-            @foreach (var item in Model.Appraises)
-            {
-                <span zyf-votes-count="">@item.OpposeCount</span>
-            }
+            <span yqbang-votes-count="">@Model.Appraises.Sum(a => a.OpposeCount) </span>
         </a>
     </div>
 </div>
-
-
 
 
 

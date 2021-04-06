@@ -92,7 +92,7 @@ namespace MVC.Controllers
 
 
         /// <summary>
-        /// 发布一篇评论，判断用户是否登录还没有去做
+        /// 发布一篇文章的评论
         /// </summary>
         /// <param name="html"></param>
         /// <param name="aId"></param>

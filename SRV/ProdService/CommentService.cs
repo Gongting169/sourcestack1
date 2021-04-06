@@ -14,33 +14,57 @@ namespace SRV.ProdService
     {
         private CommentRepository commentRepository;
         private ArticleRepository articleRepository;
+        private UserRepository userRepository;
         public CommentService()
         {
             commentRepository = new CommentRepository(Context);
             articleRepository = new ArticleRepository(Context);
+            userRepository = new UserRepository(Context);
+        }
+
+        /// <summary>
+        /// 通过评论的id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public UserModel GetAuthorBy(int id)
+        {
+            User user = commentRepository.GetRelevanceBy(id).Select(c => c.Author).SingleOrDefault();
+            return mapper.Map<UserModel>(user);
         }
 
 
         public CommentModel GetById(int id)
         {
-            Comment comment = commentRepository.GetRelevance(id).SingleOrDefault();        
+            Comment comment = commentRepository.GetRelevanceBy(id).SingleOrDefault();
             CommentModel model = mapper.Map<CommentModel>(comment);
-            model.PublishTime = comment.PublishTime.ToString("yyyy年MM月dd日 hh点mm分");
             return model;
         }
 
 
-        public int SaveComment(CommentModel model, int aId)
+        public int Save(CommentModel model, int aId)
         {
             Comment comment = mapper.Map<Comment>(model);
-            int amount = commentRepository.GetCountById(aId);
-            Article article = articleRepository.Find(aId);
             comment.Publish();
-            comment.Article = article;
+            comment.Article = articleRepository.Find(aId);
             comment.Author = GetCurrentUser();
-            comment.Location = amount + 1;
             commentRepository.Save(comment);
             return comment.Id;
         }
+
+
+        //public ChildCommentModel SaveReply(ChildCommentModel model)
+        //{
+        //    Comment commentReply = mapper.Map<Comment>(model);
+        //    Comment comment = commentRepository.Find(model.Id);
+        //    comment.Body = model.Reply.Body;
+        //    commentReply.Publish();
+        //    commentReply.Reply = comment;
+        //    commentReply.Author = GetCurrentUser();
+        //    int replyId = commentRepository.Save(commentReply);
+        //    Comment saveCommentReply = commentRepository.Find(replyId);
+        //    ChildCommentModel childComment = mapper.Map<ChildCommentModel>(saveCommentReply);
+        //    return childComment;
+        //}
     }
 }
