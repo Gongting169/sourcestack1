@@ -16,7 +16,7 @@ namespace SRV.ViewModel
 
         public int Id { get; set; }
 
-        public string Direction { get; set; }
+        public int CommentId { get; set; }
 
         public string Body { get; set; }
 

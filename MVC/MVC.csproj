@@ -467,7 +467,6 @@
     <Content Include="Views\Log\Off.cshtml" />
     <Content Include="Views\Article\Single\_Comment.cshtml" />
     <Content Include="Views\Article\Single\_PublishComment.cshtml" />
-    <Content Include="Views\Article\Single\_CommentReply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

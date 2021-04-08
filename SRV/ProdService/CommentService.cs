@@ -41,30 +41,22 @@ namespace SRV.ProdService
             return model;
         }
 
-
-        public int Save(CommentModel model, int aId)
+        /// <summary>
+        ///发布一篇评论和能够回复别人评论
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="articleId"></param>
+        /// <returns></returns>
+        public CommentModel Save(CommentModel model)
         {
             Comment comment = mapper.Map<Comment>(model);
             comment.Publish();
-            comment.Article = articleRepository.Find(aId);
             comment.Author = GetCurrentUser();
-            commentRepository.Save(comment);
-            return comment.Id;
+            comment.Reply = commentRepository.Find(model.CommentId);   //当前被评论的Id
+            comment.Article = articleRepository.Find(model.ArticleSingleModel.Id);//评论文章的Id
+            CommentModel commentModel = GetById(commentRepository.Save(comment));
+            return commentModel;
         }
 
-
-        //public ChildCommentModel SaveReply(ChildCommentModel model)
-        //{
-        //    Comment commentReply = mapper.Map<Comment>(model);
-        //    Comment comment = commentRepository.Find(model.Id);
-        //    comment.Body = model.Reply.Body;
-        //    commentReply.Publish();
-        //    commentReply.Reply = comment;
-        //    commentReply.Author = GetCurrentUser();
-        //    int replyId = commentRepository.Save(commentReply);
-        //    Comment saveCommentReply = commentRepository.Find(replyId);
-        //    ChildCommentModel childComment = mapper.Map<ChildCommentModel>(saveCommentReply);
-        //    return childComment;
-        //}
     }
 }

@@ -13,7 +13,8 @@ namespace BLL.Entities
         //每个文章和评论都有一个评价
         //一篇文章可以有多个关键字，一个关键字可以对应多篇文章
 
-        public virtual Comment Reply { get; set; } //回复的是第几楼    
+
+        public virtual Comment Reply { get; set; } //回复的是第几楼          
 
         public virtual Article Article { get; set; } //一篇文章可以有多个评论
 

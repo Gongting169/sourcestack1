@@ -5,16 +5,16 @@
         <h4>
             <span class="fa fa-send"></span> <label>我有话说：</label>
         </h4>
-        <div yqbang-reply-location="">
-
-        </div>
         <form method="post" novalidate="novalidate">
+            <div yqbang-comment-reply-location=""></div>
+            <input type="hidden" name="articleSingleModel.Id" value="@Model.Id" />
+            <input type="hidden" name="commentId" value="" />
             @Html.TextAreaFor(m => m.EditorBody, new
                      {
                          @class = "form-control",
                          id = "CommentContent",
-                         required = "true"
-                    })
+                         required = "true",
+                     })
             @Html.ValidationMessageFor(m => m.EditorBody)
             <div yqbang-comment-reply-reminder=""></div>
             <div class="submit" yqbang-logon="" style=" margin-top:15px;">
@@ -83,10 +83,9 @@
                         break;
                     }
                     @Html.Partial("Single/_PublishComment", Model.Comments[i], new ViewDataDictionary { { "i", i + 1 } })
-                    @*@Html.Action("_CommentReply","Article",new { i = i})*@
                 }
             }
-        }
+        }    
     </div>
 </div>
 <script src="~/Css/Editor/kindeditor/kindeditor-all.js"></script>
@@ -137,7 +136,11 @@
                     'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
                     'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'pagebreak',
                     'anchor', 'link', 'unlink',
-                ]
+                ],
+                afterBlur: function ()
+                {
+                    KindEditor.sync("#CommentContent");
+                },
 
             });
         })
@@ -177,4 +180,25 @@
     </div>
 </div>
 
+<style>
+    .comment-container {
+        margin: 10px 0;
+        clear: both;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+    }
 
+    .comment-body {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    a[name] {
+        margin-top: -50px;
+        padding-bottom: 50px;
+    }
+
+    .appraise-status-item {
+        margin-left: 20px;
+    }
+</style>

@@ -72,40 +72,23 @@ namespace MVC.Controllers
         /// <param name="aId"></param>
         /// <param name="direction"></param>
         /// <returns></returns>
-        public JsonResult ArticleAppraise(int  id, string direction)
+        public JsonResult ArticleAppraise(int id, string direction)
         {
             UserModel user = userService.GetCurrentUserModel();
-            UserModel voter = articleService.GetAuthorBy(id); 
+            UserModel voter = articleService.GetAuthorBy(id);
             if (user == voter)
             {
                 throw new Exception("自己不能评价自己的文章");
             }
             if (direction == "1")
             {
-                return Json(appraiseService.ArticleAgree(id, direction), JsonRequestBehavior.AllowGet);            
+                return Json(appraiseService.ArticleAgree(id, direction), JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json(appraiseService.ArticleDisagree(id,direction), JsonRequestBehavior.AllowGet);             
+                return Json(appraiseService.ArticleDisagree(id, direction), JsonRequestBehavior.AllowGet);
             }
         }
-
-
-        /// <summary>
-        /// 发布一篇文章的评论
-        /// </summary>
-        /// <param name="html"></param>
-        /// <param name="aId"></param>
-        /// <returns></returns>
-        public PartialViewResult PublishComment(string html, int  aId)
-        {
-            CommentModel model = new CommentModel();
-            model.Body = html;
-            int commentId = commentService.Save(model, aId);
-            model = commentService.GetById(commentId);
-            return PartialView("Single/_PublishComment", model);
-        }
-
 
         /// <summary>
         /// 评论的点赞和点踩
@@ -122,25 +105,26 @@ namespace MVC.Controllers
             }
             if (direction == "1")
             {
-                return Json(appraiseService.CommentAgree(id, direction), JsonRequestBehavior.AllowGet);            
+                return Json(appraiseService.CommentAgree(id, direction), JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json(appraiseService.CommentDisagree(id, direction), JsonRequestBehavior.AllowGet);               
+                return Json(appraiseService.CommentDisagree(id, direction), JsonRequestBehavior.AllowGet);
             }
 
         }
 
-
         /// <summary>
-        /// 能够回复别人的评论
+        /// 发布一篇文章的评论,也能回复别人的评论
         /// </summary>
+        /// <param name="html"></param>
+        /// <param name="aId"></param>
         /// <returns></returns>
-        //[ChildActionOnly]
-        //public PartialViewResult _CommentReply(ChildCommentModel model)
-        //{
-        //    return PartialView("/Single/_CommentReply.cshtml", commentService.SaveReply(model));
-        //}
+        public PartialViewResult PublishComment(CommentModel model)
+        {
+            model.Body = model.EditorBody;
+            return PartialView("Single/_PublishComment", commentService.Save(model));
+        }
 
 
 
