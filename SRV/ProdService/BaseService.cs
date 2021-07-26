@@ -41,7 +41,6 @@ namespace SRV.ProdService
                     cfg.CreateMap<Appraise, AppraiseModel>().ReverseMap();
                     cfg.CreateMap<Comment, CommentModel>().ReverseMap();
                     cfg.CreateMap<Keyword, KeywordModel>().ReverseMap();
-                    cfg.CreateMap<Comment, ChildCommentModel>().ReverseMap();
                 }
             );
         }

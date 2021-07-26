@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Csharp1\CSharplearn.csproj" />
     <ProjectReference Include="..\CsharpLearn\CSharplearn.csproj" />
+    <ProjectReference Include="..\WebApi\WebApi.csproj" />
   </ItemGroup>
 
 </Project>
