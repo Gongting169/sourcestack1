@@ -15,7 +15,20 @@ namespace MVC.Controllers
         public RegisterController()
         {
             userService = new SRV.ProdService.UserService();
-            //userService = new SRV.MockService.MUserService();
+            //userService = new SRV.MockService.MUs
+            //erService();
+        }
+
+
+        [HttpPost]
+        public ActionResult Test(RegisterModel model)
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Test()
+        {
+            return View();
         }
         [HttpPost]
         public ActionResult Home(RegisterModel registerModel)
@@ -34,12 +47,12 @@ namespace MVC.Controllers
                 ModelState.AddModelError(nameof(registerModel.ComfirmPassword), "两次输入的密码不一致");
                 return RedirectToAction("Home");
             }
-            if (userService.GetByRegisterName(registerModel.Name)!= null)
+            if (userService.GetByRegisterName(registerModel.Name) != null)
             {
                 ModelState.AddModelError(nameof(registerModel.Name), " 输入的用户名已重复");
                 return RedirectToAction("Home");
             }
-            if (userService.GetByRegisterName(registerModel.InvitedByName)  == null)
+            if (userService.GetByRegisterName(registerModel.InvitedByName) == null)
             {
                 ModelState.AddModelError(nameof(registerModel.InvitedByName), " 邀请人不存在");
                 return RedirectToAction("Home");
@@ -49,7 +62,7 @@ namespace MVC.Controllers
             cookie.Values.Add(Keys.Id, userId.ToString());
             cookie.Values.Add(Keys.Password, registerModel.Password.MD5EnCrypt());
             Response.Cookies.Add(cookie);
-            return RedirectToAction("On","Log");
+            return RedirectToAction("On", "Log");
         }
         [HttpGet]
         public ActionResult Home()
@@ -59,15 +72,15 @@ namespace MVC.Controllers
         [HttpPost]
         public JsonResult Check(string name)
         {
-            if (userService.GetByRegisterName(name)  != null)
+            if (userService.GetByRegisterName(name) != null)
             {
                 return Json("* 用户名已重复");
             }//else nothing
             return Json(true);
         }
         public ActionResult InvitedBySerializeName(RegisterModel registerModel)
-        {      
-            List<RegisterModel> models = userService.GetSerializeName(registerModel.InvitedByName);          
+        {
+            List<RegisterModel> models = userService.GetSerializeName(registerModel.InvitedByName);
             return View(models);
         }
         public ActionResult ShowCode()
